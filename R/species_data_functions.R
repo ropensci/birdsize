@@ -3,7 +3,7 @@
 #' @param raw_size_data raw size data
 #'
 #' @return list of slope and intercept from lm
-#' @export
+#'
 #'
 #' @importFrom dplyr filter mutate
 #' @importFrom rlang .data
@@ -35,7 +35,7 @@ get_sd_parameters <- function(raw_size_data) {
 #' @param pars as list of slope, intercept
 #'
 #' @return estimated sd
-#' @export
+#'
 #'
 estimate_sd <- function(sp_mean, pars) {
 
@@ -60,7 +60,7 @@ estimate_sd <- function(sp_mean, pars) {
 #' @param raw_size_data raw size data
 #'
 #' @return cleaned data
-#' @export
+#'
 #'
 #' @importFrom dplyr select mutate filter bind_rows
 #' @importFrom rlang .data
@@ -109,7 +109,7 @@ clean_sp_size_data <- function(raw_size_data) {
 #' @param sd_pars parameters as list of slope, intercept
 #'
 #' @return clean_size_data with filled in sds + column to flag if an estimate was added
-#' @export
+#'
 #'
 add_estimated_sds <- function(clean_size_data, sd_pars) {
 
@@ -135,7 +135,7 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' @param sd_dat Dat with estimated sds
 #'
 #' @return Summarized to species mean size and sd
-#' @export
+#'
 #'
 #' @importFrom dplyr group_by summarize ungroup
 #' @importFrom rlang .data
