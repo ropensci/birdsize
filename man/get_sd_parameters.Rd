@@ -15,3 +15,4 @@ list of slope and intercept from lm
 \description{
 Get SD parameters from linear model
 }
+\keyword{internal}

@@ -17,3 +17,4 @@ clean_size_data with filled in sds + column to flag if an estimate was added
 \description{
 Add estimates for SDs
 }
+\keyword{internal}

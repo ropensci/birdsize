@@ -17,3 +17,4 @@ estimated sd
 \description{
 Estimate SD given mean and optional pars
 }
+\keyword{internal}

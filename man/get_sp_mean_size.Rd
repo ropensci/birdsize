@@ -15,3 +15,4 @@ Summarized to species mean size and sd
 \description{
 Get species' mean size and sd
 }
+\keyword{internal}
