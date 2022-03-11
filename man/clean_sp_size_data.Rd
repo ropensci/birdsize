@@ -2,17 +2,17 @@
 % Please edit documentation in R/species_data_functions.R
 \name{clean_sp_size_data}
 \alias{clean_sp_size_data}
-\title{Clean raw size data}
+\title{Reconcile taxonomic updates between 2008 and 2019}
 \usage{
 clean_sp_size_data(raw_size_data)
 }
 \arguments{
-\item{raw_size_data}{raw size data}
+\item{raw_size_data}{dataframe of species' mean and standard deviation body sizes; use the included \code{raw_masses} data table.}
 }
 \value{
-cleaned data
+dataframe of species' mean and standard deviation body sizes, with name mismatches resolved.
 }
 \description{
-Updates names of species whose names have changed since 2010.
+Six species have undergone name changes or other minor taxonomic rearrangements between 2008 and 2019, resulting in name mismatches between data from the Breeding Bird Survey (Paradieck et al. 2019) and the CRC Handbook (Dunning 2008). This function resolves those mismatches such that all species in the Breeding Bird Survey are associated with the appropriate size records from the CRC Handbook.
 }
 \keyword{internal}
