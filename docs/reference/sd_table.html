@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Means and (estimated) standard deviations of body size for species in the North American Breeding Bird Survey. — sd_table • birdsize</title>
+<title>Species-level means for the mean and standard deviation of body size for species in the North American Breeding Bird Survey. — sd_table • birdsize</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Means and (estimated) standard deviations of body size for species in the North American Breeding Bird Survey. — sd_table" />
-<meta property="og:description" content="A table of the means and estimated standard deviations of body size for species in the North American Breeding Bird Survey (Paradieck et al. 2019) based on records in the CRC Handbook of Avian Body Masses (2008). Standard deviations, where missing, are estimated based on a scaling relationship between a species' mean body size and the standard deviation of its body size (see also Thibault et al. 2010). Species-level means are reported for both the mean mean mass and mean standard deviation for all species." />
+<meta property="og:title" content="Species-level means for the mean and standard deviation of body size for species in the North American Breeding Bird Survey. — sd_table" />
+<meta property="og:description" content="A table of species-level mean values for the means and standard deviations of body size for species in the North American Breeding Bird Survey (Paradieck et al. 2019) based on records in the CRC Handbook of Avian Body Masses (2008). Standard deviations, where not provided in the CRC Handbook, are estimated based on a scaling relationship between a species' mean body size and the standard deviation of its body size (see also Thibault et al. 2010). Species-level means are reported for both the mean mean mass and mean standard deviation for all species." />
 
 
 
@@ -108,13 +108,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Means and (estimated) standard deviations of body size for species in the North American Breeding Bird Survey.</h1>
+    <h1>Species-level means for the mean and standard deviation of body size for species in the North American Breeding Bird Survey.</h1>
     <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/sd_table.R'><code>R/sd_table.R</code></a></small>
     <div class="hidden name"><code>sd_table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A table of the means and estimated standard deviations of body size for species in the North American Breeding Bird Survey (Paradieck et al. 2019) based on records in the CRC Handbook of Avian Body Masses (2008). Standard deviations, where missing, are estimated based on a scaling relationship between a species' mean body size and the standard deviation of its body size (see also Thibault et al. 2010). Species-level means are reported for both the mean mean mass and mean standard deviation for all species.</p>
+    <p>A table of species-level mean values for the means and standard deviations of body size for species in the North American Breeding Bird Survey (Paradieck et al. 2019) based on records in the CRC Handbook of Avian Body Masses (2008). Standard deviations, where not provided in the CRC Handbook, are estimated based on a scaling relationship between a species' mean body size and the standard deviation of its body size (see also Thibault et al. 2010). Species-level means are reported for both the mean mean mass and mean standard deviation for all species.</p>
     </div>
 
     <pre class="usage"><span class='va'>sd_table</span></pre>
@@ -128,7 +128,7 @@
 <dt>species</dt><dd><p>species, from Paradieck et al. (2019)</p></dd>
 <dt>mean_mass</dt><dd><p>mean mass across all records in Dunning (2008) for that species, in grams</p></dd>
 <dt>mean_sd</dt><dd><p>mean standard deviation of body mass across all records from Dunning (2008). For records for which a standard deviation is not provided, the standard deviation is estimated based on the scaling relationship derived from this dataset. Estimated standard deviations are calculated prior to taking species-level means.</p></dd>
-<dt>contains_estimates</dt><dd><p>TRUE/FALSE whether or not the mean_sd column include estimated standard deviations</p></dd>
+<dt>contains_estimates</dt><dd><p>TRUE/FALSE whether or not the mean_sd column includes estimated standard deviations</p></dd>
 
 </dl>
 

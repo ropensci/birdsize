@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get SD parameters from linear model — get_sd_parameters • birdsize</title>
+<title>Estimate parameters for scaling of standard deviation with mean body size — get_sd_parameters • birdsize</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get SD parameters from linear model — get_sd_parameters" />
-<meta property="og:description" content="Get SD parameters from linear model" />
+<meta property="og:title" content="Estimate parameters for scaling of standard deviation with mean body size — get_sd_parameters" />
+<meta property="og:description" content="Calculates parameters for a (log-log linear) scaling relationship between the mean and standard deviation of a species' mean body size. Given a table of species with known mean and standard deviation body sizes, fits a linear model of the form log(var(body_size)) ~ log(mean(body_size)) and extracts parameter estimates, which can then be used to estimate the standard deviation of body mass for a species based only on its mean body mass. See also Thibault et al. (2011) for this method applied to the Breeding Bird Survey." />
 
 
 
@@ -108,13 +108,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get SD parameters from linear model</h1>
+    <h1>Estimate parameters for scaling of standard deviation with mean body size</h1>
     <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/species_data_functions.R'><code>R/species_data_functions.R</code></a></small>
     <div class="hidden name"><code>get_sd_parameters.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get SD parameters from linear model</p>
+    <p>Calculates parameters for a (log-log linear) scaling relationship between the mean and standard deviation of a species' mean body size. Given a table of species with known mean and standard deviation body sizes, fits a linear model of the form <code>log(var(body_size)) ~ log(mean(body_size))</code> and extracts parameter estimates, which can then be used to estimate the standard deviation of body mass for a species based only on its mean body mass. See also Thibault et al. (2011) for this method applied to the Breeding Bird Survey.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_sd_parameters</span><span class='op'>(</span><span class='va'>raw_size_data</span><span class='op'>)</span></pre>
@@ -124,13 +124,20 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>raw_size_data</th>
-      <td><p>raw size data</p></td>
+      <td><p>dataframe of species' mean and standard deviation body sizes; use the included <code>raw_masses</code> data table.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list of slope and intercept from lm</p>
+    <p>list of <code>$slope</code> and <code>$intercept</code> from the linear model fit</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    
+<ul>
+<li><p>Thibault, K. M., White, E. P., Hurlbert, A. H., &amp; Ernest, S. K. M. (2011). Multimodality in the individual size distributions of bird communities. Global Ecology and Biogeography, 20(1), 145–153. https://doi.org/10.1111/j.1466-8238.2010.00576.x</p></li>
+</ul>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

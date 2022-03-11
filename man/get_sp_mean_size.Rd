@@ -15,4 +15,9 @@ get_sp_mean_size(sd_dat)
 \description{
 The CRC Handbook (Dunning 2008) often contains multiple records for mean body mass (and standard deviation of body mass) for a species, drawn from different locations or for different sexes. This function summarizes across all records for each species to produce species-level means for the mean and standard deviation of body mass.
 }
+\references{
+\itemize{
+\item{Dunning, J. B. (2008). CRC handbook of avian body masses (2nd ed.). CRC Press.}
+}
+}
 \keyword{internal}
