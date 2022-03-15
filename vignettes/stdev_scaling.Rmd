@@ -1,8 +1,8 @@
 ---
-title: "Scaling relationship between standard deviation and mean of body mass"
+title: "Scaling of standard deviation and mean body mass"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{stdev_scaling}
+  %\VignetteIndexEntry{Scaling of standard deviation and mean body mass}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -90,7 +90,30 @@ Which translate into a scaling relationship of:
 $var(m) = 0.0047\bar{m}^{2.01}$
 
 
+We use this scaling relationship to estimate the standard deviations for records that have mass, but no reported standard deviation (`r nrow(filter(raw_masses, is.na(sd)))` records), shown in green in this plot:
 
+
+```{r, results = T, fig.dim = c(5, 5.5)}
+
+raw_masses_with_estimated_sd <- raw_masses %>%
+  birdsize:::clean_sp_size_data() %>%
+  birdsize:::add_estimated_sds(sd_pars = birdsize:::get_sd_parameters(raw_masses)) %>%
+  dplyr::mutate(log_mass = log(.data$mass),
+                var = .data$sd ^ 2) %>%
+  dplyr::mutate(log_var = log(.data$var),
+                `Estimated SD` = estimated_sd)
+
+ggplot(raw_masses_with_estimated_sd, aes(exp(log_mass), exp(log_var), color = `Estimated SD`)) +
+  geom_point() +
+  scale_color_viridis_d(option = "viridis", begin = .1, end = .7) +
+  ggtitle("Scaling of variance with mean, with estimates included") +
+  xlab("Mean body mass\n(note log scale)") +
+  ylab("Variance of body mass\n(note log scale)") +
+ scale_x_log10() +
+ scale_y_log10() +
+  theme(legend.position = "bottom")
+
+```
 
 
 
