@@ -116,6 +116,19 @@ ggplot(raw_masses_with_estimated_sd, aes(exp(log_mass), exp(log_var), color = `E
 ```
 
 
+The internal function `birdsize:::estimate_sd` can be used to estimate the standard deviation of body mass from the mean:
+
+```{r, echo = T, results = T}
+
+# Using estimate_sd:
+birdsize:::estimate_sd(sp_mean = 100)
+
+
+# Calculated manually - note slight numeric discrepancy due to truncating parameters:
+sqrt(0.0047 * 100 ^ 2.01)
+
+```
+
 
 See also Thibault et al. (2011) for this scaling relationship for a slightly different subset of the Breeding Bird Survey. 
 
