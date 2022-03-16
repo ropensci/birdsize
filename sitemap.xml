@@ -10,6 +10,12 @@
     <loc>/LICENSE.html</loc>
   </url>
   <url>
+    <loc>/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>/articles/stdev_scaling.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -23,6 +29,9 @@
   </url>
   <url>
     <loc>/reference/estimate_sd.html</loc>
+  </url>
+  <url>
+    <loc>/reference/generate_sd_table.html</loc>
   </url>
   <url>
     <loc>/reference/get_sd_parameters.html</loc>
