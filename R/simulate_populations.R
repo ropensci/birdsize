@@ -21,3 +21,19 @@ draw_population <- function(species_mean, species_sd, species_abundance){
 
 }
 
+#' Look up species mean and sd body size given species ID
+#'
+#' @param species_code species_ID as specified in the Breeding Bird Survey
+#'
+#' @return data frame with columns species_id, genus, species, mean_mass, mean_sd, contains_estimates
+#' @export
+#'
+lookup_species_pars <- function(species_code) {
+
+  sd_table <- sd_table
+
+  stopifnot(species_code %in% sd_table$species_id)
+
+  sd_table[ which(sd_table$species_id == species_code), ]
+
+}
