@@ -4,7 +4,11 @@
 \alias{draw_population}
 \title{Draw individuals to make a population}
 \usage{
-draw_population(species_mean, species_sd, species_abundance)
+draw_population(
+  species_mean = NULL,
+  species_sd = NULL,
+  species_abundance = NULL
+)
 }
 \arguments{
 \item{species_mean}{mean body size}

@@ -1,3 +1,14 @@
+test_that("draw_population errors work", {
+
+  expect_error(draw_population(species_mean = 10, species_abundance = 100), regexp = "`species_sd` must be provided")
+
+  expect_error(draw_population(species_sd = 10, species_abundance = 100), regexp = "`species_mean` must be provided")
+
+  expect_error(draw_population(species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be provided")
+
+  expect_error(draw_population(species_abundance = 10.5, species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be a whole number")
+
+})
 test_that("draw_population works given toy inputs", {
 
   spmean <- 100

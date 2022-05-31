@@ -7,7 +7,28 @@
 #' @return vector of individuals' simulated body masses
 #' @export
 #'
-draw_population <- function(species_mean, species_sd, species_abundance){
+#' @importFrom stats rnorm
+draw_population <- function(species_mean = NULL, species_sd = NULL, species_abundance = NULL){
+
+  if(is.null(species_mean)) {
+    stop("`species_mean` must be provided")
+  }
+
+  if(is.null(species_sd)) {
+    stop("`species_sd` must be provided")
+  }
+
+  if(is.null(species_abundance)) {
+    stop("`species_abundance` must be provided")
+  }
+
+  if(!is.numeric(species_abundance)) {
+    stop("`species_abundance` must be numeric")
+  }
+
+  if(!(round(species_abundance) == species_abundance)) {
+    stop("`species_abundance` must be a whole number")
+  }
 
   population <- rnorm(n = species_abundance, mean = species_mean, sd = species_sd)
 
@@ -32,8 +53,90 @@ lookup_species_pars <- function(species_code) {
 
   sd_table <- sd_table
 
-  stopifnot(species_code %in% sd_table$species_id)
+  if(!(species_code %in% sd_table$species_id)) {
+    stop("`species_code` is invalid.")
+  }
 
   sd_table[ which(sd_table$species_id == species_code), ]
+
+}
+
+
+#' Simulate body masses for a population
+#'
+#' Draws body mass measurements for a population of birds (of all the same species) given the population size and either the species id or the mean and potentially standard deviation of body mass for that species.
+#'
+#' Fills in the necessary parameters based on the parameters provided and passes these to [draw_population()].
+#'
+#' `species_abundance` and *either* `species_mean` or `species_code` must be provided. Depending on which parameters are provided:
+#'
+#'
+#' * `species_mean` and `species_sd`: If both mean and standard deviation body size are provided, uses the values provided to draw `species_abundance` individuals.
+#' * `species_mean` but no `species_sd`: If mean is provided but standard deviation is not, estimates the standard deviation based on the scaling relationship between mean and standard deviation of body mass (see [estimate_sd()]).
+#' * `species_code` but no `species_mean` or `species_sd`: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see [lookup_species_pars()].
+#'
+#' @param species_abundance integer number of individuals to draw. *Required*.
+#' @param species_mean numeric, mean body mass (in grams) for this species.
+#' @param species_sd numeric, standard deviation of body mass for this species.
+#' @param species_code species ID for this species.
+#'
+#' @return a dataframe with `species_abundance` rows and columns for: `species_code`, `species_mean`, `species_sd`, `species_abundance`, `simulation_method`, and `individual_mass`.
+#' @export
+simulate_population <- function(species_abundance = NULL, species_mean = NULL, species_sd = NULL, species_code = NULL) {
+
+  if(all(!is.null(species_code), !is.null(species_mean))) {
+
+    warning("Both `species_code` and `species_mean` are provided; using `species_mean` and overwriting `species_code` to NA.")
+
+  }
+
+  if(!is.null(species_mean)) {
+
+    species_code = NA
+
+    simulation_method = "mean and sd provided"
+
+    if(!is.numeric(species_mean)) {
+      stop("`species_mean`, if used, must be numeric")
+    }
+
+    if(is.null(species_sd)) {
+
+      species_sd <- estimate_sd(species_mean)
+      simulation_method = "sd estimated from mean provided"
+
+    }
+
+    population <- draw_population(species_abundance = species_abundance,
+                                  species_mean = species_mean,
+                                  species_sd = species_sd)
+
+
+  } else if (!is.null(species_code)) {
+
+    species_pars <- lookup_species_pars(species_code)
+
+    species_mean <- species_pars$mean_mass
+    species_sd <- species_pars$mean_sd
+
+
+    population <- draw_population(species_mean = species_mean, species_sd = species_sd, species_abundance = species_abundance)
+
+    simulation_method = "species code provided"
+
+  } else {
+    stop("Either `species_mean` or `species_code` must be provided.")
+  }
+
+  population_df <- data.frame(
+    species_code = species_code,
+    species_mean_mass = species_mean,
+    species_sd_mass = species_sd,
+    species_abundance = species_abundance,
+    simulation_method = simulation_method,
+    individual_mass = population
+  )
+
+  population_df
 
 }
