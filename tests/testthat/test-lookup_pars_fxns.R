@@ -10,3 +10,19 @@ test_that("spID lookup works", {
   expect_error(lookup_species_pars(100000), regexp = "`species_code` is invalid.")
 
 })
+
+
+test_that("genus species lookup works", {
+
+  # Look up parameters for a species that does exist
+  existing_pars <- lookup_species_pars(genus = "selasphorus", species = "calliope")
+
+  expect_identical(existing_pars, dplyr::filter(sd_table, species_id == 244))
+
+  # Case doesn't matter
+  existing_pars <- lookup_species_pars(genus = "SELASPHORUS", species = "cAlliOpe")
+
+  # You should get an error if you try to look up parameters for a species that doesn't exist
+  expect_error(lookup_species_pars(genus = "frumious", species = "bandersnatch"), regexp = "`genus` `species` combination is invalid.")
+
+})

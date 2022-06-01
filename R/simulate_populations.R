@@ -45,19 +45,55 @@ draw_population <- function(species_mean = NULL, species_sd = NULL, species_abun
 #' Look up species mean and sd body size given species ID
 #'
 #' @param species_code species_ID as specified in the Breeding Bird Survey
+#' @param genus genus
+#' @param species species
 #'
 #' @return data frame with columns species_id, genus, species, mean_mass, mean_sd, contains_estimates
 #' @export
 #'
-lookup_species_pars <- function(species_code) {
+#' @importFrom dplyr filter
+#'
+lookup_species_pars <- function(species_code = NULL, genus = NULL, species = NULL) {
 
   sd_table <- sd_table
 
-  if(!(species_code %in% sd_table$species_id)) {
-    stop("`species_code` is invalid.")
-  }
+  if(!is.null(species_code)) {
 
-  sd_table[ which(sd_table$species_id == species_code), ]
+    if(!(species_code %in% sd_table$species_id)) {
+
+      stop("`species_code` is invalid.")
+
+    }
+
+    return(dplyr::filter(sd_table, species_id == species_code))
+
+  } else if(all(is.character(genus), is.character(species))) {
+
+    proper_genus <- tolower(genus)
+    substr(proper_genus, 1, 1) <- toupper(substr(proper_genus, 1, 1))
+    proper_species <- tolower(species)
+
+    sp_pars <- dplyr::filter(sd_table,
+                             genus == proper_genus,
+                             species == proper_species)
+
+    valid_name = nrow(sp_pars) == 1
+
+    if(valid_name) {
+
+      return(sp_pars)
+
+    } else {
+
+      stop("`genus` `species` combination is invalid.")
+
+    }
+
+  } else {
+
+    stop("Either `species_code` or both `genus` and `species` must be provided.")
+
+  }
 
 }
 
@@ -68,19 +104,19 @@ lookup_species_pars <- function(species_code) {
 #'
 #' Fills in the necessary parameters based on the parameters provided and passes these to [draw_population()].
 #'
-#' `species_abundance` and *either* `species_mean` or `species_code` must be provided. Depending on which parameters are provided:
-#'
+#' `species_abundance`, and *either* `species_mean` or `species_code`, must be provided. Depending on which parameters are provided:
 #'
 #' * `species_mean` and `species_sd`: If both mean and standard deviation body size are provided, uses the values provided to draw `species_abundance` individuals.
 #' * `species_mean` but no `species_sd`: If mean is provided but standard deviation is not, estimates the standard deviation based on the scaling relationship between mean and standard deviation of body mass (see [estimate_sd()]).
-#' * `species_code` but no `species_mean` or `species_sd`: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see [lookup_species_pars()].
+#' * `species_code` or both `genus` and `species` but no `species_mean` or `species_sd`: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see [lookup_species_pars()].
+#' * If both species ID (`species_code`) _and_ `species_mean` are provided, uses the species ID and ignores the mean provided.
 #'
 #' @param species_abundance integer number of individuals to draw. *Required*.
 #' @param species_mean numeric, mean body mass (in grams) for this species.
 #' @param species_sd numeric, standard deviation of body mass for this species.
 #' @param species_code species ID for this species.
 #'
-#' @return a dataframe with `species_abundance` rows and columns for: `species_code`, `species_mean`, `species_sd`, `species_abundance`, `simulation_method`, and `individual_mass`.
+#' @return a dataframe with `species_abundance` rows and columns for: `species_code`, `genus`, `species`, `species_mean`, `species_sd`, `species_abundance`, `simulation_method`, and `individual_mass`.
 #' @export
 simulate_population <- function(species_abundance = NULL, species_mean = NULL, species_sd = NULL, species_code = NULL) {
 
