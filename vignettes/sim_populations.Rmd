@@ -1,0 +1,94 @@
+---
+title: "Simulate populations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{sim_populations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+set.seed(22)
+```
+
+```{r setup, echo = F}
+library(birdsize)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+# Simulate populations of individuals of a single species
+
+The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass. `simulate_population` achieves this for a single species. `simulate_community` uses `simulate_population` to simulate body masses for multiple populations of birds of different species. 
+
+
+## Using species identity
+
+For most birds in the North American Breeding Bird Survey, you can use the species' code (AOU) to simulate a population directly. For the hummingbird _Selasphorus calliope_: 
+
+```{r, fig.dim =c(3.5,3)}
+
+a_hundred_hummingbirds <- simulate_population(species_abundance = 100, species_code = 244)
+
+head(a_hundred_hummingbirds)
+
+ggplot(a_hundred_hummingbirds, aes(individual_mass)) + 
+  geom_histogram(bins = 25) +
+  xlab("Mass (g)") +
+  ylab("Count") +
+  ggtitle("A population of hummingbirds") 
+
+```
+
+To look up the AOU based on the species' scientific name, explore the included `sd_table` dataset:
+
+```{r}
+sd_table
+
+```
+
+## Using a known mean and standard deviation
+
+Alternatively, you  can simulate body masses for a population by supplying the body size parameters yourself. This may be useful if you would like to work with a species not included in the `sd_table`, test sensitivities to different parameter ranges, or generate values for simulation/null models (or, other applications!). 
+
+**Note that, if both mean mass and a species code are provided, the species code will be used and the mean mass provided will be ignored!**
+
+```{r, fig.dim =c(3.5,3)}
+
+a_hundred_hypotheticals <- simulate_population(species_abundance = 100, species_mean = 25, species_sd = 3)
+
+head(a_hundred_hypotheticals)
+
+ggplot(a_hundred_hypotheticals, aes(individual_mass)) + 
+  geom_histogram(bins = 25) +
+  xlab("Mass (g)") +
+  ylab("Count") +
+  ggtitle("A population of hypothetical birds", subtitle ="Mean mass = 25 g\nStandard deviation = 3") 
+
+
+```
+
+## Using a known mean, but no standard deviation
+
+If the mean mass is not known or not provided, `simulate_population` will estimate the standard deviation based on scaling between the mean and standard deviation of body mass:
+
+
+```{r, fig.dim =c(3.5,3)}
+
+
+another_hundred_hypotheticals <- simulate_population(species_abundance = 100, species_mean = 25)
+
+head(another_hundred_hypotheticals)
+
+ggplot(another_hundred_hypotheticals, aes(individual_mass)) + 
+  geom_histogram(bins = 25) +
+  xlab("Mass (g)") +
+  ylab("Count") +
+  ggtitle("A population of hypothetical birds", subtitle ="Mean mass = 25 g\nStandard deviation = 1.74") 
+
+
+```

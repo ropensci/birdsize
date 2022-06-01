@@ -86,11 +86,24 @@ simulate_population <- function(species_abundance = NULL, species_mean = NULL, s
 
   if(all(!is.null(species_code), !is.null(species_mean))) {
 
-    warning("Both `species_code` and `species_mean` are provided; using `species_mean` and overwriting `species_code` to NA.")
+    message("Both `species_code` and `species_mean` are provided; using `species_code` and overwriting `species_mean` based on species' parameters.")
 
   }
 
-  if(!is.null(species_mean)) {
+
+  if(!is.null(species_code)) {
+
+    species_pars <- lookup_species_pars(species_code)
+
+    species_mean <- species_pars$mean_mass
+    species_sd <- species_pars$mean_sd
+
+
+    population <- draw_population(species_mean = species_mean, species_sd = species_sd, species_abundance = species_abundance)
+
+    simulation_method = "species code provided"
+
+  } else if(!is.null(species_mean)) {
 
     species_code = NA
 
@@ -111,18 +124,6 @@ simulate_population <- function(species_abundance = NULL, species_mean = NULL, s
                                   species_mean = species_mean,
                                   species_sd = species_sd)
 
-
-  } else if (!is.null(species_code)) {
-
-    species_pars <- lookup_species_pars(species_code)
-
-    species_mean <- species_pars$mean_mass
-    species_sd <- species_pars$mean_sd
-
-
-    population <- draw_population(species_mean = species_mean, species_sd = species_sd, species_abundance = species_abundance)
-
-    simulation_method = "species code provided"
 
   } else {
     stop("Either `species_mean` or `species_code` must be provided.")
