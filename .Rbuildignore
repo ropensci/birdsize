@@ -7,3 +7,4 @@
 ^pkgdown$
 ^.github
 scoping.md
+^codemeta\.json$
