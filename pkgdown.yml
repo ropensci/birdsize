@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 2.0.3
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   sim_populations: sim_populations.html
   stdev_scaling: stdev_scaling.html
-last_built: 2022-06-01T20:04Z
+last_built: 2022-06-16T17:53Z
 
