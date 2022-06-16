@@ -1,5 +1,4 @@
 test_that("raw_masses has expected properties", {
-
   raw_masses <- raw_masses
 
   expect_true(nrow(raw_masses) == 897)
@@ -8,13 +7,9 @@ test_that("raw_masses has expected properties", {
   expect_true(sum(is.na(raw_masses$sd)) == 327)
 
   expect_true(sum(is.na(raw_masses$mass)) == 6)
-
-}
-)
+})
 
 test_that("resolving taxonomic changes works as expected", {
-
-
   cleaned_dat <- birdsize:::clean_sp_size_data(raw_masses)
 
   expect_true(nrow(cleaned_dat) == 913)
@@ -26,6 +21,4 @@ test_that("resolving taxonomic changes works as expected", {
     dplyr::select(-added_flag)
 
   expect_identical(raw_no_changes, cleaned_no_changes)
-
-}
-)
+})

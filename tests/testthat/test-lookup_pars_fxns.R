@@ -8,7 +8,6 @@ test_that("spID lookup works", {
   # You should get an error if you try to look up parameters for a species that doesn't exist
   expect_error(lookup_species_pars(3.14), regexp = "`species_code` is invalid.")
   expect_error(lookup_species_pars(100000), regexp = "`species_code` is invalid.")
-
 })
 
 
@@ -24,5 +23,4 @@ test_that("genus species lookup works", {
 
   # You should get an error if you try to look up parameters for a species that doesn't exist
   expect_error(lookup_species_pars(genus = "frumious", species = "bandersnatch"), regexp = "`genus` `species` combination is invalid.")
-
 })

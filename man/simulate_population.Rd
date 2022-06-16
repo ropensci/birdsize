@@ -21,18 +21,19 @@ simulate_population(
 \item{species_code}{species ID for this species.}
 }
 \value{
-a dataframe with \code{species_abundance} rows and columns for: \code{species_code}, \code{species_mean}, \code{species_sd}, \code{species_abundance}, \code{simulation_method}, and \code{individual_mass}.
+a dataframe with \code{species_abundance} rows and columns for: \code{species_code}, \code{genus}, \code{species}, \code{species_mean}, \code{species_sd}, \code{species_abundance}, \code{simulation_method}, and \code{individual_mass}.
 }
 \description{
-Draws body mass measurements for a population of birds (of all the same species) given the population size and either the species id or the mean and potentially standard deviation of body mass for that species.
+Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species id or (2) the mean and potentially standard deviation of body mass for that species.
 }
 \details{
-Fills in the necessary parameters based on the parameters provided and passes these to \code{\link[=draw_population]{draw_population()}}.
+Fills in the necessary parameters based on the parameters provided and passes these to \code{\link[=generate_individuals]{generate_individuals()}}.
 
-\code{species_abundance} and \emph{either} \code{species_mean} or \code{species_code} must be provided. Depending on which parameters are provided:
+\code{species_abundance}, and \emph{either} \code{species_mean} or \code{species_code}, must be provided. Depending on which parameters are provided:
 \itemize{
 \item \code{species_mean} and \code{species_sd}: If both mean and standard deviation body size are provided, uses the values provided to draw \code{species_abundance} individuals.
 \item \code{species_mean} but no \code{species_sd}: If mean is provided but standard deviation is not, estimates the standard deviation based on the scaling relationship between mean and standard deviation of body mass (see \code{\link[=estimate_sd]{estimate_sd()}}).
-\item \code{species_code} but no \code{species_mean} or \code{species_sd}: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see \code{\link[=lookup_species_pars]{lookup_species_pars()}}.
+\item \code{species_code} or both \code{genus} and \code{species} but no \code{species_mean} or \code{species_sd}: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see \code{\link[=lookup_species_pars]{lookup_species_pars()}}.
+\item If both species ID (\code{species_code}) \emph{and} \code{species_mean} are provided, uses the species ID and ignores the mean provided.
 }
 }

@@ -1,5 +1,4 @@
 test_that("simulate_population errors work", {
-
   expect_error(simulate_population(species_mean = 100, species_sd = 10), regexp = "`species_abundance` must be provided")
 
   expect_error(simulate_population(species_abundance = "10", species_mean = 100, species_sd = 10), regexp = "`species_abundance` must be numeric")
@@ -13,12 +12,10 @@ test_that("simulate_population errors work", {
   expect_error(simulate_population(species_abundance = 10, species_code = 1000), regexp = "`species_code` is invalid.")
 
   expect_message(simulate_population(species_abundance = 10, species_mean = 10, species_sd = 2, species_code = 1420), regexp = "Both `species_code` and `species_mean` are provided; using `species_code` and overwriting `species_mean` based on species' parameters.")
-
 })
 
 
 test_that("simulate_population works given mean and sd", {
-
   set.seed(22)
 
   a_population <- simulate_population(species_abundance = 100, species_mean = 10, species_sd = 2)
@@ -29,13 +26,10 @@ test_that("simulate_population works given mean and sd", {
   expect_true(all(a_population$species_abundance == 100))
   expect_true(all(a_population$simulation_method == "mean and sd provided"))
   expect_true(all(round(a_population$individual_mass)[1:5] == c(9, 15, 12, 11, 10)))
-
 })
 
 
 test_that("simulate_population works given only mean", {
-
-
   set.seed(22)
 
   a_population <- simulate_population(species_abundance = 100, species_mean = 10)
@@ -59,12 +53,10 @@ test_that("simulate_population works given only mean", {
   expect_true(all(a_population$species_sd_mass == estimate_sd(10)))
   expect_true(all(a_population$species_abundance == 100))
   expect_false(all(round(a_population$individual_mass)[1:5] == c(10, 12, 11, 10, 10)))
-
 })
 
 
 test_that("simulate_population works given species code", {
-
   set.seed(22)
 
   a_population <- simulate_population(species_abundance = 100, species_code = 1420)
@@ -77,13 +69,11 @@ test_that("simulate_population works given species code", {
   expect_true(all(a_population$species_abundance == 100))
   expect_true(all(a_population$simulation_method == "species code provided"))
   expect_true(all(round(a_population$individual_mass)[1:5] == c(11, 14, 13, 12, 12)))
-
 })
 
 
 
 test_that("simulate_population works given species code *and* species mean", {
-
   set.seed(22)
 
   a_population <- simulate_population(species_abundance = 100, species_code = 1420, species_mean = 20)
@@ -97,6 +87,4 @@ test_that("simulate_population works given species code *and* species mean", {
   expect_true(all(a_population$simulation_method == "species code provided"))
   expect_true(all(round(a_population$individual_mass)[1:5] == c(11, 14, 13, 12, 12)))
   expect_true(mean(a_population$individual_mass) < 15)
-
-
 })
