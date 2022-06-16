@@ -33,6 +33,6 @@ jobs:
           rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
 
-- name: pkgcheck
+name: pkgcheck
   uses: ropensci-review-tools/pkgcheck-action@v1.0.0
 
