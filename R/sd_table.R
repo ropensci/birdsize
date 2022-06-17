@@ -17,4 +17,6 @@
 #'   \item{Thibault, K. M., White, E. P., Hurlbert, A. H., & Ernest, S. K. M. (2011). Multimodality in the individual size distributions of bird communities. Global Ecology and Biogeography, 20(1), 145–153. https://doi.org/10.1111/j.1466-8238.2010.00576.x}
 #' }
 #'
+#' @keywords internal
+#'
 "sd_table"

@@ -88,12 +88,15 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/bbsdata.html">Working with BBS data</a>
+    </li>
     <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
@@ -132,7 +135,7 @@
     <p>Look up species mean and sd body size given species ID</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lookup_species_pars</span><span class='op'>(</span><span class='va'>species_code</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>lookup_species_pars</span><span class='op'>(</span>species_code <span class='op'>=</span> <span class='cn'>NULL</span>, genus <span class='op'>=</span> <span class='cn'>NULL</span>, species <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,6 +143,14 @@
     <tr>
       <th>species_code</th>
       <td><p>species_ID as specified in the Breeding Bird Survey</p></td>
+    </tr>
+    <tr>
+      <th>genus</th>
+      <td><p>genus</p></td>
+    </tr>
+    <tr>
+      <th>species</th>
+      <td><p>species</p></td>
     </tr>
     </table>
 

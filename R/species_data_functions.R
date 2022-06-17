@@ -52,7 +52,7 @@ get_sd_parameters <- function(raw_size_data) {
 #' @return the estimated standard deviation of body mass
 #'
 #'
-estimate_sd <- function(sp_mean, pars = NULL) {
+species_estimate_sd <- function(sp_mean, pars = NULL) {
   if (is.null(pars)) {
     raw_masses <- raw_masses
 
@@ -135,7 +135,7 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
   for (i in 1:nrow(clean_size_data)) {
     if (is.na(clean_size_data$sd[i])) {
       clean_size_data$estimated_sd[i] <- TRUE
-      clean_size_data$sd[i] <- estimate_sd(clean_size_data$mass[i], pars = sd_pars)
+      clean_size_data$sd[i] <- species_estimate_sd(clean_size_data$mass[i], pars = sd_pars)
     } else {
       clean_size_data$estimated_sd[i] <- FALSE
     }

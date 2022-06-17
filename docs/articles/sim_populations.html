@@ -47,13 +47,16 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/bbsdata.html">Working with BBS data</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
@@ -79,7 +82,7 @@
 
       
 
-      </header><script src="sim_populations_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="sim_populations_files/header-attrs-2.14/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Simulate populations</h1>
@@ -95,14 +98,21 @@
 <div id="simulate-populations-of-individuals-of-a-single-species" class="section level1">
 <h1 class="hasAnchor">
 <a href="#simulate-populations-of-individuals-of-a-single-species" class="anchor"></a>Simulate populations of individuals of a single species</h1>
-<p>The core functionality of <code>birdsize</code> is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass. <code>simulate_population</code> achieves this for a single species. <code>simulate_community</code> uses <code>simulate_population</code> to simulate body masses for multiple populations of birds of different species.</p>
+<p>The core functionality of <code>birdsize</code> is to simulate
+individual body mass measurements for birds given either their species
+ID or a mean (and possibly standard deviation) of body mass.
+<code>pop_generate</code> achieves this for a single species.
+<code>comm_generate</code> uses <code>pop_generate</code> to simulate
+body masses for multiple populations of birds of different species.</p>
 <div id="using-species-identity" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-species-identity" class="anchor"></a>Using species identity</h2>
-<p>For most birds in the North American Breeding Bird Survey, you can use the species’ code (AOU) to simulate a population directly. For the hummingbird <em>Selasphorus calliope</em>:</p>
+<p>For most birds in the North American Breeding Bird Survey, you can
+use the species’ code (AOU) to simulate a population directly. For the
+hummingbird <em>Selasphorus calliope</em>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simulate_population.html">simulate_population</a></span><span class="op">(</span>species_abundance <span class="op">=</span> <span class="fl">100</span>, species_code <span class="op">=</span> <span class="fl">244</span><span class="op">)</span>
+<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>species_abundance <span class="op">=</span> <span class="fl">100</span>, species_code <span class="op">=</span> <span class="fl">244</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span>
 <span class="co">#&gt;   species_code species_mean_mass species_sd_mass species_abundance</span>
@@ -126,7 +136,8 @@
   <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hummingbirds"</span><span class="op">)</span> </code></pre></div>
 <p><img src="sim_populations_files/figure-html/unnamed-chunk-2-1.png" width="336"></p>
-<p>To look up the AOU based on the species’ scientific name, explore the included <code>sd_table</code> dataset:</p>
+<p>To look up the AOU based on the species’ scientific name, explore the
+included <code>sd_table</code> dataset:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sd_table</span>
 <span class="co">#&gt; # A tibble: 421 × 6</span>
@@ -147,11 +158,18 @@
 <div id="using-a-known-mean-and-standard-deviation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-a-known-mean-and-standard-deviation" class="anchor"></a>Using a known mean and standard deviation</h2>
-<p>Alternatively, you can simulate body masses for a population by supplying the body size parameters yourself. This may be useful if you would like to work with a species not included in the <code>sd_table</code>, test sensitivities to different parameter ranges, or generate values for simulation/null models (or, other applications!).</p>
-<p><strong>Note that, if both mean mass and a species code are provided, the species code will be used and the mean mass provided will be ignored!</strong></p>
+<p>Alternatively, you can simulate body masses for a population by
+supplying the body size parameters yourself. This may be useful if you
+would like to work with a species not included in the
+<code>sd_table</code>, test sensitivities to different parameter ranges,
+or generate values for simulation/null models (or, other
+applications!).</p>
+<p><strong>Note that, if both mean mass and a species code are provided,
+the species code will be used and the mean mass provided will be
+ignored!</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">a_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simulate_population.html">simulate_population</a></span><span class="op">(</span>species_abundance <span class="op">=</span> <span class="fl">100</span>, species_mean <span class="op">=</span> <span class="fl">25</span>, species_sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="va">a_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>species_abundance <span class="op">=</span> <span class="fl">100</span>, species_mean <span class="op">=</span> <span class="fl">25</span>, species_sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span><span class="op">)</span>
 <span class="co">#&gt;   species_code species_mean_mass species_sd_mass species_abundance</span>
@@ -179,11 +197,14 @@
 <div id="using-a-known-mean-but-no-standard-deviation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-a-known-mean-but-no-standard-deviation" class="anchor"></a>Using a known mean, but no standard deviation</h2>
-<p>If the mean mass is not known or not provided, <code>simulate_population</code> will estimate the standard deviation based on scaling between the mean and standard deviation of body mass:</p>
+<p>If the mean mass is not known or not provided,
+<code>simulate_population</code> will estimate the standard deviation
+based on scaling between the mean and standard deviation of body
+mass:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 
-<span class="va">another_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simulate_population.html">simulate_population</a></span><span class="op">(</span>species_abundance <span class="op">=</span> <span class="fl">100</span>, species_mean <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+<span class="va">another_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>species_abundance <span class="op">=</span> <span class="fl">100</span>, species_mean <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span><span class="op">)</span>
 <span class="co">#&gt;   species_code species_mean_mass species_sd_mass species_abundance</span>

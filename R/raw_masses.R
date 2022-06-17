@@ -29,4 +29,5 @@
 #'  \item{Harris, D. J., Taylor, S. D., & White, E. P. (2018). Forecasting biodiversity in breeding birds using best practices. PeerJ, 6, e4278. https://doi.org/10.7717/peerj.4278}
 #'   \item{Pardieck, K. L., Ziolkowski, D. J., Lutmerding, M., Aponte, V., & Hudson, M.-A. (2019). North American Breeding Bird Survey Dataset 1966—2018, version 2018.0. U.S. Geological Survey. https://doi.org/10.5066/P9HE8XYJ}
 #' }
+#' @keywords internal
 "raw_masses"

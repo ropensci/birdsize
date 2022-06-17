@@ -47,13 +47,16 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/bbsdata.html">Working with BBS data</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
@@ -79,10 +82,11 @@
 
       
 
-      </header><script src="stdev_scaling_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="stdev_scaling_files/header-attrs-2.14/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Scaling of standard deviation and mean body mass</h1>
+      <h1 data-toc-skip>Scaling of standard deviation and mean body
+mass</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/master/vignettes/stdev_scaling.Rmd"><code>vignettes/stdev_scaling.Rmd</code></a></small>
@@ -92,32 +96,57 @@
 
     
     
-<p>The CRC Handbook of Avian Body Masses (Dunning 2008) contains records of the mean and, for many species, the standard deviation of body mass for bird species. However, there are many records in the CRC Handbook that report mean body mass but no standard deviation, and it may also be desirable to estimate size distributions for species not included in this dataset (or even hypothetical species in a simulation or null model) based only on a mean body size. For birds in the Breeding Bird Survey, there is a strong scaling relationship between the mean and the standard deviation of body mass (Thibault et al. 2011). This package uses this scaling relationship to estimate the standard deviation of body mass from the mean. This vignette illustrates the scaling relationship and how it is used in the package.</p>
-<p>The <code>raw_masses</code> dataset (included in <code>bbssize</code>) includes all records from the CRC Handbook (Dunning 2008) available for species in this subset of the Breeding Bird Survey.</p>
+<p>The CRC Handbook of Avian Body Masses (Dunning 2008) contains records
+of the mean and, for many species, the standard deviation of body mass
+for bird species. However, there are many records in the CRC Handbook
+that report mean body mass but no standard deviation, and it may also be
+desirable to estimate size distributions for species not included in
+this dataset (or even hypothetical species in a simulation or null
+model) based only on a mean body size. For birds in the Breeding Bird
+Survey, there is a strong scaling relationship between the mean and the
+standard deviation of body mass (Thibault et al. 2011). This package
+uses this scaling relationship to estimate the standard deviation of
+body mass from the mean. This vignette illustrates the scaling
+relationship and how it is used in the package.</p>
+<p>The <code>raw_masses</code> dataset (included in
+<code>bbssize</code>) includes all records from the CRC Handbook
+(Dunning 2008) available for species in this subset of the Breeding Bird
+Survey.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">raw_masses</span> <span class="op">&lt;-</span> <span class="va">raw_masses</span></code></pre></div>
-<p>Of the 897 records in <code>raw_masses</code>, 327 are missing the standard deviation (affecting 185 species).</p>
-<p>For records <em>with</em> reports of standard deviation, there is a close scaling relationship between mean and variance of body mass. A linear model of the form <code>log(variance(body_mass)) ~ log(mean(body_mass))</code> has a model R2 of 0.89.</p>
+<p>Of the 897 records in <code>raw_masses</code>, 327 are missing the
+standard deviation (affecting 185 species).</p>
+<p>For records <em>with</em> reports of standard deviation, there is a
+close scaling relationship between mean and variance of body mass. A
+linear model of the form
+<code>log(variance(body_mass)) ~ log(mean(body_mass))</code> has a model
+R2 of 0.89.</p>
 <p><img src="stdev_scaling_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
 <p>The model parameters are:</p>
 <pre><code>#&gt; (Intercept)       log_m 
 #&gt;   -5.356149    2.009553</code></pre>
 <p>Which translate into a scaling relationship of:</p>
-<p><span class="math inline">\(var(m) = 0.0047\bar{m}^{2.01}\)</span></p>
-<p>We use this scaling relationship to estimate the standard deviations for records that have mass, but no reported standard deviation (327 records), shown in green in this plot:</p>
+<p><span class="math inline">\(var(m) =
+0.0047\bar{m}^{2.01}\)</span></p>
+<p>We use this scaling relationship to estimate the standard deviations
+for records that have mass, but no reported standard deviation (327
+records), shown in green in this plot:</p>
 <p><img src="stdev_scaling_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
-<p>The internal function <code>birdsize:::estimate_sd</code> can be used to estimate the standard deviation of body mass from the mean:</p>
+<p>The internal function <code>birdsize:::species_estimate_sd</code> can
+be used to estimate the standard deviation of body mass from the
+mean:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="co"># Using estimate_sd:</span>
-<span class="fu">birdsize</span><span class="fu">:::</span><span class="fu"><a href="../reference/estimate_sd.html">estimate_sd</a></span><span class="op">(</span>sp_mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
+<span class="co"># Using species_estimate:</span>
+<span class="fu">birdsize</span><span class="fu">:::</span><span class="fu"><a href="../reference/species_estimate_sd.html">species_estimate_sd</a></span><span class="op">(</span>sp_mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; [1] 7.022316</span>
 
 
 <span class="co"># Calculated manually - note slight numeric discrepancy due to truncating parameters:</span>
 <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">0.0047</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">^</span> <span class="fl">2.01</span><span class="op">)</span>
 <span class="co">#&gt; [1] 7.015343</span></code></pre></div>
-<p>See also Thibault et al. (2011) for this scaling relationship for a slightly different subset of the Breeding Bird Survey.</p>
+<p>See also Thibault et al. (2011) for this scaling relationship for a
+slightly different subset of the Breeding Bird Survey.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

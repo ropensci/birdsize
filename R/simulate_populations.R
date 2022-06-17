@@ -1,6 +1,6 @@
 #' Draw individuals to make a population.
 #'
-#' This is not a user-facing function; rather it is the random number generator under-the-hood for [simulate_population].
+#' This is not a user-facing function; rather it is the random number generator under-the-hood for [pop_generate].
 #'
 #' @param species_mean mean body size
 #' @param species_sd standard deviation of body size
@@ -9,7 +9,8 @@
 #' @return vector of individuals' simulated body masses
 #'
 #' @importFrom stats rnorm
-generate_individuals <- function(species_mean = NULL, species_sd = NULL, species_abundance = NULL) {
+#' @keywords internal
+ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance = NULL) {
   if (is.null(species_mean)) {
     stop("`species_mean` must be provided")
   }
@@ -50,7 +51,7 @@ generate_individuals <- function(species_mean = NULL, species_sd = NULL, species
 #'
 #' @importFrom dplyr filter
 #'
-lookup_species_pars <- function(species_code = NULL, genus = NULL, species = NULL) {
+species_lookup <- function(species_code = NULL, genus = NULL, species = NULL) {
   sd_table <- sd_table
 
   if (!is.null(species_code)) {
@@ -84,17 +85,19 @@ lookup_species_pars <- function(species_code = NULL, genus = NULL, species = NUL
 }
 
 
+
+
 #' Simulate body masses for a population
 #'
 #' Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species id or (2) the mean and potentially standard deviation of body mass for that species.
 #'
-#' Fills in the necessary parameters based on the parameters provided and passes these to [generate_individuals()].
+#' Fills in the necessary parameters based on the parameters provided and passes these to [ind_draw()].
 #'
 #' `species_abundance`, and *either* `species_mean` or `species_code`, must be provided. Depending on which parameters are provided:
 #'
 #' * `species_mean` and `species_sd`: If both mean and standard deviation body size are provided, uses the values provided to draw `species_abundance` individuals.
-#' * `species_mean` but no `species_sd`: If mean is provided but standard deviation is not, estimates the standard deviation based on the scaling relationship between mean and standard deviation of body mass (see [estimate_sd()]).
-#' * `species_code` or both `genus` and `species` but no `species_mean` or `species_sd`: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see [lookup_species_pars()].
+#' * `species_mean` but no `species_sd`: If mean is provided but standard deviation is not, estimates the standard deviation based on the scaling relationship between mean and standard deviation of body mass (see [species_estimate_sd()]).
+#' * `species_code` or both `genus` and `species` but no `species_mean` or `species_sd`: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see [species_lookup()].
 #' * If both species ID (`species_code`) _and_ `species_mean` are provided, uses the species ID and ignores the mean provided.
 #'
 #' @param species_abundance integer number of individuals to draw. *Required*.
@@ -104,20 +107,20 @@ lookup_species_pars <- function(species_code = NULL, genus = NULL, species = NUL
 #'
 #' @return a dataframe with `species_abundance` rows and columns for: `species_code`, `genus`, `species`, `species_mean`, `species_sd`, `species_abundance`, `simulation_method`, and `individual_mass`.
 #' @export
-simulate_population <- function(species_abundance = NULL, species_mean = NULL, species_sd = NULL, species_code = NULL) {
+pop_generate <- function(species_abundance = NULL, species_mean = NULL, species_sd = NULL, species_code = NULL) {
   if (all(!is.null(species_code), !is.null(species_mean))) {
     message("Both `species_code` and `species_mean` are provided; using `species_code` and overwriting `species_mean` based on species' parameters.")
   }
 
 
   if (!is.null(species_code)) {
-    species_pars <- lookup_species_pars(species_code)
+    species_pars <- species_lookup(species_code)
 
     species_mean <- species_pars$mean_mass
     species_sd <- species_pars$mean_sd
 
 
-    population <- generate_individuals(species_mean = species_mean, species_sd = species_sd, species_abundance = species_abundance)
+    population <- ind_draw(species_mean = species_mean, species_sd = species_sd, species_abundance = species_abundance)
 
     simulation_method <- "species code provided"
   } else if (!is.null(species_mean)) {
@@ -130,11 +133,11 @@ simulate_population <- function(species_abundance = NULL, species_mean = NULL, s
     }
 
     if (is.null(species_sd)) {
-      species_sd <- estimate_sd(species_mean)
+      species_sd <- species_estimate_sd(species_mean)
       simulation_method <- "sd estimated from mean provided"
     }
 
-    population <- generate_individuals(
+    population <- ind_draw(
       species_abundance = species_abundance,
       species_mean = species_mean,
       species_sd = species_sd

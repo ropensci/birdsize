@@ -1,19 +1,19 @@
-test_that("generate_individuals errors work", {
-  expect_error(generate_individuals(species_mean = 10, species_abundance = 100), regexp = "`species_sd` must be provided")
+test_that("ind_draw errors work", {
+  expect_error(ind_draw(species_mean = 10, species_abundance = 100), regexp = "`species_sd` must be provided")
 
-  expect_error(generate_individuals(species_sd = 10, species_abundance = 100), regexp = "`species_mean` must be provided")
+  expect_error(ind_draw(species_sd = 10, species_abundance = 100), regexp = "`species_mean` must be provided")
 
-  expect_error(generate_individuals(species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be provided")
+  expect_error(ind_draw(species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be provided")
 
-  expect_error(generate_individuals(species_abundance = 10.5, species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be a whole number")
+  expect_error(ind_draw(species_abundance = 10.5, species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be a whole number")
 })
-test_that("generate_individuals works given toy inputs", {
+test_that("ind_draw works given toy inputs", {
   spmean <- 100
   spsd <- 6
   spabund <- 100
 
   set.seed(22)
-  spind <- generate_individuals(spmean, spsd, spabund)
+  spind <- ind_draw(spmean, spsd, spabund)
 
   rounded_spind <- round(spind)
 
@@ -21,14 +21,14 @@ test_that("generate_individuals works given toy inputs", {
 })
 
 
-test_that("generate_individuals works given near zero inputs", {
+test_that("ind_draw works given near zero inputs", {
   spmean <- 2
   spsd <- 2
   spabund <- 100
 
   set.seed(22)
 
-  spind <- generate_individuals(spmean, spsd, spabund)
+  spind <- ind_draw(spmean, spsd, spabund)
 
   rounded_spind <- round(spind)
 

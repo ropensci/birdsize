@@ -1,0 +1,72 @@
+---
+title: "Working with BBS data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working with BBS data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = F
+)
+```
+
+```{r setup}
+library(birdsize)
+library(DBI)
+```
+
+# Downloading data using the data retriever
+
+The `rdataretriever` package provides an interface for accessing the Breeding Bird Survey data. 
+
+First, install the `rdataretriever` (and associated python installs) using the instructions [here](https://docs.ropensci.org/rdataretriever/#basic-installation). The following, taken from the Basic Install instructions at the link, worked for RMD in June 2022 on a 2020 Macbook Air running Catalina 10.15.7, R 4.0.3, existing conda but no preexisting miniconda install:
+
+```{r, eval = F}
+install.packages('reticulate') # Install R package for interacting with Python
+reticulate::install_miniconda() # Install Python
+reticulate::py_install('retriever') # Install the Python retriever package
+install.packages('rdataretriever') # Install the R package for running the retriever
+rdataretriever::get_updates() # Update the available datasets
+```
+
+Then use the retriever to download and preprocess the Breeding Bird Survey data. The path to the `data_dir` argument in `rdataretriever::install_sqlite` is *relative to the current working directory*. (Flagging this as something that may be problematic for inclusion in a package vignette.) 
+
+The following works for RMD:
+
+```{r, eval = F}
+
+rdataretriever::install_sqlite("breed-bird-survey", file = "bbs.sqlite", data_dir = "../retriever_data")
+
+```
+
+
+# Accessing the data
+
+
+```{r}
+
+bbs_db <- dbConnect(RSQLite::SQLite(), '../../retriever_data/bbs.sqlite')
+
+```
+
+
+```{r}
+surveys <- dplyr::tbl(bbs_db, "breed_bird_survey_counts")
+sites <- dplyr::tbl(bbs_db, "breed_bird_survey_routes")
+
+
+surveys %>% dplyr::select(aou, speciestotal)
+
+```
+
+```{r}
+DBI::dbDisconnect(bbs_db)
+```
+
+The above is notes for later-RMD. For inclusion in a vignette, there will need to be a portable version of a subset of this data, possibly included in the package. I'm not sure on exactly what output version I'll want. And note you want to clean the raw survey data to remove nightbirds etc.
+
