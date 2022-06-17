@@ -2,6 +2,7 @@
 
 export("%>%")
 export(pop_generate)
+export(species_define)
 export(species_lookup)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,filter)

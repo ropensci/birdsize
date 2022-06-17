@@ -136,46 +136,54 @@
     </div>
 
     <pre class="usage"><span class='fu'>pop_generate</span><span class='op'>(</span>
-  species_abundance <span class='op'>=</span> <span class='cn'>NULL</span>,
-  species_mean <span class='op'>=</span> <span class='cn'>NULL</span>,
-  species_sd <span class='op'>=</span> <span class='cn'>NULL</span>,
-  species_code <span class='op'>=</span> <span class='cn'>NULL</span>
+  abundance <span class='op'>=</span> <span class='cn'>NULL</span>,
+  aou <span class='op'>=</span> <span class='cn'>NULL</span>,
+  genus <span class='op'>=</span> <span class='cn'>NULL</span>,
+  species <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mean_size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sd_size <span class='op'>=</span> <span class='cn'>NULL</span>,
+  id <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>species_abundance</th>
+      <th>abundance</th>
       <td><p>integer number of individuals to draw. <em>Required</em>.</p></td>
     </tr>
     <tr>
-      <th>species_mean</th>
+      <th>aou</th>
+      <td><p>aou</p></td>
+    </tr>
+    <tr>
+      <th>genus</th>
+      <td><p>genus</p></td>
+    </tr>
+    <tr>
+      <th>species</th>
+      <td><p>species</p></td>
+    </tr>
+    <tr>
+      <th>mean_size</th>
       <td><p>numeric, mean body mass (in grams) for this species.</p></td>
     </tr>
     <tr>
-      <th>species_sd</th>
+      <th>sd_size</th>
       <td><p>numeric, standard deviation of body mass for this species.</p></td>
     </tr>
     <tr>
-      <th>species_code</th>
-      <td><p>species ID for this species.</p></td>
+      <th>id</th>
+      <td><p>defaults AOU or 1</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe with <code>species_abundance</code> rows and columns for: <code>species_code</code>, <code>genus</code>, <code>species</code>, <code>species_mean</code>, <code>species_sd</code>, <code>species_abundance</code>, <code>simulation_method</code>, and <code>individual_mass</code>.</p>
+    <p>a dataframe with <code>abundance</code> rows and columns for species attributes.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Fills in the necessary parameters based on the parameters provided and passes these to <code><a href='ind_draw.html'>ind_draw()</a></code>.</p>
-<p><code>species_abundance</code>, and <em>either</em> <code>species_mean</code> or <code>species_code</code>, must be provided. Depending on which parameters are provided:</p><ul>
-<li><p><code>species_mean</code> and <code>species_sd</code>: If both mean and standard deviation body size are provided, uses the values provided to draw <code>species_abundance</code> individuals.</p></li>
-<li><p><code>species_mean</code> but no <code>species_sd</code>: If mean is provided but standard deviation is not, estimates the standard deviation based on the scaling relationship between mean and standard deviation of body mass (see <code><a href='species_estimate_sd.html'>species_estimate_sd()</a></code>).</p></li>
-<li><p><code>species_code</code> or both <code>genus</code> and <code>species</code> but no <code>species_mean</code> or <code>species_sd</code>: If parameter values are not provided, but a species code is, look up the mean and standard deviation body mass for that species (see <code><a href='species_lookup.html'>species_lookup()</a></code>.</p></li>
-<li><p>If both species ID (<code>species_code</code>) <em>and</em> <code>species_mean</code> are provided, uses the species ID and ignores the mean provided.</p></li>
-</ul>
-
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

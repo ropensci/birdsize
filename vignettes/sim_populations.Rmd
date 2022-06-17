@@ -32,7 +32,7 @@ For most birds in the North American Breeding Bird Survey, you can use the speci
 
 ```{r, fig.dim =c(3.5,3)}
 
-a_hundred_hummingbirds <- pop_generate(species_abundance = 100, species_code = 244)
+a_hundred_hummingbirds <- pop_generate(abundance = 100, aou = 244)
 
 head(a_hundred_hummingbirds)
 
@@ -59,7 +59,7 @@ Alternatively, you  can simulate body masses for a population by supplying the b
 
 ```{r, fig.dim =c(3.5,3)}
 
-a_hundred_hypotheticals <- pop_generate(species_abundance = 100, species_mean = 25, species_sd = 3)
+a_hundred_hypotheticals <- pop_generate(abundance = 100, mean_size = 25, sd_size = 3)
 
 head(a_hundred_hypotheticals)
 
@@ -80,7 +80,7 @@ If the mean mass is not known or not provided, `simulate_population` will estima
 ```{r, fig.dim =c(3.5,3)}
 
 
-another_hundred_hypotheticals <- pop_generate(species_abundance = 100, species_mean = 25)
+another_hundred_hypotheticals <- pop_generate(abundance = 100, mean_size = 25)
 
 head(another_hundred_hypotheticals)
 
