@@ -50,6 +50,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/bbsdata.html">Working with BBS data</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
@@ -102,11 +105,11 @@
 <p><span class="math inline">\(var(m) = 0.0047\bar{m}^{2.01}\)</span></p>
 <p>We use this scaling relationship to estimate the standard deviations for records that have mass, but no reported standard deviation (327 records), shown in green in this plot:</p>
 <p><img src="stdev_scaling_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
-<p>The internal function <code>birdsize:::estimate_sd</code> can be used to estimate the standard deviation of body mass from the mean:</p>
+<p>The internal function <code>birdsize:::species_estimate_sd</code> can be used to estimate the standard deviation of body mass from the mean:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="co"># Using estimate_sd:</span>
-<span class="fu">birdsize</span><span class="fu">:::</span><span class="fu"><a href="../reference/estimate_sd.html">estimate_sd</a></span><span class="op">(</span>sp_mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
+<span class="co"># Using species_estimate:</span>
+<span class="fu">birdsize</span><span class="fu">:::</span><span class="fu"><a href="../reference/species_estimate_sd.html">species_estimate_sd</a></span><span class="op">(</span>sp_mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; [1] 7.022316</span>
 
 
