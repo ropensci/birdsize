@@ -31,6 +31,9 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/Species-class.html</loc>
+  </url>
+  <url>
     <loc>/reference/add_estimated_sds.html</loc>
   </url>
   <url>
@@ -62,6 +65,9 @@
   </url>
   <url>
     <loc>/reference/sd_table.html</loc>
+  </url>
+  <url>
+    <loc>/reference/species_define.html</loc>
   </url>
   <url>
     <loc>/reference/species_estimate_sd.html</loc>
