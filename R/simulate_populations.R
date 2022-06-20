@@ -59,16 +59,17 @@ ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance =
 #' @return a dataframe with `abundance` rows and columns for species attributes.
 #' @export
 pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
+  this_species <- species_define(
+    aou = aou,
+    genus = genus,
+    species = species,
+    mean_size = mean_size,
+    sd_size = sd_size,
+    id = id
+  )
 
-  this_species <- species_define(aou = aou,
-                                genus = genus,
-                                species = species,
-                                mean_size = mean_size,
-                                sd_size = sd_size,
-                                id = id)
 
-
-    this_population <- ind_draw(species_mean = this_species@mean_size, species_sd = this_species@sd_size, species_abundance = abundance)
+  this_population <- ind_draw(species_mean = this_species@mean_size, species_sd = this_species@sd_size, species_abundance = abundance)
 
   population_df <- data.frame(
     aou = this_species@aou,

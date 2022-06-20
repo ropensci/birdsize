@@ -10,7 +10,6 @@ test_that("pop_generate errors work", {
   expect_error(pop_generate(abundance = 10, aou = "abc"), regexp = "`species_code` is invalid.")
 
   expect_error(pop_generate(abundance = 10, aou = 1000), regexp = "`species_code` is invalid.")
-
 })
 
 
