@@ -11,7 +11,7 @@
 #'
 #' @return object of class Species
 #' @export
-#'
+#' @importFrom methods new
 species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
 
   if(!is.null(aou)) {
