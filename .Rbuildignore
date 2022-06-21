@@ -8,3 +8,4 @@
 ^codemeta\.json$
 ^\.github$
 R\species_class.R
+^codecov\.yml$
