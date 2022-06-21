@@ -69,18 +69,18 @@ pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = N
   )
 
 
-  this_population <- ind_draw(species_mean = this_species@mean_size, species_sd = this_species@sd_size, species_abundance = abundance)
+  this_population <- ind_draw(species_mean = this_species$mean_size, species_sd = this_species$sd_size, species_abundance = abundance)
 
   population_df <- data.frame(
-    aou = this_species@aou,
-    id = this_species@id,
-    genus = this_species@genus,
-    species = this_species@species,
+    aou = this_species$aou,
+    id = this_species$id,
+    genus = this_species$genus,
+    species = this_species$species,
     individual_mass = this_population,
-    mean_size = this_species@mean_size,
-    sd_size = this_species@sd_size,
+    mean_size = this_species$mean_size,
+    sd_size = this_species$sd_size,
     abundance = abundance,
-    sd_method = this_species@sd_method
+    sd_method = this_species$sd_method
   )
 
   population_df

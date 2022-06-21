@@ -1,6 +1,6 @@
 #' Define a species
 #'
-#' Populates a [Species] object with taxonomic/identifying information and parameters for mean and standard deviation of body mass. Order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
+#' Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass. Order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
 #'
 #' @param aou AOU
 #' @param genus genus
@@ -9,15 +9,14 @@
 #' @param sd_size sd of body size
 #' @param id identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.
 #'
-#' @return object of class Species
+#' @return list with species parameter information
 #' @export
-#' @importFrom methods new
 species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
   if (!is.null(aou)) {
 
     # use AOU to get mean, sd, genus, and species
     spPars <- species_lookup(species_code = aou)
-    thisSpecies <- new("Species", aou = aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "AOU lookup", id = aou)
+    thisSpecies <- list(aou = aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "AOU lookup", id = aou)
 
     # Check that any user-supplied taxonomic info matches the AOU provided
     if (!is.null(genus)) {
@@ -39,19 +38,19 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 
   if (all(!is.null(genus), !is.null(species))) {
     spPars <- species_lookup(genus = genus, species = species)
-    thisSpecies <- new("Species", aou = aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", id = aou)
+    thisSpecies <- list(aou = spPars$species_id, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", id = spPars$species_id)
     return(thisSpecies)
   }
 
   # If neither of AOU or genus + species is provided (implicit in order)
   if (!is.null(mean_size)) {
     if (!is.null(sd_size)) {
-      thisSpecies <- new("Species", aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", id = id)
+      thisSpecies <- list(aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", id = id)
       return(thisSpecies)
     }
 
     this_sd <- species_estimate_sd(mean_size)
-    thisSpecies <- new("Species", aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", id = id)
+    thisSpecies <- list(aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", id = id)
     return(thisSpecies)
   }
 
@@ -59,18 +58,6 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 
   stop("At least one of: AOU, genus + species, or mean_size must be provided!")
 }
-
-#' An S4 class to hold species information
-#'
-#' @slot aou The AOU
-#' @slot genus genus
-#' @slot species species
-#' @slot mean_size size
-#' @slot sd_size sd of size
-#' @slot sd_method known, or estimated
-#' @slot id if AOU is provided, AOU; otherwise an integer for keeping track of hypothetical species
-
-Species <- setClass("Species", slots = list(aou = "numeric", genus = "character", species = "character", mean_size = "numeric", sd_size = "numeric", sd_method = "character", id = "numeric"))
 
 #' Look up species mean and sd body size given species ID
 #'

@@ -23,7 +23,7 @@ theme_set(theme_bw())
 
 # Simulate populations of individuals of a single species
 
-The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass. `pop_generate` achieves this for a single species. `comm_generate` uses `pop_generate` to simulate body masses for multiple populations of birds of different species. 
+The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass. `pop_generate` achieves this for a single species. ~`comm_generate` uses `pop_generate` to simulate body masses for multiple populations of birds of different species.~
 
 
 ## Using species identity

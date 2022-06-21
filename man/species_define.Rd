@@ -27,8 +27,8 @@ species_define(
 \item{id}{identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.}
 }
 \value{
-object of class Species
+list with species parameter information
 }
 \description{
-Populates a \link{Species} object with taxonomic/identifying information and parameters for mean and standard deviation of body mass. Order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
+Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass. Order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
 }
