@@ -2,9 +2,9 @@
 #'
 #' A table of mean and (where available) standard deviation body masses for birds in the North American Breeding Bird Survey. The species list derives from `SpeciesList.txt` in Paradieck et al. (2019), filtered to remove species poorly sampled via the Breeding Bird Survey methods (following Harris et al. 2018) and augmented with all records, for each species, of mean (and, where available, standard deviation) body size  found in the CRC Handbook of Avian Body Masses (Dunning 2008). There are often multiple records for a species, for different sexes or locations. Each record is included as a separate line.
 #'
-#' @format A data frame with 897 rows and 17 variables:
+#' @format A data frame with 897 rows and 18 variables:
 #' \describe{
-#'   \item{species_id}{the species ID, which corresponds to the `AOU` used in Paradieck et al. (2019) with `sp` appended to the beginning}
+#'   \item{species_id}{the species ID}
 #'   \item{english_common_name}{the English common name, from Paradieck et al. (2019)}
 #'   \item{sporder}{order, from Paradieck et al. (2019)}
 #'   \item{family}{family, from Paradieck et al. (2019)}
@@ -23,6 +23,7 @@
 #'   \item{close_species}{if a species is not in Dunning (2008), but a closely related species - e.g. recently renamed, or taxonomically divided between 2008 and 2019 - is, the species of that closely related species.}
 #'   \item{close_subspecies}{if a species is not in Dunning (2008), but a closely related species - e.g. recently renamed, or taxonomically divided between 2008 and 2019 - is, the subspecies of that closely related species.}
 #'   \item{close_species_notes}{notes explaining the details of the "closely related" species designations}
+#'   \item{AOU}{The AOU}
 #' }
 #' @references \itemize{
 #'  \item{Dunning, J. B. (2008). CRC handbook of avian body masses (2nd ed.). CRC Press.}
