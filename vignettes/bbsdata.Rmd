@@ -58,9 +58,32 @@ bbs_db <- dbConnect(RSQLite::SQLite(), '../../retriever_data/bbs.sqlite')
 ```{r}
 surveys <- dplyr::tbl(bbs_db, "breed_bird_survey_counts")
 sites <- dplyr::tbl(bbs_db, "breed_bird_survey_routes")
+species <- dplyr::tbl(bbs_db, "breed_bird_survey_species")
 
 
 surveys %>% dplyr::select(aou, speciestotal)
+
+colnames(surveys)
+
+
+```
+
+# Surveys cleaning after MATSS
+
+```{r}
+
+surveys %>% select(statenum, route) %>% distinct()
+
+one_route <- surveys %>%
+  filter(statenum == 2,
+         route == 1) %>%
+  as.data.frame() %>%
+  mutate(abundance = speciestotal,
+         species_id = aou)
+one_cleaned_route <- MATSS::combine_bbs_subspecies(one_route, as.data.frame(species)) %>%
+  MATSS::filter_bbs_species(species_table = as.data.frame(species))
+
+sum(one_cleaned_route$aou %in% raw_masses$species_id)
 
 ```
 
