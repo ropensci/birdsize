@@ -9,3 +9,4 @@
 ^\.github$
 R\species_class.R
 ^codecov\.yml$
+^species_fix$
