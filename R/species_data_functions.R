@@ -108,7 +108,7 @@ clean_sp_size_data <- function(raw_size_data) {
 
     sp_to_add <- matched_rows %>%
       dplyr::mutate(
-        species_id = name_change$species_id[i],
+        aou = name_change$aou[i],
         added_flag = 1
       )
 
@@ -157,7 +157,7 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' }
 #'
 #'
-#' @importFrom dplyr group_by summarize ungroup
+#' @importFrom dplyr group_by summarize ungroup filter
 #' @importFrom rlang .data
 get_sp_mean_size <- function(sd_dat) {
   sp_means <- sd_dat %>%
@@ -167,7 +167,8 @@ get_sp_mean_size <- function(sd_dat) {
       mean_sd = mean(.data$sd, na.rm = F),
       contains_estimates = any(.data$estimated_sd)
     ) %>%
-    dplyr::ungroup()
+    dplyr::ungroup() %>%
+    dplyr::filter(!is.na(aou))
 
   sp_means
 }
@@ -190,19 +191,19 @@ get_sp_mean_size <- function(sd_dat) {
 generate_sd_table <- function(raw_size_data) {
 
   # Calculate scaling parameters
-  fitted_pars <- get_sd_parameters(raw_size_data)
+  fitted_pars <- birdsize:::get_sd_parameters(raw_size_data)
 
   # Resolve name mismatches
-  clean_size_dat <- clean_sp_size_data(raw_size_data)
+  clean_size_dat <- birdsize:::clean_sp_size_data(raw_size_data)
 
   # Add estimates for missing standard deviation records
-  sd_size_dat <-add_estimated_sds(
+  sd_size_dat <-birdsize:::add_estimated_sds(
     clean_size_data = clean_size_dat,
     sd_pars = fitted_pars
   )
 
   # Summarize to species-level means for the mean and standard deviation of body mass
-  sp_mean_size_dat <- get_sp_mean_size(sd_size_dat)
+  sp_mean_size_dat <- birdsize:::get_sp_mean_size(sd_size_dat)
 
   sp_mean_size_dat
 }
