@@ -7,11 +7,11 @@
 species_lookup(species_code = NULL, genus = NULL, species = NULL)
 }
 \arguments{
+\item{species_code}{AOU species code as specified in the Breeding Bird Survey}
+
 \item{genus}{genus}
 
 \item{species}{species}
-
-\item{aou}{AOU species code as specified in the Breeding Bird Survey}
 }
 \value{
 data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates

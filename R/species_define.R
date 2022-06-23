@@ -61,7 +61,7 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 
 #' Look up species mean and sd body size given species ID
 #'
-#' @param aou AOU species code as specified in the Breeding Bird Survey
+#' @param species_code AOU species code as specified in the Breeding Bird Survey
 #' @param genus genus
 #' @param species species
 #'

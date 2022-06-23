@@ -23,7 +23,7 @@
 #'   \item{close_species}{if a species is not in Dunning (2008), but a closely related species - e.g. recently renamed, or taxonomically divided between 2008 and 2019 - is, the species of that closely related species.}
 #'   \item{close_subspecies}{if a species is not in Dunning (2008), but a closely related species - e.g. recently renamed, or taxonomically divided between 2008 and 2019 - is, the subspecies of that closely related species.}
 #'   \item{close_species_notes}{notes explaining the details of the "closely related" species designations}
-#'   \item{AOU}{The AOU}
+#'   \item{aou}{The AOU}
 #' }
 #' @references \itemize{
 #'  \item{Dunning, J. B. (2008). CRC handbook of avian body masses (2nd ed.). CRC Press.}
