@@ -2,7 +2,7 @@
 #'
 #' A table of mean and (where available) standard deviation body masses for birds in the North American Breeding Bird Survey. The species list derives from `SpeciesList.txt` in Paradieck et al. (2019), filtered to remove species poorly sampled via the Breeding Bird Survey methods (following Harris et al. 2018) and augmented with all records, for each species, of mean (and, where available, standard deviation) body size  found in the CRC Handbook of Avian Body Masses (Dunning 2008). There are often multiple records for a species, for different sexes or locations. Each record is included as a separate line.
 #'
-#' @format A data frame with 897 rows and 18 variables:
+#' @format A data frame with 897 rows and 19 variables:
 #' \describe{
 #'   \item{species_id}{the species ID}
 #'   \item{english_common_name}{the English common name, from Paradieck et al. (2019)}

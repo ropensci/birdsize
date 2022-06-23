@@ -5,7 +5,7 @@
 \alias{raw_masses}
 \title{Records of mean and standard deviation body masses}
 \format{
-A data frame with 897 rows and 18 variables:
+A data frame with 897 rows and 19 variables:
 \describe{
 \item{species_id}{the species ID}
 \item{english_common_name}{the English common name, from Paradieck et al. (2019)}

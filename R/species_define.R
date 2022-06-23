@@ -38,7 +38,7 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 
   if (all(!is.null(genus), !is.null(species))) {
     spPars <- species_lookup(genus = genus, species = species)
-    thisSpecies <- list(aou = spPars$species_id, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", id = spPars$species_id)
+    thisSpecies <- list(aou = spPars$aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", id = spPars$aou)
     return(thisSpecies)
   }
 
@@ -61,11 +61,11 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 
 #' Look up species mean and sd body size given species ID
 #'
-#' @param species_code species_ID as specified in the Breeding Bird Survey
+#' @param aou AOU species code as specified in the Breeding Bird Survey
 #' @param genus genus
 #' @param species species
 #'
-#' @return data frame with columns species_id, genus, species, mean_mass, mean_sd, contains_estimates
+#' @return data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates
 #' @export
 #'
 #' @importFrom dplyr filter
@@ -74,12 +74,12 @@ species_lookup <- function(species_code = NULL, genus = NULL, species = NULL) {
   sd_table <- sd_table
 
   if (!is.null(species_code)) {
-    if (!(species_code %in% sd_table$species_id)) {
+    if (!(species_code %in% sd_table$aou)) {
       stop("`species_code` is invalid.")
     }
 
     return(sd_table %>%
-      dplyr::filter(.data$species_id == species_code))
+      dplyr::filter(.data$aou == species_code))
   } else if (all(is.character(genus), is.character(species))) {
     proper_genus <- tolower(genus)
     substr(proper_genus, 1, 1) <- toupper(substr(proper_genus, 1, 1))
