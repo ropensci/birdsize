@@ -9,4 +9,3 @@
 ^\.github$
 R\species_class.R
 ^codecov\.yml$
-^update_species
