@@ -78,7 +78,7 @@
 
       
 
-      </header><script src="sim_populations_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Simulate populations</h1>
@@ -101,16 +101,16 @@
 <p>For most birds in the North American Breeding Bird Survey, you can use the species’ code (AOU) to simulate a population directly. For the hummingbird <em>Selasphorus calliope</em>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">244</span><span class="op">)</span>
+<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span>
-<span class="co">#&gt;   aou  id       genus  species individual_mass mean_size   sd_size abundance</span>
-<span class="co">#&gt; 1 244 244 Selasphorus calliope        2.556333      2.65 0.1828933       100</span>
-<span class="co">#&gt; 2 244 244 Selasphorus calliope        3.104524      2.65 0.1828933       100</span>
-<span class="co">#&gt; 3 244 244 Selasphorus calliope        2.834325      2.65 0.1828933       100</span>
-<span class="co">#&gt; 4 244 244 Selasphorus calliope        2.703554      2.65 0.1828933       100</span>
-<span class="co">#&gt; 5 244 244 Selasphorus calliope        2.611783      2.65 0.1828933       100</span>
-<span class="co">#&gt; 6 244 244 Selasphorus calliope        2.989833      2.65 0.1828933       100</span>
+<span class="co">#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance</span>
+<span class="co">#&gt; 1 4360 4360 Selasphorus calliope        2.556333      2.65 0.1828933       100</span>
+<span class="co">#&gt; 2 4360 4360 Selasphorus calliope        3.104524      2.65 0.1828933       100</span>
+<span class="co">#&gt; 3 4360 4360 Selasphorus calliope        2.834325      2.65 0.1828933       100</span>
+<span class="co">#&gt; 4 4360 4360 Selasphorus calliope        2.703554      2.65 0.1828933       100</span>
+<span class="co">#&gt; 5 4360 4360 Selasphorus calliope        2.611783      2.65 0.1828933       100</span>
+<span class="co">#&gt; 6 4360 4360 Selasphorus calliope        2.989833      2.65 0.1828933       100</span>
 <span class="co">#&gt;    sd_method</span>
 <span class="co">#&gt; 1 AOU lookup</span>
 <span class="co">#&gt; 2 AOU lookup</span>
@@ -129,18 +129,18 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sd_table</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 421 × 6</span></span>
-<span class="co">#&gt;    species_id genus      species     mean_mass mean_sd contains_estimates</span>
-<span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>         27 Alopochen  aegyptiaca      <span style="text-decoration: underline;">1</span>873    133.  TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>         28 Cairina    moschata        <span style="text-decoration: underline;">2</span>450    175.  TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>         77 Ortalis    vetula           563     55   FALSE             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>         85 Oreortyx   pictus           233     16.4 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>         90 Colinus    virginianus      172     12.1 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>         92 Callipepla squamata         184     13.0 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>         94 Callipepla californica      166.    14.3 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>         95 Callipepla gambelii         166     11.7 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>         96 Cyrtonyx   montezumae       186.    16.8 FALSE             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>        100 Alectoris  chukar           504.    35.6 TRUE              </span>
+<span class="co">#&gt;      aou genus       species     mean_mass mean_sd contains_estimates</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>             </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>881 Perdix      perdix           406.    31   FALSE             </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">2</span>882 Alectoris   chukar           504.    35.6 TRUE              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">2</span>890 Colinus     virginianus      172     12.1 TRUE              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">2</span>920 Oreortyx    pictus           233     16.4 TRUE              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">2</span>930 Callipepla  squamata         184     13.0 TRUE              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">2</span>940 Callipepla  californica      166.    14.3 TRUE              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">2</span>950 Callipepla  gambelii         166     11.7 TRUE              </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>960 Cyrtonyx    montezumae       186.    16.8 FALSE             </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>970 Dendragapus obscurus        <span style="text-decoration: underline;">1</span>058.    71.0 FALSE             </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>971 Dendragapus fuliginosus     <span style="text-decoration: underline;">1</span>056     73.8 FALSE             </span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 411 more rows</span></span></code></pre></div>
 </div>
 <div class="section level3">

@@ -78,7 +78,7 @@
 
       
 
-      </header><script src="bbsdata_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Working with BBS data</h1>
@@ -120,10 +120,31 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_counts"</span><span class="op">)</span>
 <span class="va">sites</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_routes"</span><span class="op">)</span>
+<span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_species"</span><span class="op">)</span>
 
 
-<span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span></code></pre></div>
+<span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">surveys</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="surveys-cleaning-after-matss">Surveys cleaning after MATSS<a class="anchor" aria-label="anchor" href="#surveys-cleaning-after-matss"></a>
+</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">select</span><span class="op">(</span><span class="va">statenum</span>, <span class="va">route</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">one_route</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">statenum</span> <span class="op">==</span> <span class="fl">2</span>,
+         <span class="va">route</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">mutate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="va">speciestotal</span>,
+         species_id <span class="op">=</span> <span class="va">aou</span><span class="op">)</span>
+<span class="va">one_cleaned_route</span> <span class="op">&lt;-</span> <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">combine_bbs_subspecies</span><span class="op">(</span><span class="va">one_route</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">filter_bbs_species</span><span class="op">(</span>species_table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">one_cleaned_route</span><span class="op">$</span><span class="va">aou</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">raw_masses</span><span class="op">$</span><span class="va">species_id</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">DBI</span><span class="fu">::</span><span class="fu">dbDisconnect</span><span class="op">(</span><span class="va">bbs_db</span><span class="op">)</span></code></pre></div>
 <p>The above is notes for later-RMD. For inclusion in a vignette, there will need to be a portable version of a subset of this data, possibly included in the package. I’m not sure on exactly what output version I’ll want. And note you want to clean the raw survey data to remove nightbirds etc.</p>
 </div>
