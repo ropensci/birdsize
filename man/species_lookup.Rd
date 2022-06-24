@@ -7,14 +7,14 @@
 species_lookup(species_code = NULL, genus = NULL, species = NULL)
 }
 \arguments{
-\item{species_code}{species_ID as specified in the Breeding Bird Survey}
+\item{species_code}{AOU species code as specified in the Breeding Bird Survey}
 
 \item{genus}{genus}
 
 \item{species}{species}
 }
 \value{
-data frame with columns species_id, genus, species, mean_mass, mean_sd, contains_estimates
+data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates
 }
 \description{
 Look up species mean and sd body size given species ID
