@@ -30,5 +30,14 @@ species_define(
 list with species parameter information
 }
 \description{
-Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass. Order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
+Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass.
+}
+\details{
+The identifying information used depends on which parameters are provided, with the following order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
+}
+\examples{
+species_define(aou = 2881)
+species_define(genus = "Perdix", species = "perdix")
+species_define(mean_size = 400, sd_size = 30)
+species_define(mean_size = 400)
 }

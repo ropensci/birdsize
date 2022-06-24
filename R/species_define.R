@@ -1,6 +1,8 @@
 #' Define a species
 #'
-#' Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass. Order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
+#' Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass.
+#'
+#' The identifying information used depends on which parameters are provided, with the following order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
 #'
 #' @param aou AOU
 #' @param genus genus
@@ -11,6 +13,12 @@
 #'
 #' @return list with species parameter information
 #' @export
+#' @examples
+#' species_define(aou = 2881)
+#' species_define(genus = "Perdix", species = "perdix")
+#' species_define(mean_size = 400, sd_size = 30)
+#' species_define(mean_size = 400)
+
 species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
   if (!is.null(aou)) {
 
@@ -59,7 +67,9 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
   stop("At least one of: AOU, genus + species, or mean_size must be provided!")
 }
 
-#' Look up species mean and sd body size given species ID
+#' Species lookup
+#'
+#' Given either AOU or genus and species, looks up a species' taxonomic information and mean and standard deviation of body size in [sd_table].
 #'
 #' @param aou AOU species code as specified in the Breeding Bird Survey
 #' @param genus genus
@@ -69,7 +79,9 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 #' @export
 #'
 #' @importFrom dplyr filter
-#'
+#' @examples
+#' species_lookup(aou = 2881)
+#' species_lookup(genus = "Selasphorus", species = "calliope")
 species_lookup <- function(aou = NULL, genus = NULL, species = NULL) {
   sd_table <- sd_table
 

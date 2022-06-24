@@ -2,12 +2,12 @@
 % Please edit documentation in R/species_define.R
 \name{species_lookup}
 \alias{species_lookup}
-\title{Look up species mean and sd body size given species ID}
+\title{Species lookup}
 \usage{
-species_lookup(species_code = NULL, genus = NULL, species = NULL)
+species_lookup(aou = NULL, genus = NULL, species = NULL)
 }
 \arguments{
-\item{species_code}{AOU species code as specified in the Breeding Bird Survey}
+\item{aou}{AOU species code as specified in the Breeding Bird Survey}
 
 \item{genus}{genus}
 
@@ -17,5 +17,9 @@ species_lookup(species_code = NULL, genus = NULL, species = NULL)
 data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates
 }
 \description{
-Look up species mean and sd body size given species ID
+Given either AOU or genus and species, looks up a species' taxonomic information and mean and standard deviation of body size in \link{sd_table}.
+}
+\examples{
+species_lookup(aou = 2881)
+species_lookup(genus = "Selasphorus", species = "calliope")
 }

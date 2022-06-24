@@ -134,10 +134,31 @@ problematic for inclusion in a package vignette.)</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_counts"</span><span class="op">)</span>
 <span class="va">sites</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_routes"</span><span class="op">)</span>
+<span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_species"</span><span class="op">)</span>
 
 
-<span class="va">surveys</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span></code></pre></div>
+<span class="va">surveys</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">surveys</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="surveys-cleaning-after-matss" class="section level1">
+<h1 class="hasAnchor">
+<a href="#surveys-cleaning-after-matss" class="anchor"></a>Surveys cleaning after MATSS</h1>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">surveys</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">statenum</span>, <span class="va">route</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span>
+
+<span class="va">one_route</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">statenum</span> <span class="op">==</span> <span class="fl">2</span>,
+         <span class="va">route</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="va">speciestotal</span>,
+         species_id <span class="op">=</span> <span class="va">aou</span><span class="op">)</span>
+<span class="va">one_cleaned_route</span> <span class="op">&lt;-</span> <span class="fu">MATSS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MATSS/man/combine_bbs_subspecies.html">combine_bbs_subspecies</a></span><span class="op">(</span><span class="va">one_route</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">MATSS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MATSS/man/filter_bbs_species.html">filter_bbs_species</a></span><span class="op">(</span>species_table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">one_cleaned_route</span><span class="op">$</span><span class="va">aou</span> <span class="op">%in%</span> <span class="va">raw_masses</span><span class="op">$</span><span class="va">species_id</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">bbs_db</span><span class="op">)</span></code></pre></div>
 <p>The above is notes for later-RMD. For inclusion in a vignette, there
 will need to be a portable version of a subset of this data, possibly

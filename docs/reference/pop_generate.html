@@ -185,6 +185,46 @@
 
     <p>Fills in the necessary parameters based on the parameters provided and passes these to <code><a href='ind_draw.html'>ind_draw()</a></code>.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, aou <span class='op'>=</span> <span class='fl'>2881</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    aou   id  genus species individual_mass mean_size sd_size abundance
+#&gt; 1 2881 2881 Perdix  perdix        362.0987     405.5      31         5
+#&gt; 2 2881 2881 Perdix  perdix        413.4148     405.5      31         5
+#&gt; 3 2881 2881 Perdix  perdix        329.9448     405.5      31         5
+#&gt; 4 2881 2881 Perdix  perdix        405.3273     405.5      31         5
+#&gt; 5 2881 2881 Perdix  perdix        424.7681     405.5      31         5
+#&gt;    sd_method
+#&gt; 1 AOU lookup
+#&gt; 2 AOU lookup
+#&gt; 3 AOU lookup
+#&gt; 4 AOU lookup
+#&gt; 5 AOU lookup</div><div class='input'><span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, genus <span class='op'>=</span> <span class='st'>"Selasphorus"</span>, species <span class='op'>=</span> <span class='st'>"calliope"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance
+#&gt; 1 4360 4360 Selasphorus calliope        2.860037      2.65 0.1828933         5
+#&gt; 2 4360 4360 Selasphorus calliope        2.316802      2.65 0.1828933         5
+#&gt; 3 4360 4360 Selasphorus calliope        2.604766      2.65 0.1828933         5
+#&gt; 4 4360 4360 Selasphorus calliope        2.605338      2.65 0.1828933         5
+#&gt; 5 4360 4360 Selasphorus calliope        2.598295      2.65 0.1828933         5
+#&gt;                sd_method
+#&gt; 1 Scientific name lookup
+#&gt; 2 Scientific name lookup
+#&gt; 3 Scientific name lookup
+#&gt; 4 Scientific name lookup
+#&gt; 5 Scientific name lookup</div><div class='input'><span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, mean_size <span class='op'>=</span> <span class='fl'>20</span>, sd_size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   aou id genus species individual_mass mean_size sd_size abundance
+#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        18.33890        20       3         5
+#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.88695        20       3         5
+#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.19507        20       3         5
+#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        15.10703        20       3         5
+#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.53728        20       3         5
+#&gt;              sd_method
+#&gt; 1 Mean and SD provided
+#&gt; 2 Mean and SD provided
+#&gt; 3 Mean and SD provided
+#&gt; 4 Mean and SD provided
+#&gt; 5 Mean and SD provided</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

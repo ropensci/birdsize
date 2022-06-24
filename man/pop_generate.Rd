@@ -38,3 +38,10 @@ Draws body mass measurements for a population of birds (of all the same species)
 \details{
 Fills in the necessary parameters based on the parameters provided and passes these to \code{\link[=ind_draw]{ind_draw()}}.
 }
+\examples{
+
+pop_generate(abundance = 5, aou = 2881)
+pop_generate(abundance = 5, genus = "Selasphorus", species = "calliope")
+pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
+
+}

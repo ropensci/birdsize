@@ -112,16 +112,16 @@ use the species’ code (AOU) to simulate a population directly. For the
 hummingbird <em>Selasphorus calliope</em>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">244</span><span class="op">)</span>
+<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span>
-<span class="co">#&gt;   aou  id       genus  species individual_mass mean_size   sd_size abundance</span>
-<span class="co">#&gt; 1 244 244 Selasphorus calliope        2.556333      2.65 0.1828933       100</span>
-<span class="co">#&gt; 2 244 244 Selasphorus calliope        3.104524      2.65 0.1828933       100</span>
-<span class="co">#&gt; 3 244 244 Selasphorus calliope        2.834325      2.65 0.1828933       100</span>
-<span class="co">#&gt; 4 244 244 Selasphorus calliope        2.703554      2.65 0.1828933       100</span>
-<span class="co">#&gt; 5 244 244 Selasphorus calliope        2.611783      2.65 0.1828933       100</span>
-<span class="co">#&gt; 6 244 244 Selasphorus calliope        2.989833      2.65 0.1828933       100</span>
+<span class="co">#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance</span>
+<span class="co">#&gt; 1 4360 4360 Selasphorus calliope        2.556333      2.65 0.1828933       100</span>
+<span class="co">#&gt; 2 4360 4360 Selasphorus calliope        3.104524      2.65 0.1828933       100</span>
+<span class="co">#&gt; 3 4360 4360 Selasphorus calliope        2.834325      2.65 0.1828933       100</span>
+<span class="co">#&gt; 4 4360 4360 Selasphorus calliope        2.703554      2.65 0.1828933       100</span>
+<span class="co">#&gt; 5 4360 4360 Selasphorus calliope        2.611783      2.65 0.1828933       100</span>
+<span class="co">#&gt; 6 4360 4360 Selasphorus calliope        2.989833      2.65 0.1828933       100</span>
 <span class="co">#&gt;    sd_method</span>
 <span class="co">#&gt; 1 AOU lookup</span>
 <span class="co">#&gt; 2 AOU lookup</span>
@@ -141,18 +141,18 @@ included <code>sd_table</code> dataset:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sd_table</span>
 <span class="co">#&gt; # A tibble: 421 × 6</span>
-<span class="co">#&gt;    species_id genus      species     mean_mass mean_sd contains_estimates</span>
-<span class="co">#&gt;         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;             </span>
-<span class="co">#&gt;  1         27 Alopochen  aegyptiaca      1873    133.  TRUE              </span>
-<span class="co">#&gt;  2         28 Cairina    moschata        2450    175.  TRUE              </span>
-<span class="co">#&gt;  3         77 Ortalis    vetula           563     55   FALSE             </span>
-<span class="co">#&gt;  4         85 Oreortyx   pictus           233     16.4 TRUE              </span>
-<span class="co">#&gt;  5         90 Colinus    virginianus      172     12.1 TRUE              </span>
-<span class="co">#&gt;  6         92 Callipepla squamata         184     13.0 TRUE              </span>
-<span class="co">#&gt;  7         94 Callipepla californica      166.    14.3 TRUE              </span>
-<span class="co">#&gt;  8         95 Callipepla gambelii         166     11.7 TRUE              </span>
-<span class="co">#&gt;  9         96 Cyrtonyx   montezumae       186.    16.8 FALSE             </span>
-<span class="co">#&gt; 10        100 Alectoris  chukar           504.    35.6 TRUE              </span>
+<span class="co">#&gt;      aou genus       species     mean_mass mean_sd contains_estimates</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;             </span>
+<span class="co">#&gt;  1  2881 Perdix      perdix           406.    31   FALSE             </span>
+<span class="co">#&gt;  2  2882 Alectoris   chukar           504.    35.6 TRUE              </span>
+<span class="co">#&gt;  3  2890 Colinus     virginianus      172     12.1 TRUE              </span>
+<span class="co">#&gt;  4  2920 Oreortyx    pictus           233     16.4 TRUE              </span>
+<span class="co">#&gt;  5  2930 Callipepla  squamata         184     13.0 TRUE              </span>
+<span class="co">#&gt;  6  2940 Callipepla  californica      166.    14.3 TRUE              </span>
+<span class="co">#&gt;  7  2950 Callipepla  gambelii         166     11.7 TRUE              </span>
+<span class="co">#&gt;  8  2960 Cyrtonyx    montezumae       186.    16.8 FALSE             </span>
+<span class="co">#&gt;  9  2970 Dendragapus obscurus        1058.    71.0 FALSE             </span>
+<span class="co">#&gt; 10  2971 Dendragapus fuliginosus     1056     73.8 FALSE             </span>
 <span class="co">#&gt; # … with 411 more rows</span></code></pre></div>
 </div>
 <div id="using-a-known-mean-and-standard-deviation" class="section level2">
