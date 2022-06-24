@@ -6,8 +6,8 @@ test_that("spID lookup works", {
   expect_identical(existing_pars, dplyr::filter(sd_table, aou == 2930))
 
   # You should get an error if you try to look up parameters for a species that doesn't exist
-  expect_error(species_lookup(3.14), regexp = "`species_code` is invalid.")
-  expect_error(species_lookup(100000), regexp = "`species_code` is invalid.")
+  expect_error(species_lookup(3.14), regexp = "`aou` is invalid.")
+  expect_error(species_lookup(100000), regexp = "`aou` is invalid.")
 })
 
 
