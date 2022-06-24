@@ -33,3 +33,15 @@ bbs_species_append <- bbs_species_no_raw %>%
   bind_rows(raw_masses_orig)
 
 write.csv(bbs_species_append, here::here("update_species", "masses_to_update.csv"), row.names = F)
+
+# masses_updated is masses_to_update with the records filled in
+
+bbs_species_updated <- read.csv(here::here("update_species", "masses_updated.csv"))
+
+library(birdsize)
+
+tryclean <- birdsize:::clean_sp_size_data(bbs_species_updated)
+
+raw_masses <- bbs_species_updated
+
+usethis::use_data(raw_masses, overwrite = T)
