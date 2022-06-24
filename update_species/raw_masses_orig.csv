@@ -1,0 +1,898 @@
+"species_id","english_common_name","sporder","family","genus","species","mass","sd","sex","subspecies","location","name_mismatch","name_notes","not_in_dunning","close_genus","close_species","close_subspecies","close_species_notes","aou"
+27,"Egyptian Goose","Anseriformes","Anatidae","Alopochen","aegyptiaca",1873,NA,"m",NA,NA,1,"Alopochen aegyptiana",NA,NA,NA,NA,NA,20630
+28,"Muscovy Duck","Anseriformes","Anatidae","Cairina","moschata",2042,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,10210
+28,"Muscovy Duck","Anseriformes","Anatidae","Cairina","moschata",2858,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,10210
+77,"Plain Chachalaca","Galliformes","Cracidae","Ortalis","vetula",542,52,"f",NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,3110
+77,"Plain Chachalaca","Galliformes","Cracidae","Ortalis","vetula",584,58,"m",NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,3110
+85,"Mountain Quail","Galliformes","Odontophoridae","Oreortyx","pictus",233,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2920
+90,"Northern Bobwhite","Galliformes","Odontophoridae","Colinus","virginianus",166,NA,NA,"ridgwayi","Sonora, Mexico",NA,NA,NA,NA,NA,NA,NA,2890
+90,"Northern Bobwhite","Galliformes","Odontophoridae","Colinus","virginianus",178,NA,NA,NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,2890
+92,"Scaled Quail","Galliformes","Odontophoridae","Callipepla","squamata",177,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,2930
+92,"Scaled Quail","Galliformes","Odontophoridae","Callipepla","squamata",191,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,2930
+94,"California Quail","Galliformes","Odontophoridae","Callipepla","californica",151,NA,NA,"achrustera","Baja California Sur, Mexico",NA,NA,NA,NA,NA,NA,NA,2940
+94,"California Quail","Galliformes","Odontophoridae","Callipepla","californica",162,16.5,"f","californica","California, USA",NA,NA,NA,NA,NA,NA,NA,2940
+94,"California Quail","Galliformes","Odontophoridae","Callipepla","californica",186,15.7,"m","californica","California, USA",NA,NA,NA,NA,NA,NA,NA,2940
+95,"Gambel's Quail","Galliformes","Odontophoridae","Callipepla","gambelii",162,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,2950
+95,"Gambel's Quail","Galliformes","Odontophoridae","Callipepla","gambelii",170,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,2950
+96,"Montezuma Quail","Galliformes","Odontophoridae","Cyrtonyx","montezumae",179,19.5,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,2960
+96,"Montezuma Quail","Galliformes","Odontophoridae","Cyrtonyx","montezumae",192,14.2,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,2960
+100,"Chukar","Galliformes","Phasianidae","Alectoris","chukar",466,NA,"f","pubescens","Hopei, China",NA,NA,NA,NA,NA,NA,NA,2882
+100,"Chukar","Galliformes","Phasianidae","Alectoris","chukar",541,NA,"m","pubescens","Hopei, China",NA,NA,NA,NA,NA,NA,NA,2882
+103,"Gray Partridge","Galliformes","Phasianidae","Perdix","perdix",393,34,"f",NA,"North Dakota, USA",NA,NA,NA,NA,NA,NA,NA,2881
+103,"Gray Partridge","Galliformes","Phasianidae","Perdix","perdix",418,28,"m",NA,"North Dakota, USA",NA,NA,NA,NA,NA,NA,NA,2881
+104,"Ring-necked Pheasant","Galliformes","Phasianidae","Phasianus","colchicus",953,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3091
+104,"Ring-necked Pheasant","Galliformes","Phasianidae","Phasianus","colchicus",1317,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3091
+105,"Indian Peafowl","Galliformes","Phasianidae","Pavo","cristatus",3622,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3095
+105,"Indian Peafowl","Galliformes","Phasianidae","Pavo","cristatus",4766,231,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3095
+106,"Ruffed Grouse","Galliformes","Phasianidae","Bonasa","umbellus",498,NA,"f",NA,"Alberta, Canada",NA,NA,NA,NA,NA,NA,NA,3000
+106,"Ruffed Grouse","Galliformes","Phasianidae","Bonasa","umbellus",566,41.7,"m",NA,"Alberta, Canada",NA,NA,NA,NA,NA,NA,NA,3000
+107,"Greater Sage-Grouse","Galliformes","Phasianidae","Centrocercus","urophasianus",1300,NA,"f","phaios","California, USA",NA,NA,NA,NA,NA,NA,NA,3090
+107,"Greater Sage-Grouse","Galliformes","Phasianidae","Centrocercus","urophasianus",1745,151,"f","urophasianus","Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3090
+107,"Greater Sage-Grouse","Galliformes","Phasianidae","Centrocercus","urophasianus",2600,NA,"m","phaios","California, USA",NA,NA,NA,NA,NA,NA,NA,3090
+107,"Greater Sage-Grouse","Galliformes","Phasianidae","Centrocercus","urophasianus",3190,183,"m","urophasianus","Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3090
+108,"Gunnison Sage-Grouse","Galliformes","Phasianidae","Centrocercus","minimus",1200,NA,"f",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3089
+108,"Gunnison Sage-Grouse","Galliformes","Phasianidae","Centrocercus","minimus",2100,NA,"m",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3089
+109,"Spruce Grouse","Galliformes","Phasianidae","Falcipennis","canadensis",456,27.5,"f",NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,2980
+109,"Spruce Grouse","Galliformes","Phasianidae","Falcipennis","canadensis",492,31.5,"m",NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,2980
+110,"Willow Ptarmigan","Galliformes","Phasianidae","Lagopus","lagopus",473,27.2,"f","alba","Yukon Territory, Canada",NA,NA,NA,NA,NA,NA,NA,3010
+110,"Willow Ptarmigan","Galliformes","Phasianidae","Lagopus","lagopus",525,35.9,"f","alascensis","Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3010
+110,"Willow Ptarmigan","Galliformes","Phasianidae","Lagopus","lagopus",547,42.4,"m","alba","Yukon Territory, Canada",NA,NA,NA,NA,NA,NA,NA,3010
+110,"Willow Ptarmigan","Galliformes","Phasianidae","Lagopus","lagopus",586,NA,"f","scotica",NA,NA,NA,NA,NA,NA,NA,NA,3010
+110,"Willow Ptarmigan","Galliformes","Phasianidae","Lagopus","lagopus",613,38.6,"m","alascensis","Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3010
+110,"Willow Ptarmigan","Galliformes","Phasianidae","Lagopus","lagopus",680,NA,"m","scotica",NA,NA,NA,NA,NA,NA,NA,NA,3010
+111,"Rock Ptarmigan","Galliformes","Phasianidae","Lagopus","muta",521,37.9,"m",NA,"Northwest Terr., Canada",NA,NA,NA,NA,NA,NA,NA,3020
+111,"Rock Ptarmigan","Galliformes","Phasianidae","Lagopus","muta",550,49.9,"f",NA,"Northwest Terr., Canada",NA,NA,NA,NA,NA,NA,NA,3020
+112,"White-tailed Ptarmigan","Galliformes","Phasianidae","Lagopus","leucura",351,NA,"f",NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3040
+112,"White-tailed Ptarmigan","Galliformes","Phasianidae","Lagopus","leucura",359,NA,"m",NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3040
+113,"Dusky Grouse","Galliformes","Phasianidae","Dendragapus","obscurus",905,63.5,"f","pallidus","Washington, USA",NA,NA,NA,NA,NA,NA,NA,2970
+113,"Dusky Grouse","Galliformes","Phasianidae","Dendragapus","obscurus",1212,78.4,"m","pallidus","Washington, USA",NA,NA,NA,NA,NA,NA,NA,2970
+114,"Sooty Grouse","Galliformes","Phasianidae","Dendragapus","fuliginosus",839,59.7,"f",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,2971
+114,"Sooty Grouse","Galliformes","Phasianidae","Dendragapus","fuliginosus",1273,87.8,"m",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,2971
+116,"Sharp-tailed Grouse","Galliformes","Phasianidae","Tympanuchus","phasianellus",817,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3080
+116,"Sharp-tailed Grouse","Galliformes","Phasianidae","Tympanuchus","phasianellus",953,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3080
+117,"Greater Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","cupido",730,NA,"f","attwateri","Texas, USA",NA,NA,NA,NA,NA,NA,NA,3050
+117,"Greater Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","cupido",795,NA,"f","pinnatus","Kansas, USA",NA,NA,NA,NA,NA,NA,NA,3050
+117,"Greater Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","cupido",813,NA,"f","cupido","Massachusetts, USA",NA,NA,NA,NA,NA,NA,NA,3050
+117,"Greater Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","cupido",933,NA,"m","pinnatus","Kansas, USA",NA,NA,NA,NA,NA,NA,NA,3050
+117,"Greater Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","cupido",972,NA,"m","cupido","Massachusetts, USA",NA,NA,NA,NA,NA,NA,NA,3050
+117,"Greater Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","cupido",1014,NA,"m","attwateri","Texas, USA",NA,NA,NA,NA,NA,NA,NA,3050
+118,"Lesser Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","pallidicinctus",730,NA,"f",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3070
+118,"Lesser Prairie-Chicken","Galliformes","Phasianidae","Tympanuchus","pallidicinctus",762,NA,"m",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3070
+119,"Wild Turkey","Galliformes","Phasianidae","Meleagris","gallopavo",4300,NA,"f","silvestris","New York, USA",NA,NA,NA,NA,NA,NA,NA,3100
+119,"Wild Turkey","Galliformes","Phasianidae","Meleagris","gallopavo",7800,NA,"m","silvestris","New York, USA",NA,NA,NA,NA,NA,NA,NA,3100
+130,"Rock Pigeon","Columbiformes","Columbidae","Columba","livia",340,34.7,"f",NA,"Kansas, USA",NA,NA,NA,NA,NA,NA,NA,3131
+130,"Rock Pigeon","Columbiformes","Columbidae","Columba","livia",369,38.6,"m",NA,"Kansas, USA",NA,NA,NA,NA,NA,NA,NA,3131
+134,"White-crowned Pigeon","Columbiformes","Columbidae","Patagioenas","leucocephala",230,14,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3140
+134,"White-crowned Pigeon","Columbiformes","Columbidae","Patagioenas","leucocephala",238,NA,NA,NA,"Cuba",NA,NA,NA,NA,NA,NA,NA,3140
+134,"White-crowned Pigeon","Columbiformes","Columbidae","Patagioenas","leucocephala",253,31,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3140
+135,"Red-billed Pigeon","Columbiformes","Columbidae","Patagioenas","flavirostris",261,31.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3130
+135,"Red-billed Pigeon","Columbiformes","Columbidae","Patagioenas","flavirostris",281,NA,NA,NA,"Tres Marias Is., Mexico",NA,NA,NA,NA,NA,NA,NA,3130
+136,"Band-tailed Pigeon","Columbiformes","Columbidae","Patagioenas","fasciata",332,NA,"f","fasciata","Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3120
+136,"Band-tailed Pigeon","Columbiformes","Columbidae","Patagioenas","fasciata",353,NA,"m","fasciata","Colorado, USA",NA,NA,NA,NA,NA,NA,NA,3120
+136,"Band-tailed Pigeon","Columbiformes","Columbidae","Patagioenas","fasciata",386,NA,"f","monilis","California, USA",NA,NA,NA,NA,NA,NA,NA,3120
+136,"Band-tailed Pigeon","Columbiformes","Columbidae","Patagioenas","fasciata",398,NA,"m","monilis","California, USA",NA,NA,NA,NA,NA,NA,NA,3120
+139,"African Collared-Dove (a.k.a. Ringed Turtle-Dove)","Columbiformes","Columbidae","Streptopelia","roseogrisea",155,NA,NA,NA,"Chad; Niger",NA,NA,NA,NA,NA,NA,NA,3152
+141,"Eurasian Collared-Dove","Columbiformes","Columbidae","Streptopelia","decaocto",146,10.3,"f",NA,"India",NA,NA,NA,NA,NA,NA,NA,22860
+141,"Eurasian Collared-Dove","Columbiformes","Columbidae","Streptopelia","decaocto",152,11.6,"m",NA,"India",NA,NA,NA,NA,NA,NA,NA,22860
+142,"Spotted Dove","Columbiformes","Columbidae","Streptopelia","chinensis",159,11,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,3151
+143,"Inca Dove","Columbiformes","Columbidae","Columbina","inca",47.5,4.4,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,3210
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",28.5,2.4,NA,"exigua","Mona Is., Puerto Rico",NA,NA,NA,NA,NA,NA,NA,3200
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",32,2.5,NA,NA,"Barbuda",NA,NA,NA,NA,NA,NA,NA,3200
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",35.4,2.5,NA,"portoricensis","Puerto Rico",NA,NA,NA,NA,NA,NA,NA,3200
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",36.4,4.5,NA,NA,"Dominican Republic",NA,NA,NA,NA,NA,NA,NA,3200
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",37,NA,NA,"passerina","Florida, USA",NA,NA,NA,NA,NA,NA,NA,3200
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",39.5,4.1,NA,NA,"Cuba",NA,NA,NA,NA,NA,NA,NA,3200
+144,"Common Ground-Dove","Columbiformes","Columbidae","Columbina","passerina",40.3,2.2,NA,NA,"St. Lucia",NA,NA,NA,NA,NA,NA,NA,3200
+146,"Ruddy Ground-Dove","Columbiformes","Columbidae","Columbina","talpacoti",45.6,6.1,NA,NA,"Venezuela",NA,NA,NA,NA,NA,NA,NA,3201
+146,"Ruddy Ground-Dove","Columbiformes","Columbidae","Columbina","talpacoti",46.5,NA,NA,NA,"Trinidad",NA,NA,NA,NA,NA,NA,NA,3201
+151,"White-tipped Dove","Columbiformes","Columbidae","Leptotila","verreauxi",134,NA,NA,"tobagensis","Tobago",NA,NA,NA,NA,NA,NA,NA,3180
+151,"White-tipped Dove","Columbiformes","Columbidae","Leptotila","verreauxi",161,31.6,NA,NA,"El Salvador",NA,NA,NA,NA,NA,NA,NA,3180
+157,"White-winged Dove","Columbiformes","Columbidae","Zenaida","asiatica",153,13.2,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,3190
+159,"Mourning Dove","Columbiformes","Columbidae","Zenaida","macroura",115,1.8,"f",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,3160
+159,"Mourning Dove","Columbiformes","Columbidae","Zenaida","macroura",123,1.8,"m",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,3160
+165,"Yellow-billed Cuckoo","Cuculiformes","Cuculidae","Coccyzus","americanus",64,9.1,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,3870
+166,"Mangrove Cuckoo","Cuculiformes","Cuculidae","Coccyzus","minor",63.9,10.8,NA,NA,"Puerto Rico",NA,NA,NA,NA,NA,NA,NA,3860
+167,"Black-billed Cuckoo","Cuculiformes","Cuculidae","Coccyzus","erythropthalmus",50.9,7.3,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,3880
+173,"Greater Roadrunner","Cuculiformes","Cuculidae","Geococcyx","californianus",376,90,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3850
+174,"Smooth-billed Ani","Cuculiformes","Cuculidae","Crotophaga","ani",92.6,NA,"f",NA,"Panama",NA,NA,NA,NA,NA,NA,NA,3830
+174,"Smooth-billed Ani","Cuculiformes","Cuculidae","Crotophaga","ani",94.8,49.6,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3830
+174,"Smooth-billed Ani","Cuculiformes","Cuculidae","Crotophaga","ani",100,40.5,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3830
+174,"Smooth-billed Ani","Cuculiformes","Cuculidae","Crotophaga","ani",111,NA,"m",NA,"Panama",NA,NA,NA,NA,NA,NA,NA,3830
+174,"Smooth-billed Ani","Cuculiformes","Cuculidae","Crotophaga","ani",121,20.8,"m",NA,"Caribbean Is.",NA,NA,NA,NA,NA,NA,NA,3830
+174,"Smooth-billed Ani","Cuculiformes","Cuculidae","Crotophaga","ani",151,4.1,"f",NA,"Caribbean Is.",NA,NA,NA,NA,NA,NA,NA,3830
+175,"Groove-billed Ani","Cuculiformes","Cuculidae","Crotophaga","sulcirostris",77.1,9.6,"f",NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,3840
+175,"Groove-billed Ani","Cuculiformes","Cuculidae","Crotophaga","sulcirostris",87.3,4.1,"m",NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,3840
+196,"Black Swift","Apodiformes","Apodidae","Cypseloides","niger",35.4,1.9,NA,NA,"Costa Rica",NA,NA,NA,NA,NA,NA,NA,4220
+196,"Black Swift","Apodiformes","Apodidae","Cypseloides","niger",38.7,2.4,NA,NA,"Western Mexico",NA,NA,NA,NA,NA,NA,NA,4220
+196,"Black Swift","Apodiformes","Apodidae","Cypseloides","niger",45.6,2.5,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4220
+201,"Chimney Swift","Apodiformes","Apodidae","Chaetura","pelagica",23.6,NA,NA,NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,4230
+202,"Vaux's Swift","Apodiformes","Apodidae","Chaetura","vauxi",17.1,1.3,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4240
+206,"White-throated Swift","Apodiformes","Apodidae","Aeronautes","saxatalis",32.1,2.5,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4250
+219,"Rivoli's Hummingbird","Apodiformes","Trochilidae","Eugenes","fulgens",6.4,0.5,"f",NA,"Oaxaca, Mexico",NA,NA,NA,NA,NA,NA,NA,4260
+219,"Rivoli's Hummingbird","Apodiformes","Trochilidae","Eugenes","fulgens",7.7,0.4,"m",NA,"Oaxaca, Mexico",NA,NA,NA,NA,NA,NA,NA,4260
+219,"Rivoli's Hummingbird","Apodiformes","Trochilidae","Eugenes","fulgens",8.4,0.3,"f",NA,"Costa Rica",NA,NA,NA,NA,NA,NA,NA,4260
+219,"Rivoli's Hummingbird","Apodiformes","Trochilidae","Eugenes","fulgens",9.9,0.3,"m",NA,"Costa Rica",NA,NA,NA,NA,NA,NA,NA,4260
+224,"Blue-throated Hummingbird","Apodiformes","Trochilidae","Lampornis","clemenciae",6.8,0.3,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,4270
+224,"Blue-throated Hummingbird","Apodiformes","Trochilidae","Lampornis","clemenciae",8.4,0.2,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,4270
+230,"Lucifer Hummingbird","Apodiformes","Trochilidae","Calothorax","lucifer",3.3,NA,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4370
+232,"Ruby-throated Hummingbird","Apodiformes","Trochilidae","Archilochus","colubris",2.9,0.2,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4280
+232,"Ruby-throated Hummingbird","Apodiformes","Trochilidae","Archilochus","colubris",3.3,0.3,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4280
+233,"Black-chinned Hummingbird","Apodiformes","Trochilidae","Archilochus","alexandri",3.2,0.4,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4290
+233,"Black-chinned Hummingbird","Apodiformes","Trochilidae","Archilochus","alexandri",3.6,0.4,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4290
+235,"Anna's Hummingbird","Apodiformes","Trochilidae","Calypte","anna",4,0.4,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4310
+235,"Anna's Hummingbird","Apodiformes","Trochilidae","Calypte","anna",4.5,0.4,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4310
+236,"Costa's Hummingbird","Apodiformes","Trochilidae","Calypte","costae",3,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,4300
+236,"Costa's Hummingbird","Apodiformes","Trochilidae","Calypte","costae",3.2,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,4300
+239,"Broad-tailed Hummingbird","Apodiformes","Trochilidae","Selasphorus","platycercus",3.5,0.3,"m",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,4320
+239,"Broad-tailed Hummingbird","Apodiformes","Trochilidae","Selasphorus","platycercus",3.6,0.4,"f",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,4320
+240,"Rufous Hummingbird","Apodiformes","Trochilidae","Selasphorus","rufus",3.5,NA,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4330
+241,"Allen's Hummingbird","Apodiformes","Trochilidae","Selasphorus","sasin",3.1,NA,"m","sasin",NA,NA,NA,NA,NA,NA,NA,NA,4340
+241,"Allen's Hummingbird","Apodiformes","Trochilidae","Selasphorus","sasin",3.2,NA,"f","sasin",NA,NA,NA,NA,NA,NA,NA,NA,4340
+241,"Allen's Hummingbird","Apodiformes","Trochilidae","Selasphorus","sasin",3.5,NA,"m","sedentarius",NA,NA,NA,NA,NA,NA,NA,NA,4340
+241,"Allen's Hummingbird","Apodiformes","Trochilidae","Selasphorus","sasin",3.7,NA,"f","sedentarius",NA,NA,NA,NA,NA,NA,NA,NA,4340
+244,"Calliope Hummingbird","Apodiformes","Trochilidae","Selasphorus","calliope",2.5,NA,"m",NA,NA,1,"Stellula callipoe",NA,NA,NA,NA,NA,4360
+244,"Calliope Hummingbird","Apodiformes","Trochilidae","Selasphorus","calliope",2.8,NA,"f",NA,NA,1,"Stellula callipoe",NA,NA,NA,NA,NA,4360
+249,"Broad-billed Hummingbird","Apodiformes","Trochilidae","Cynanthus","latirostris",3.1,0.4,NA,NA,"Western Mexico",NA,NA,NA,NA,NA,NA,NA,4410
+265,"Buff-bellied Hummingbird","Apodiformes","Trochilidae","Amazilia","yucatanensis",3.7,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,4390
+265,"Buff-bellied Hummingbird","Apodiformes","Trochilidae","Amazilia","yucatanensis",4.1,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,4390
+267,"Violet-crowned Hummingbird","Apodiformes","Trochilidae","Amazilia","violiceps",5.1,0.4,NA,NA,"Arizona, USA",1,"Agyrtria violiceps",NA,NA,NA,NA,NA,4391
+611,"Black Vulture","Cathartiformes","Cathartidae","Coragyps","atratus",1640,100,NA,"brasiliensis","Venezuela",NA,NA,NA,NA,NA,NA,NA,3260
+611,"Black Vulture","Cathartiformes","Cathartidae","Coragyps","atratus",2159,130,NA,"atratus","Texas, USA",NA,NA,NA,NA,NA,NA,NA,3260
+612,"Turkey Vulture","Cathartiformes","Cathartidae","Cathartes","aura",1220,80.6,NA,"ruficollis","Venezuela",NA,NA,NA,NA,NA,NA,NA,3250
+612,"Turkey Vulture","Cathartiformes","Cathartidae","Cathartes","aura",1430,228,NA,"meridionalis","Venezuela",NA,NA,NA,NA,NA,NA,NA,3250
+612,"Turkey Vulture","Cathartiformes","Cathartidae","Cathartes","aura",2006,NA,NA,"septentrionalis","Southern Florida, USA",NA,NA,NA,NA,NA,NA,NA,3250
+615,"California Condor","Cathartiformes","Cathartidae","Gymnogyps","californianus",8100,NA,"f",NA,"captive",NA,NA,NA,NA,NA,NA,NA,3240
+615,"California Condor","Cathartiformes","Cathartidae","Gymnogyps","californianus",8800,NA,"m",NA,"captive",NA,NA,NA,NA,NA,NA,NA,3240
+617,"Osprey","Accipitriformes","Pandionidae","Pandion","haliaetus",1403,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3640
+617,"Osprey","Accipitriformes","Pandionidae","Pandion","haliaetus",1568,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3640
+618,"White-tailed Kite","Accipitriformes","Accipitridae","Elanus","leucurus",346,23.3,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,3280
+619,"Hook-billed Kite","Accipitriformes","Accipitridae","Chondrohierax","uncinatus",264,NA,"m",NA,"Panama; Venezuela; Mexico",NA,NA,NA,NA,NA,NA,NA,3271
+619,"Hook-billed Kite","Accipitriformes","Accipitridae","Chondrohierax","uncinatus",310,NA,"f",NA,"Panama; Venezuela; Mexico",NA,NA,NA,NA,NA,NA,NA,3271
+621,"Swallow-tailed Kite","Accipitriformes","Accipitridae","Elanoides","forficatus",392,NA,NA,NA,"Suriname",NA,NA,NA,NA,NA,NA,NA,3270
+621,"Swallow-tailed Kite","Accipitriformes","Accipitridae","Elanoides","forficatus",442,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3270
+624,"Golden Eagle","Accipitriformes","Accipitridae","Aquila","chrysaetos",3900,335,"m",NA,"Idaho, USA",NA,NA,NA,NA,NA,NA,NA,3490
+624,"Golden Eagle","Accipitriformes","Accipitridae","Aquila","chrysaetos",4627,420,"f",NA,"Idaho, USA",NA,NA,NA,NA,NA,NA,NA,3490
+629,"Northern Harrier","Accipitriformes","Accipitridae","Circus","hudsonius",300,NA,"m","cyaneus","Northern China",1,"Circus cyaneus cyaneus",NA,NA,NA,NA,NA,3310
+629,"Northern Harrier","Accipitriformes","Accipitridae","Circus","hudsonius",359,39.9,"m","hudsonius","New Jersey, USA",1,"Circus cyaneus hudsonius",NA,NA,NA,NA,NA,3310
+629,"Northern Harrier","Accipitriformes","Accipitridae","Circus","hudsonius",430,NA,"f","cyaneus","Northern China",1,"Circus cyaneus cyaneus",NA,NA,NA,NA,NA,3310
+629,"Northern Harrier","Accipitriformes","Accipitridae","Circus","hudsonius",515,54.6,"f","hudsonius","New Jersey, USA",1,"Circus cyaneus hudsonius",NA,NA,NA,NA,NA,3310
+631,"Sharp-shinned Hawk","Accipitriformes","Accipitridae","Accipiter","striatus",94.9,NA,"m","venator","Puerto Rico",NA,NA,NA,NA,NA,NA,NA,3320
+631,"Sharp-shinned Hawk","Accipitriformes","Accipitridae","Accipiter","striatus",103,6.4,"m",NA,"Wisconsin, USA",NA,NA,NA,NA,NA,NA,NA,3320
+631,"Sharp-shinned Hawk","Accipitriformes","Accipitridae","Accipiter","striatus",171,NA,"f","venator","Puerto Rico",NA,NA,NA,NA,NA,NA,NA,3320
+631,"Sharp-shinned Hawk","Accipitriformes","Accipitridae","Accipiter","striatus",174,10.4,"f",NA,"Wisconsin, USA",NA,NA,NA,NA,NA,NA,NA,3320
+632,"Cooper's Hawk","Accipitriformes","Accipitridae","Accipiter","cooperii",349,19.6,"m",NA,"Wisconsin, USA",NA,NA,NA,NA,NA,NA,NA,3330
+632,"Cooper's Hawk","Accipitriformes","Accipitridae","Accipiter","cooperii",529,36.1,"f",NA,"Wisconsin, USA",NA,NA,NA,NA,NA,NA,NA,3330
+634,"Northern Goshawk","Accipitriformes","Accipitridae","Accipiter","gentilis",501,NA,"m","schvedowi","Hopei, China",NA,NA,NA,NA,NA,NA,NA,3340
+634,"Northern Goshawk","Accipitriformes","Accipitridae","Accipiter","gentilis",704,32.7,"m","apache","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,3340
+634,"Northern Goshawk","Accipitriformes","Accipitridae","Accipiter","gentilis",912,14.9,"m",NA,"Wisconsin, USA",NA,NA,NA,NA,NA,NA,NA,3340
+634,"Northern Goshawk","Accipitriformes","Accipitridae","Accipiter","gentilis",986,51.9,"f","apache","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,3340
+634,"Northern Goshawk","Accipitriformes","Accipitridae","Accipiter","gentilis",1137,18.6,"f",NA,"Wisconsin, USA",NA,NA,NA,NA,NA,NA,NA,3340
+634,"Northern Goshawk","Accipitriformes","Accipitridae","Accipiter","gentilis",1170,NA,"f","schvedowi","Hopei, China",NA,NA,NA,NA,NA,NA,NA,3340
+637,"Bald Eagle","Accipitriformes","Accipitridae","Haliaeetus","leucocephalus",4130,NA,"m",NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3520
+637,"Bald Eagle","Accipitriformes","Accipitridae","Haliaeetus","leucocephalus",5350,NA,"f",NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3520
+640,"Mississippi Kite","Accipitriformes","Accipitridae","Ictinia","mississippiensis",245,NA,"m",NA,"Oklahoma, USA",NA,NA,NA,NA,NA,NA,NA,3290
+640,"Mississippi Kite","Accipitriformes","Accipitridae","Ictinia","mississippiensis",311,NA,"f",NA,"Oklahoma, USA",NA,NA,NA,NA,NA,NA,NA,3290
+644,"Snail Kite","Accipitriformes","Accipitridae","Rostrhamus","sociabilis",308,NA,"m","sociabilis",NA,NA,NA,NA,NA,NA,NA,NA,3300
+644,"Snail Kite","Accipitriformes","Accipitridae","Rostrhamus","sociabilis",335,NA,"f","sociabilis",NA,NA,NA,NA,NA,NA,NA,NA,3300
+644,"Snail Kite","Accipitriformes","Accipitridae","Rostrhamus","sociabilis",394,22.8,"m","plumbeus","Florida, USA",NA,NA,NA,NA,NA,NA,NA,3300
+644,"Snail Kite","Accipitriformes","Accipitridae","Rostrhamus","sociabilis",446,47.8,"f","plumbeus","Florida, USA",NA,NA,NA,NA,NA,NA,NA,3300
+645,"Common Black Hawk","Accipitriformes","Accipitridae","Buteogallus","anthracinus",793,NA,"m",NA,"Panama",NA,NA,NA,NA,NA,NA,NA,3450
+645,"Common Black Hawk","Accipitriformes","Accipitridae","Buteogallus","anthracinus",1199,NA,"f",NA,"Panama",NA,NA,NA,NA,NA,NA,NA,3450
+649,"Harris's Hawk","Accipitriformes","Accipitridae","Parabuteo","unicinctus",690,NA,"m",NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,3350
+649,"Harris's Hawk","Accipitriformes","Accipitridae","Parabuteo","unicinctus",725,NA,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,3350
+649,"Harris's Hawk","Accipitriformes","Accipitridae","Parabuteo","unicinctus",998,NA,"f",NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,3350
+649,"Harris's Hawk","Accipitriformes","Accipitridae","Parabuteo","unicinctus",1047,NA,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,3350
+650,"White-tailed Hawk","Accipitriformes","Accipitridae","Geranoaetus","albicaudatus",844,NA,"m",NA,NA,1,"Buteo albicaudatus",NA,NA,NA,NA,NA,3410
+650,"White-tailed Hawk","Accipitriformes","Accipitridae","Geranoaetus","albicaudatus",928,NA,"f",NA,NA,1,"Buteo albicaudatus",NA,NA,NA,NA,NA,3410
+652,"Gray Hawk","Accipitriformes","Accipitridae","Buteo","plagiatus",429,NA,"m",NA,"Arizona, USA",1,"Buteo nitidus",NA,NA,NA,NA,NA,3460
+652,"Gray Hawk","Accipitriformes","Accipitridae","Buteo","plagiatus",628,NA,"f",NA,"Arizona, USA",1,"Buteo nitidus",NA,NA,NA,NA,NA,3460
+653,"Red-shouldered Hawk","Accipitriformes","Accipitridae","Buteo","lineatus",544,NA,"m","lineatus",NA,NA,NA,NA,NA,NA,NA,NA,3390
+653,"Red-shouldered Hawk","Accipitriformes","Accipitridae","Buteo","lineatus",670,NA,"f","lineatus",NA,NA,NA,NA,NA,NA,NA,NA,3390
+654,"Broad-winged Hawk","Accipitriformes","Accipitridae","Buteo","platypterus",420,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3430
+654,"Broad-winged Hawk","Accipitriformes","Accipitridae","Buteo","platypterus",490,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3430
+655,"Short-tailed Hawk","Accipitriformes","Accipitridae","Buteo","brachyurus",422,30,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3440
+655,"Short-tailed Hawk","Accipitriformes","Accipitridae","Buteo","brachyurus",583,61,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3440
+656,"Swainson's Hawk","Accipitriformes","Accipitridae","Buteo","swainsoni",808,NA,"m",NA,"Alberta, Canada",NA,NA,NA,NA,NA,NA,NA,3420
+656,"Swainson's Hawk","Accipitriformes","Accipitridae","Buteo","swainsoni",1109,NA,"f",NA,"Alberta, Canada",NA,NA,NA,NA,NA,NA,NA,3420
+657,"Zone-tailed Hawk","Accipitriformes","Accipitridae","Buteo","albonotatus",628,NA,"m",NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,3400
+657,"Zone-tailed Hawk","Accipitriformes","Accipitridae","Buteo","albonotatus",886,NA,"f",NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,3400
+658,"Red-tailed Hawk","Accipitriformes","Accipitridae","Buteo","jamaicensis",923,NA,"m","calurus","Western USA",NA,NA,NA,NA,NA,NA,NA,3370
+658,"Red-tailed Hawk","Accipitriformes","Accipitridae","Buteo","jamaicensis",1028,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3370
+658,"Red-tailed Hawk","Accipitriformes","Accipitridae","Buteo","jamaicensis",1224,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3370
+658,"Red-tailed Hawk","Accipitriformes","Accipitridae","Buteo","jamaicensis",1266,NA,"f","calurus","Western USA",NA,NA,NA,NA,NA,NA,NA,3370
+660,"Rough-legged Hawk","Accipitriformes","Accipitridae","Buteo","lagopus",847,NA,"m",NA,"Britain, UK",NA,NA,NA,NA,NA,NA,NA,3470
+660,"Rough-legged Hawk","Accipitriformes","Accipitridae","Buteo","lagopus",1065,NA,"f",NA,"Britain, UK",NA,NA,NA,NA,NA,NA,NA,3470
+661,"Ferruginous Hawk","Accipitriformes","Accipitridae","Buteo","regalis",1163,NA,"m",NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,3480
+661,"Ferruginous Hawk","Accipitriformes","Accipitridae","Buteo","regalis",1776,NA,"f",NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,3480
+703,"Elegant Trogon","Trogoniformes","Trogonidae","Trogon","elegans",70.9,7.7,NA,NA,"El Salvador",NA,NA,NA,NA,NA,NA,NA,3890
+728,"Lewis's Woodpecker","Piciformes","Picidae","Melanerpes","lewis",99,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,4080
+728,"Lewis's Woodpecker","Piciformes","Picidae","Melanerpes","lewis",113,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,4080
+729,"Red-headed Woodpecker","Piciformes","Picidae","Melanerpes","erythrocephalus",71.6,7.6,NA,NA,"Ontario, Canada",NA,NA,NA,NA,NA,NA,NA,4060
+730,"Acorn Woodpecker","Piciformes","Picidae","Melanerpes","formicivorus",77.5,10.2,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4070
+730,"Acorn Woodpecker","Piciformes","Picidae","Melanerpes","formicivorus",81.8,8.2,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4070
+735,"Gila Woodpecker","Piciformes","Picidae","Melanerpes","uropygialis",60,3.1,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4110
+735,"Gila Woodpecker","Piciformes","Picidae","Melanerpes","uropygialis",69.7,6.4,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4110
+736,"Golden-fronted Woodpecker","Piciformes","Picidae","Melanerpes","aurifrons",76.4,6.4,"f",NA,"San Luis Potosi, Mexico",NA,NA,NA,NA,NA,NA,NA,4100
+736,"Golden-fronted Woodpecker","Piciformes","Picidae","Melanerpes","aurifrons",85.4,7,"m",NA,"San Luis Potosi, Mexico",NA,NA,NA,NA,NA,NA,NA,4100
+737,"Red-bellied Woodpecker","Piciformes","Picidae","Melanerpes","carolinus",66,11.4,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,4090
+737,"Red-bellied Woodpecker","Piciformes","Picidae","Melanerpes","carolinus",73.2,9.9,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,4090
+738,"Williamson's Sapsucker","Piciformes","Picidae","Sphyrapicus","thyroideus",47.6,2.8,NA,NA,"Nevada, USA",NA,NA,NA,NA,NA,NA,NA,4040
+739,"Yellow-bellied Sapsucker","Piciformes","Picidae","Sphyrapicus","varius",50.3,4.3,NA,"varius","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4020
+740,"Red-naped Sapsucker","Piciformes","Picidae","Sphyrapicus","nuchalis",45.9,4.8,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4021
+740,"Red-naped Sapsucker","Piciformes","Picidae","Sphyrapicus","nuchalis",49.2,4.3,"f",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,4021
+740,"Red-naped Sapsucker","Piciformes","Picidae","Sphyrapicus","nuchalis",50.5,4.7,"m",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,4021
+741,"Red-breasted Sapsucker","Piciformes","Picidae","Sphyrapicus","ruber",48.9,4.4,NA,"daggetti","California, USA",NA,NA,NA,NA,NA,NA,NA,4030
+741,"Red-breasted Sapsucker","Piciformes","Picidae","Sphyrapicus","ruber",57.7,4.5,"f","ruber","British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,4030
+741,"Red-breasted Sapsucker","Piciformes","Picidae","Sphyrapicus","ruber",58.3,5.2,"m","ruber","British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,4030
+743,"American Three-toed Woodpecker","Piciformes","Picidae","Picoides","dorsalis",52,3.7,"f",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,4010
+743,"American Three-toed Woodpecker","Piciformes","Picidae","Picoides","dorsalis",58.3,3.5,"m",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,4010
+744,"Black-backed Woodpecker","Piciformes","Picidae","Picoides","arcticus",66.6,NA,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4000
+744,"Black-backed Woodpecker","Piciformes","Picidae","Picoides","arcticus",72,NA,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4000
+746,"Downy Woodpecker","Piciformes","Picidae","Dryobates","pubescens",21.6,NA,NA,NA,"Georgia, USA",1,"Picoides pubescens",NA,NA,NA,NA,NA,3940
+746,"Downy Woodpecker","Piciformes","Picidae","Dryobates","pubescens",25.9,1.7,"f",NA,"Pennsylvania, USA",1,"Picoides pubescens",NA,NA,NA,NA,NA,3940
+746,"Downy Woodpecker","Piciformes","Picidae","Dryobates","pubescens",27.5,0.9,"m",NA,"Pennsylvania, USA",1,"Picoides pubescens",NA,NA,NA,NA,NA,3940
+746,"Downy Woodpecker","Piciformes","Picidae","Dryobates","pubescens",27.7,NA,NA,NA,"Indiana, USA",1,"Picoides pubescens",NA,NA,NA,NA,NA,3940
+747,"Nuttall's Woodpecker","Piciformes","Picidae","Dryobates","nuttallii",36.8,1.8,"f",NA,NA,1,"Picoides nuttallii",NA,NA,NA,NA,NA,3970
+747,"Nuttall's Woodpecker","Piciformes","Picidae","Dryobates","nuttallii",38,2.6,"m",NA,NA,1,"Picoides nuttallii",NA,NA,NA,NA,NA,3970
+748,"Ladder-backed Woodpecker","Piciformes","Picidae","Dryobates","scalaris",30.3,3.7,NA,NA,"Western USA; Sonora, Mexico",1,"Picoides scalaris",NA,NA,NA,NA,NA,3960
+748,"Ladder-backed Woodpecker","Piciformes","Picidae","Dryobates","scalaris",30.9,NA,"f",NA,"Tres Marias Is., Mexico",1,"Picoides scalaris",NA,NA,NA,NA,NA,3960
+748,"Ladder-backed Woodpecker","Piciformes","Picidae","Dryobates","scalaris",33.7,NA,"m",NA,"Tres Marias Is., Mexico",1,"Picoides scalaris",NA,NA,NA,NA,NA,3960
+749,"Red-cockaded Woodpecker","Piciformes","Picidae","Dryobates","borealis",47.4,8.4,"f",NA,"North Carolina, USA",1,"Picoides borealis",NA,NA,NA,NA,NA,3950
+749,"Red-cockaded Woodpecker","Piciformes","Picidae","Dryobates","borealis",48.6,6.8,"m",NA,"North Carolina, USA",1,"Picoides borealis",NA,NA,NA,NA,NA,3950
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",51.7,NA,NA,NA,"Bahamas",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",52.4,2.8,"f",NA,"Baja California, Mexico",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",60,2.9,"m",NA,"Baja California, Mexico",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",62.5,2,"f",NA,"Pennsylvania, USA",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",67.5,4.7,"f",NA,"Montana, USA",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",70,3.2,"m",NA,"Pennsylvania, USA",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+750,"Hairy Woodpecker","Piciformes","Picidae","Dryobates","villosus",79,4.8,"m",NA,"Montana, USA",1,"Picoides villosus",NA,NA,NA,NA,NA,3930
+751,"White-headed Woodpecker","Piciformes","Picidae","Dryobates","albolarvatus",59.2,3.8,"f",NA,"Oregon, USA",1,"Picoides albolarvatus",NA,NA,NA,NA,NA,3990
+751,"White-headed Woodpecker","Piciformes","Picidae","Dryobates","albolarvatus",63,3.4,"m",NA,"Oregon, USA",1,"Picoides albolarvatus",NA,NA,NA,NA,NA,3990
+753,"Arizona Woodpecker","Piciformes","Picidae","Dryobates","arizonae",44.1,NA,"f",NA,"Arizona, USA",1,"Picoides arizonae",NA,NA,NA,NA,NA,3975
+753,"Arizona Woodpecker","Piciformes","Picidae","Dryobates","arizonae",49.4,2.3,"m",NA,"Arizona, USA",1,"Picoides arizonae",NA,NA,NA,NA,NA,3975
+757,"(unid. Red/Yellow Shafted) Northern Flicker","Piciformes","Picidae","Colaptes","auratus",125,9.1,"f","auratus","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4123
+757,"(unid. Red/Yellow Shafted) Northern Flicker","Piciformes","Picidae","Colaptes","auratus",128,10.3,"m","auratus","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4123
+757,"(unid. Red/Yellow Shafted) Northern Flicker","Piciformes","Picidae","Colaptes","auratus",142,2.2,NA,"cafer","Oregon, USA",NA,NA,NA,NA,NA,NA,NA,4123
+761,"Gilded Flicker","Piciformes","Picidae","Colaptes","chrysoides",111,7.4,NA,"mearnsi","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4140
+764,"Pileated Woodpecker","Piciformes","Picidae","Dryocopus","pileatus",266,NA,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4050
+764,"Pileated Woodpecker","Piciformes","Picidae","Dryocopus","pileatus",270,NA,"f",NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,4050
+764,"Pileated Woodpecker","Piciformes","Picidae","Dryocopus","pileatus",305,NA,"m",NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,4050
+764,"Pileated Woodpecker","Piciformes","Picidae","Dryocopus","pileatus",308,NA,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4050
+771,"Crested Caracara","Falconiformes","Falconidae","Caracara","cheriway",834,133,"m",NA,"Panama",NA,NA,NA,NA,NA,NA,NA,3620
+771,"Crested Caracara","Falconiformes","Falconidae","Caracara","cheriway",953,63.2,"f",NA,"Panama",NA,NA,NA,NA,NA,NA,NA,3620
+771,"Crested Caracara","Falconiformes","Falconidae","Caracara","cheriway",1117,71,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3620
+771,"Crested Caracara","Falconiformes","Falconidae","Caracara","cheriway",1220,76,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,3620
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",90.3,9.3,"m",NA,"Caribbean Is.",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",90.8,6.6,"m","paulus","Florida, USA",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",103,9,"f","paulus","Florida, USA",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",108,NA,"f",NA,"Caribbean Is.",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",111,9.3,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",113,8.9,"m",NA,"Kentucky, USA",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",120,9.2,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",132,9.1,"f",NA,"Kentucky, USA",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",143,NA,"m",NA,"Chile",NA,NA,NA,NA,NA,NA,NA,3600
+773,"American Kestrel","Falconiformes","Falconidae","Falco","sparverius",151,NA,"f",NA,"Chile",NA,NA,NA,NA,NA,NA,NA,3600
+775,"Merlin","Falconiformes","Falconidae","Falco","columbarius",163,14.1,"m",NA,"New Jersey, USA",NA,NA,NA,NA,NA,NA,NA,3570
+775,"Merlin","Falconiformes","Falconidae","Falco","columbarius",218,17.2,"f",NA,"New Jersey, USA",NA,NA,NA,NA,NA,NA,NA,3570
+777,"Aplomado Falcon","Falconiformes","Falconidae","Falco","femoralis",271,NA,"m",NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,3590
+777,"Aplomado Falcon","Falconiformes","Falconidae","Falco","femoralis",416,NA,"f",NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,3590
+780,"Gyrfalcon","Falconiformes","Falconidae","Falco","rusticolus",1170,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,3540
+780,"Gyrfalcon","Falconiformes","Falconidae","Falco","rusticolus",1752,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,3540
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",528,29,"m","minor","South Africa",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",567,NA,"m",NA,"Western Cape, South Africa",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",598,NA,"m","tundrius","Greenland",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",600,NA,"m","macropus",NA,NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",652,52.4,"m","anatum","Yukon River, Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",771,72,"f","minor","South Africa",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",825,NA,"f","macropus",NA,NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",828,NA,"f",NA,"Western Cape, South Africa",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",894,NA,"m","pealei",NA,NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",959,NA,"f","tundrius","Greenland",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",977,76.4,"f","anatum","Yukon River, Alaska, USA",NA,NA,NA,NA,NA,NA,NA,3560
+781,"Peregrine Falcon","Falconiformes","Falconidae","Falco","peregrinus",1201,NA,"f","pealei",NA,NA,NA,NA,NA,NA,NA,NA,3560
+782,"Prairie Falcon","Falconiformes","Falconidae","Falco","mexicanus",560,36,"m",NA,"Idaho, USA",NA,NA,NA,NA,NA,NA,NA,3550
+782,"Prairie Falcon","Falconiformes","Falconidae","Falco","mexicanus",908,65.9,"f",NA,"Idaho, USA",NA,NA,NA,NA,NA,NA,NA,3550
+783,"Monk Parakeet","Psittaciformes","Psittacidae","Myiopsitta","monachus",120,NA,NA,NA,"Argentina",NA,NA,NA,NA,NA,NA,NA,3824
+786,"Nanday Parakeet","Psittaciformes","Psittacidae","Aratinga","nenday",128,NA,NA,NA,"Paraguay",1,"Nandayus nenday",NA,NA,NA,NA,NA,51830
+800,"Yellow-chevroned Parakeet","Psittaciformes","Psittacidae","Brotogeris","chiriri",61.6,NA,NA,NA,"Bolivia; California, USA",NA,NA,NA,NA,NA,NA,NA,52021
+815,"Budgerigar","Psittaciformes","Psittaculidae","Melopsittacus","undulatus",28.8,2.1,"f",NA,"Eastern Australia",NA,NA,NA,NA,NA,NA,NA,3822
+815,"Budgerigar","Psittaciformes","Psittaculidae","Melopsittacus","undulatus",29.2,1.9,"m",NA,"Eastern Australia",NA,NA,NA,NA,NA,NA,NA,3822
+872,"Northern Beardless-Tyrannulet","Passeriformes","Tyrannidae","Camptostoma","imberbe",7.4,0.8,NA,NA,"Mexico; Belize",NA,NA,NA,NA,NA,NA,NA,4720
+882,"Dusky-capped Flycatcher","Passeriformes","Tyrannidae","Myiarchus","tuberculifer",12.6,NA,NA,"olivascens","Tres Marias Is., Mexico",NA,NA,NA,NA,NA,NA,NA,4550
+882,"Dusky-capped Flycatcher","Passeriformes","Tyrannidae","Myiarchus","tuberculifer",20.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4550
+882,"Dusky-capped Flycatcher","Passeriformes","Tyrannidae","Myiarchus","tuberculifer",21.9,NA,NA,"atriceps",NA,NA,NA,NA,NA,NA,NA,NA,4550
+883,"Ash-throated Flycatcher","Passeriformes","Tyrannidae","Myiarchus","cinerascens",28.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4540
+885,"Great Crested Flycatcher","Passeriformes","Tyrannidae","Myiarchus","crinitus",32.1,3.1,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4520
+886,"Brown-crested Flycatcher","Passeriformes","Tyrannidae","Myiarchus","tyrannulus",28.7,NA,NA,"bahiae",NA,NA,NA,NA,NA,NA,NA,NA,4530
+886,"Brown-crested Flycatcher","Passeriformes","Tyrannidae","Myiarchus","tyrannulus",43.8,3.4,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4530
+889,"Great Kiskadee","Passeriformes","Tyrannidae","Pitangus","sulphuratus",55,NA,NA,NA,"Peru",NA,NA,NA,NA,NA,NA,NA,4490
+889,"Great Kiskadee","Passeriformes","Tyrannidae","Pitangus","sulphuratus",61,4.1,NA,NA,"Venezuela",NA,NA,NA,NA,NA,NA,NA,4490
+889,"Great Kiskadee","Passeriformes","Tyrannidae","Pitangus","sulphuratus",74,NA,NA,"texanus","South Texas; NE Mexico",NA,NA,NA,NA,NA,NA,NA,4490
+893,"Sulphur-bellied Flycatcher","Passeriformes","Tyrannidae","Myiodynastes","luteiventris",46.9,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4510
+897,"Tropical Kingbird","Passeriformes","Tyrannidae","Tyrannus","melancholicus",37.4,2.9,NA,NA,"Western Mexico",NA,NA,NA,NA,NA,NA,NA,4460
+898,"Couch's Kingbird","Passeriformes","Tyrannidae","Tyrannus","couchii",39,NA,NA,NA,"Texas, USA; NE Mexico",NA,NA,NA,NA,NA,NA,NA,4461
+900,"Cassin's Kingbird","Passeriformes","Tyrannidae","Tyrannus","vociferans",45.6,3.4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4480
+901,"Thick-billed Kingbird","Passeriformes","Tyrannidae","Tyrannus","crassirostris",55.9,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4451
+902,"Western Kingbird","Passeriformes","Tyrannidae","Tyrannus","verticalis",39.6,2.8,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4470
+904,"Eastern Kingbird","Passeriformes","Tyrannidae","Tyrannus","tyrannus",37.3,2.1,"f",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,4440
+904,"Eastern Kingbird","Passeriformes","Tyrannidae","Tyrannus","tyrannus",38,2.4,"m",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,4440
+904,"Eastern Kingbird","Passeriformes","Tyrannidae","Tyrannus","tyrannus",41.6,2.7,"f",NA,"Kansas, USA",NA,NA,NA,NA,NA,NA,NA,4440
+904,"Eastern Kingbird","Passeriformes","Tyrannidae","Tyrannus","tyrannus",42.8,3.8,"m",NA,"Kansas, USA",NA,NA,NA,NA,NA,NA,NA,4440
+905,"Gray Kingbird","Passeriformes","Tyrannidae","Tyrannus","dominicensis",46.5,5,NA,NA,"Puerto Rico",NA,NA,NA,NA,NA,NA,NA,4450
+907,"Scissor-tailed Flycatcher","Passeriformes","Tyrannidae","Tyrannus","forficatus",39.3,NA,NA,NA,"Oklahoma, USA",NA,NA,NA,NA,NA,NA,NA,4430
+912,"Olive-sided Flycatcher","Passeriformes","Tyrannidae","Contopus","cooperi",32.1,2.3,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4590
+913,"Greater Pewee","Passeriformes","Tyrannidae","Contopus","pertinax",27.2,3.3,NA,NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,4600
+914,"Western Wood-Pewee","Passeriformes","Tyrannidae","Contopus","sordidulus",13.1,0.8,NA,NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,4620
+915,"Eastern Wood-Pewee","Passeriformes","Tyrannidae","Contopus","virens",13.9,0.7,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4610
+918,"Yellow-bellied Flycatcher","Passeriformes","Tyrannidae","Empidonax","flaviventris",11.8,1,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4630
+919,"Acadian Flycatcher","Passeriformes","Tyrannidae","Empidonax","virescens",12.6,0.7,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4650
+920,"Alder Flycatcher","Passeriformes","Tyrannidae","Empidonax","alnorum",12.7,1.1,NA,NA,"Ontario, Canada",NA,NA,NA,NA,NA,NA,NA,4661
+921,"Willow Flycatcher","Passeriformes","Tyrannidae","Empidonax","traillii",13.1,1.4,"m",NA,"Connecticut, USA",NA,NA,NA,NA,NA,NA,NA,4660
+921,"Willow Flycatcher","Passeriformes","Tyrannidae","Empidonax","traillii",13.7,1.5,"f",NA,"Connecticut, USA",NA,NA,NA,NA,NA,NA,NA,4660
+924,"Least Flycatcher","Passeriformes","Tyrannidae","Empidonax","minimus",10,0.8,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4670
+925,"Hammond's Flycatcher","Passeriformes","Tyrannidae","Empidonax","hammondii",10.3,0.9,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,4680
+925,"Hammond's Flycatcher","Passeriformes","Tyrannidae","Empidonax","hammondii",10.6,0.6,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,4680
+926,"Gray Flycatcher","Passeriformes","Tyrannidae","Empidonax","wrightii",12.3,0.7,NA,NA,"Nevada, USA",NA,NA,NA,NA,NA,NA,NA,4691
+927,"Dusky Flycatcher","Passeriformes","Tyrannidae","Empidonax","oberholseri",10.4,0.6,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4690
+930,"Pacific-slope Flycatcher","Passeriformes","Tyrannidae","Empidonax","difficilis",10.7,0.9,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4641
+931,"Cordilleran Flycatcher","Passeriformes","Tyrannidae","Empidonax","occidentalis",11.6,1.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4640
+936,"Black Phoebe","Passeriformes","Tyrannidae","Sayornis","nigricans",17.8,1.1,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4580
+936,"Black Phoebe","Passeriformes","Tyrannidae","Sayornis","nigricans",19.5,0.9,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4580
+937,"Eastern Phoebe","Passeriformes","Tyrannidae","Sayornis","phoebe",19.7,1.4,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4560
+938,"Say's Phoebe","Passeriformes","Tyrannidae","Sayornis","saya",20.9,2.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4570
+939,"Vermilion Flycatcher","Passeriformes","Tyrannidae","Pyrocephalus","rubinus",14.4,NA,NA,NA,"Nicaragua",NA,NA,NA,NA,NA,NA,NA,4710
+941,"Loggerhead Shrike","Passeriformes","Laniidae","Lanius","ludovicianus",47.7,3.5,NA,NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,6220
+941,"Loggerhead Shrike","Passeriformes","Laniidae","Lanius","ludovicianus",55.8,0.3,NA,NA,"Alberta, Canada",NA,NA,NA,NA,NA,NA,NA,6220
+942,"Northern Shrike","Passeriformes","Laniidae","Lanius","borealis",60.4,3.3,NA,NA,"Israel",1,"Lanius excubitor",NA,NA,NA,NA,NA,6210
+942,"Northern Shrike","Passeriformes","Laniidae","Lanius","borealis",63.4,3.3,NA,"excubitor borealis","Eastern USA",1,"Lanius excubitor borealis",NA,NA,NA,NA,NA,6210
+942,"Northern Shrike","Passeriformes","Laniidae","Lanius","borealis",63.4,6,NA,"excubitor excubitor","Europe",1,"Lanius excubitor excubitor",NA,NA,NA,NA,NA,6210
+942,"Northern Shrike","Passeriformes","Laniidae","Lanius","borealis",66.6,4.6,NA,"excubitor borealis","Western USA",1,"Lanius excubitor borealis",NA,NA,NA,NA,NA,6210
+950,"Black-capped Vireo","Passeriformes","Vireonidae","Vireo","atricapilla",8.8,0.4,"f",NA,"Oklahoma & Texas, USA",NA,NA,NA,NA,NA,NA,NA,6300
+950,"Black-capped Vireo","Passeriformes","Vireonidae","Vireo","atricapilla",9.2,0.4,"m",NA,"Oklahoma & Texas, USA",NA,NA,NA,NA,NA,NA,NA,6300
+952,"White-eyed Vireo","Passeriformes","Vireonidae","Vireo","griseus",11.4,NA,NA,NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,6310
+957,"Bell's Vireo","Passeriformes","Vireonidae","Vireo","bellii",8.5,0.6,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,6330
+958,"Gray Vireo","Passeriformes","Vireonidae","Vireo","vicinior",12.8,1.1,NA,NA,"Sonora, Mexico",NA,NA,NA,NA,NA,NA,NA,6340
+959,"Hutton's Vireo","Passeriformes","Vireonidae","Vireo","huttoni",11.3,0.8,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,6320
+960,"Yellow-throated Vireo","Passeriformes","Vireonidae","Vireo","flavifrons",18,1.6,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6280
+961,"Cassin's Vireo","Passeriformes","Vireonidae","Vireo","cassinii",14.7,1.4,NA,NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,6291
+962,"Blue-headed Vireo","Passeriformes","Vireonidae","Vireo","solitarius",15.3,NA,NA,NA,"Canada",NA,NA,NA,NA,NA,NA,NA,6290
+964,"Plumbeous Vireo","Passeriformes","Vireonidae","Vireo","plumbeus",16.4,1.5,NA,NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,6292
+966,"Philadelphia Vireo","Passeriformes","Vireonidae","Vireo","philadelphicus",11.5,0.7,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6260
+967,"Warbling Vireo","Passeriformes","Vireonidae","Vireo","gilvus",11.9,1,NA,"swainsonii",NA,NA,NA,NA,NA,NA,NA,NA,6270
+967,"Warbling Vireo","Passeriformes","Vireonidae","Vireo","gilvus",13.5,1.4,NA,"gilvus",NA,NA,NA,NA,NA,NA,NA,NA,6270
+969,"Red-eyed Vireo","Passeriformes","Vireonidae","Vireo","olivaceus",13.8,NA,NA,"chivi","Peru",NA,NA,NA,NA,NA,NA,NA,6240
+969,"Red-eyed Vireo","Passeriformes","Vireonidae","Vireo","olivaceus",16.8,1,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6240
+969,"Red-eyed Vireo","Passeriformes","Vireonidae","Vireo","olivaceus",17.9,NA,NA,"chivi","Trinidad",NA,NA,NA,NA,NA,NA,NA,6240
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",17.4,1.4,NA,NA,"New Providence, Bahamas",NA,NA,NA,NA,NA,NA,NA,6230
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",17.9,NA,NA,NA,"Jamaica",NA,NA,NA,NA,NA,NA,NA,6230
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",18.2,1.1,NA,NA,"St. Kitts",NA,NA,NA,NA,NA,NA,NA,6230
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",18.6,1.3,NA,NA,"Antigua",NA,NA,NA,NA,NA,NA,NA,6230
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",19.7,1.5,NA,NA,"St. Lucia",NA,NA,NA,NA,NA,NA,NA,6230
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",20.3,1.9,NA,NA,"Puerto Rico",NA,NA,NA,NA,NA,NA,NA,6230
+971,"Black-whiskered Vireo","Passeriformes","Vireonidae","Vireo","altiloquus",21,1.2,NA,NA,"Dominican Republic",NA,NA,NA,NA,NA,NA,NA,6230
+973,"Canada Jay","Passeriformes","Corvidae","Perisoreus","canadensis",67.6,2.5,"f","canadensis","Ontario, Canada",NA,NA,NA,NA,NA,NA,NA,4840
+973,"Canada Jay","Passeriformes","Corvidae","Perisoreus","canadensis",75.8,2.7,"m","canadensis","Ontario, Canada",1,"Gray Jay",NA,NA,NA,NA,NA,4840
+982,"Green Jay","Passeriformes","Corvidae","Cyanocorax","yncas",78.5,5.6,NA,NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,4830
+986,"Pinyon Jay","Passeriformes","Corvidae","Gymnorhinus","cyanocephalus",99,0.7,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4920
+986,"Pinyon Jay","Passeriformes","Corvidae","Gymnorhinus","cyanocephalus",111,0.7,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,4920
+987,"Steller's Jay","Passeriformes","Corvidae","Cyanocitta","stelleri",128,NA,NA,NA,"Western Canada",NA,NA,NA,NA,NA,NA,NA,4780
+988,"Blue Jay","Passeriformes","Corvidae","Cyanocitta","cristata",88,5.8,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4770
+989,"Florida Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","coerulescens",75,5.1,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,4790
+989,"Florida Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","coerulescens",79.3,4.6,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,4790
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",73.8,NA,"f","nevadae","Western USA",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",76.9,NA,"f","hypoleuca","Southern Baja California, Mexico",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",80.3,NA,"m","nevadae","Western USA",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",82.7,NA,"f","oocleptica","California, USA",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",84.8,NA,"m","hypoleuca","Southern Baja California, Mexico",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",94.6,NA,"f","sumichrasti","South-central Mexico",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",96.6,NA,"m","oocleptica","California, USA",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+991,"California Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","californica",100,NA,"m","sumichrasti","South-central Mexico",1,"Western Scrub-Jay",NA,NA,NA,NA,NA,4812
+992,"Woodhouse's Scrub-Jay","Passeriformes","Corvidae","Aphelocoma","woodhouseii",NA,NA,NA,NA,NA,NA,NA,1,"Aphelocoma","californica",NA,"According to Wikipedia, until recently considered the same species",4813
+995,"Mexican Jay","Passeriformes","Corvidae","Aphelocoma","ultramarina",95,NA,"f","couchii","Texas, USA",NA,NA,NA,NA,NA,NA,NA,NA
+995,"Mexican Jay","Passeriformes","Corvidae","Aphelocoma","ultramarina",102,NA,"m","couchii","Texas, USA",NA,NA,NA,NA,NA,NA,NA,NA
+995,"Mexican Jay","Passeriformes","Corvidae","Aphelocoma","ultramarina",129,9,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,NA
+995,"Mexican Jay","Passeriformes","Corvidae","Aphelocoma","ultramarina",132,6.1,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,NA
+995,"Mexican Jay","Passeriformes","Corvidae","Aphelocoma","wollweberi",NA,NA,NA,NA,NA,NA,NA,1,"Aphelocoma","ultramarina",NA,"Split into two species in 2011",4820
+997,"Clark's Nutcracker","Passeriformes","Corvidae","Nucifraga","columbiana",123,1.1,"f",NA,"Montana, USA",NA,NA,NA,NA,NA,NA,NA,4910
+997,"Clark's Nutcracker","Passeriformes","Corvidae","Nucifraga","columbiana",137,0.8,"m",NA,"Montana, USA",NA,NA,NA,NA,NA,NA,NA,4910
+998,"Black-billed Magpie","Passeriformes","Corvidae","Pica","hudsonia",166,14.3,"f",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,4750
+998,"Black-billed Magpie","Passeriformes","Corvidae","Pica","hudsonia",189,10.3,"m",NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,4750
+999,"Yellow-billed Magpie","Passeriformes","Corvidae","Pica","nuttalli",144,8.7,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4760
+999,"Yellow-billed Magpie","Passeriformes","Corvidae","Pica","nuttalli",174,8.8,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4760
+1001,"American Crow","Passeriformes","Corvidae","Corvus","brachyrhynchos",376,28.8,"f","hesperis","California, USA",NA,NA,NA,NA,NA,NA,NA,4880
+1001,"American Crow","Passeriformes","Corvidae","Corvus","brachyrhynchos",423,33.6,"m","hesperis","California, USA",NA,NA,NA,NA,NA,NA,NA,4880
+1001,"American Crow","Passeriformes","Corvidae","Corvus","brachyrhynchos",474,NA,"f",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,4880
+1001,"American Crow","Passeriformes","Corvidae","Corvus","brachyrhynchos",538,NA,"m",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,4880
+1002,"Northwestern Crow","Passeriformes","Corvidae","Corvus","caurinus",368,NA,"f",NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,4890
+1002,"Northwestern Crow","Passeriformes","Corvidae","Corvus","caurinus",415,NA,"m",NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,4890
+1005,"Fish Crow","Passeriformes","Corvidae","Corvus","ossifragus",270,23,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,4900
+1005,"Fish Crow","Passeriformes","Corvidae","Corvus","ossifragus",300,20.3,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,4900
+1008,"Chihuahuan Raven","Passeriformes","Corvidae","Corvus","cryptoleucus",512,42.7,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,4870
+1008,"Chihuahuan Raven","Passeriformes","Corvidae","Corvus","cryptoleucus",556,43.6,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,4870
+1009,"Common Raven","Passeriformes","Corvidae","Corvus","corax",785,71.9,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,4860
+1009,"Common Raven","Passeriformes","Corvidae","Corvus","corax",1097,127,NA,NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,4860
+1011,"Eurasian Skylark","Passeriformes","Alaudidae","Alauda","arvensis",33,NA,"f",NA,"Hopei, China",NA,NA,NA,NA,NA,NA,NA,4730
+1011,"Eurasian Skylark","Passeriformes","Alaudidae","Alauda","arvensis",37,NA,"m",NA,"Hopei, China",NA,NA,NA,NA,NA,NA,NA,4730
+1011,"Eurasian Skylark","Passeriformes","Alaudidae","Alauda","arvensis",37.2,3.6,"f",NA,"Great Britain",NA,NA,NA,NA,NA,NA,NA,4730
+1011,"Eurasian Skylark","Passeriformes","Alaudidae","Alauda","arvensis",42.7,4.7,"m",NA,"Great Britain",NA,NA,NA,NA,NA,NA,NA,4730
+1012,"Horned Lark","Passeriformes","Alaudidae","Eremophila","alpestris",29.6,NA,"f","brandti","Mongolia",NA,NA,NA,NA,NA,NA,NA,4740
+1012,"Horned Lark","Passeriformes","Alaudidae","Eremophila","alpestris",30.2,NA,NA,NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,4740
+1012,"Horned Lark","Passeriformes","Alaudidae","Eremophila","alpestris",32.2,NA,NA,NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,4740
+1012,"Horned Lark","Passeriformes","Alaudidae","Eremophila","alpestris",32.4,NA,"m","brandti","Mongolia",NA,NA,NA,NA,NA,NA,NA,4740
+1012,"Horned Lark","Passeriformes","Alaudidae","Eremophila","alpestris",36.9,NA,"f","flava","Germany",NA,NA,NA,NA,NA,NA,NA,4740
+1012,"Horned Lark","Passeriformes","Alaudidae","Eremophila","alpestris",39.9,NA,"m","flava","Germany",NA,NA,NA,NA,NA,NA,NA,4740
+1013,"Purple Martin","Passeriformes","Hirundinidae","Progne","subis",53.5,3.8,"m",NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,6110
+1013,"Purple Martin","Passeriformes","Hirundinidae","Progne","subis",54.1,4.8,"f",NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,6110
+1019,"Tree Swallow","Passeriformes","Hirundinidae","Tachycineta","bicolor",21.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,6140
+1021,"Violet-green Swallow","Passeriformes","Hirundinidae","Tachycineta","thalassina",13.9,NA,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,6150
+1021,"Violet-green Swallow","Passeriformes","Hirundinidae","Tachycineta","thalassina",14.4,NA,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,6150
+1025,"Northern Rough-winged Swallow","Passeriformes","Hirundinidae","Stelgidopteryx","serripennis",15.5,NA,NA,"ridgwayi","Yucatan, Mexico",NA,NA,NA,NA,NA,NA,NA,6170
+1025,"Northern Rough-winged Swallow","Passeriformes","Hirundinidae","Stelgidopteryx","serripennis",15.9,0.6,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6170
+1027,"Bank Swallow","Passeriformes","Hirundinidae","Riparia","riparia",11.3,NA,NA,"riparia","Morocco",NA,NA,NA,NA,NA,NA,NA,6160
+1027,"Bank Swallow","Passeriformes","Hirundinidae","Riparia","riparia",13,0.8,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,6160
+1027,"Bank Swallow","Passeriformes","Hirundinidae","Riparia","riparia",13.9,1.3,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,6160
+1028,"Cliff Swallow","Passeriformes","Hirundinidae","Petrochelidon","pyrrhonota",21.6,2,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,6120
+1029,"Cave Swallow","Passeriformes","Hirundinidae","Petrochelidon","fulva",15.8,1.1,NA,NA,"Jamaica; Puerto Rico",NA,NA,NA,NA,NA,NA,NA,6121
+1029,"Cave Swallow","Passeriformes","Hirundinidae","Petrochelidon","fulva",17.8,NA,NA,"citata","Yucatan, Mexico",NA,NA,NA,NA,NA,NA,NA,6121
+1029,"Cave Swallow","Passeriformes","Hirundinidae","Petrochelidon","fulva",24.2,NA,NA,"pallida","New Mexico, USA",NA,NA,NA,NA,NA,NA,NA,6121
+1031,"Barn Swallow","Passeriformes","Hirundinidae","Hirundo","rustica",15.8,NA,"f",NA,"Morocco",NA,NA,NA,NA,NA,NA,NA,6130
+1031,"Barn Swallow","Passeriformes","Hirundinidae","Hirundo","rustica",16.2,NA,"m",NA,"Morocco",NA,NA,NA,NA,NA,NA,NA,6130
+1031,"Barn Swallow","Passeriformes","Hirundinidae","Hirundo","rustica",18.1,1.1,"m",NA,"Nebraska, USA",NA,NA,NA,NA,NA,NA,NA,6130
+1031,"Barn Swallow","Passeriformes","Hirundinidae","Hirundo","rustica",18.2,NA,NA,"rustica","Afghanistan",NA,NA,NA,NA,NA,NA,NA,6130
+1031,"Barn Swallow","Passeriformes","Hirundinidae","Hirundo","rustica",19.2,1.5,"f",NA,"Nebraska, USA",NA,NA,NA,NA,NA,NA,NA,6130
+1031,"Barn Swallow","Passeriformes","Hirundinidae","Hirundo","rustica",20.4,NA,NA,NA,"Southern Africa",NA,NA,NA,NA,NA,NA,NA,6130
+1033,"Carolina Chickadee","Passeriformes","Paridae","Poecile","carolinensis",9.9,0.5,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7360
+1033,"Carolina Chickadee","Passeriformes","Paridae","Poecile","carolinensis",10.1,0.4,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7360
+1034,"Black-capped Chickadee","Passeriformes","Paridae","Poecile","atricapillus",10.8,0.8,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7350
+1035,"Mountain Chickadee","Passeriformes","Paridae","Poecile","gambeli",10.8,1,NA,NA,"Utah, USA",NA,NA,NA,NA,NA,NA,NA,7380
+1035,"Mountain Chickadee","Passeriformes","Paridae","Poecile","gambeli",11.1,1.1,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7380
+1035,"Mountain Chickadee","Passeriformes","Paridae","Poecile","gambeli",11.7,0.8,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7380
+1036,"Mexican Chickadee","Passeriformes","Paridae","Poecile","sclateri",9.8,1,NA,"sclateri",NA,NA,NA,NA,NA,NA,NA,NA,7370
+1036,"Mexican Chickadee","Passeriformes","Paridae","Poecile","sclateri",10.4,0.8,NA,"eidos",NA,NA,NA,NA,NA,NA,NA,NA,7370
+1037,"Chestnut-backed Chickadee","Passeriformes","Paridae","Poecile","rufescens",9.1,0.6,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7410
+1037,"Chestnut-backed Chickadee","Passeriformes","Paridae","Poecile","rufescens",9.7,0.5,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7410
+1038,"Boreal Chickadee","Passeriformes","Paridae","Poecile","hudsonicus",9.8,0.8,NA,NA,"Ontario, Canada",1,"Poecile hudsonica",NA,NA,NA,NA,NA,7400
+1044,"Bridled Titmouse","Passeriformes","Paridae","Baeolophus","wollweberi",10.4,0.4,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7340
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",15,0.8,"f","cineraceus","Baja California Sur, Mexico",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",15.2,1.7,"f","mohavensis","California, USA",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",15.5,1.1,"f","inornatus","Oregon, California, USA",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",15.7,0.8,"m","cineraceus","Baja California Sur, Mexico",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",15.9,1.1,"m","mohavensis","California, USA",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",16.3,1,"f","affabilis","Southern California, USA",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",16.4,1,"m","inornatus","Oregon, California, USA",NA,NA,NA,NA,NA,NA,NA,7330
+1045,"Oak Titmouse","Passeriformes","Paridae","Baeolophus","inornatus",17.1,1.1,"m","affabilis","Southern California, USA",NA,NA,NA,NA,NA,NA,NA,7330
+1046,"Juniper Titmouse","Passeriformes","Paridae","Baeolophus","ridgwayi",15.3,NA,NA,"zaleptus","California, Nevada, USA",NA,NA,NA,NA,NA,NA,NA,7331
+1046,"Juniper Titmouse","Passeriformes","Paridae","Baeolophus","ridgwayi",15.9,0.8,"m","ridgwayi","Arizona, New Mexico, USA",NA,NA,NA,NA,NA,NA,NA,7331
+1046,"Juniper Titmouse","Passeriformes","Paridae","Baeolophus","ridgwayi",16.4,0.8,"f","ridgwayi","Arizona, New Mexico, USA",NA,NA,NA,NA,NA,NA,NA,7331
+1048,"Tufted Titmouse","Passeriformes","Paridae","Baeolophus","bicolor",21.6,NA,NA,"bicolor","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7310
+1049,"Black-crested Titmouse","Passeriformes","Paridae","Baeolophus","atricristatus",17.5,2.7,NA,NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,7320
+1051,"Verdin","Passeriformes","Remizidae","Auriparus","flaviceps",6.8,0.7,NA,NA,"Southwest USA; Mexico",NA,NA,NA,NA,NA,NA,NA,7460
+1052,"Bushtit","Passeriformes","Aegithalidae","Psaltriparus","minimus",5.3,0.4,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7430
+1053,"Red-breasted Nuthatch","Passeriformes","Sittidae","Sitta","canadensis",9.8,0.7,NA,NA,"New Jersey, USA",NA,NA,NA,NA,NA,NA,NA,7280
+1054,"White-breasted Nuthatch","Passeriformes","Sittidae","Sitta","carolinensis",21,NA,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7270
+1055,"Pygmy Nuthatch","Passeriformes","Sittidae","Sitta","pygmaea",10.6,NA,NA,NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,7300
+1056,"Brown-headed Nuthatch","Passeriformes","Sittidae","Sitta","pusilla",10.2,NA,NA,NA,"Georgia, USA",NA,NA,NA,NA,NA,NA,NA,7290
+1057,"Brown Creeper","Passeriformes","Certhiidae","Certhia","americana",8.1,0.5,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7260
+1058,"Rock Wren","Passeriformes","Troglodytidae","Salpinctes","obsoletus",15,NA,"m","guadeloupensis","Guadalupe Is., Mexico",NA,NA,NA,NA,NA,NA,NA,7150
+1058,"Rock Wren","Passeriformes","Troglodytidae","Salpinctes","obsoletus",16.2,NA,"m","tenuirostris","San Benitos Is., Mexico",NA,NA,NA,NA,NA,NA,NA,7150
+1058,"Rock Wren","Passeriformes","Troglodytidae","Salpinctes","obsoletus",16.4,NA,"f","guadeloupensis","Guadalupe Is., Mexico",NA,NA,NA,NA,NA,NA,NA,7150
+1058,"Rock Wren","Passeriformes","Troglodytidae","Salpinctes","obsoletus",16.5,0.6,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7150
+1058,"Rock Wren","Passeriformes","Troglodytidae","Salpinctes","obsoletus",17.9,NA,"f","tenuirostris","San Benitos Is., Mexico",NA,NA,NA,NA,NA,NA,NA,7150
+1060,"Canyon Wren","Passeriformes","Troglodytidae","Catherpes","mexicanus",11.3,NA,NA,"conspersus",NA,NA,NA,NA,NA,NA,NA,NA,7170
+1060,"Canyon Wren","Passeriformes","Troglodytidae","Catherpes","mexicanus",12.7,2.8,NA,NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,7170
+1063,"House Wren","Passeriformes","Troglodytidae","Troglodytes","aedon",10.4,0.6,NA,"cahooni","Coahuila, Mexico",NA,NA,NA,NA,NA,NA,NA,7210
+1063,"House Wren","Passeriformes","Troglodytidae","Troglodytes","aedon",10.4,0.9,NA,NA,"Chile",NA,NA,NA,NA,NA,NA,NA,7210
+1063,"House Wren","Passeriformes","Troglodytidae","Troglodytes","aedon",10.8,0.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7210
+1063,"House Wren","Passeriformes","Troglodytidae","Troglodytes","aedon",11.1,0.8,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7210
+1063,"House Wren","Passeriformes","Troglodytidae","Troglodytes","aedon",11.6,0.9,NA,NA,"El Salvador",NA,NA,NA,NA,NA,NA,NA,7210
+1067,"Pacific Wren","Passeriformes","Troglodytidae","Troglodytes","pacificus",NA,NA,NA,NA,NA,NA,NA,1,"Troglodytes","hiemalis",NA,"Recently split from winter wren",7221
+1068,"Winter Wren","Passeriformes","Troglodytidae","Troglodytes","hiemalis",8.9,0.2,NA,NA,"Pennsylvania, USA",1,"Troglodytes troglodytes",NA,NA,NA,NA,NA,7222
+1068,"Winter Wren","Passeriformes","Troglodytidae","Troglodytes","hiemalis",9.1,0.9,"f",NA,"British Columbia, Canada",1,"Troglodytes troglodytes",NA,NA,NA,NA,NA,7222
+1068,"Winter Wren","Passeriformes","Troglodytidae","Troglodytes","hiemalis",9.3,1.1,NA,"troglodytes","Germany",1,"Troglodytes troglodytes troglodytes",NA,NA,NA,NA,NA,7222
+1068,"Winter Wren","Passeriformes","Troglodytidae","Troglodytes","hiemalis",9.4,0.3,"m",NA,"British Columbia, Canada",1,"Troglodytes troglodytes",NA,NA,NA,NA,NA,7222
+1068,"Winter Wren","Passeriformes","Troglodytidae","Troglodytes","hiemalis",9.9,NA,NA,NA,"Great Britain",1,"Troglodytes troglodytes",NA,NA,NA,NA,NA,7222
+1068,"Winter Wren","Passeriformes","Troglodytidae","Troglodytes","hiemalis",12.2,NA,NA,"fridariensis","Fair Is.",1,"Troglodytes troglodytes fridariensis",NA,NA,NA,NA,NA,7222
+1070,"Sedge Wren","Passeriformes","Troglodytidae","Cistothorus","platensis",7.7,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,7240
+1070,"Sedge Wren","Passeriformes","Troglodytidae","Cistothorus","platensis",8.2,NA,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,7240
+1070,"Sedge Wren","Passeriformes","Troglodytidae","Cistothorus","platensis",9,0.7,NA,NA,"Mexico; Central America",NA,NA,NA,NA,NA,NA,NA,7240
+1070,"Sedge Wren","Passeriformes","Troglodytidae","Cistothorus","platensis",11.8,NA,NA,"hornensis","Tierra del Fuego",NA,NA,NA,NA,NA,NA,NA,7240
+1071,"Marsh Wren","Passeriformes","Troglodytidae","Cistothorus","palustris",9.4,1.1,"f",NA,"Georgia, USA",NA,NA,NA,NA,NA,NA,NA,7250
+1071,"Marsh Wren","Passeriformes","Troglodytidae","Cistothorus","palustris",10.6,1,"f",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,7250
+1071,"Marsh Wren","Passeriformes","Troglodytidae","Cistothorus","palustris",10.6,0.7,"m",NA,"Georgia, USA",NA,NA,NA,NA,NA,NA,NA,7250
+1071,"Marsh Wren","Passeriformes","Troglodytidae","Cistothorus","palustris",11.7,NA,NA,NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,7250
+1071,"Marsh Wren","Passeriformes","Troglodytidae","Cistothorus","palustris",11.9,0.7,"m",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,7250
+1072,"Carolina Wren","Passeriformes","Troglodytidae","Thryothorus","ludovicianus",17.2,2.6,NA,NA,"Eastern USA",NA,NA,NA,NA,NA,NA,NA,7180
+1072,"Carolina Wren","Passeriformes","Troglodytidae","Thryothorus","ludovicianus",18.7,5.1,"f",NA,"Alabama, USA",NA,NA,NA,NA,NA,NA,NA,7180
+1072,"Carolina Wren","Passeriformes","Troglodytidae","Thryothorus","ludovicianus",21.2,1.3,"m",NA,"Alabama, USA",NA,NA,NA,NA,NA,NA,NA,7180
+1073,"Bewick's Wren","Passeriformes","Troglodytidae","Thryomanes","bewickii",9.9,0.8,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7190
+1081,"Cactus Wren","Passeriformes","Troglodytidae","Campylorhynchus","brunneicapillus",38.9,NA,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7130
+1085,"Sinaloa Wren","Passeriformes","Troglodytidae","Thryophilus","sinaloa",15.1,1.4,NA,NA,"Jalisco, Mexico",1,"Thyrothorus sinaloa",NA,NA,NA,NA,NA,16600
+1092,"Blue-gray Gnatcatcher","Passeriformes","Polioptilidae","Polioptila","caerulea",5.8,0.3,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7510
+1093,"California Gnatcatcher","Passeriformes","Polioptilidae","Polioptila","californica",5.5,NA,NA,NA,"Baja California Sur, Mexico",NA,NA,NA,NA,NA,NA,NA,7530
+1093,"California Gnatcatcher","Passeriformes","Polioptilidae","Polioptila","californica",5.9,0.3,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7530
+1093,"California Gnatcatcher","Passeriformes","Polioptilidae","Polioptila","californica",6.1,0.3,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7530
+1094,"Black-tailed Gnatcatcher","Passeriformes","Polioptilidae","Polioptila","melanura",5.2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,7520
+1102,"Golden-crowned Kinglet","Passeriformes","Regulidae","Regulus","satrapa",6.1,0.1,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7480
+1102,"Golden-crowned Kinglet","Passeriformes","Regulidae","Regulus","satrapa",6.3,0.1,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7480
+1103,"Ruby-crowned Kinglet","Passeriformes","Regulidae","Regulus","calendula",5.9,0.3,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7490
+1103,"Ruby-crowned Kinglet","Passeriformes","Regulidae","Regulus","calendula",6.5,0.3,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7490
+1110,"Arctic Warbler","Passeriformes","Phylloscopidae","Phylloscopus","borealis",10.6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,7470
+1110,"Arctic Warbler","Passeriformes","Phylloscopidae","Phylloscopus","borealis",11.2,0.8,NA,NA,"Japan",NA,NA,NA,NA,NA,NA,NA,7470
+1113,"Wrentit","Passeriformes","Sylviidae","Chamaea","fasciata",14.2,1.1,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7420
+1113,"Wrentit","Passeriformes","Sylviidae","Chamaea","fasciata",15.3,1.1,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7420
+1124,"Bluethroat","Passeriformes","Muscicapidae","Cyanecula","svecica",15.6,1.2,"f","pallidogularis","Siberia",1,"Luscinia svecica pallidogularis",NA,NA,NA,NA,NA,7640
+1124,"Bluethroat","Passeriformes","Muscicapidae","Cyanecula","svecica",16.1,1.1,"m","pallidogularis","Siberia",1,"Luscinia svecica pallidogularis",NA,NA,NA,NA,NA,7640
+1124,"Bluethroat","Passeriformes","Muscicapidae","Cyanecula","svecica",18.2,NA,NA,"svecica","Russia",1,"Luscinia svecica svecica",NA,NA,NA,NA,NA,7640
+1124,"Bluethroat","Passeriformes","Muscicapidae","Cyanecula","svecica",19.3,NA,NA,"svecica","Alaska, USA",1,"Luscinia svecica svecica",NA,NA,NA,NA,NA,7640
+1132,"Northern Wheatear","Passeriformes","Muscicapidae","Oenanthe","oenanthe",22.3,2.5,"f","oneanthe","Italy",NA,NA,NA,NA,NA,NA,NA,7650
+1132,"Northern Wheatear","Passeriformes","Muscicapidae","Oenanthe","oenanthe",24,1.5,"m","oneanthe","Italy",NA,NA,NA,NA,NA,NA,NA,7650
+1132,"Northern Wheatear","Passeriformes","Muscicapidae","Oenanthe","oenanthe",30.6,NA,NA,"leucorhoa","Scotland",NA,NA,NA,NA,NA,NA,NA,7650
+1133,"Eastern Bluebird","Passeriformes","Turdidae","Sialia","sialis",27.5,3.3,NA,NA,"Eastern USA",NA,NA,NA,NA,NA,NA,NA,7660
+1134,"Western Bluebird","Passeriformes","Turdidae","Sialia","mexicana",25.8,1.1,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7670
+1134,"Western Bluebird","Passeriformes","Turdidae","Sialia","mexicana",27.1,1.3,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7670
+1135,"Mountain Bluebird","Passeriformes","Turdidae","Sialia","currucoides",29.6,3,NA,NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,7680
+1136,"Townsend's Solitaire","Passeriformes","Turdidae","Myadestes","townsendi",33.2,2,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7540
+1144,"Veery","Passeriformes","Turdidae","Catharus","fuscescens",31.9,2.5,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7560
+1145,"Gray-cheeked Thrush","Passeriformes","Turdidae","Catharus","minimus",30.6,3.3,"f",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,7570
+1145,"Gray-cheeked Thrush","Passeriformes","Turdidae","Catharus","minimus",32.6,3.9,"m",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,7570
+1146,"Bicknell's Thrush","Passeriformes","Turdidae","Catharus","bicknelli",27.5,1.5,"m",NA,"Vermont, USA",NA,NA,NA,NA,NA,NA,NA,7571
+1146,"Bicknell's Thrush","Passeriformes","Turdidae","Catharus","bicknelli",28.1,3.5,"f",NA,"Vermont, USA",NA,NA,NA,NA,NA,NA,NA,7571
+1147,"Swainson's Thrush","Passeriformes","Turdidae","Catharus","ustulatus",30.3,1.8,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7580
+1148,"Hermit Thrush","Passeriformes","Turdidae","Catharus","guttatus",30.1,3.1,NA,NA,"Ontario, Canada",NA,NA,NA,NA,NA,NA,NA,7590
+1149,"Wood Thrush","Passeriformes","Turdidae","Hylocichla","mustelina",47.8,3.3,"m",NA,"Delaware, USA",NA,NA,NA,NA,NA,NA,NA,7550
+1149,"Wood Thrush","Passeriformes","Turdidae","Hylocichla","mustelina",52.5,4.4,"f",NA,"Delaware, USA",NA,NA,NA,NA,NA,NA,NA,7550
+1162,"American Robin","Passeriformes","Turdidae","Turdus","migratorius",78.5,7.4,NA,NA,"Western USA",NA,NA,NA,NA,NA,NA,NA,7610
+1164,"Varied Thrush","Passeriformes","Turdidae","Ixoreus","naevius",73.1,4.9,"m","meruloides",NA,NA,NA,NA,NA,NA,NA,NA,7630
+1164,"Varied Thrush","Passeriformes","Turdidae","Ixoreus","naevius",78.4,6.3,"m","naevius",NA,NA,NA,NA,NA,NA,NA,NA,7630
+1164,"Varied Thrush","Passeriformes","Turdidae","Ixoreus","naevius",78.4,5.1,"f","meruloides",NA,NA,NA,NA,NA,NA,NA,NA,7630
+1164,"Varied Thrush","Passeriformes","Turdidae","Ixoreus","naevius",80.3,6.1,"f","naevius",NA,NA,NA,NA,NA,NA,NA,NA,7630
+1169,"Gray Catbird","Passeriformes","Mimidae","Dumetella","carolinensis",35.3,2.5,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7040
+1170,"Curve-billed Thrasher","Passeriformes","Mimidae","Toxostoma","curvirostre",75.8,4.4,"f","palmeri","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7070
+1170,"Curve-billed Thrasher","Passeriformes","Mimidae","Toxostoma","curvirostre",80.9,5,"m","palmeri","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7070
+1170,"Curve-billed Thrasher","Passeriformes","Mimidae","Toxostoma","curvirostre",85.2,6.1,NA,"curvirostre","Texas, USA",NA,NA,NA,NA,NA,NA,NA,7070
+1172,"Brown Thrasher","Passeriformes","Mimidae","Toxostoma","rufum",68.8,NA,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,7050
+1173,"Long-billed Thrasher","Passeriformes","Mimidae","Toxostoma","longirostre",67.6,5.5,NA,"sennetti","Texas, USA",NA,NA,NA,NA,NA,NA,NA,7060
+1175,"Bendire's Thrasher","Passeriformes","Mimidae","Toxostoma","bendirei",62.2,5.1,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7080
+1177,"California Thrasher","Passeriformes","Mimidae","Toxostoma","redivivum",84.4,3.9,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,7100
+1178,"LeConte's Thrasher","Passeriformes","Mimidae","Toxostoma","lecontei",61.9,NA,NA,NA,"Southwest USA; Mexico",NA,NA,NA,NA,NA,NA,NA,7110
+1179,"Crissal Thrasher","Passeriformes","Mimidae","Toxostoma","crissale",62.7,4.3,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,7120
+1180,"Sage Thrasher","Passeriformes","Mimidae","Oreoscoptes","montanus",44.2,NA,NA,NA,"Washington, USA",NA,NA,NA,NA,NA,NA,NA,7020
+1181,"Bahama Mockingbird","Passeriformes","Mimidae","Mimus","gundlachii",66.8,8.8,NA,NA,"Bahamas",NA,NA,NA,NA,NA,NA,NA,7031
+1184,"Northern Mockingbird","Passeriformes","Mimidae","Mimus","polyglottos",48.5,NA,NA,NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,7030
+1185,"European Starling","Passeriformes","Sturnidae","Sturnus","vulgaris",62.1,NA,NA,"indicus",NA,NA,NA,NA,NA,NA,NA,NA,4930
+1185,"European Starling","Passeriformes","Sturnidae","Sturnus","vulgaris",84.4,4.2,"f",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,4930
+1185,"European Starling","Passeriformes","Sturnidae","Sturnus","vulgaris",87.6,4.8,"m",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,4930
+1186,"Common Myna","Passeriformes","Sturnidae","Acridotheres","tristis",110,NA,NA,NA,"South Africa",NA,NA,NA,NA,NA,NA,NA,4932
+1186,"Common Myna","Passeriformes","Sturnidae","Acridotheres","tristis",112,9.2,"f",NA,"Singapore",NA,NA,NA,NA,NA,NA,NA,4932
+1186,"Common Myna","Passeriformes","Sturnidae","Acridotheres","tristis",114,7.2,"f",NA,"Hawaiian Is.",NA,NA,NA,NA,NA,NA,NA,4932
+1186,"Common Myna","Passeriformes","Sturnidae","Acridotheres","tristis",120,9.1,"m",NA,"Singapore",NA,NA,NA,NA,NA,NA,NA,4932
+1186,"Common Myna","Passeriformes","Sturnidae","Acridotheres","tristis",127,9,"m",NA,"Hawaiian Is.",NA,NA,NA,NA,NA,NA,NA,4932
+1187,"Bohemian Waxwing","Passeriformes","Bombycillidae","Bombycilla","garrulus",52.5,NA,NA,NA,"Hopei, China",NA,NA,NA,NA,NA,NA,NA,6180
+1187,"Bohemian Waxwing","Passeriformes","Bombycillidae","Bombycilla","garrulus",56.4,5.2,NA,NA,"Colorado, USA",NA,NA,NA,NA,NA,NA,NA,6180
+1188,"Cedar Waxwing","Passeriformes","Bombycillidae","Bombycilla","cedrorum",30.6,2.2,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6190
+1188,"Cedar Waxwing","Passeriformes","Bombycillidae","Bombycilla","cedrorum",32.6,2.3,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6190
+1191,"Phainopepla","Passeriformes","Ptiliogonatidae","Phainopepla","nitens",22.1,NA,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,6200
+1192,"Olive Warbler","Passeriformes","Peucedramidae","Peucedramus","taeniatus",11,0.6,NA,NA,"Coahuila, Mexico",NA,NA,NA,NA,NA,NA,NA,6510
+1198,"House Sparrow","Passeriformes","Passeridae","Passer","domesticus",24.3,NA,NA,"indicus","Transvaal, South Africa",NA,NA,NA,NA,NA,NA,NA,6882
+1198,"House Sparrow","Passeriformes","Passeridae","Passer","domesticus",27.4,2.2,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6882
+1198,"House Sparrow","Passeriformes","Passeridae","Passer","domesticus",28,1.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6882
+1199,"Eurasian Tree Sparrow","Passeriformes","Passeridae","Passer","montanus",20.8,NA,NA,NA,"France",NA,NA,NA,NA,NA,NA,NA,6883
+1199,"Eurasian Tree Sparrow","Passeriformes","Passeridae","Passer","montanus",22,1.2,NA,NA,"Missouri, USA",NA,NA,NA,NA,NA,NA,NA,6883
+1200,"Eastern Yellow Wagtail","Passeriformes","Motacillidae","Motacilla","tschutschensis",13.9,NA,"f",NA,"Morocco",NA,NA,NA,NA,NA,NA,NA,6960
+1200,"Eastern Yellow Wagtail","Passeriformes","Motacillidae","Motacilla","tschutschensis",14.9,NA,"m",NA,"Morocco",NA,NA,NA,NA,NA,NA,NA,6960
+1203,"White Wagtail","Passeriformes","Motacillidae","Motacilla","alba",21,2.1,NA,"alba","Sweden",NA,NA,NA,NA,NA,NA,NA,6940
+1203,"White Wagtail","Passeriformes","Motacillidae","Motacilla","alba",23.3,1.7,NA,"baicalensis","Mongolia",NA,NA,NA,NA,NA,NA,NA,6940
+1203,"White Wagtail","Passeriformes","Motacillidae","Motacilla","alba",23.6,NA,NA,"personata","Northern China; Mongolia",NA,NA,NA,NA,NA,NA,NA,6940
+1203,"White Wagtail","Passeriformes","Motacillidae","Motacilla","alba",24.4,NA,NA,"personata","Afghanistan",NA,NA,NA,NA,NA,NA,NA,6940
+1203,"White Wagtail","Passeriformes","Motacillidae","Motacilla","alba",27.9,NA,NA,"lugens","Russia",NA,NA,NA,NA,NA,NA,NA,6940
+1207,"Red-throated Pipit","Passeriformes","Motacillidae","Anthus","cervinus",20.9,NA,NA,NA,"Ethiopia",NA,NA,NA,NA,NA,NA,NA,6990
+1208,"American Pipit","Passeriformes","Motacillidae","Anthus","rubescens",20,0.8,"f","alticola","Wyoming, USA",NA,NA,NA,NA,NA,NA,NA,6970
+1208,"American Pipit","Passeriformes","Motacillidae","Anthus","rubescens",20.1,NA,"f",NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,6970
+1208,"American Pipit","Passeriformes","Motacillidae","Anthus","rubescens",21.1,1.4,"m","alticola","Wyoming, USA",NA,NA,NA,NA,NA,NA,NA,6970
+1208,"American Pipit","Passeriformes","Motacillidae","Anthus","rubescens",21.6,NA,"m",NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,6970
+1209,"Sprague's Pipit","Passeriformes","Motacillidae","Anthus","spragueii",25.5,2.2,NA,NA,"Oklahoma & Texas, USA",NA,NA,NA,NA,NA,NA,NA,7000
+1219,"Evening Grosbeak","Passeriformes","Fringillidae","Coccothraustes","vespertinus",54.6,3.5,"f",NA,"Utah, USA",NA,NA,NA,NA,NA,NA,NA,5140
+1219,"Evening Grosbeak","Passeriformes","Fringillidae","Coccothraustes","vespertinus",55.7,3.3,"m",NA,"Utah, USA",NA,NA,NA,NA,NA,NA,NA,5140
+1219,"Evening Grosbeak","Passeriformes","Fringillidae","Coccothraustes","vespertinus",59,3.9,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5140
+1219,"Evening Grosbeak","Passeriformes","Fringillidae","Coccothraustes","vespertinus",60.1,3.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5140
+1222,"Pine Grosbeak","Passeriformes","Fringillidae","Pinicola","enucleator",56.4,3.2,NA,NA,"Saskatchewan, Canada",NA,NA,NA,NA,NA,NA,NA,5150
+1225,"Gray-crowned Rosy-Finch","Passeriformes","Fringillidae","Leucosticte","tephrocotis",24.6,1,NA,"dawsoni","California, USA",NA,NA,NA,NA,NA,NA,NA,5240
+1225,"Gray-crowned Rosy-Finch","Passeriformes","Fringillidae","Leucosticte","tephrocotis",45.3,2.7,"m","griseonucha","Aleutian Is., USA",NA,NA,NA,NA,NA,NA,NA,5240
+1225,"Gray-crowned Rosy-Finch","Passeriformes","Fringillidae","Leucosticte","tephrocotis",48.5,5.3,"f","griseonucha","Aleutian Is., USA",NA,NA,NA,NA,NA,NA,NA,5240
+1226,"Black Rosy-Finch","Passeriformes","Fringillidae","Leucosticte","atrata",25.1,1.7,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,5250
+1226,"Black Rosy-Finch","Passeriformes","Fringillidae","Leucosticte","atrata",25.4,2.3,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,5250
+1228,"House Finch","Passeriformes","Fringillidae","Haemorhous","mexicanus",21.4,1.3,NA,NA,"California, USA",1,"Carpodacus mexicanus",NA,NA,NA,NA,NA,5190
+1229,"Purple Finch","Passeriformes","Fringillidae","Haemorhous","purpureus",23.3,NA,NA,NA,"Pennsylvania, USA",1,"Carpodacus purpureus",NA,NA,NA,NA,NA,5170
+1230,"Cassin's Finch","Passeriformes","Fringillidae","Haemorhous","cassinii",26.5,2.4,NA,NA,"Arizona, USA",1,"Carpodacus cassinii",NA,NA,NA,NA,NA,5180
+1234,"Common Redpoll","Passeriformes","Fringillidae","Acanthis","flammea",13,NA,NA,NA,"Alaska, USA",1,"Carduelis flammea",NA,NA,NA,NA,NA,5280
+1235,"Hoary Redpoll","Passeriformes","Fringillidae","Acanthis","hornemanni",12.7,NA,NA,"exilipes","Alaska, USA",1,"Carduelis hornemanni exilipes",NA,NA,NA,NA,NA,5270
+1235,"Hoary Redpoll","Passeriformes","Fringillidae","Acanthis","hornemanni",18.2,NA,NA,"hornemanni","Ellesmere Is., Canada",1,"Carduelis hornemanni hornemanni",NA,NA,NA,NA,NA,5270
+1237,"Red Crossbill","Passeriformes","Fringillidae","Loxia","curvirostra",36.4,3.7,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5210
+1237,"Red Crossbill","Passeriformes","Fringillidae","Loxia","curvirostra",38,NA,NA,"japonica","Hopei, China",NA,NA,NA,NA,NA,NA,NA,5210
+1237,"Red Crossbill","Passeriformes","Fringillidae","Loxia","curvirostra",40.6,NA,NA,NA,"Great Britain",NA,NA,NA,NA,NA,NA,NA,5210
+1240,"White-winged Crossbill","Passeriformes","Fringillidae","Loxia","leucoptera",24.4,1.5,"f","leucoptera","Canada",NA,NA,NA,NA,NA,NA,NA,5220
+1240,"White-winged Crossbill","Passeriformes","Fringillidae","Loxia","leucoptera",26,1.3,"m","leucoptera","Canada",NA,NA,NA,NA,NA,NA,NA,5220
+1240,"White-winged Crossbill","Passeriformes","Fringillidae","Loxia","leucoptera",30.7,NA,"m","bifasciata",NA,NA,NA,NA,NA,NA,NA,NA,5220
+1240,"White-winged Crossbill","Passeriformes","Fringillidae","Loxia","leucoptera",34.8,NA,"f","bifasciata",NA,NA,NA,NA,NA,NA,NA,NA,5220
+1242,"European Goldfinch","Passeriformes","Fringillidae","Carduelis","carduelis",16,NA,NA,NA,"Western Europe",NA,NA,NA,NA,NA,NA,NA,5261
+1244,"Pine Siskin","Passeriformes","Fringillidae","Spinus","pinus",12.7,NA,NA,NA,"Pennsylvania, USA",1,"Carduelis pinus",NA,NA,NA,NA,NA,5330
+1247,"Lesser Goldfinch","Passeriformes","Fringillidae","Spinus","psaltria",8.1,NA,NA,"witti","Tres Marias Is., Mexico",1,"Carduelis psaltria witti",NA,NA,NA,NA,NA,5300
+1247,"Lesser Goldfinch","Passeriformes","Fringillidae","Spinus","psaltria",9.5,NA,NA,NA,"California, USA",1,"Carduelis psaltria",NA,NA,NA,NA,NA,5300
+1248,"Lawrence's Goldfinch","Passeriformes","Fringillidae","Spinus","lawrencei",10.6,0.8,"m",NA,"California, USA",1,"Carduelis lawrencei",NA,NA,NA,NA,NA,5310
+1248,"Lawrence's Goldfinch","Passeriformes","Fringillidae","Spinus","lawrencei",11.3,1,"f",NA,"California, USA",1,"Carduelis lawrencei",NA,NA,NA,NA,NA,5310
+1249,"American Goldfinch","Passeriformes","Fringillidae","Spinus","tristis",12.5,0.7,"f",NA,"Pennsylvania, USA",1,"Carduelis tristis",NA,NA,NA,NA,NA,5290
+1249,"American Goldfinch","Passeriformes","Fringillidae","Spinus","tristis",13.1,0.9,"m",NA,"Pennsylvania, USA",1,"Carduelis tristis",NA,NA,NA,NA,NA,5290
+1250,"Lapland Longspur","Passeriformes","Calcariidae","Calcarius","lapponicus",27.4,1.5,"m",NA,"Nunavut, Canada",NA,NA,NA,NA,NA,NA,NA,5360
+1250,"Lapland Longspur","Passeriformes","Calcariidae","Calcarius","lapponicus",28.3,2.9,"f",NA,"Nunavut, Canada",NA,NA,NA,NA,NA,NA,NA,5360
+1251,"Chestnut-collared Longspur","Passeriformes","Calcariidae","Calcarius","ornatus",20.3,NA,NA,NA,"Saskatchewan, Canada",NA,NA,NA,NA,NA,NA,NA,5380
+1252,"Smith's Longspur","Passeriformes","Calcariidae","Calcarius","pictus",25.3,NA,"f",NA,"Manitoba, Canada",NA,NA,NA,NA,NA,NA,NA,5370
+1252,"Smith's Longspur","Passeriformes","Calcariidae","Calcarius","pictus",28.1,NA,"m",NA,"Manitoba, Canada",NA,NA,NA,NA,NA,NA,NA,5370
+1253,"McCown's Longspur","Passeriformes","Calcariidae","Rhynchophanes","mccownii",24.7,NA,"f",NA,"Saskatchewan, Canada",1,"Calcarius mccownii",NA,NA,NA,NA,NA,5390
+1253,"McCown's Longspur","Passeriformes","Calcariidae","Rhynchophanes","mccownii",26.7,NA,"m",NA,"Saskatchewan, Canada",1,"Calcarius mccownii",NA,NA,NA,NA,NA,5390
+1254,"Snow Bunting","Passeriformes","Calcariidae","Plectrophenax","nivalis",42.2,5.5,NA,NA,"Alaska, USA",NA,NA,NA,NA,NA,NA,NA,5340
+1269,"Olive Sparrow","Passeriformes","Passerellidae","Arremonops","rufivirgatus",21.7,2.6,"f",NA,"South Texas, USA",NA,NA,NA,NA,NA,NA,NA,5860
+1269,"Olive Sparrow","Passeriformes","Passerellidae","Arremonops","rufivirgatus",23.2,2.8,"m",NA,"South Texas, USA",NA,NA,NA,NA,NA,NA,NA,5860
+1274,"Green-tailed Towhee","Passeriformes","Passerellidae","Pipilo","chlorurus",29.4,3.3,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5900
+1275,"Spotted Towhee","Passeriformes","Passerellidae","Pipilo","maculatus",38,2.2,"f","falcifer","California, USA",NA,NA,NA,NA,NA,NA,NA,5880
+1275,"Spotted Towhee","Passeriformes","Passerellidae","Pipilo","maculatus",39,3.6,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5880
+1275,"Spotted Towhee","Passeriformes","Passerellidae","Pipilo","maculatus",40.9,2.1,"m","falcifer","California, USA",NA,NA,NA,NA,NA,NA,NA,5880
+1276,"Eastern Towhee","Passeriformes","Passerellidae","Pipilo","erythrophthalmus",38.8,2.3,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5870
+1276,"Eastern Towhee","Passeriformes","Passerellidae","Pipilo","erythrophthalmus",41.3,2.4,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5870
+1279,"Rufous-crowned Sparrow","Passeriformes","Passerellidae","Aimophila","ruficeps",18.1,1.3,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,5800
+1279,"Rufous-crowned Sparrow","Passeriformes","Passerellidae","Aimophila","ruficeps",19.3,1.5,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,5800
+1284,"Canyon Towhee","Passeriformes","Passerellidae","Melozone","fusca",44.4,3.2,NA,NA,"Arizona, USA",1,"Pipilo fuscus",NA,NA,NA,NA,NA,5910
+1286,"California Towhee","Passeriformes","Passerellidae","Melozone","crissalis",51.8,NA,"f","crissalis","California, USA",1,"Pipilo crissalis crissalis",NA,NA,NA,NA,NA,5911
+1286,"California Towhee","Passeriformes","Passerellidae","Melozone","crissalis",53.9,NA,"m","crissalis","California, USA",1,"Pipilo crissalis crissalis",NA,NA,NA,NA,NA,5911
+1287,"Abert's Towhee","Passeriformes","Passerellidae","Melozone","aberti",44.8,2.9,"f",NA,"Arizona, USA",1,"Pipilo aberti",NA,NA,NA,NA,NA,5920
+1287,"Abert's Towhee","Passeriformes","Passerellidae","Melozone","aberti",47.1,3.3,"m",NA,"Arizona, USA",1,"Pipilo aberti",NA,NA,NA,NA,NA,5920
+1289,"Rufous-winged Sparrow","Passeriformes","Passerellidae","Peucaea","carpalis",15.3,1,NA,NA,"Arizona, USA",1,"Aimophila carpalis",NA,NA,NA,NA,NA,5790
+1293,"Botteri's Sparrow","Passeriformes","Passerellidae","Peucaea","botterii",19.9,1.9,NA,NA,"Arizona, USA",1,"Aimophila botterii",NA,NA,NA,NA,NA,5760
+1294,"Cassin's Sparrow","Passeriformes","Passerellidae","Peucaea","cassinii",18.9,1.5,NA,NA,"Arizona, USA",1,"Aimophila cassinii",NA,NA,NA,NA,NA,5780
+1295,"Bachman's Sparrow","Passeriformes","Passerellidae","Peucaea","aestivalis",18.4,2.2,NA,NA,"South Carolina, USA",1,"Aimophila aestivalis",NA,NA,NA,NA,NA,5750
+1295,"Bachman's Sparrow","Passeriformes","Passerellidae","Peucaea","aestivalis",20.8,5.2,NA,NA,"Arkansas, USA",1,"Aimophila aestivalis",NA,NA,NA,NA,NA,5750
+1297,"American Tree Sparrow","Passeriformes","Passerellidae","Spizelloides","arborea",17.1,1.8,"f",NA,"Canada",1,"Spizella arborea",NA,NA,NA,NA,NA,5590
+1297,"American Tree Sparrow","Passeriformes","Passerellidae","Spizelloides","arborea",18.6,2,"m",NA,"Canada",1,"Spizella arborea",NA,NA,NA,NA,NA,5590
+1298,"Chipping Sparrow","Passeriformes","Passerellidae","Spizella","passerina",12.2,0.8,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5600
+1299,"Clay-colored Sparrow","Passeriformes","Passerellidae","Spizella","pallida",11.2,1.1,NA,NA,"Minnesota, USA",NA,NA,NA,NA,NA,NA,NA,5610
+1300,"Brewer's Sparrow","Passeriformes","Passerellidae","Spizella","breweri",10.9,0.7,NA,NA,"Idaho, USA",NA,NA,NA,NA,NA,NA,NA,5620
+1301,"Field Sparrow","Passeriformes","Passerellidae","Spizella","pusilla",12.5,0.8,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5630
+1303,"Black-chinned Sparrow","Passeriformes","Passerellidae","Spizella","atrogularis",11.3,1.1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,5650
+1304,"Vesper Sparrow","Passeriformes","Passerellidae","Pooecetes","gramineus",24.9,NA,"f",NA,"Michigan, USA",NA,NA,NA,NA,NA,NA,NA,5400
+1304,"Vesper Sparrow","Passeriformes","Passerellidae","Pooecetes","gramineus",26.5,NA,"m",NA,"Michigan, USA",NA,NA,NA,NA,NA,NA,NA,5400
+1305,"Lark Sparrow","Passeriformes","Passerellidae","Chondestes","grammacus",29,1.9,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5520
+1307,"Black-throated Sparrow","Passeriformes","Passerellidae","Amphispiza","bilineata",13.5,1.2,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5730
+1308,"Sagebrush Sparrow","Passeriformes","Passerellidae","Amphispiza","belli",15,NA,NA,"belli","California, USA",NA,NA,NA,NA,NA,NA,NA,NA
+1308,"Sagebrush Sparrow","Passeriformes","Passerellidae","Amphispiza","belli",17.7,0.3,"f","nevadensis","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,NA
+1308,"Sagebrush Sparrow","Passeriformes","Passerellidae","Amphispiza","belli",18.5,0.2,"m","nevadensis","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,NA
+1308,"Sagebrush Sparrow","Passeriformes","Passerellidae","Artemisiospiza","nevadensis",NA,NA,NA,NA,NA,NA,NA,1,"Amphispiza","belli","nevadensis","Split in 2013: Belli & nevadensis previously one species called ""sage sparrow""",5738
+1309,"Bell's Sparrow","Passeriformes","Passerellidae","Artemisiospiza","belli",NA,NA,NA,NA,NA,NA,NA,1,"Amphispiza","belli","belli","Split in 2013: Belli & nevadensis previously one species called ""sage sparrow""",5739
+1311,"Lark Bunting","Passeriformes","Passerellidae","Calamospiza","melanocorys",37.6,3.7,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,6050
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",17,0.8,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",17.1,1.6,"f","oblitus","Minnesota, USA",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",18,1.4,"m","oblitus","Minnesota, USA",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",19.5,2.3,"f",NA,"Manitoba, Canada",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",20.4,0.8,"m","beldingi","Baja California Norte, Mexico",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",20.6,1.4,"m",NA,"Manitoba, Canada",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",22.7,1.1,"m","atratus","Sonora, Mexico",NA,NA,NA,NA,NA,NA,NA,5420
+1312,"Savannah Sparrow","Passeriformes","Passerellidae","Passerculus","sandwichensis",26,NA,NA,"princeps","Sable Is., Canada",NA,NA,NA,NA,NA,NA,NA,5420
+1313,"Grasshopper Sparrow","Passeriformes","Passerellidae","Ammodramus","savannarum",17,2.8,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5460
+1313,"Grasshopper Sparrow","Passeriformes","Passerellidae","Ammodramus","savannarum",17.2,1,"m","floridanus","Florida, USA",NA,NA,NA,NA,NA,NA,NA,5460
+1313,"Grasshopper Sparrow","Passeriformes","Passerellidae","Ammodramus","savannarum",17.9,NA,NA,"pratensis","Connecticut, USA",NA,NA,NA,NA,NA,NA,NA,5460
+1313,"Grasshopper Sparrow","Passeriformes","Passerellidae","Ammodramus","savannarum",18.4,NA,"f","floridanus","Florida, USA",NA,NA,NA,NA,NA,NA,NA,5460
+1314,"Baird's Sparrow","Passeriformes","Passerellidae","Centronyx","bairdii",17.5,1.4,NA,NA,"Arizona, USA",1,"Ammodramus bairdii",NA,NA,NA,NA,NA,5450
+1314,"Baird's Sparrow","Passeriformes","Passerellidae","Centronyx","bairdii",17.8,NA,"f",NA,"Saskatchewan, Canada",1,"Ammodramus bairdii",NA,NA,NA,NA,NA,5450
+1314,"Baird's Sparrow","Passeriformes","Passerellidae","Centronyx","bairdii",18.9,NA,"m",NA,"Saskatchewan, Canada",1,"Ammodramus bairdii",NA,NA,NA,NA,NA,5450
+1315,"Henslow's Sparrow","Passeriformes","Passerellidae","Centronyx","henslowii",12.8,NA,NA,NA,NA,1,"Ammodramus henslowii",NA,NA,NA,NA,NA,5470
+1316,"LeConte's Sparrow","Passeriformes","Passerellidae","Ammospiza","leconteii",13,1.2,NA,NA,"Minnesota, USA",1,"Ammodramus lecontei",NA,NA,NA,NA,NA,5480
+1317,"Seaside Sparrow","Passeriformes","Passerellidae","Ammospiza","maritima",19.8,1.1,"f","peninsulae","Florida, USA",1,"Ammodramus maritimus peninsulae",NA,NA,NA,NA,NA,5500
+1317,"Seaside Sparrow","Passeriformes","Passerellidae","Ammospiza","maritima",22.2,1.7,"f","maritimus","New York, USA",1,"Ammodramus maritimus maritimus",NA,NA,NA,NA,NA,5500
+1317,"Seaside Sparrow","Passeriformes","Passerellidae","Ammospiza","maritima",22.6,1.4,"m","peninsulae","Florida, USA",1,"Ammodramus maritimus peninsulae",NA,NA,NA,NA,NA,5500
+1317,"Seaside Sparrow","Passeriformes","Passerellidae","Ammospiza","maritima",24.3,1.4,"m","maritimus","New York, USA",1,"Ammodramus maritimus maritimus",NA,NA,NA,NA,NA,5500
+1318,"Nelson's Sparrow","Passeriformes","Passerellidae","Ammospiza","nelsoni",13.9,NA,"f",NA,"North Dakota, USA",1,"Ammodramus nelsoni",NA,NA,NA,NA,NA,5491
+1318,"Nelson's Sparrow","Passeriformes","Passerellidae","Ammospiza","nelsoni",14.8,0.8,"m",NA,"North Dakota, USA",1,"Ammodramus nelsoni",NA,NA,NA,NA,NA,5491
+1318,"Nelson's Sparrow","Passeriformes","Passerellidae","Ammospiza","nelsoni",16.8,NA,NA,NA,"Ontario, Canada",1,"Ammodramus nelsoni",NA,NA,NA,NA,NA,5491
+1319,"Saltmarsh Sparrow","Passeriformes","Passerellidae","Ammospiza","caudacuta",17.8,NA,"f",NA,"New Jersey, USA",1,"Ammodramus caudacutus",NA,NA,NA,NA,NA,5490
+1319,"Saltmarsh Sparrow","Passeriformes","Passerellidae","Ammospiza","caudacuta",20.7,NA,"m",NA,"New Jersey, USA",1,"Ammodramus caudacutus",NA,NA,NA,NA,NA,5490
+1321,"Fox Sparrow","Passeriformes","Passerellidae","Passerella","iliaca",30.4,NA,NA,"schistacea",NA,NA,NA,NA,NA,NA,NA,NA,5850
+1321,"Fox Sparrow","Passeriformes","Passerellidae","Passerella","iliaca",32.3,NA,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5850
+1321,"Fox Sparrow","Passeriformes","Passerellidae","Passerella","iliaca",32.5,NA,NA,"megarhyncha",NA,NA,NA,NA,NA,NA,NA,NA,5850
+1321,"Fox Sparrow","Passeriformes","Passerellidae","Passerella","iliaca",35.3,2.1,NA,"iliaca","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5850
+1321,"Fox Sparrow","Passeriformes","Passerellidae","Passerella","iliaca",36.1,NA,NA,"unalaschensis",NA,NA,NA,NA,NA,NA,NA,NA,5850
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",18.6,0.8,NA,"pusillula","California, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",18.8,1.2,NA,"samuelis","California, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",19.5,1.3,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",20,0.9,NA,"gouldii","California, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",20.5,1.1,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",20.8,0.9,NA,"maxillaris","California, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",21.6,NA,NA,"micronyx","California, USA; calculated",NA,NA,NA,NA,NA,NA,NA,5810
+1322,"Song Sparrow","Passeriformes","Passerellidae","Melospiza","melodia",42.4,NA,NA,"maxima","Alaska, USA",NA,NA,NA,NA,NA,NA,NA,5810
+1323,"Lincoln's Sparrow","Passeriformes","Passerellidae","Melospiza","lincolnii",16.6,1.2,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5830
+1324,"Swamp Sparrow","Passeriformes","Passerellidae","Melospiza","georgiana",16.1,1.2,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5840
+1326,"White-throated Sparrow","Passeriformes","Passerellidae","Zonotrichia","albicollis",24.4,1.7,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5580
+1327,"Harris's Sparrow","Passeriformes","Passerellidae","Zonotrichia","querula",33.7,2.2,"f",NA,"Northwest Terr., Canada",NA,NA,NA,NA,NA,NA,NA,5530
+1327,"Harris's Sparrow","Passeriformes","Passerellidae","Zonotrichia","querula",37.4,2,"m",NA,"Northwest Terr., Canada",NA,NA,NA,NA,NA,NA,NA,5530
+1328,"White-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","leucophrys",25.3,1.8,NA,"pugetensis","California, USA",NA,NA,NA,NA,NA,NA,NA,5540
+1328,"White-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","leucophrys",25.5,1.7,NA,"gambelii","California, USA",NA,NA,NA,NA,NA,NA,NA,5540
+1328,"White-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","leucophrys",28.4,1.9,NA,"oriantha","Oregon, USA",NA,NA,NA,NA,NA,NA,NA,5540
+1328,"White-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","leucophrys",29.4,1,NA,"leucophrys","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5540
+1328,"White-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","leucophrys",32,2.2,NA,"nuttalli","California, USA",NA,NA,NA,NA,NA,NA,NA,5540
+1329,"Golden-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","atricapilla",31.7,2.2,"m",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,5570
+1329,"Golden-crowned Sparrow","Passeriformes","Passerellidae","Zonotrichia","atricapilla",32.3,0.9,"f",NA,"British Columbia, Canada",NA,NA,NA,NA,NA,NA,NA,5570
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",17.5,0.9,"f","cismontanus","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",17.9,1,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",18.2,1.3,NA,"mearnsi","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",19,1,"m","cismontanus","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",19.3,1,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",19.6,1.1,NA,"caniceps","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",20.8,NA,NA,"carolinensis","Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",21.8,1.4,NA,"dorsalis","Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5677
+1335,"(unid. race) Dark-eyed Junco","Passeriformes","Passerellidae","Junco","hyemalis",22,NA,"m","aikeni",NA,NA,NA,NA,NA,NA,NA,NA,5677
+1337,"Yellow-eyed Junco","Passeriformes","Passerellidae","Junco","phaeonotus",20.4,1.1,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5700
+1341,"Yellow-breasted Chat","Passeriformes","Icteriidae","Icteria","virens",24.4,0.9,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6830
+1341,"Yellow-breasted Chat","Passeriformes","Icteriidae","Icteria","virens",25.4,1.1,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6830
+1342,"Yellow-headed Blackbird","Passeriformes","Icteridae","Xanthocephalus","xanthocephalus",49.3,4,"f",NA,"Oregon, USA",NA,NA,NA,NA,NA,NA,NA,4970
+1342,"Yellow-headed Blackbird","Passeriformes","Icteridae","Xanthocephalus","xanthocephalus",79.7,NA,"m",NA,"Oregon, USA",NA,NA,NA,NA,NA,NA,NA,4970
+1343,"Bobolink","Passeriformes","Icteridae","Dolichonyx","oryzivorus",29.2,2.1,"f",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,4940
+1343,"Bobolink","Passeriformes","Icteridae","Dolichonyx","oryzivorus",33.9,2.1,"m",NA,"New York, USA",NA,NA,NA,NA,NA,NA,NA,4940
+1344,"Eastern Meadowlark","Passeriformes","Icteridae","Sturnella","magna",76,NA,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,5010
+1344,"Eastern Meadowlark","Passeriformes","Icteridae","Sturnella","magna",77.5,NA,"f","alticola","Mexico",NA,NA,NA,NA,NA,NA,NA,5010
+1344,"Eastern Meadowlark","Passeriformes","Icteridae","Sturnella","magna",90.3,NA,"f","lilianae",NA,NA,NA,NA,NA,NA,NA,NA,5010
+1344,"Eastern Meadowlark","Passeriformes","Icteridae","Sturnella","magna",98.3,NA,"m","alticola","Mexico",NA,NA,NA,NA,NA,NA,NA,5010
+1344,"Eastern Meadowlark","Passeriformes","Icteridae","Sturnella","magna",102,11.2,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,5010
+1344,"Eastern Meadowlark","Passeriformes","Icteridae","Sturnella","magna",112,NA,"m","lilianae",NA,NA,NA,NA,NA,NA,NA,NA,5010
+1345,"Western Meadowlark","Passeriformes","Icteridae","Sturnella","neglecta",89.4,NA,"f",NA,"Great Plains, USA",NA,NA,NA,NA,NA,NA,NA,5011
+1345,"Western Meadowlark","Passeriformes","Icteridae","Sturnella","neglecta",112,NA,"m",NA,"Great Plains, USA",NA,NA,NA,NA,NA,NA,NA,5011
+1354,"Orchard Oriole","Passeriformes","Icteridae","Icterus","spurius",19,NA,"m","fuertesi","Mexico",NA,NA,NA,NA,NA,NA,NA,5060
+1354,"Orchard Oriole","Passeriformes","Icteridae","Icterus","spurius",19.9,NA,NA,NA,"Nebraska, USA",NA,NA,NA,NA,NA,NA,NA,5060
+1355,"Hooded Oriole","Passeriformes","Icteridae","Icterus","cucullatus",24.3,2,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5050
+1359,"Bullock's Oriole","Passeriformes","Icteridae","Icterus","bullockii",37.9,NA,NA,NA,"Oklahoma, USA",NA,NA,NA,NA,NA,NA,NA,5080
+1361,"Spot-breasted Oriole","Passeriformes","Icteridae","Icterus","pectoralis",46.5,NA,"m",NA,"Western Mexico; El Salvador",NA,NA,NA,NA,NA,NA,NA,5032
+1362,"Altamira Oriole","Passeriformes","Icteridae","Icterus","gularis",51.5,NA,"f","yucatanensis","Yucatan, Mexico",NA,NA,NA,NA,NA,NA,NA,5031
+1362,"Altamira Oriole","Passeriformes","Icteridae","Icterus","gularis",59.1,NA,"m","yucatanensis","Yucatan, Mexico",NA,NA,NA,NA,NA,NA,NA,5031
+1363,"Audubon's Oriole","Passeriformes","Icteridae","Icterus","graduacauda",42.2,4.9,NA,NA,"Mexico",NA,NA,NA,NA,NA,NA,NA,5030
+1364,"Baltimore Oriole","Passeriformes","Icteridae","Icterus","galbula",31.8,1.6,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5070
+1364,"Baltimore Oriole","Passeriformes","Icteridae","Icterus","galbula",33.9,2,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5070
+1368,"Scott's Oriole","Passeriformes","Icteridae","Icterus","parisorum",35.6,NA,NA,NA,"Texas, USA",NA,NA,NA,NA,NA,NA,NA,5040
+1368,"Scott's Oriole","Passeriformes","Icteridae","Icterus","parisorum",37.4,2.3,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5040
+1369,"Red-winged Blackbird","Passeriformes","Icteridae","Agelaius","phoeniceus",39.5,2.3,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4980
+1369,"Red-winged Blackbird","Passeriformes","Icteridae","Agelaius","phoeniceus",65.3,3.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4980
+1370,"Tricolored Blackbird","Passeriformes","Icteridae","Agelaius","tricolor",49.2,NA,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5000
+1370,"Tricolored Blackbird","Passeriformes","Icteridae","Agelaius","tricolor",68.2,3.6,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5000
+1372,"Shiny Cowbird","Passeriformes","Icteridae","Molothrus","bonariensis",31.9,1,"f","minimus","Puerto Rico",NA,NA,NA,NA,NA,NA,NA,4961
+1372,"Shiny Cowbird","Passeriformes","Icteridae","Molothrus","bonariensis",38.7,1.1,"m","minimus","Puerto Rico",NA,NA,NA,NA,NA,NA,NA,4961
+1372,"Shiny Cowbird","Passeriformes","Icteridae","Molothrus","bonariensis",40,6.5,NA,NA,"Dominican Republic",NA,NA,NA,NA,NA,NA,NA,4961
+1372,"Shiny Cowbird","Passeriformes","Icteridae","Molothrus","bonariensis",44.9,4.3,"f","bonariensis","Argentina",NA,NA,NA,NA,NA,NA,NA,4961
+1372,"Shiny Cowbird","Passeriformes","Icteridae","Molothrus","bonariensis",55.5,7.6,"m","bonariensis","Argentina",NA,NA,NA,NA,NA,NA,NA,4961
+1373,"Bronzed Cowbird","Passeriformes","Icteridae","Molothrus","aeneus",56.9,5.1,"f","aeneus","Texas, USA",NA,NA,NA,NA,NA,NA,NA,4960
+1373,"Bronzed Cowbird","Passeriformes","Icteridae","Molothrus","aeneus",68.9,4.2,"m","aeneus","Texas, USA",NA,NA,NA,NA,NA,NA,NA,4960
+1374,"Brown-headed Cowbird","Passeriformes","Icteridae","Molothrus","ater",32,3.8,"f","obscurus","California, USA",NA,NA,NA,NA,NA,NA,NA,4950
+1374,"Brown-headed Cowbird","Passeriformes","Icteridae","Molothrus","ater",37.6,3.6,"f","artemisiae","California, USA",NA,NA,NA,NA,NA,NA,NA,4950
+1374,"Brown-headed Cowbird","Passeriformes","Icteridae","Molothrus","ater",38.1,2.5,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4950
+1374,"Brown-headed Cowbird","Passeriformes","Icteridae","Molothrus","ater",40.2,3.4,"m","obscurus","California, USA",NA,NA,NA,NA,NA,NA,NA,4950
+1374,"Brown-headed Cowbird","Passeriformes","Icteridae","Molothrus","ater",47.5,3.7,"m","artemisiae","California, USA",NA,NA,NA,NA,NA,NA,NA,4950
+1374,"Brown-headed Cowbird","Passeriformes","Icteridae","Molothrus","ater",48.7,2.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,4950
+1378,"Rusty Blackbird","Passeriformes","Icteridae","Euphagus","carolinus",55.2,3.6,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5090
+1378,"Rusty Blackbird","Passeriformes","Icteridae","Euphagus","carolinus",64.3,2.4,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5090
+1379,"Brewer's Blackbird","Passeriformes","Icteridae","Euphagus","cyanocephalus",58.1,4.9,"f",NA,"Oregon, USA",NA,NA,NA,NA,NA,NA,NA,5100
+1379,"Brewer's Blackbird","Passeriformes","Icteridae","Euphagus","cyanocephalus",67.2,3.2,"m",NA,"Oregon, USA",NA,NA,NA,NA,NA,NA,NA,5100
+1380,"Common Grackle","Passeriformes","Icteridae","Quiscalus","quiscula",92.2,7.3,"f",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,5110
+1380,"Common Grackle","Passeriformes","Icteridae","Quiscalus","quiscula",120,7.1,"m",NA,"Illinois, USA",NA,NA,NA,NA,NA,NA,NA,5110
+1381,"Boat-tailed Grackle","Passeriformes","Icteridae","Quiscalus","major",111,8.9,"f",NA,"South Carolina, USA",NA,NA,NA,NA,NA,NA,NA,5130
+1381,"Boat-tailed Grackle","Passeriformes","Icteridae","Quiscalus","major",206,14.3,"m",NA,"South Carolina, USA",NA,NA,NA,NA,NA,NA,NA,5130
+1382,"Great-tailed Grackle","Passeriformes","Icteridae","Quiscalus","mexicanus",116,9.1,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,5120
+1382,"Great-tailed Grackle","Passeriformes","Icteridae","Quiscalus","mexicanus",222,18.5,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,5120
+1384,"Ovenbird","Passeriformes","Parulidae","Seiurus","aurocapilla",18.8,1.2,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6740
+1385,"Worm-eating Warbler","Passeriformes","Parulidae","Helmitheros","vermivorum",13.2,0.7,"m",NA,"Connecticut, USA",NA,NA,NA,NA,NA,NA,NA,6390
+1385,"Worm-eating Warbler","Passeriformes","Parulidae","Helmitheros","vermivorum",15.2,2.2,"f",NA,"Connecticut, USA",NA,NA,NA,NA,NA,NA,NA,6390
+1386,"Louisiana Waterthrush","Passeriformes","Parulidae","Parkesia","motacilla",19.9,NA,NA,NA,"Pennsylvania, USA",1,"Seiurus motacilla",NA,NA,NA,NA,NA,6760
+1387,"Northern Waterthrush","Passeriformes","Parulidae","Parkesia","noveboracensis",16.3,1.1,NA,NA,"Pennsylvania, USA",1,"Seiurus noveboracensis",NA,NA,NA,NA,NA,6750
+1388,"Golden-winged Warbler","Passeriformes","Parulidae","Vermivora","chrysoptera",8.6,0.6,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6420
+1388,"Golden-winged Warbler","Passeriformes","Parulidae","Vermivora","chrysoptera",8.9,0.7,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6420
+1389,"Blue-winged Warbler","Passeriformes","Parulidae","Vermivora","pinus",8.9,NA,NA,NA,"West Virginia, USA",NA,NA,NA,NA,NA,NA,NA,NA
+1389,"Blue-winged Warbler","Passeriformes","Parulidae","Vermivora","cyanoptera",NA,NA,NA,NA,NA,1,"Vermivora pinus",1,"Vermivora","pinus",NA,"Pinus changed to cynaoptera in 2010",6410
+1392,"Black-and-white Warbler","Passeriformes","Parulidae","Mniotilta","varia",10.9,NA,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6360
+1393,"Prothonotary Warbler","Passeriformes","Parulidae","Protonotaria","citrea",14.3,0.1,NA,NA,"Tennessee, USA",NA,NA,NA,NA,NA,NA,NA,6370
+1394,"Swainson's Warbler","Passeriformes","Parulidae","Limnothlypis","swainsonii",18.9,1.7,NA,NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,6380
+1396,"Tennessee Warbler","Passeriformes","Parulidae","Oreothlypis","peregrina",8.9,1.1,NA,NA,"El Salvador",1,"Vermivora peregrina",NA,NA,NA,NA,NA,6470
+1397,"Orange-crowned Warbler","Passeriformes","Parulidae","Oreothlypis","celata",9,0.8,NA,NA,"California, USA",1,"Vermivora celata",NA,NA,NA,NA,NA,6460
+1397,"Orange-crowned Warbler","Passeriformes","Parulidae","Oreothlypis","celata",9.4,0.8,NA,"sordida","Channel Is., California, USA",1,"Vermivora celata sordida",NA,NA,NA,NA,NA,6460
+1399,"Lucy's Warbler","Passeriformes","Parulidae","Oreothlypis","luciae",6.6,0.5,NA,NA,"Arizona, USA",1,"Vermivora luciae",NA,NA,NA,NA,NA,6430
+1400,"Nashville Warbler","Passeriformes","Parulidae","Oreothlypis","ruficapilla",7.9,0.4,"f",NA,"Pennsylvania, USA",1,"Vermivora ruficapilla",NA,NA,NA,NA,NA,6450
+1400,"Nashville Warbler","Passeriformes","Parulidae","Oreothlypis","ruficapilla",8.3,0.5,"m",NA,"Pennsylvania, USA",1,"Vermivora ruficapilla",NA,NA,NA,NA,NA,6450
+1401,"Virginia's Warbler","Passeriformes","Parulidae","Oreothlypis","virginiae",8.2,NA,NA,NA,"Arizona, USA",1,"Vermivora virginiae",NA,NA,NA,NA,NA,6440
+1402,"Connecticut Warbler","Passeriformes","Parulidae","Oporornis","agilis",13.3,NA,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6780
+1404,"MacGillivray's Warbler","Passeriformes","Parulidae","Geothlypis","tolmiei",10.4,1.2,NA,NA,"Arizona, USA",1,"Oporornis tolmiei",NA,NA,NA,NA,NA,6800
+1405,"Mourning Warbler","Passeriformes","Parulidae","Geothlypis","philadelphia",11.5,0.7,"f",NA,"Pennsylvania, USA",1,"Oporornis philadelphia",NA,NA,NA,NA,NA,6790
+1405,"Mourning Warbler","Passeriformes","Parulidae","Geothlypis","philadelphia",12,0.7,"m",NA,"Pennsylvania, USA",1,"Oporornis philadelphia",NA,NA,NA,NA,NA,6790
+1406,"Kentucky Warbler","Passeriformes","Parulidae","Geothlypis","formosa",14,NA,NA,NA,"Pennsylvania, USA",1,"Oporornis formosus",NA,NA,NA,NA,NA,6770
+1410,"Common Yellowthroat","Passeriformes","Parulidae","Geothlypis","trichas",9.2,0.6,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6810
+1410,"Common Yellowthroat","Passeriformes","Parulidae","Geothlypis","trichas",9.2,NA,"m","scirpicola","California, USA",NA,NA,NA,NA,NA,NA,NA,6810
+1410,"Common Yellowthroat","Passeriformes","Parulidae","Geothlypis","trichas",9.7,0.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6810
+1410,"Common Yellowthroat","Passeriformes","Parulidae","Geothlypis","trichas",10.1,NA,"m","occidentalis","Western USA",NA,NA,NA,NA,NA,NA,NA,6810
+1412,"Hooded Warbler","Passeriformes","Parulidae","Setophaga","citrina",10.3,0.7,"f",NA,"Pennsylvania, USA",1,"Wilsonia citrina",NA,NA,NA,NA,NA,6840
+1412,"Hooded Warbler","Passeriformes","Parulidae","Setophaga","citrina",10.8,0.6,"m",NA,"Pennsylvania, USA",1,"Wilsonia citrina",NA,NA,NA,NA,NA,6840
+1413,"American Redstart","Passeriformes","Parulidae","Setophaga","ruticilla",8.1,0.6,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6870
+1413,"American Redstart","Passeriformes","Parulidae","Setophaga","ruticilla",8.4,0.6,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6870
+1414,"Kirtland's Warbler","Passeriformes","Parulidae","Setophaga","kirtlandii",13.6,0.6,"m",NA,"Michigan, USA",1,"Dendroica kirtlandii",NA,NA,NA,NA,NA,6700
+1414,"Kirtland's Warbler","Passeriformes","Parulidae","Setophaga","kirtlandii",14.3,1.2,"f",NA,"Michigan, USA",1,"Dendroica kirtlandii",NA,NA,NA,NA,NA,6700
+1415,"Cape May Warbler","Passeriformes","Parulidae","Setophaga","tigrina",9.8,0.6,"f",NA,"Pennsylvania, USA",1,"Dendroica tigrina",NA,NA,NA,NA,NA,6500
+1415,"Cape May Warbler","Passeriformes","Parulidae","Setophaga","tigrina",10.3,0.6,"m",NA,"Pennsylvania, USA",1,"Dendroica tigrina",NA,NA,NA,NA,NA,6500
+1416,"Cerulean Warbler","Passeriformes","Parulidae","Setophaga","cerulea",8.8,0.6,"f",NA,"Pennsylvania, USA",1,"Dendroica cerulea",NA,NA,NA,NA,NA,6580
+1416,"Cerulean Warbler","Passeriformes","Parulidae","Setophaga","cerulea",9.3,0.6,"m",NA,"Pennsylvania, USA",1,"Dendroica cerulea",NA,NA,NA,NA,NA,6580
+1417,"Northern Parula","Passeriformes","Parulidae","Setophaga","americana",7.3,0.6,"f",NA,"Pennsylvania, USA",1,"Parula americana",NA,NA,NA,NA,NA,6480
+1417,"Northern Parula","Passeriformes","Parulidae","Setophaga","americana",7.7,0.4,"m",NA,"Pennsylvania, USA",1,"Parula americana",NA,NA,NA,NA,NA,6480
+1417,"Northern Parula","Passeriformes","Parulidae","Setophaga","americana",8.6,NA,NA,NA,"Florida, USA",1,"Parula americana",NA,NA,NA,NA,NA,6480
+1418,"Tropical Parula","Passeriformes","Parulidae","Setophaga","pitiayumi",6.6,NA,"f",NA,"Panama",1,"Parula pitiayumi",NA,NA,NA,NA,NA,6490
+1418,"Tropical Parula","Passeriformes","Parulidae","Setophaga","pitiayumi",6.7,NA,NA,"insularis","Tres Marias Is., Mexico",1,"Parula pitiayumi insularis",NA,NA,NA,NA,NA,6490
+1418,"Tropical Parula","Passeriformes","Parulidae","Setophaga","pitiayumi",7.2,0.4,"m",NA,"Panama",1,"Parula pitiayumi",NA,NA,NA,NA,NA,6490
+1419,"Magnolia Warbler","Passeriformes","Parulidae","Setophaga","magnolia",7.9,0.5,"f",NA,"Pennsylvania, USA",1,"Dendroica magnolia",NA,NA,NA,NA,NA,6570
+1419,"Magnolia Warbler","Passeriformes","Parulidae","Setophaga","magnolia",8.4,0.5,"m",NA,"Pennsylvania, USA",1,"Dendroica magnolia",NA,NA,NA,NA,NA,6570
+1420,"Bay-breasted Warbler","Passeriformes","Parulidae","Setophaga","castanea",11.8,NA,NA,NA,"Pennsylvania, USA",1,"Dendroica castanea",NA,NA,NA,NA,NA,6600
+1421,"Blackburnian Warbler","Passeriformes","Parulidae","Setophaga","fusca",9.5,0.6,"f",NA,NA,1,"Dendroica fusca",NA,NA,NA,NA,NA,6620
+1421,"Blackburnian Warbler","Passeriformes","Parulidae","Setophaga","fusca",10,2,"m",NA,NA,1,"Dendroica fusca",NA,NA,NA,NA,NA,6620
+1422,"Yellow Warbler","Passeriformes","Parulidae","Setophaga","petechia",9.2,0.5,"f",NA,"Pennsylvania, USA",1,"Dendroica petechia",NA,NA,NA,NA,NA,6520
+1422,"Yellow Warbler","Passeriformes","Parulidae","Setophaga","petechia",9.6,0.5,"m",NA,"Pennsylvania, USA",1,"Dendroica petechia",NA,NA,NA,NA,NA,6520
+1422,"Yellow Warbler","Passeriformes","Parulidae","Setophaga","petechia",9.6,0.8,NA,NA,"Guadeloupe",1,"Dendroica petechia",NA,NA,NA,NA,NA,6520
+1422,"Yellow Warbler","Passeriformes","Parulidae","Setophaga","petechia",10,NA,NA,"aestiva","Panama",1,"Dendroica petechia aestiva",NA,NA,NA,NA,NA,6520
+1422,"Yellow Warbler","Passeriformes","Parulidae","Setophaga","petechia",10.9,NA,"f","cruciana","Puerto Rico",1,"Dendroica petechia cruciana",NA,NA,NA,NA,NA,6520
+1422,"Yellow Warbler","Passeriformes","Parulidae","Setophaga","petechia",12.4,0.7,"m","cruciana","Puerto Rico",1,"Dendroica petechia cruciana",NA,NA,NA,NA,NA,6520
+1423,"Chestnut-sided Warbler","Passeriformes","Parulidae","Setophaga","pensylvanica",9.1,0.5,"f",NA,"Pennsylvania, USA",1,"Dendroica pensylvanica",NA,NA,NA,NA,NA,6590
+1423,"Chestnut-sided Warbler","Passeriformes","Parulidae","Setophaga","pensylvanica",9.5,0.6,"m",NA,"Pennsylvania, USA",1,"Dendroica pensylvanica",NA,NA,NA,NA,NA,6590
+1424,"Blackpoll Warbler","Passeriformes","Parulidae","Setophaga","striata",11.4,0.6,"f",NA,"Pennsylvania, USA",1,"Dendroica striata",NA,NA,NA,NA,NA,6610
+1424,"Blackpoll Warbler","Passeriformes","Parulidae","Setophaga","striata",12.3,0.6,"m",NA,"Pennsylvania, USA",1,"Dendroica striata",NA,NA,NA,NA,NA,6610
+1425,"Black-throated Blue Warbler","Passeriformes","Parulidae","Setophaga","caerulescens",9.8,NA,"f",NA,"Florida, USA",1,"Dendroica caerulescens",NA,NA,NA,NA,NA,6540
+1425,"Black-throated Blue Warbler","Passeriformes","Parulidae","Setophaga","caerulescens",10.5,NA,"m",NA,"Florida, USA",1,"Dendroica caerulescens",NA,NA,NA,NA,NA,6540
+1426,"Palm Warbler","Passeriformes","Parulidae","Setophaga","palmarum",10.3,0.5,NA,NA,"Pennsylvania, USA",1,"Dendroica palmarum",NA,NA,NA,NA,NA,6720
+1427,"Pine Warbler","Passeriformes","Parulidae","Setophaga","pinus",11.2,1.7,NA,NA,"North Carolina, USA",1,"Dendroica pinus",NA,NA,NA,NA,NA,6710
+1427,"Pine Warbler","Passeriformes","Parulidae","Setophaga","pinus",11.9,1.2,NA,NA,"Minnesota, USA",1,"Dendroica pinus",NA,NA,NA,NA,NA,6710
+1427,"Pine Warbler","Passeriformes","Parulidae","Setophaga","pinus",12.3,1.4,NA,NA,"Florida, USA",1,"Dendroica pinus",NA,NA,NA,NA,NA,6710
+1430,"(unid. Myrtle/Audubon's) Yellow-rumped Warbler","Passeriformes","Parulidae","Setophaga","coronata",11.4,0.6,"f",NA,"Pennsylvania, USA",1,"Dendroica coronata",NA,NA,NA,NA,NA,6556
+1430,"(unid. Myrtle/Audubon's) Yellow-rumped Warbler","Passeriformes","Parulidae","Setophaga","coronata",11.9,0.9,"f","auduboni","California, USA",1,"Dendroica coronata auduboni",NA,NA,NA,NA,NA,6556
+1430,"(unid. Myrtle/Audubon's) Yellow-rumped Warbler","Passeriformes","Parulidae","Setophaga","coronata",12.2,0.7,"m",NA,"Pennsylvania, USA",1,"Dendroica coronata",NA,NA,NA,NA,NA,6556
+1430,"(unid. Myrtle/Audubon's) Yellow-rumped Warbler","Passeriformes","Parulidae","Setophaga","coronata",12.3,0.9,"m","auduboni","California, USA",1,"Dendroica coronata auduboni",NA,NA,NA,NA,NA,6556
+1431,"Yellow-throated Warbler","Passeriformes","Parulidae","Setophaga","dominica",9.5,NA,"f",NA,"Pennsylvania, USA",1,"Dendroica dominica",NA,NA,NA,NA,NA,6630
+1431,"Yellow-throated Warbler","Passeriformes","Parulidae","Setophaga","dominica",9.9,NA,"m",NA,"Pennsylvania, USA",1,"Dendroica dominica",NA,NA,NA,NA,NA,6630
+1432,"Prairie Warbler","Passeriformes","Parulidae","Setophaga","discolor",7.3,0.9,"f",NA,"Florida, USA",1,"Dendroica discolor",NA,NA,NA,NA,NA,6730
+1432,"Prairie Warbler","Passeriformes","Parulidae","Setophaga","discolor",8,0.9,"m",NA,"Florida, USA",1,"Dendroica discolor",NA,NA,NA,NA,NA,6730
+1433,"Grace's Warbler","Passeriformes","Parulidae","Setophaga","graciae",8.1,NA,NA,NA,"Nevada, USA",1,"Dendroica graciae",NA,NA,NA,NA,NA,6640
+1434,"Black-throated Gray Warbler","Passeriformes","Parulidae","Setophaga","nigrescens",8.7,0.6,NA,NA,"Oregon & California, USA",1,"Dendroica nigrescens",NA,NA,NA,NA,NA,6650
+1435,"Townsend's Warbler","Passeriformes","Parulidae","Setophaga","townsendi",8.6,0.7,"f",NA,"California, USA",1,"Dendroica townsendi",NA,NA,NA,NA,NA,6680
+1435,"Townsend's Warbler","Passeriformes","Parulidae","Setophaga","townsendi",9.1,0.7,"m",NA,"California, USA",1,"Dendroica townsendi",NA,NA,NA,NA,NA,6680
+1436,"Hermit Warbler","Passeriformes","Parulidae","Setophaga","occidentalis",10.4,NA,NA,NA,"Western USA",1,"Dendroica occidentalis",NA,NA,NA,NA,NA,6690
+1439,"Golden-cheeked Warbler","Passeriformes","Parulidae","Setophaga","chrysoparia",9.9,NA,NA,NA,"Texas, USA",1,"Dendroica chrysoparia",NA,NA,NA,NA,NA,6660
+1440,"Black-throated Green Warbler","Passeriformes","Parulidae","Setophaga","virens",8.5,0.5,"f",NA,"Pennsylvania, USA",1,"Dendroica virens",NA,NA,NA,NA,NA,6670
+1440,"Black-throated Green Warbler","Passeriformes","Parulidae","Setophaga","virens",8.9,0.5,"m",NA,"Pennsylvania, USA",1,"Dendroica virens",NA,NA,NA,NA,NA,6670
+1445,"Canada Warbler","Passeriformes","Parulidae","Cardellina","canadensis",9.8,0.6,"f",NA,"Pennsylvania, USA",1,"Wilsonia canadensis",NA,NA,NA,NA,NA,6860
+1445,"Canada Warbler","Passeriformes","Parulidae","Cardellina","canadensis",10.3,0.5,"m",NA,"Pennsylvania, USA",1,"Wilsonia canadensis",NA,NA,NA,NA,NA,6860
+1446,"Wilson's Warbler","Passeriformes","Parulidae","Cardellina","pusilla",6.7,0.3,"f",NA,"California, USA",1,"Wilsonia pusilla",NA,NA,NA,NA,NA,6850
+1446,"Wilson's Warbler","Passeriformes","Parulidae","Cardellina","pusilla",7,0.5,"m",NA,"California, USA",1,"Wilsonia pusilla",NA,NA,NA,NA,NA,6850
+1446,"Wilson's Warbler","Passeriformes","Parulidae","Cardellina","pusilla",7.2,0.4,NA,NA,"Pennsylvania, USA",1,"Wilsonia pusilla",NA,NA,NA,NA,NA,6850
+1447,"Red-faced Warbler","Passeriformes","Parulidae","Cardellina","rubrifrons",9.8,NA,NA,NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,6900
+1450,"Painted Redstart","Passeriformes","Parulidae","Myioborus","pictus",9.7,NA,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,6880
+1450,"Painted Redstart","Passeriformes","Parulidae","Myioborus","pictus",9.9,NA,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,6880
+1453,"Hepatic Tanager","Passeriformes","Cardinalidae","Piranga","flava",37.7,3.9,NA,NA,"Mexico; Belize",NA,NA,NA,NA,NA,NA,NA,6090
+1454,"Summer Tanager","Passeriformes","Cardinalidae","Piranga","rubra",28.2,3.2,NA,NA,"Louisiana, USA",NA,NA,NA,NA,NA,NA,NA,6100
+1454,"Summer Tanager","Passeriformes","Cardinalidae","Piranga","rubra",30.1,1.9,NA,NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,6100
+1455,"Scarlet Tanager","Passeriformes","Cardinalidae","Piranga","olivacea",28.2,NA,NA,NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,6080
+1456,"Western Tanager","Passeriformes","Cardinalidae","Piranga","ludoviciana",28.1,NA,NA,NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,6070
+1464,"Northern Cardinal","Passeriformes","Cardinalidae","Cardinalis","cardinalis",41.8,2.6,"f",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5930
+1464,"Northern Cardinal","Passeriformes","Cardinalidae","Cardinalis","cardinalis",43.5,2.9,"m",NA,"Pennsylvania, USA",NA,NA,NA,NA,NA,NA,NA,5930
+1465,"Pyrrhuloxia","Passeriformes","Cardinalidae","Cardinalis","sinuatus",34.6,2.6,"f",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5940
+1465,"Pyrrhuloxia","Passeriformes","Cardinalidae","Cardinalis","sinuatus",35.8,2.4,"m",NA,"Arizona, USA",NA,NA,NA,NA,NA,NA,NA,5940
+1468,"Rose-breasted Grosbeak","Passeriformes","Cardinalidae","Pheucticus","ludovicianus",42,NA,NA,NA,"Bolivia",NA,NA,NA,NA,NA,NA,NA,5950
+1469,"Black-headed Grosbeak","Passeriformes","Cardinalidae","Pheucticus","melanocephalus",46.1,3.3,"m",NA,"New Mexico, USA",NA,NA,NA,NA,NA,NA,NA,5960
+1469,"Black-headed Grosbeak","Passeriformes","Cardinalidae","Pheucticus","melanocephalus",48.2,4.8,"f",NA,"New Mexico, USA",NA,NA,NA,NA,NA,NA,NA,5960
+1475,"Blue Grosbeak","Passeriformes","Cardinalidae","Passerina","caerulea",27,2,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,5970
+1475,"Blue Grosbeak","Passeriformes","Cardinalidae","Passerina","caerulea",27.8,2.3,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,5970
+1476,"Lazuli Bunting","Passeriformes","Cardinalidae","Passerina","amoena",15,NA,"f",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5990
+1476,"Lazuli Bunting","Passeriformes","Cardinalidae","Passerina","amoena",16,NA,"m",NA,"California, USA",NA,NA,NA,NA,NA,NA,NA,5990
+1477,"Indigo Bunting","Passeriformes","Cardinalidae","Passerina","cyanea",14.4,9.6,"f",NA,"Michigan, USA",NA,NA,NA,NA,NA,NA,NA,5980
+1477,"Indigo Bunting","Passeriformes","Cardinalidae","Passerina","cyanea",15,0.7,"m",NA,"Michigan, USA",NA,NA,NA,NA,NA,NA,NA,5980
+1481,"Varied Bunting","Passeriformes","Cardinalidae","Passerina","versicolor",12.8,1.7,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,6000
+1481,"Varied Bunting","Passeriformes","Cardinalidae","Passerina","versicolor",13,1.8,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,6000
+1482,"Painted Bunting","Passeriformes","Cardinalidae","Passerina","ciris",15,NA,"f",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,6010
+1482,"Painted Bunting","Passeriformes","Cardinalidae","Passerina","ciris",16.1,NA,"m",NA,"Florida, USA",NA,NA,NA,NA,NA,NA,NA,6010
+1483,"Dickcissel","Passeriformes","Cardinalidae","Spiza","americana",23.3,1.5,"f",NA,"Venezuela",NA,NA,NA,NA,NA,NA,NA,6040
+1483,"Dickcissel","Passeriformes","Cardinalidae","Spiza","americana",25.2,NA,"f",NA,NA,NA,NA,NA,NA,NA,NA,NA,6040
+1483,"Dickcissel","Passeriformes","Cardinalidae","Spiza","americana",28.1,1.8,"m",NA,"Venezuela",NA,NA,NA,NA,NA,NA,NA,6040
+1483,"Dickcissel","Passeriformes","Cardinalidae","Spiza","americana",28.5,0.7,"m",NA,NA,NA,NA,NA,NA,NA,NA,NA,6040

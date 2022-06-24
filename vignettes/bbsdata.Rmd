@@ -98,6 +98,9 @@ species <- birdsize:::bbs_species_table
 
 raw_masses <- raw_masses
 
+
+# Some of this code taken from MATSS::filter_bbs_species
+
 is_unidentified <- function(names) {
   names[names == "auratus auratus x auratus cafer"] = "auratus auratus"
   grepl("sp\\.| x |\\/", names)
@@ -105,8 +108,8 @@ is_unidentified <- function(names) {
 
 species_raw_masses_match <- species %>%
   select(aou, english_common_name, genus, species) %>%
-  left_join(select(raw_masses, aou, mass)) %>%
-  dplyr::filter(!is_unidentified(.data$species)) %>% 
+  right_join(raw_masses, by = "aou") %>%
+  dplyr::filter(!is_unidentified(.data$species.x), !is_unidentified(.data$species.y)) %>% 
   dplyr::filter(.data$aou > 2880) %>% 
   dplyr::filter(.data$aou < 3650 | .data$aou > 3810) %>% 
   dplyr::filter(.data$aou < 3900 | .data$aou > 3910) %>% 
@@ -114,7 +117,7 @@ species_raw_masses_match <- species %>%
   dplyr::filter(.data$aou != 7010) 
 
 species_no_aou_match <- species_raw_masses_match %>%
-  filter(is.na(mass))
+  filter(is.na(species.y))
 
 
 ```
