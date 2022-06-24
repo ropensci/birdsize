@@ -17,6 +17,10 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(birdsize)
+library(dplyr)
+```
+
+```{r setup don't eval, eval = F}
 library(DBI)
 ```
 
@@ -48,44 +52,96 @@ rdataretriever::install_sqlite("breed-bird-survey", file = "bbs.sqlite", data_di
 # Accessing the data
 
 
-```{r}
+```{r, eval = F}
 
 bbs_db <- dbConnect(RSQLite::SQLite(), '../../retriever_data/bbs.sqlite')
 
 ```
 
 
-```{r}
+```{r, eval = F}
 surveys <- dplyr::tbl(bbs_db, "breed_bird_survey_counts")
 sites <- dplyr::tbl(bbs_db, "breed_bird_survey_routes")
 species <- dplyr::tbl(bbs_db, "breed_bird_survey_species")
 
-
-surveys %>% dplyr::select(aou, speciestotal)
-
-colnames(surveys)
-
-
 ```
 
-# Surveys cleaning after MATSS
+# Extracting a single route 
 
-```{r}
+Extracting a single route from `surveys`:
 
-surveys %>% select(statenum, route) %>% distinct()
+```{r, eval =F}
 
-one_route <- surveys %>%
-  filter(statenum == 2,
-         route == 1) %>%
+new_hartford_raw <- surveys %>%
+  filter(statenum == 18,
+         route == 102) %>%
   as.data.frame() %>%
   mutate(abundance = speciestotal,
          species_id = aou)
-one_cleaned_route <- MATSS::combine_bbs_subspecies(one_route, as.data.frame(species)) %>%
-  MATSS::filter_bbs_species(species_table = as.data.frame(species))
+```
 
-sum(one_cleaned_route$aou %in% raw_masses$species_id)
+```{r, eval = F}
+bbs_species_table <- as.data.frame(species)
+
+usethis::use_data(bbs_species_table, internal = T) # don't want to keep this around too much
+usethis::use_data(new_hartford_raw)
 
 ```
+
+To avoid having to interface with the retriever in a vignette, `new_hartford_raw` is included in `birdsize`:
+
+
+```{r}
+
+new_hartford_raw <- new_hartford_raw
+species <- birdsize:::bbs_species_table
+
+raw_masses <- raw_masses
+
+
+# Some of this code taken from MATSS::filter_bbs_species
+
+is_unidentified <- function(names) {
+  names[names == "auratus auratus x auratus cafer"] = "auratus auratus"
+  grepl("sp\\.| x |\\/", names)
+}
+
+species_raw_masses_match <- species %>%
+  select(aou, english_common_name, genus, species) %>%
+  right_join(raw_masses, by = "aou") %>%
+  dplyr::filter(!is_unidentified(.data$species.x), !is_unidentified(.data$species.y)) %>% 
+  dplyr::filter(.data$aou > 2880) %>% 
+  dplyr::filter(.data$aou < 3650 | .data$aou > 3810) %>% 
+  dplyr::filter(.data$aou < 3900 | .data$aou > 3910) %>% 
+  dplyr::filter(.data$aou < 4160 | .data$aou > 4210) %>% 
+  dplyr::filter(.data$aou != 7010) 
+
+species_no_aou_match <- species_raw_masses_match %>%
+  filter(is.na(species.y))
+
+
+```
+
+# Cleaning data
+
+Following Harris et al (2018) and convention, removing taxa not well captured by the BBS methodology (nightbirds, waterbirds).
+
+```{r}
+
+new_hartford_cleaned <- MATSS::combine_bbs_subspecies(new_hartford_raw, as.data.frame(species)) %>%
+  MATSS::filter_bbs_species(species_table = as.data.frame(species))
+
+
+filter(new_hartford, !(aou %in% new_hartford_cleaned$aou)) %>%
+  select(aou) %>%
+  distinct() %>%
+  left_join(as.data.frame(species))
+
+```
+
+
+
+
 
 ```{r}
 DBI::dbDisconnect(bbs_db)
