@@ -108,7 +108,7 @@ clean_sp_size_data <- function(raw_size_data) {
 
     sp_to_add <- matched_rows %>%
       dplyr::mutate(
-        species_id = name_change$species_id[i],
+        aou = name_change$aou[i],
         added_flag = 1
       )
 
@@ -157,17 +157,18 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' }
 #'
 #'
-#' @importFrom dplyr group_by summarize ungroup
+#' @importFrom dplyr group_by summarize ungroup filter
 #' @importFrom rlang .data
 get_sp_mean_size <- function(sd_dat) {
   sp_means <- sd_dat %>%
-    dplyr::group_by(.data$species_id, .data$genus, .data$species) %>%
+    dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
     dplyr::summarize(
       mean_mass = mean(.data$mass),
       mean_sd = mean(.data$sd, na.rm = F),
       contains_estimates = any(.data$estimated_sd)
     ) %>%
-    dplyr::ungroup()
+    dplyr::ungroup() %>%
+    dplyr::filter(!is.na(.data$aou))
 
   sp_means
 }
@@ -196,7 +197,7 @@ generate_sd_table <- function(raw_size_data) {
   clean_size_dat <- clean_sp_size_data(raw_size_data)
 
   # Add estimates for missing standard deviation records
-  sd_size_dat <- add_estimated_sds(
+  sd_size_dat <-add_estimated_sds(
     clean_size_data = clean_size_dat,
     sd_pars = fitted_pars
   )
