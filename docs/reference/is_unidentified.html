@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Species lookup — species_lookup • birdsize</title>
+<title>Check for unidentified species — is_unidentified • birdsize</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Species lookup — species_lookup" />
-<meta property="og:description" content="Given either AOU or genus and species, looks up a species' taxonomic information and mean and standard deviation of body size in sd_table." />
+<meta property="og:title" content="Check for unidentified species — is_unidentified" />
+<meta property="og:description" content="Derived from MATSS, originally derived from Harris et al 2018 (weecology/bbs-forecasting)" />
 
 
 
@@ -126,48 +126,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Species lookup</h1>
-    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/species_define.R'><code>R/species_define.R</code></a></small>
-    <div class="hidden name"><code>species_lookup.Rd</code></div>
+    <h1>Check for unidentified species</h1>
+    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/species_data_functions.R'><code>R/species_data_functions.R</code></a></small>
+    <div class="hidden name"><code>is_unidentified.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Given either AOU or genus and species, looks up a species' taxonomic information and mean and standard deviation of body size in <a href='sd_table.html'>sd_table</a>.</p>
+    <p>Derived from MATSS, originally derived from Harris et al 2018 (weecology/bbs-forecasting)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>species_lookup</span><span class='op'>(</span>aou <span class='op'>=</span> <span class='cn'>NULL</span>, genus <span class='op'>=</span> <span class='cn'>NULL</span>, species <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>is_unidentified</span><span class='op'>(</span><span class='va'>names</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>aou</th>
-      <td><p>AOU species code as specified in the Breeding Bird Survey</p></td>
-    </tr>
-    <tr>
-      <th>genus</th>
-      <td><p>genus</p></td>
-    </tr>
-    <tr>
-      <th>species</th>
-      <td><p>species</p></td>
+      <th>names</th>
+      <td><p>species name</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates</p>
+    <p>logical</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>species_lookup</span><span class='op'>(</span>aou <span class='op'>=</span> <span class='fl'>2881</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 6</span>
-#&gt;     aou genus  species mean_mass mean_sd contains_estimates
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>             
-#&gt; <span style='color: #BCBCBC;'>1</span>  <span style='text-decoration: underline;'>2</span>881 Perdix perdix       406.      31 FALSE             </div><div class='input'><span class='fu'>species_lookup</span><span class='op'>(</span>genus <span class='op'>=</span> <span class='st'>"Selasphorus"</span>, species <span class='op'>=</span> <span class='st'>"calliope"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 6</span>
-#&gt;     aou genus       species  mean_mass mean_sd contains_estimates
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>             
-#&gt; <span style='color: #BCBCBC;'>1</span>  <span style='text-decoration: underline;'>4</span>360 Selasphorus calliope      2.65   0.182 TRUE              </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -10,25 +10,21 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  eval = F
+  comment = "#>"
 )
-```
 
-```{r setup}
+
 library(birdsize)
 library(dplyr)
+
 ```
 
-```{r setup don't eval, eval = F}
-library(DBI)
-```
 
 # Downloading data using the data retriever
 
 The `rdataretriever` package provides an interface for accessing the Breeding Bird Survey data. 
 
-First, install the `rdataretriever` (and associated python installs) using the instructions [here](https://docs.ropensci.org/rdataretriever/#basic-installation). The following, taken from the Basic Install instructions at the link, worked for RMD in June 2022 on a 2020 Macbook Air running Catalina 10.15.7, R 4.0.3, existing conda but no preexisting miniconda install:
+To install the retriever and use it to access BBS data, follow the instructions [here](https://docs.ropensci.org/rdataretriever/#basic-installation). For example:
 
 ```{r, eval = F}
 install.packages('reticulate') # Install R package for interacting with Python
@@ -36,116 +32,67 @@ reticulate::install_miniconda() # Install Python
 reticulate::py_install('retriever') # Install the Python retriever package
 install.packages('rdataretriever') # Install the R package for running the retriever
 rdataretriever::get_updates() # Update the available datasets
-```
-
-Then use the retriever to download and preprocess the Breeding Bird Survey data. The path to the `data_dir` argument in `rdataretriever::install_sqlite` is *relative to the current working directory*. (Flagging this as something that may be problematic for inclusion in a package vignette.) 
-
-The following works for RMD:
-
-```{r, eval = F}
 
 rdataretriever::install_sqlite("breed-bird-survey", file = "bbs.sqlite", data_dir = "../retriever_data")
 
-```
-
-
-# Accessing the data
-
-
-```{r, eval = F}
+library(DBI)
 
 bbs_db <- dbConnect(RSQLite::SQLite(), '../../retriever_data/bbs.sqlite')
 
-```
-
-
-```{r, eval = F}
 surveys <- dplyr::tbl(bbs_db, "breed_bird_survey_counts")
 sites <- dplyr::tbl(bbs_db, "breed_bird_survey_routes")
 species <- dplyr::tbl(bbs_db, "breed_bird_survey_species")
 
 ```
 
-# Extracting a single route 
-
-Extracting a single route from `surveys`:
-
-```{r, eval =F}
-
-new_hartford_raw <- surveys %>%
-  filter(statenum == 18,
-         route == 102) %>%
-  as.data.frame() %>%
-  mutate(abundance = speciestotal,
-         species_id = aou)
-```
+The `community_` functions operate on a single survey route. The `sites` table contains information about the location, data quality of survey routes. The following extracts the route for New Hartford, CT. 
 
 ```{r, eval = F}
-bbs_species_table <- as.data.frame(species)
 
-usethis::use_data(bbs_species_table, internal = T) # don't want to keep this around too much
-usethis::use_data(new_hartford_raw)
+filter(sites, statenum == 18, route == 102)
+
+myroute <- surveys %>%
+  filter(statenum == 18,
+         route == 102) %>% # substitute the state number and 
+  as.data.frame() 
+
+DBI::dbDisconnect(bbs_db)
 
 ```
+These data are also included in `birdsize` as `new_hartford_raw`.
 
-To avoid having to interface with the retriever in a vignette, `new_hartford_raw` is included in `birdsize`:
-
-
-```{r}
+```{r, results = T}
 
 new_hartford_raw <- new_hartford_raw
-species <- birdsize:::bbs_species_table
 
-raw_masses <- raw_masses
-
-
-# Some of this code taken from MATSS::filter_bbs_species
-
-is_unidentified <- function(names) {
-  names[names == "auratus auratus x auratus cafer"] = "auratus auratus"
-  grepl("sp\\.| x |\\/", names)
-}
-
-species_raw_masses_match <- species %>%
-  select(aou, english_common_name, genus, species) %>%
-  right_join(raw_masses, by = "aou") %>%
-  dplyr::filter(!is_unidentified(.data$species.x), !is_unidentified(.data$species.y)) %>% 
-  dplyr::filter(.data$aou > 2880) %>% 
-  dplyr::filter(.data$aou < 3650 | .data$aou > 3810) %>% 
-  dplyr::filter(.data$aou < 3900 | .data$aou > 3910) %>% 
-  dplyr::filter(.data$aou < 4160 | .data$aou > 4210) %>% 
-  dplyr::filter(.data$aou != 7010) 
-
-species_no_aou_match <- species_raw_masses_match %>%
-  filter(is.na(species.y))
-
+niceOutput(new_hartford_raw)
 
 ```
+
+
 
 # Cleaning data
 
-Following Harris et al (2018) and convention, removing taxa not well captured by the BBS methodology (nightbirds, waterbirds).
+Following Harris et al (2018) and convention, removing taxa not well captured by the BBS methodology (nightbirds, waterbirds) and unidentified species.
 
 ```{r}
 
-new_hartford_cleaned <- MATSS::combine_bbs_subspecies(new_hartford_raw, as.data.frame(species)) %>%
-  MATSS::filter_bbs_species(species_table = as.data.frame(species))
-
-
-filter(new_hartford, !(aou %in% new_hartford_cleaned$aou)) %>%
-  select(aou) %>%
-  distinct() %>%
-  left_join(as.data.frame(species))
+new_hartford_cleaned <- new_hartford_raw %>%
+  filter_bbs_survey()
 
 ```
 
 
+For the New Hartford route, this removes `r nrow(new_hartford_raw) - nrow(new_hartford_cleaned)` records of `r length(unique(new_hartford_raw$aou)) - length(unique(new_hartford_cleaned$aou))` species.
 
-
+To characterize species composition for each route in each year, select the `species_total` column...
 
 ```{r}
-DBI::dbDisconnect(bbs_db)
+
+new_hartford_ready <- new_hartford_cleaned %>%
+  select(statenum, route, year, aou, speciestotal)
+
 ```
 
-The above is notes for later-RMD. For inclusion in a vignette, there will need to be a portable version of a subset of this data, possibly included in the package. I'm not sure on exactly what output version I'll want. And note you want to clean the raw survey data to remove nightbirds etc.
+
 

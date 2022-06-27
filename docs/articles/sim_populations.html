@@ -116,12 +116,12 @@ hummingbird <em>Selasphorus calliope</em>:</p>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span>
 <span class="co">#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance</span>
-<span class="co">#&gt; 1 4360 4360 Selasphorus calliope        2.556333      2.65 0.1828933       100</span>
-<span class="co">#&gt; 2 4360 4360 Selasphorus calliope        3.104524      2.65 0.1828933       100</span>
-<span class="co">#&gt; 3 4360 4360 Selasphorus calliope        2.834325      2.65 0.1828933       100</span>
-<span class="co">#&gt; 4 4360 4360 Selasphorus calliope        2.703554      2.65 0.1828933       100</span>
-<span class="co">#&gt; 5 4360 4360 Selasphorus calliope        2.611783      2.65 0.1828933       100</span>
-<span class="co">#&gt; 6 4360 4360 Selasphorus calliope        2.989833      2.65 0.1828933       100</span>
+<span class="co">#&gt; 1 4360 4360 Selasphorus calliope        2.556873      2.65 0.1818394       100</span>
+<span class="co">#&gt; 2 4360 4360 Selasphorus calliope        3.101904      2.65 0.1818394       100</span>
+<span class="co">#&gt; 3 4360 4360 Selasphorus calliope        2.833263      2.65 0.1818394       100</span>
+<span class="co">#&gt; 4 4360 4360 Selasphorus calliope        2.703245      2.65 0.1818394       100</span>
+<span class="co">#&gt; 5 4360 4360 Selasphorus calliope        2.612003      2.65 0.1818394       100</span>
+<span class="co">#&gt; 6 4360 4360 Selasphorus calliope        2.987874      2.65 0.1818394       100</span>
 <span class="co">#&gt;    sd_method</span>
 <span class="co">#&gt; 1 AOU lookup</span>
 <span class="co">#&gt; 2 AOU lookup</span>
@@ -140,20 +140,20 @@ hummingbird <em>Selasphorus calliope</em>:</p>
 included <code>sd_table</code> dataset:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sd_table</span>
-<span class="co">#&gt; # A tibble: 421 × 6</span>
+<span class="co">#&gt; # A tibble: 443 × 6</span>
 <span class="co">#&gt;      aou genus       species     mean_mass mean_sd contains_estimates</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;             </span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;             </span>
 <span class="co">#&gt;  1  2881 Perdix      perdix           406.    31   FALSE             </span>
-<span class="co">#&gt;  2  2882 Alectoris   chukar           504.    35.6 TRUE              </span>
-<span class="co">#&gt;  3  2890 Colinus     virginianus      172     12.1 TRUE              </span>
-<span class="co">#&gt;  4  2920 Oreortyx    pictus           233     16.4 TRUE              </span>
-<span class="co">#&gt;  5  2930 Callipepla  squamata         184     13.0 TRUE              </span>
+<span class="co">#&gt;  2  2882 Alectoris   chukar           504.    36.0 TRUE              </span>
+<span class="co">#&gt;  3  2890 Colinus     virginianus      172     12.2 TRUE              </span>
+<span class="co">#&gt;  4  2920 Oreortyx    pictus           233     16.6 TRUE              </span>
+<span class="co">#&gt;  5  2930 Callipepla  squamata         184     13.1 TRUE              </span>
 <span class="co">#&gt;  6  2940 Callipepla  californica      166.    14.3 TRUE              </span>
-<span class="co">#&gt;  7  2950 Callipepla  gambelii         166     11.7 TRUE              </span>
+<span class="co">#&gt;  7  2950 Callipepla  gambelii         166     11.8 TRUE              </span>
 <span class="co">#&gt;  8  2960 Cyrtonyx    montezumae       186.    16.8 FALSE             </span>
 <span class="co">#&gt;  9  2970 Dendragapus obscurus        1058.    71.0 FALSE             </span>
 <span class="co">#&gt; 10  2971 Dendragapus fuliginosus     1056     73.8 FALSE             </span>
-<span class="co">#&gt; # … with 411 more rows</span></code></pre></div>
+<span class="co">#&gt; # … with 433 more rows</span></code></pre></div>
 </div>
 <div id="using-a-known-mean-and-standard-deviation" class="section level2">
 <h2 class="hasAnchor">
@@ -208,12 +208,12 @@ mass:</p>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span><span class="op">)</span>
 <span class="co">#&gt;   aou id genus species individual_mass mean_size  sd_size abundance</span>
-<span class="co">#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.24259        25 1.743992       100</span>
-<span class="co">#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.45239        25 1.743992       100</span>
-<span class="co">#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        20.80068        25 1.743992       100</span>
-<span class="co">#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        23.76115        25 1.743992       100</span>
-<span class="co">#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.17548        25 1.743992       100</span>
-<span class="co">#&gt; 6  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.58924        25 1.743992       100</span>
+<span class="co">#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.24416        25 1.746196       100</span>
+<span class="co">#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.44791        25 1.746196       100</span>
+<span class="co">#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        20.79538        25 1.746196       100</span>
+<span class="co">#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        23.75958        25 1.746196       100</span>
+<span class="co">#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.17191        25 1.746196       100</span>
+<span class="co">#&gt; 6  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.58620        25 1.746196       100</span>
 <span class="co">#&gt;                sd_method</span>
 <span class="co">#&gt; 1 SD estimated from mean</span>
 <span class="co">#&gt; 2 SD estimated from mean</span>

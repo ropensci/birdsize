@@ -243,7 +243,7 @@ is_unidentified <- function(names) {
 filter_bbs_survey <- function(bbs_survey_data) {
 
   bbs_survey_data <- bbs_survey_data %>%
-    dplyr::filter(!is_unidentified(.data$species)) %>%
+    dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
     dplyr::filter(.data$aou > 2880) %>%
     dplyr::filter(.data$aou < 3650 | .data$aou > 3810) %>%
     dplyr::filter(.data$aou < 3900 | .data$aou > 3910) %>%
