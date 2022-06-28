@@ -1,19 +1,17 @@
-#' Prepare community data for sim fxns
+#' Generate samples community-wide
 #'
-#' @param community_data_table dataframe containing at least EITHER `aou` or `mean` and a column for species abundances
+#' @param community_data_table dataframe containing at least one of `aou` or `mean_size` and a column for species abundances
 #' @param abundance_column_name character, the name of the column with species abundances. Defaults to "speciestotal"
-#'
-#' @return list of two dataframes: $ids_table contains all columns in community_data_table not passed to sim functions, and $sim_vars_table contains columns to pass to the sim functions.
-#'
-#' @importFrom dplyr mutate
+#' @return dataframe
 #' @export
-#' @examples
-#' community_data <- new_hartford_raw %>%
-#' dplyr::filter(year == 1994) %>%
-#' filter_bbs_survey()
+#' @importFrom purrr pmap_dfr
+#' @importFrom dplyr mutate left_join
 #'
-#' prepare_community(community_data)
-prepare_community <- function(community_data_table, abundance_column_name = "speciestotal") {
+#' @examples
+#'
+#' community_generate(new_hartford_clean)
+
+community_generate <- function(community_data_table, abundance_column_name = "speciestotal") {
 
   colnames(community_data_table) <- tolower(colnames(community_data_table))
 
@@ -60,35 +58,13 @@ prepare_community <- function(community_data_table, abundance_column_name = "spe
   sim_vars_table <- community_data_table[ ,sim_vars] %>%
     cbind(na_table)
 
-  return(list(ids_table = ids_table,
-              sim_vars_table = sim_vars_table))
-}
-
-#' Generate samples community-wide
-#'
-#' @param community_tables result of [prepare_community]
-#'
-#' @return dataframe
-#' @export
-#' @importFrom purrr pmap_dfr
-#' @importFrom dplyr mutate left_join
-#'
-#' @examples
-#' community_data <- new_hartford_raw %>%
-#' dplyr::filter(year == 1994) %>%
-#' filter_bbs_survey() %>%
-#' prepare_community()
-#'
-#' community_generate(community_data)
-
-community_generate <- function(community_tables) {
-
-  populations <- purrr::pmap_dfr(community_tables$sim_vars_table,
+  # Draw populations
+  populations <- purrr::pmap_dfr(sim_vars_table,
                                  pop_generate,
                                  .id = "rejoining_id") %>%
     dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
 
-  community <- dplyr::left_join(community_tables$ids_table, populations)
+  community <- dplyr::left_join(ids_table, populations)
 
   return(community)
 

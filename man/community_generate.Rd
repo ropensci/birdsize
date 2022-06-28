@@ -4,10 +4,15 @@
 \alias{community_generate}
 \title{Generate samples community-wide}
 \usage{
-community_generate(community_tables)
+community_generate(
+  community_data_table,
+  abundance_column_name = "speciestotal"
+)
 }
 \arguments{
-\item{community_tables}{result of \link{prepare_community}}
+\item{community_data_table}{dataframe containing at least one of \code{aou} or \code{mean} and a column for species abundances}
+
+\item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal"}
 }
 \value{
 dataframe
@@ -16,10 +21,6 @@ dataframe
 Generate samples community-wide
 }
 \examples{
-community_data <- new_hartford_raw \%>\%
-dplyr::filter(year == 1994) \%>\%
-filter_bbs_survey() \%>\%
-prepare_community()
 
-community_generate(community_data)
+community_generate(new_hartford_clean)
 }
