@@ -39,7 +39,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   community_vars_mod <- colnames(community_data_table)
 
-  possible_sim_vars <- c("abundance", "aou", "mean_size", "sd_size")
+  possible_sim_vars <- c("abundance", "aou", "mean_size", "sd_size", "sim_species_id")
 
   id_vars <- c(community_vars_mod[ which(!(community_vars_mod %in% possible_sim_vars))])
 

@@ -64,14 +64,14 @@ ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance =
 #' pop_generate(abundance = 5, genus = "Selasphorus", species = "calliope")
 #' pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 #'
-pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
+pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, sim_species_id = 1) {
   this_species <- species_define(
     aou = aou,
     genus = genus,
     species = species,
     mean_size = mean_size,
     sd_size = sd_size,
-    id = id
+    sim_species_id = sim_species_id
   )
 
 
@@ -79,7 +79,7 @@ pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = N
 
   population_df <- data.frame(
     aou = this_species$aou,
-    id = this_species$id,
+    sim_species_id = this_species$sim_species_id,
     genus = this_species$genus,
     species = this_species$species,
     individual_mass = this_population,

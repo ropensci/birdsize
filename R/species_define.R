@@ -9,7 +9,7 @@
 #' @param species species
 #' @param mean_size mean body size
 #' @param sd_size sd of body size
-#' @param id identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.
+#' @param sim_species_id identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.
 #'
 #' @return list with species parameter information
 #' @export
@@ -19,12 +19,12 @@
 #' species_define(mean_size = 400, sd_size = 30)
 #' species_define(mean_size = 400)
 
-species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
+species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, sim_species_id = 1) {
   if (!is.null(aou)) {
 
     # use AOU to get mean, sd, genus, and species
     spPars <- species_lookup(aou = aou)
-    thisSpecies <- list(aou = aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "AOU lookup", id = aou)
+    thisSpecies <- list(aou = aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "AOU lookup", sim_species_id = aou)
 
     # Check that any user-supplied taxonomic info matches the AOU provided
     if (!is.null(genus)) {
@@ -46,19 +46,19 @@ species_define <- function(aou = NULL, genus = NULL, species = NULL, mean_size =
 
   if (all(!is.null(genus), !is.null(species))) {
     spPars <- species_lookup(genus = genus, species = species)
-    thisSpecies <- list(aou = spPars$aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", id = spPars$aou)
+    thisSpecies <- list(aou = spPars$aou, genus = spPars$genus, species = spPars$species, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", sim_species_id = spPars$aou)
     return(thisSpecies)
   }
 
   # If neither of AOU or genus + species is provided (implicit in order)
   if (!is.null(mean_size)) {
     if (!is.null(sd_size)) {
-      thisSpecies <- list(aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", id = id)
+      thisSpecies <- list(aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", sim_species_id = sim_species_id)
       return(thisSpecies)
     }
 
     this_sd <- species_estimate_sd(mean_size)
-    thisSpecies <- list(aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", id = id)
+    thisSpecies <- list(aou = as.numeric(NA), genus = as.character(NA), species = as.character(NA), mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", sim_species_id = sim_species_id)
     return(thisSpecies)
   }
 

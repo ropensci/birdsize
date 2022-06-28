@@ -42,4 +42,4 @@ new_hartford_sims <- community_generate(community_data_table = new_hartford_clea
 niceOutput(new_hartford_sims)
 ```
 
-
+# 

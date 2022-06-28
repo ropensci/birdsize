@@ -11,7 +11,7 @@ pop_generate(
   species = NULL,
   mean_size = NULL,
   sd_size = NULL,
-  id = 1
+  sim_species_id = 1
 )
 }
 \arguments{
