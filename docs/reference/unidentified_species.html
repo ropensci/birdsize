@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • birdsize</title>
+<title>Which AOUs correspond to unidentified species. — unidentified_species • birdsize</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Which AOUs correspond to unidentified species. — unidentified_species" />
+<meta property="og:description" content="Downloaded using the rdataretriever in June 2022.
+For inclusion in package vignettes, function testing.
+Citation needed!" />
 
 
 
@@ -58,7 +61,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -123,84 +126,41 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Which AOUs correspond to unidentified species.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/unidentified_species.R'><code>R/unidentified_species.R</code></a></small>
+    <div class="hidden name"><code>unidentified_species.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Downloaded using the rdataretriever in June 2022.
+For inclusion in package vignettes, function testing.
+Citation needed!</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='va'>unidentified_species</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="community_generate.html">community_generate()</a></code> </p>
-        </td>
-        <td><p>Generate samples community-wide</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filter_bbs_survey.html">filter_bbs_survey()</a></code> </p>
-        </td>
-        <td><p>Filter BBS survey data to remove non-target species</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="new_hartford_clean.html">new_hartford_clean</a></code> </p>
-        </td>
-        <td><p>Cleaned data for the New Hartford Breeding Bird Survey route in 1994.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="new_hartford_raw.html">new_hartford_raw</a></code> </p>
-        </td>
-        <td><p>Raw data for the New Hartford Breeding Bird Survey route.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="niceOutput.html">niceOutput()</a></code> </p>
-        </td>
-        <td><p>Format a data frame nicely for printing</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pop_generate.html">pop_generate()</a></code> </p>
-        </td>
-        <td><p>Simulate body masses for a population</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="species_define.html">species_define()</a></code> </p>
-        </td>
-        <td><p>Define a species</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="species_lookup.html">species_lookup()</a></code> </p>
-        </td>
-        <td><p>Species lookup</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 72 rows and 4 variables:</p><dl>
+<dt>aou</dt><dd><p>aou</p></dd>
+<dt>english_common_name</dt><dd><p>English common name</p></dd>
+<dt>genus</dt><dd><p>genus</p></dd>
+<dt>species</dt><dd><p>species</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    
+<ul>
+<li><p>Pardieck, K. L., Ziolkowski, D. J., Lutmerding, M., Aponte, V., &amp; Hudson, M.-A. (2019). North American Breeding Bird Survey Dataset 1966—2018, version 2018.0. U.S. Geological Survey. https://doi.org/10.5066/P9HE8XYJ</p></li>
+</ul>
+
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

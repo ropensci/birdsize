@@ -1,0 +1,45 @@
+---
+title: "sim_community"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{sim_community}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(birdsize)
+```
+
+# Simulation from a BBS route
+
+Load and preprocess data. The `new_hartford_raw` dataset is the 
+
+```{r}
+
+new_hartford_raw <- new_hartford_raw
+
+new_hartford_clean <- new_hartford_raw %>%
+  filter_bbs_survey() %>%
+  dplyr::filter(year == 1994)
+
+niceOutput(new_hartford_clean)
+```
+
+
+```{r}
+set.seed(22)
+
+new_hartford_sims <- community_generate(community_data_table = new_hartford_clean)
+
+niceOutput(new_hartford_sims)
+```
+
+
