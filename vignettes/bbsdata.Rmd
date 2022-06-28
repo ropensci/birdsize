@@ -85,58 +85,5 @@ new_hartford_cleaned <- new_hartford_raw %>%
 
 For the New Hartford route, this removes `r nrow(new_hartford_raw) - nrow(new_hartford_cleaned)` records of `r length(unique(new_hartford_raw$aou)) - length(unique(new_hartford_cleaned$aou))` species.
 
-To characterize species composition for each route in each year, select the `species_total` column...
-
-```{r}
-community_data_table <- new_hartford_cleaned
-# 
-# new_hartford_ready <- new_hartford_cleaned %>%
-#   select(statenum, route, year, aou, speciestotal)
-
-```
-
-To simulate over a community, minimally require `abundance` AND `aou` OR `mean_size` for each row:
-
-```{r}
-abundance_column_name = "speciestotal"
-#prepare_community <- function(community_data_table, abundance_column_name = "speciestotal") {
-
-colnames(community_data_table) <- tolower(colnames(community_data_table))
-
-community_vars <- colnames(community_data_table)
-
-contains_aou <- ("aou" %in% community_vars) | ("AOU" %in% community_vars)
-
-contains_mean <- "mean_size" %in% community_vars
-
-contains_sd <- "sd_size" %in% community_vars
-
-contains_abundance <- abundance_column_name %in% community_vars
-
-if(!contains_abundance) {
-  warning("abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
-}
-
-if(!(contains_aou | contains_mean)) {
-  warning("At least one of `aou` or `mean_size` is required")
-}
-
-community_data_table <- community_data_table %>%
-  dplyr::mutate(rejoining_id = dplyr::row_number())
-
-id_vars <- c(community_vars[ which(!(community_vars %in% c(abundance_column_name, "aou", "AOU", "mean_size", "sd_size", "speciestotal")))], "rejoining_id")
-
-possible_sim_vars <- c(abundance_column_name, "aou", "AOU", "mean_size", "sd_size", "speciestotal")
-
-sim_vars <- c(community_vars[ which(community_vars %in% possible_sim_vars)], "rejoining_id")
-
-na_vars <- possible_sim_vars[ which(!(possible_sim_vars %in% community_vars))]
-
-
-#}
-
-
-```
-
 
 

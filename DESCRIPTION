@@ -26,5 +26,6 @@ Imports:
     rlang,
     dplyr,
     magrittr,
+    purrr,
     stats
 VignetteBuilder: knitr

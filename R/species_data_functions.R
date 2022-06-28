@@ -242,6 +242,8 @@ is_unidentified <- function(names) {
 #' @importFrom dplyr filter
 filter_bbs_survey <- function(bbs_survey_data) {
 
+  unidentified_species <- unidentified_species
+
   bbs_survey_data <- bbs_survey_data %>%
     dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
     dplyr::filter(.data$aou > 2880) %>%
