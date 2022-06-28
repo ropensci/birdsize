@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(birdsize)
+library(dplyr)
 ```
 
 # Simulation from a BBS route
@@ -42,4 +43,20 @@ new_hartford_sims <- community_generate(community_data_table = new_hartford_clea
 niceOutput(new_hartford_sims)
 ```
 
-# 
+# Simulation given species' names
+
+```{r}
+
+new_hartford_names <- new_hartford_clean %>%
+  left_join(select(sd_table, aou, genus, species)) %>%
+  select(-aou) %>%
+  mutate(genus = stringr::str_replace_all(genus, " ", ""),
+         species = stringr::str_replace_all(species, " ", ""))
+
+```
+
+```{r}
+
+new_hartford_names_sims <- community_generate(new_hartford_names)
+
+```

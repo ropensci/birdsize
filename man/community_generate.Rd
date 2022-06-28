@@ -10,7 +10,7 @@ community_generate(
 )
 }
 \arguments{
-\item{community_data_table}{dataframe containing at least one of \code{aou} or \code{mean_size} and a column for species abundances}
+\item{community_data_table}{dataframe containing at least one of \code{aou}, \code{genus} \emph{and} \code{species}, or \code{mean_size} and a column for species abundances}
 
 \item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal"}
 }
