@@ -5,11 +5,11 @@
 \title{Define a species}
 \usage{
 species_define(
-  aou = NULL,
-  genus = NULL,
-  species = NULL,
-  mean_size = NULL,
-  sd_size = NULL,
+  aou = NA,
+  genus = NA,
+  species = NA,
+  mean_size = NA,
+  sd_size = NA,
   sim_species_id = 1
 )
 }

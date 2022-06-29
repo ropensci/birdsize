@@ -10,16 +10,16 @@
 #'
 #' @importFrom stats rnorm
 #' @keywords internal
-ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance = NULL) {
-  if (is.null(species_mean)) {
+ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA) {
+  if (is.na(species_mean)) {
     stop("`species_mean` must be provided")
   }
 
-  if (is.null(species_sd)) {
+  if (is.na(species_sd)) {
     stop("`species_sd` must be provided")
   }
 
-  if (is.null(species_abundance)) {
+  if (is.na(species_abundance)) {
     stop("`species_abundance` must be provided")
   }
 
@@ -54,7 +54,7 @@ ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance =
 #' @param species species
 #' @param mean_size numeric, mean body mass (in grams) for this species.
 #' @param sd_size numeric, standard deviation of body mass for this species.
-#' @param id defaults AOU or 1
+#' @param sim_species_id defaults AOU or 1
 #'
 #' @return a dataframe with `abundance` rows and columns for species attributes.
 #' @export
@@ -64,7 +64,7 @@ ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance =
 #' pop_generate(abundance = 5, genus = "Selasphorus", species = "calliope")
 #' pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 #'
-pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, sim_species_id = 1) {
+pop_generate <- function(abundance = NA, aou = NA, genus = NA, species = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
   this_species <- species_define(
     aou = aou,
     genus = genus,

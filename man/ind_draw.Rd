@@ -4,7 +4,7 @@
 \alias{ind_draw}
 \title{Draw individuals to make a population.}
 \usage{
-ind_draw(species_mean = NULL, species_sd = NULL, species_abundance = NULL)
+ind_draw(species_mean = NA, species_sd = NA, species_abundance = NA)
 }
 \arguments{
 \item{species_mean}{mean body size}

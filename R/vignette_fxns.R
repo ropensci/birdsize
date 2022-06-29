@@ -13,7 +13,7 @@
 niceOutput <- function(data_table) {
   DT::datatable(
     data_table,
-    extensions = c('FixedColumns',"FixedHeader"),
+   # extensions = c('FixedColumns',"FixedHeader"),
     options = list(
       scrollX = TRUE,
       paging=T,

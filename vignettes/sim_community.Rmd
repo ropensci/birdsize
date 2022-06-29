@@ -21,7 +21,7 @@ library(dplyr)
 
 # Simulation from a BBS route
 
-Load and preprocess data. The `new_hartford_raw` dataset is the 
+Load and preprocess data. The `new_hartford_raw` dataset is the BBS survey route for New Hartford, CT.
 
 ```{r}
 
@@ -31,7 +31,7 @@ new_hartford_clean <- new_hartford_raw %>%
   filter_bbs_survey() %>%
   dplyr::filter(year == 1994)
 
-niceOutput(new_hartford_clean)
+head(new_hartford_clean)
 ```
 
 
@@ -40,7 +40,7 @@ set.seed(22)
 
 new_hartford_sims <- community_generate(community_data_table = new_hartford_clean)
 
-niceOutput(new_hartford_sims)
+head(new_hartford_sims)
 ```
 
 # Simulation given species' names
@@ -49,14 +49,76 @@ niceOutput(new_hartford_sims)
 
 new_hartford_names <- new_hartford_clean %>%
   left_join(select(sd_table, aou, genus, species)) %>%
-  select(-aou) %>%
-  mutate(genus = stringr::str_replace_all(genus, " ", ""),
-         species = stringr::str_replace_all(species, " ", ""))
+  select(-aou)
 
 ```
 
 ```{r}
 
+set.seed(22)
+
 new_hartford_names_sims <- community_generate(new_hartford_names)
 
+head(new_hartford_names_sims)
+
+```
+
+
+# Simulation given mean size measurements
+
+```{r}
+
+new_hartford_means <- new_hartford_clean %>%
+  left_join(select(sd_table, aou, mean_mass)) %>%
+  select(-aou) %>%
+  rename(mean_size = mean_mass)
+
+
+
+set.seed(22)
+
+new_hartford_means_sims <- community_generate(new_hartford_means)
+
+head(new_hartford_means_sims)
+
+
+```
+
+
+# Simulation given mean size and sd measurements
+
+```{r}
+
+new_hartford_mean_sds <- new_hartford_clean %>%
+  left_join(select(sd_table, aou, mean_mass, mean_sd)) %>%
+  select(-aou) %>%
+  rename(mean_size = mean_mass,
+         sd_size = mean_sd)
+
+
+
+set.seed(22)
+
+new_hartford_mean_sds_sims <- community_generate(new_hartford_mean_sds)
+
+head(new_hartford_mean_sds_sims)
+
+```
+
+# Simulation given a mix of AOUs and mean sizes
+
+```{r}
+new_hartford_mix <- bind_rows(
+  new_hartford_clean[1:32,],
+  new_hartford_means[33:62,]
+)
+
+head(new_hartford_mix)
+
+set.seed(22)
+
+new_hartford_mix_sims <- community_generate(new_hartford_mix)
+
+head(new_hartford_mix_sims)
+tail(new_hartford_mix_sims)
 ```
