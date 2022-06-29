@@ -25,11 +25,11 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   contains_abundance <- abundance_column_name %in% community_vars
 
   if(!contains_abundance) {
-    warning("abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
+    stop("abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
   }
 
   if(!(contains_aou | contains_mean | contains_genus_species)) {
-    warning("At least one of `aou`, `genus` and `species`, or `mean_size` is required")
+    stop("At least one of `aou`, `genus` and `species`, or `mean_size` is required")
   }
 
   # Identify ID/grouping columns and columns to pass to sim fxns.
@@ -87,6 +87,10 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 #'
 #' @importFrom dplyr filter
 filter_bbs_survey <- function(bbs_survey_data) {
+
+  if(!("aou" %in% colnames(bbs_survey_data))) {
+    stop("`aou` column is required!")
+  }
 
   unidentified_species <- unidentified_species
   nontarget_species <- nontarget_species
