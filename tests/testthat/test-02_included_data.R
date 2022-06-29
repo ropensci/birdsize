@@ -25,9 +25,9 @@ test_that("resolving taxonomic changes works as expected", {
 
 test_that("sd_table is up to date", {
 
-  generated_sd_table <- generate_sd_table(raw_masses)
+  generated_sd_table <- birdsize:::generate_sd_table(raw_masses)
 
-  expect_equivalent(sd_table, generated_sd_table)
+  expect_equal(sd_table, generated_sd_table)
 
 
 })
