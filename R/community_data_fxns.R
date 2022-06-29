@@ -57,7 +57,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   ids_table <- community_data_table[,id_vars]
 
   sim_vars_table <- community_data_table[ ,sim_vars] %>%
-     cbind(na_table)
+    cbind(na_table)
 
   # Draw populations
   populations <- purrr::pmap_dfr(sim_vars_table,
@@ -71,49 +71,13 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   return(community)
 
 }
-#
-# show_inputs <- function(abundance = NA, aou = NA, genus = NA, species = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
-#
-#   inputs <- data.frame(
-#     abundance = abundance,
-#     aou = aou,
-#     genus = genus,
-#     species = species,
-#     mean_size = mean_size,
-#     sd_size = sd_size,
-#     sim_species_id = sim_species_id
-#   )
-#
-#   #species_define(aou = aou, genus = genus, species = species)
-#
-#   return(inputs)
-#
-# }
-
-
-#' Check for unidentified species
-#'
-#' Derived from MATSS, originally derived from Harris et al 2018 (weecology/bbs-forecasting)
-#'
-#' @param names species name
-#'
-#' @return logical
-#' @keywords internal
-#'
-is_unidentified <- function(names) {
-  names[names == "auratus auratus x auratus cafer"] = "auratus auratus"
-  grepl("sp\\.| x |\\/", names)
-}
-
-
 
 #' Filter BBS survey data to remove non-target species
 #'
-#' Code derived from MATSS, originally derived from Harris et al 2018
 #'
 #' @param bbs_survey_data data frame with columns for species and aou
 #'
-#' @return bbs_survey_data with nightbirds, waterbirds, non-targets removed
+#' @return bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed
 #' @export
 #'
 #' @examples
@@ -125,15 +89,14 @@ is_unidentified <- function(names) {
 filter_bbs_survey <- function(bbs_survey_data) {
 
   unidentified_species <- unidentified_species
+  nontarget_species <- nontarget_species
 
   bbs_survey_data <- bbs_survey_data %>%
     dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
-    dplyr::filter(.data$aou > 2880) %>%
-    dplyr::filter(.data$aou < 3650 | .data$aou > 3810) %>%
-    dplyr::filter(.data$aou < 3900 | .data$aou > 3910) %>%
-    dplyr::filter(.data$aou < 4160 | .data$aou > 4210) %>%
-    dplyr::filter(.data$aou != 7010)
+    dplyr::filter(!(.data$aou %in% nontarget_species$aou))
 
   bbs_survey_data
 
 }
+
+

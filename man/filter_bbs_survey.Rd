@@ -10,10 +10,10 @@ filter_bbs_survey(bbs_survey_data)
 \item{bbs_survey_data}{data frame with columns for species and aou}
 }
 \value{
-bbs_survey_data with nightbirds, waterbirds, non-targets removed
+bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed
 }
 \description{
-Code derived from MATSS, originally derived from Harris et al 2018
+Filter BBS survey data to remove non-target species
 }
 \examples{
 
