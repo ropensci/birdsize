@@ -65,7 +65,7 @@ These data are also included in `birdsize` as `new_hartford_raw`.
 
 new_hartford_raw <- new_hartford_raw
 
-niceOutput(new_hartford_raw)
+head(new_hartford_raw)
 
 ```
 
