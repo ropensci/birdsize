@@ -15,3 +15,6 @@ estimated basal metabolic rate using pars from Fristoe 2015
 \description{
 Estimate individual-level basal metabolic rate
 }
+\examples{
+individual_metabolic_rate(10)
+}
