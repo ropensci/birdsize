@@ -3,6 +3,7 @@
 export("%>%")
 export(community_generate)
 export(filter_bbs_survey)
+export(individual_metabolic_rate)
 export(pop_generate)
 export(species_define)
 export(species_lookup)

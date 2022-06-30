@@ -77,12 +77,15 @@ pop_generate <- function(abundance = NA, aou = NA, genus = NA, species = NA, mea
 
   this_population <- ind_draw(species_mean = this_species$mean_size, species_sd = this_species$sd_size, species_abundance = abundance)
 
+  this_population_bmr <- individual_metabolic_rate(this_population)
+
   population_df <- data.frame(
     aou = this_species$aou,
     sim_species_id = this_species$sim_species_id,
     genus = this_species$genus,
     species = this_species$species,
     individual_mass = this_population,
+    individual_bmr = this_population_bmr,
     mean_size = this_species$mean_size,
     sd_size = this_species$sd_size,
     abundance = abundance,
