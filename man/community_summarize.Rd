@@ -4,14 +4,18 @@
 \alias{community_summarize}
 \title{Compute summary statistics for a community}
 \usage{
-community_summarize(community, id_vars = NULL, species_vars = NULL)
+community_summarize(
+  community,
+  level = c("year", "species", "species_and_year", "custom"),
+  id_vars = NULL
+)
 }
 \arguments{
 \item{community}{result of \link{community_generate}}
 
-\item{id_vars}{vector of column names to group by}
+\item{level}{one of: "year", "species", "species_and_year", "custom"}
 
-\item{species_vars}{vector of column names to summarize over}
+\item{id_vars}{vector of column names to group by, if using "custom" level}
 }
 \value{
 summarized community data frame

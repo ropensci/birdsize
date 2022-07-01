@@ -36,8 +36,8 @@ pop_summarize <- function(population) {
 #' Compute summary statistics for a community
 #'
 #' @param community result of [community_generate]
-#' @param id_vars vector of column names to group by
-#' @param species_vars vector of column names to summarize over
+#' @param level one of: "year", "species", "species_and_year", "custom"
+#' @param id_vars vector of column names to group by, if using "custom" level
 #'
 #' @return summarized community data frame
 #' @export
@@ -49,19 +49,36 @@ pop_summarize <- function(population) {
 #'
 #' @importFrom dplyr group_by_at summarize ungroup n
 #' @importFrom stats sd
-community_summarize <- function(community, id_vars = NULL, species_vars = NULL) {
+#'
+#'
+community_summarize <- function(community, level = c("year", "species", "species_and_year", "custom"), id_vars = NULL) {
 
-  if(is.null(species_vars)) {
-    species_vars <- c("count10", "count20", "count30", "count40", "count50", "stoptotal", "speciestotal", "aou", "sim_species_id", "genus", "species", "mean_size", "sd_size", "abundance", "sd_method", "record_id", "individual_mass", "individual_bmr")
+  # Check community has the variables to sum over
+
+  if(!(all(c("individual_mass", "individual_bmr") %in% colnames(community)))) {
+    stop("`community` is missing columns for body size and/or metabolic rate")
   }
 
-  if(is.null(id_vars)) {
-    id_vars <- colnames(community)[ which(!(colnames(community) %in% species_vars))]
+  # Grouping
+
+  level = match.arg(level, several.ok = F)
+
+
+  id_vars <- switch(level,
+                    year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year"),
+                    species = c("countrynum", "statenum", "route", "rpid", "aou","sim_species_id", "genus", "species"),
+                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "aou", "sim_species_id", "genus", "species"),
+                    custom = id_vars)
+
+  if(level == "custom" && is.null(id_vars)) {
+    stop("Set custom `id_vars` using `id_vars` argument")
   }
 
-
-  species_vars <- species_vars[ which(species_vars %in% colnames(community))]
   id_vars <- id_vars[ which(id_vars %in% colnames(community))]
+
+  if(length(id_vars) == 0) {
+    stop("No `id_vars` present in `community`")
+  }
 
   community <- identify_richness_designator(community)
 
@@ -91,6 +108,21 @@ community_summarize <- function(community, id_vars = NULL, species_vars = NULL) 
 #'
 #' @importFrom dplyr mutate
 identify_richness_designator <- function(community) {
+
+  if(!(any("aou" %in% colnames(community),
+           "sim_species_id" %in% colnames(community),
+           all(c("genus", "species") %in% colnames(community)),
+           all(c("mean_size", "sd_size", "abundance") %in% colnames(community))))) {
+
+    community <- community %>%
+      dplyr::mutate(
+        richnessSpecies = NA,
+        species_designator = "none_identified"
+      )
+
+    message("No identifiable species designator to calculat species richness!")
+    return(community)
+  }
 
   if("aou" %in% colnames(community)) {
     if(!anyNA(community$aou)) {

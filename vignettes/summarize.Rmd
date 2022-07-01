@@ -1,0 +1,94 @@
+---
+title: "summarize"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{summarize}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(birdsize)
+library(dplyr)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+
+```{r}
+bbs_data <- new_hartford_raw %>%
+  filter_bbs_survey()
+
+set.seed(22)
+
+a_community <- community_generate(bbs_data)
+
+```
+
+# Summarize grouping by year
+
+```{r}
+
+annual_summary <- a_community %>%
+  community_summarize(level = "year")
+
+head(annual_summary)
+
+ggplot(annual_summary, aes(year, total_biomass)) + 
+  geom_point() +
+  geom_line()
+```
+
+# Summarize grouping by year *and* species
+
+```{r, fig.dim = c(5, 9)}
+
+
+species_annual_summary <- a_community %>%
+  community_summarize(level = "species_and_year")
+
+head(species_annual_summary)
+
+ggplot(species_annual_summary, aes(year, total_biomass, color = as.factor(aou))) + 
+  geom_point() +
+  geom_line() +
+  theme(legend.position = "bottom")
+```
+
+# Summarize grouping by species
+
+```{r, fig.dim = c(5, 9)}
+
+species_summary <- community_summarize(a_community, level = "species")
+
+head(species_summary)
+
+ggplot(species_summary, aes(as.factor(aou), total_biomass, color = as.factor(aou))) + 
+  geom_point() +
+  theme(legend.position = "bottom")
+
+```
+
+# Summarize with custom grouping
+
+For example, if you wanted to group by year and genus but not species:
+
+```{r, fig.dim = c(5, 9)}
+
+annual_genera_summary <- community_summarize(a_community, level = "custom", id_vars = c("year", "genus"))
+
+head(annual_genera_summary)
+
+
+ggplot(annual_genera_summary, aes(year, total_biomass, color = as.factor(genus))) + 
+  geom_point() +
+  geom_line() +
+  theme(legend.position = "bottom")
+```
