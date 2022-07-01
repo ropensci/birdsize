@@ -1,7 +1,7 @@
 test_that("filter bbs data works", {
 
 
-  bad_bbs_data <- new_hartford_raw %>%
+  bad_bbs_data <- demo_route_raw %>%
     dplyr::select(-aou)
 
   expect_error(filter_bbs_survey(bad_bbs_data), regexp = "`aou` column is required!")

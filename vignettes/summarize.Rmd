@@ -23,7 +23,7 @@ theme_set(theme_bw())
 
 
 ```{r}
-bbs_data <- new_hartford_raw %>%
+bbs_data <- demo_route_raw %>%
   filter_bbs_survey()
 
 set.seed(22)

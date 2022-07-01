@@ -20,7 +20,7 @@ test_that("bmr is returned with populations", {
 test_that("bmr is returned with communities", {
 
 
-  bbs_data <- new_hartford_raw %>%
+  bbs_data <- demo_route_raw %>%
     filter_bbs_survey()
 
   short_bbs_data <- bbs_data %>%
