@@ -9,7 +9,8 @@
 #'
 #' @examples
 #'
-#' community_generate(new_hartford_clean)
+#' demo_route_clean <- filter_bbs_survey(demo_route_raw)
+#' community_generate(demo_route_clean)
 
 community_generate <- function(community_data_table, abundance_column_name = "speciestotal") {
 
@@ -82,11 +83,13 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 #'
 #' @examples
 #'
-#' filter_bbs_survey(new_hartford_raw) %>%
+#' filter_bbs_survey(demo_route_raw) %>%
 #' head()
 #'
 #' @importFrom dplyr filter
 filter_bbs_survey <- function(bbs_survey_data) {
+
+  colnames(bbs_survey_data) <- tolower(colnames(bbs_survey_data))
 
   if(!("aou" %in% colnames(bbs_survey_data))) {
     stop("`aou` column is required!")

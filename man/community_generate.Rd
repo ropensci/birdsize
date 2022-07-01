@@ -22,5 +22,6 @@ Generate samples community-wide
 }
 \examples{
 
-community_generate(new_hartford_clean)
+demo_route_clean <- filter_bbs_survey(demo_route_raw)
+community_generate(demo_route_clean)
 }

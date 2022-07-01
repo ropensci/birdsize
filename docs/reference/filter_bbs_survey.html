@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Filter BBS survey data to remove non-target species — filter_bbs_survey" />
-<meta property="og:description" content="Code derived from MATSS, originally derived from Harris et al 2018" />
+<meta property="og:description" content="Filter BBS survey data to remove non-target species" />
 
 
 
@@ -106,6 +106,9 @@
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
     </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -130,12 +133,12 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Filter BBS survey data to remove non-target species</h1>
-    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/community_data_fxns.R'><code>R/community_data_fxns.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/simulate_community.R'><code>R/simulate_community.R</code></a></small>
     <div class="hidden name"><code>filter_bbs_survey.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Code derived from MATSS, originally derived from Harris et al 2018</p>
+    <p>Filter BBS survey data to remove non-target species</p>
     </div>
 
     <pre class="usage"><span class='fu'>filter_bbs_survey</span><span class='op'>(</span><span class='va'>bbs_survey_data</span><span class='op'>)</span></pre>
@@ -151,7 +154,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>bbs_survey_data with nightbirds, waterbirds, non-targets removed</p>
+    <p>bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

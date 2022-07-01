@@ -65,6 +65,9 @@
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
     </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -118,20 +121,20 @@ hummingbird <em>Selasphorus calliope</em>:</p>
 <span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span>
-<span class="co">#&gt;    aou sim_species_id       genus  species individual_mass mean_size   sd_size</span>
-<span class="co">#&gt; 1 4360           4360 Selasphorus calliope        2.556873      2.65 0.1818394</span>
-<span class="co">#&gt; 2 4360           4360 Selasphorus calliope        3.101904      2.65 0.1818394</span>
-<span class="co">#&gt; 3 4360           4360 Selasphorus calliope        2.833263      2.65 0.1818394</span>
-<span class="co">#&gt; 4 4360           4360 Selasphorus calliope        2.703245      2.65 0.1818394</span>
-<span class="co">#&gt; 5 4360           4360 Selasphorus calliope        2.612003      2.65 0.1818394</span>
-<span class="co">#&gt; 6 4360           4360 Selasphorus calliope        2.987874      2.65 0.1818394</span>
-<span class="co">#&gt;   abundance  sd_method</span>
-<span class="co">#&gt; 1       100 AOU lookup</span>
-<span class="co">#&gt; 2       100 AOU lookup</span>
-<span class="co">#&gt; 3       100 AOU lookup</span>
-<span class="co">#&gt; 4       100 AOU lookup</span>
-<span class="co">#&gt; 5       100 AOU lookup</span>
-<span class="co">#&gt; 6       100 AOU lookup</span>
+<span class="co">#&gt;    aou sim_species_id       genus  species individual_mass individual_bmr</span>
+<span class="co">#&gt; 1 4360           4360 Selasphorus calliope        2.556873       20.50623</span>
+<span class="co">#&gt; 2 4360           4360 Selasphorus calliope        3.101904       23.53533</span>
+<span class="co">#&gt; 3 4360           4360 Selasphorus calliope        2.833263       22.06327</span>
+<span class="co">#&gt; 4 4360           4360 Selasphorus calliope        2.703245       21.33652</span>
+<span class="co">#&gt; 5 4360           4360 Selasphorus calliope        2.612003       20.82052</span>
+<span class="co">#&gt; 6 4360           4360 Selasphorus calliope        2.987874       22.91515</span>
+<span class="co">#&gt;   mean_size   sd_size abundance  sd_method</span>
+<span class="co">#&gt; 1      2.65 0.1818394       100 AOU lookup</span>
+<span class="co">#&gt; 2      2.65 0.1818394       100 AOU lookup</span>
+<span class="co">#&gt; 3      2.65 0.1818394       100 AOU lookup</span>
+<span class="co">#&gt; 4      2.65 0.1818394       100 AOU lookup</span>
+<span class="co">#&gt; 5      2.65 0.1818394       100 AOU lookup</span>
+<span class="co">#&gt; 6      2.65 0.1818394       100 AOU lookup</span>
 
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span>
@@ -175,20 +178,20 @@ ignored!</strong></p>
 <span class="va">a_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span>, sd_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span><span class="op">)</span>
-<span class="co">#&gt;   aou sim_species_id genus species individual_mass mean_size sd_size abundance</span>
-<span class="co">#&gt; 1  NA              1  &lt;NA&gt;    &lt;NA&gt;        19.86281        25       3       100</span>
-<span class="co">#&gt; 2  NA              1  &lt;NA&gt;    &lt;NA&gt;        22.60234        25       3       100</span>
-<span class="co">#&gt; 3  NA              1  &lt;NA&gt;    &lt;NA&gt;        20.76744        25       3       100</span>
-<span class="co">#&gt; 4  NA              1  &lt;NA&gt;    &lt;NA&gt;        26.59827        25       3       100</span>
-<span class="co">#&gt; 5  NA              1  &lt;NA&gt;    &lt;NA&gt;        23.80690        25       3       100</span>
-<span class="co">#&gt; 6  NA              1  &lt;NA&gt;    &lt;NA&gt;        24.14694        25       3       100</span>
-<span class="co">#&gt;              sd_method</span>
-<span class="co">#&gt; 1 Mean and SD provided</span>
-<span class="co">#&gt; 2 Mean and SD provided</span>
-<span class="co">#&gt; 3 Mean and SD provided</span>
-<span class="co">#&gt; 4 Mean and SD provided</span>
-<span class="co">#&gt; 5 Mean and SD provided</span>
-<span class="co">#&gt; 6 Mean and SD provided</span>
+<span class="co">#&gt;   aou sim_species_id genus species individual_mass individual_bmr mean_size</span>
+<span class="co">#&gt; 1  NA              1  &lt;NA&gt;    &lt;NA&gt;        19.86281       88.44888        25</span>
+<span class="co">#&gt; 2  NA              1  &lt;NA&gt;    &lt;NA&gt;        22.60234       96.98414        25</span>
+<span class="co">#&gt; 3  NA              1  &lt;NA&gt;    &lt;NA&gt;        20.76744       91.30263        25</span>
+<span class="co">#&gt; 4  NA              1  &lt;NA&gt;    &lt;NA&gt;        26.59827      108.92055        25</span>
+<span class="co">#&gt; 5  NA              1  &lt;NA&gt;    &lt;NA&gt;        23.80690      100.64180        25</span>
+<span class="co">#&gt; 6  NA              1  &lt;NA&gt;    &lt;NA&gt;        24.14694      101.66465        25</span>
+<span class="co">#&gt;   sd_size abundance            sd_method</span>
+<span class="co">#&gt; 1       3       100 Mean and SD provided</span>
+<span class="co">#&gt; 2       3       100 Mean and SD provided</span>
+<span class="co">#&gt; 3       3       100 Mean and SD provided</span>
+<span class="co">#&gt; 4       3       100 Mean and SD provided</span>
+<span class="co">#&gt; 5       3       100 Mean and SD provided</span>
+<span class="co">#&gt; 6       3       100 Mean and SD provided</span>
 
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span>
@@ -210,20 +213,20 @@ mass:</p>
 <span class="va">another_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span><span class="op">)</span>
-<span class="co">#&gt;   aou sim_species_id genus species individual_mass mean_size  sd_size abundance</span>
-<span class="co">#&gt; 1  NA              1  &lt;NA&gt;    &lt;NA&gt;        26.24416        25 1.746196       100</span>
-<span class="co">#&gt; 2  NA              1  &lt;NA&gt;    &lt;NA&gt;        21.44791        25 1.746196       100</span>
-<span class="co">#&gt; 3  NA              1  &lt;NA&gt;    &lt;NA&gt;        20.79538        25 1.746196       100</span>
-<span class="co">#&gt; 4  NA              1  &lt;NA&gt;    &lt;NA&gt;        23.75958        25 1.746196       100</span>
-<span class="co">#&gt; 5  NA              1  &lt;NA&gt;    &lt;NA&gt;        22.17191        25 1.746196       100</span>
-<span class="co">#&gt; 6  NA              1  &lt;NA&gt;    &lt;NA&gt;        22.58620        25 1.746196       100</span>
-<span class="co">#&gt;                sd_method</span>
-<span class="co">#&gt; 1 SD estimated from mean</span>
-<span class="co">#&gt; 2 SD estimated from mean</span>
-<span class="co">#&gt; 3 SD estimated from mean</span>
-<span class="co">#&gt; 4 SD estimated from mean</span>
-<span class="co">#&gt; 5 SD estimated from mean</span>
-<span class="co">#&gt; 6 SD estimated from mean</span>
+<span class="co">#&gt;   aou sim_species_id genus species individual_mass individual_bmr mean_size</span>
+<span class="co">#&gt; 1  NA              1  &lt;NA&gt;    &lt;NA&gt;        26.24416      107.88463        25</span>
+<span class="co">#&gt; 2  NA              1  &lt;NA&gt;    &lt;NA&gt;        21.44791       93.42580        25</span>
+<span class="co">#&gt; 3  NA              1  &lt;NA&gt;    &lt;NA&gt;        20.79538       91.39020        25</span>
+<span class="co">#&gt; 4  NA              1  &lt;NA&gt;    &lt;NA&gt;        23.75958      100.49914        25</span>
+<span class="co">#&gt; 5  NA              1  &lt;NA&gt;    &lt;NA&gt;        22.17191       95.66364        25</span>
+<span class="co">#&gt; 6  NA              1  &lt;NA&gt;    &lt;NA&gt;        22.58620       96.93474        25</span>
+<span class="co">#&gt;    sd_size abundance              sd_method</span>
+<span class="co">#&gt; 1 1.746196       100 SD estimated from mean</span>
+<span class="co">#&gt; 2 1.746196       100 SD estimated from mean</span>
+<span class="co">#&gt; 3 1.746196       100 SD estimated from mean</span>
+<span class="co">#&gt; 4 1.746196       100 SD estimated from mean</span>
+<span class="co">#&gt; 5 1.746196       100 SD estimated from mean</span>
+<span class="co">#&gt; 6 1.746196       100 SD estimated from mean</span>
 
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span>

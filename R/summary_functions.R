@@ -43,7 +43,7 @@ pop_summarize <- function(population) {
 #' @export
 #'
 #' @examples
-#' bbs_route <- new_hartford_raw %>% filter_bbs_survey()
+#' bbs_route <- demo_route_raw %>% filter_bbs_survey()
 #' community_data <- community_generate(bbs_route)
 #' community_summarize(community_data)
 #'
@@ -66,8 +66,8 @@ community_summarize <- function(community, level = c("year", "species", "species
 
   id_vars <- switch(level,
                     year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year"),
-                    species = c("countrynum", "statenum", "route", "rpid", "aou","sim_species_id", "genus", "species"),
-                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "aou", "sim_species_id", "genus", "species"),
+                    species = c("countrynum", "statenum", "route", "rpid", "aou","sim_species_id", "genus", "species", "mean_size", "sd_size"),
+                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "aou", "sim_species_id", "genus", "species",  "mean_size", "sd_size"),
                     custom = id_vars)
 
   if(level == "custom" && is.null(id_vars)) {
@@ -112,7 +112,7 @@ identify_richness_designator <- function(community) {
   if(!(any("aou" %in% colnames(community),
            "sim_species_id" %in% colnames(community),
            all(c("genus", "species") %in% colnames(community)),
-           all(c("mean_size", "sd_size", "abundance") %in% colnames(community))))) {
+           all(c("mean_size", "sd_size") %in% colnames(community))))) {
 
     community <- community %>%
       dplyr::mutate(
@@ -120,7 +120,7 @@ identify_richness_designator <- function(community) {
         species_designator = "none_identified"
       )
 
-    message("No identifiable species designator to calculat species richness!")
+    message("No identifiable species designator to calculate species richness!")
     return(community)
   }
 
@@ -159,7 +159,7 @@ identify_richness_designator <- function(community) {
 
   community <- community %>%
     dplyr::mutate(
-      richnessSpecies = paste(.data$mean_size, .data$sd_size, .data$abundance, sep = "_"),
+      richnessSpecies = paste(.data$mean_size, .data$sd_size, sep = "_"),
       species_designator = "sim_parameters"
     )
 

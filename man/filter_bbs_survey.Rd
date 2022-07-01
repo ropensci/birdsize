@@ -17,7 +17,7 @@ Filter BBS survey data to remove non-target species
 }
 \examples{
 
-filter_bbs_survey(new_hartford_raw) \%>\%
+filter_bbs_survey(demo_route_raw) \%>\%
 head()
 
 }

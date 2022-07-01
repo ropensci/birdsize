@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • birdsize</title>
+<title>Raw data for a hypothetical Breeding Bird Survey route. — demo_route_raw • birdsize</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Raw data for a hypothetical Breeding Bird Survey route. — demo_route_raw" />
+<meta property="og:description" content="For inclusion in package vignettes, function testing." />
 
 
 
@@ -132,33 +132,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Raw data for a hypothetical Breeding Bird Survey route.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/diazrenata/birdsize/blob/master/R/demo_route_raw.R'><code>R/demo_route_raw.R</code></a></small>
+    <div class="hidden name"><code>demo_route_raw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>For inclusion in package vignettes, function testing.</p>
     </div>
 
-    <pre class="usage"><span class='va'>lhs</span> <span class='op'>%&gt;%</span> <span class='va'>rhs</span></pre>
+    <pre class="usage"><span class='va'>demo_route_raw</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>lhs</th>
-      <td><p>A value or the magrittr placeholder.</p></td>
-    </tr>
-    <tr>
-      <th>rhs</th>
-      <td><p>A function call using the magrittr semantics.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>The result of calling <code>rhs(lhs)</code>.</p>
+    <p>A data frame with 1470 rows and 15 variables:</p><dl>
+<dt>record_id</dt><dd><p>inherited</p></dd>
+<dt>routedataid</dt><dd><p>inherited</p></dd>
+<dt>countrynum</dt><dd><p>inherited</p></dd>
+<dt>statenum</dt><dd><p>inherited</p></dd>
+<dt>route</dt><dd><p>inherited</p></dd>
+<dt>rpid</dt><dd><p>inherited</p></dd>
+<dt>year</dt><dd><p>inherited</p></dd>
+<dt>aou</dt><dd><p>inherited</p></dd>
+<dt>count10</dt><dd><p>inherited</p></dd>
+<dt>count20</dt><dd><p>inherited</p></dd>
+<dt>count30</dt><dd><p>inherited</p></dd>
+<dt>count40</dt><dd><p>inherited</p></dd>
+<dt>count50</dt><dd><p>inherited</p></dd>
+<dt>stoptotal</dt><dd><p>inherited</p></dd>
+<dt>speciestotal</dt><dd><p>inherited</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    
+<ul>
+<li><p>Pardieck, K. L., Ziolkowski, D. J., Lutmerding, M., Aponte, V., &amp; Hudson, M.-A. (2019). North American Breeding Bird Survey Dataset 1966—2018, version 2018.0. U.S. Geological Survey. https://doi.org/10.5066/P9HE8XYJ</p></li>
+</ul>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

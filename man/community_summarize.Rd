@@ -24,7 +24,7 @@ summarized community data frame
 Compute summary statistics for a community
 }
 \examples{
-bbs_route <- new_hartford_raw \%>\% filter_bbs_survey()
+bbs_route <- demo_route_raw \%>\% filter_bbs_survey()
 community_data <- community_generate(bbs_route)
 community_summarize(community_data)
 
