@@ -100,48 +100,49 @@
 </h3>
 <p>For most birds in the North American Breeding Bird Survey, you can use the species’ code (AOU) to simulate a population directly. For the hummingbird <em>Selasphorus calliope</em>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span>
-<span class="co">#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance</span>
-<span class="co">#&gt; 1 4360 4360 Selasphorus calliope        2.556333      2.65 0.1828933       100</span>
-<span class="co">#&gt; 2 4360 4360 Selasphorus calliope        3.104524      2.65 0.1828933       100</span>
-<span class="co">#&gt; 3 4360 4360 Selasphorus calliope        2.834325      2.65 0.1828933       100</span>
-<span class="co">#&gt; 4 4360 4360 Selasphorus calliope        2.703554      2.65 0.1828933       100</span>
-<span class="co">#&gt; 5 4360 4360 Selasphorus calliope        2.611783      2.65 0.1828933       100</span>
-<span class="co">#&gt; 6 4360 4360 Selasphorus calliope        2.989833      2.65 0.1828933       100</span>
-<span class="co">#&gt;    sd_method</span>
-<span class="co">#&gt; 1 AOU lookup</span>
-<span class="co">#&gt; 2 AOU lookup</span>
-<span class="co">#&gt; 3 AOU lookup</span>
-<span class="co">#&gt; 4 AOU lookup</span>
-<span class="co">#&gt; 5 AOU lookup</span>
-<span class="co">#&gt; 6 AOU lookup</span>
-
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hummingbirds"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, aou <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance</span></span>
+<span><span class="co">#&gt; 1 4360 4360 Selasphorus calliope        2.556333      2.65 0.1828933       100</span></span>
+<span><span class="co">#&gt; 2 4360 4360 Selasphorus calliope        3.104524      2.65 0.1828933       100</span></span>
+<span><span class="co">#&gt; 3 4360 4360 Selasphorus calliope        2.834325      2.65 0.1828933       100</span></span>
+<span><span class="co">#&gt; 4 4360 4360 Selasphorus calliope        2.703554      2.65 0.1828933       100</span></span>
+<span><span class="co">#&gt; 5 4360 4360 Selasphorus calliope        2.611783      2.65 0.1828933       100</span></span>
+<span><span class="co">#&gt; 6 4360 4360 Selasphorus calliope        2.989833      2.65 0.1828933       100</span></span>
+<span><span class="co">#&gt;    sd_method</span></span>
+<span><span class="co">#&gt; 1 AOU lookup</span></span>
+<span><span class="co">#&gt; 2 AOU lookup</span></span>
+<span><span class="co">#&gt; 3 AOU lookup</span></span>
+<span><span class="co">#&gt; 4 AOU lookup</span></span>
+<span><span class="co">#&gt; 5 AOU lookup</span></span>
+<span><span class="co">#&gt; 6 AOU lookup</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hummingbirds"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="sim_populations_files/figure-html/unnamed-chunk-2-1.png" width="336"></p>
 <p>To look up the AOU based on the species’ scientific name, explore the included <code>sd_table</code> dataset:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sd_table</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 421 × 6</span></span>
-<span class="co">#&gt;      aou genus       species     mean_mass mean_sd contains_estimates</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>881 Perdix      perdix           406.    31   FALSE             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">2</span>882 Alectoris   chukar           504.    35.6 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">2</span>890 Colinus     virginianus      172     12.1 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">2</span>920 Oreortyx    pictus           233     16.4 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">2</span>930 Callipepla  squamata         184     13.0 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">2</span>940 Callipepla  californica      166.    14.3 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">2</span>950 Callipepla  gambelii         166     11.7 TRUE              </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>960 Cyrtonyx    montezumae       186.    16.8 FALSE             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>970 Dendragapus obscurus        <span style="text-decoration: underline;">1</span>058.    71.0 FALSE             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>971 Dendragapus fuliginosus     <span style="text-decoration: underline;">1</span>056     73.8 FALSE             </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 411 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sd_table</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 421 × 6</span></span></span>
+<span><span class="co">#&gt;      aou genus       species     mean_mass mean_sd contains_estimates</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>881 Perdix      perdix           406.    31   FALSE             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">2</span>882 Alectoris   chukar           504.    35.6 TRUE              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">2</span>890 Colinus     virginianus      172     12.1 TRUE              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">2</span>920 Oreortyx    pictus           233     16.4 TRUE              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">2</span>930 Callipepla  squamata         184     13.0 TRUE              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">2</span>940 Callipepla  californica      166.    14.3 TRUE              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">2</span>950 Callipepla  gambelii         166     11.7 TRUE              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>960 Cyrtonyx    montezumae       186.    16.8 FALSE             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>970 Dendragapus obscurus        <span style="text-decoration: underline;">1</span>058.    71.0 FALSE             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>971 Dendragapus fuliginosus     <span style="text-decoration: underline;">1</span>056     73.8 FALSE             </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 411 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="using-a-known-mean-and-standard-deviation">Using a known mean and standard deviation<a class="anchor" aria-label="anchor" href="#using-a-known-mean-and-standard-deviation"></a>
@@ -149,30 +150,30 @@
 <p>Alternatively, you can simulate body masses for a population by supplying the body size parameters yourself. This may be useful if you would like to work with a species not included in the <code>sd_table</code>, test sensitivities to different parameter ranges, or generate values for simulation/null models (or, other applications!).</p>
 <p><strong>Note that, if both mean mass and a species code are provided, the species code will be used and the mean mass provided will be ignored!</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">a_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span>, sd_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span><span class="op">)</span>
-<span class="co">#&gt;   aou id genus species individual_mass mean_size sd_size abundance</span>
-<span class="co">#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        19.86281        25       3       100</span>
-<span class="co">#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.60234        25       3       100</span>
-<span class="co">#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        20.76744        25       3       100</span>
-<span class="co">#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.59827        25       3       100</span>
-<span class="co">#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        23.80690        25       3       100</span>
-<span class="co">#&gt; 6  NA  1  &lt;NA&gt;    &lt;NA&gt;        24.14694        25       3       100</span>
-<span class="co">#&gt;              sd_method</span>
-<span class="co">#&gt; 1 Mean and SD provided</span>
-<span class="co">#&gt; 2 Mean and SD provided</span>
-<span class="co">#&gt; 3 Mean and SD provided</span>
-<span class="co">#&gt; 4 Mean and SD provided</span>
-<span class="co">#&gt; 5 Mean and SD provided</span>
-<span class="co">#&gt; 6 Mean and SD provided</span>
-
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 3"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">a_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span>, sd_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   aou id genus species individual_mass mean_size sd_size abundance</span></span>
+<span><span class="co">#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        19.86281        25       3       100</span></span>
+<span><span class="co">#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.60234        25       3       100</span></span>
+<span><span class="co">#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        20.76744        25       3       100</span></span>
+<span><span class="co">#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.59827        25       3       100</span></span>
+<span><span class="co">#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        23.80690        25       3       100</span></span>
+<span><span class="co">#&gt; 6  NA  1  &lt;NA&gt;    &lt;NA&gt;        24.14694        25       3       100</span></span>
+<span><span class="co">#&gt;              sd_method</span></span>
+<span><span class="co">#&gt; 1 Mean and SD provided</span></span>
+<span><span class="co">#&gt; 2 Mean and SD provided</span></span>
+<span><span class="co">#&gt; 3 Mean and SD provided</span></span>
+<span><span class="co">#&gt; 4 Mean and SD provided</span></span>
+<span><span class="co">#&gt; 5 Mean and SD provided</span></span>
+<span><span class="co">#&gt; 6 Mean and SD provided</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 3"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="sim_populations_files/figure-html/unnamed-chunk-4-1.png" width="336"></p>
 </div>
 <div class="section level3">
@@ -180,31 +181,31 @@
 </h3>
 <p>If the mean mass is not known or not provided, <code>simulate_population</code> will estimate the standard deviation based on scaling between the mean and standard deviation of body mass:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-
-<span class="va">another_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span><span class="op">)</span>
-<span class="co">#&gt;   aou id genus species individual_mass mean_size  sd_size abundance</span>
-<span class="co">#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.24259        25 1.743992       100</span>
-<span class="co">#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.45239        25 1.743992       100</span>
-<span class="co">#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        20.80068        25 1.743992       100</span>
-<span class="co">#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        23.76115        25 1.743992       100</span>
-<span class="co">#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.17548        25 1.743992       100</span>
-<span class="co">#&gt; 6  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.58924        25 1.743992       100</span>
-<span class="co">#&gt;                sd_method</span>
-<span class="co">#&gt; 1 SD estimated from mean</span>
-<span class="co">#&gt; 2 SD estimated from mean</span>
-<span class="co">#&gt; 3 SD estimated from mean</span>
-<span class="co">#&gt; 4 SD estimated from mean</span>
-<span class="co">#&gt; 5 SD estimated from mean</span>
-<span class="co">#&gt; 6 SD estimated from mean</span>
-
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 1.74"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">another_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   aou id genus species individual_mass mean_size  sd_size abundance</span></span>
+<span><span class="co">#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.24259        25 1.743992       100</span></span>
+<span><span class="co">#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.45239        25 1.743992       100</span></span>
+<span><span class="co">#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        20.80068        25 1.743992       100</span></span>
+<span><span class="co">#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        23.76115        25 1.743992       100</span></span>
+<span><span class="co">#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.17548        25 1.743992       100</span></span>
+<span><span class="co">#&gt; 6  NA  1  &lt;NA&gt;    &lt;NA&gt;        22.58924        25 1.743992       100</span></span>
+<span><span class="co">#&gt;                sd_method</span></span>
+<span><span class="co">#&gt; 1 SD estimated from mean</span></span>
+<span><span class="co">#&gt; 2 SD estimated from mean</span></span>
+<span><span class="co">#&gt; 3 SD estimated from mean</span></span>
+<span><span class="co">#&gt; 4 SD estimated from mean</span></span>
+<span><span class="co">#&gt; 5 SD estimated from mean</span></span>
+<span><span class="co">#&gt; 6 SD estimated from mean</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 1.74"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="sim_populations_files/figure-html/unnamed-chunk-5-1.png" width="336"></p>
 </div>
 </div>
@@ -227,7 +228,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

@@ -92,60 +92,60 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org" class="external-link">DBI</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org" class="external-link">DBI</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="downloading-data-using-the-data-retriever">Downloading data using the data retriever<a class="anchor" aria-label="anchor" href="#downloading-data-using-the-data-retriever"></a>
 </h2>
 <p>The <code>rdataretriever</code> package provides an interface for accessing the Breeding Bird Survey data.</p>
 <p>First, install the <code>rdataretriever</code> (and associated python installs) using the instructions <a href="https://docs.ropensci.org/rdataretriever/#basic-installation" class="external-link">here</a>. The following, taken from the Basic Install instructions at the link, worked for RMD in June 2022 on a 2020 Macbook Air running Catalina 10.15.7, R 4.0.3, existing conda but no preexisting miniconda install:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'reticulate'</span><span class="op">)</span> <span class="co"># Install R package for interacting with Python</span>
-<span class="fu">reticulate</span><span class="fu">::</span><span class="fu">install_miniconda</span><span class="op">(</span><span class="op">)</span> <span class="co"># Install Python</span>
-<span class="fu">reticulate</span><span class="fu">::</span><span class="fu">py_install</span><span class="op">(</span><span class="st">'retriever'</span><span class="op">)</span> <span class="co"># Install the Python retriever package</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'rdataretriever'</span><span class="op">)</span> <span class="co"># Install the R package for running the retriever</span>
-<span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">get_updates</span><span class="op">(</span><span class="op">)</span> <span class="co"># Update the available datasets</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'reticulate'</span><span class="op">)</span> <span class="co"># Install R package for interacting with Python</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">install_miniconda</span><span class="op">(</span><span class="op">)</span> <span class="co"># Install Python</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">py_install</span><span class="op">(</span><span class="st">'retriever'</span><span class="op">)</span> <span class="co"># Install the Python retriever package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'rdataretriever'</span><span class="op">)</span> <span class="co"># Install the R package for running the retriever</span></span>
+<span><span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">get_updates</span><span class="op">(</span><span class="op">)</span> <span class="co"># Update the available datasets</span></span></code></pre></div>
 <p>Then use the retriever to download and preprocess the Breeding Bird Survey data. The path to the <code>data_dir</code> argument in <code>rdataretriever::install_sqlite</code> is <em>relative to the current working directory</em>. (Flagging this as something that may be problematic for inclusion in a package vignette.)</p>
 <p>The following works for RMD:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">install_sqlite</span><span class="op">(</span><span class="st">"breed-bird-survey"</span>, file <span class="op">=</span> <span class="st">"bbs.sqlite"</span>, data_dir <span class="op">=</span> <span class="st">"../retriever_data"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">install_sqlite</span><span class="op">(</span><span class="st">"breed-bird-survey"</span>, file <span class="op">=</span> <span class="st">"bbs.sqlite"</span>, data_dir <span class="op">=</span> <span class="st">"../retriever_data"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="accessing-the-data">Accessing the data<a class="anchor" aria-label="anchor" href="#accessing-the-data"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">bbs_db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu">SQLite</span><span class="op">(</span><span class="op">)</span>, <span class="st">'../../retriever_data/bbs.sqlite'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">bbs_db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu">SQLite</span><span class="op">(</span><span class="op">)</span>, <span class="st">'../../retriever_data/bbs.sqlite'</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_counts"</span><span class="op">)</span>
-<span class="va">sites</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_routes"</span><span class="op">)</span>
-<span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_species"</span><span class="op">)</span>
-
-
-<span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">surveys</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_counts"</span><span class="op">)</span></span>
+<span><span class="va">sites</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_routes"</span><span class="op">)</span></span>
+<span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_species"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">surveys</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="surveys-cleaning-after-matss">Surveys cleaning after MATSS<a class="anchor" aria-label="anchor" href="#surveys-cleaning-after-matss"></a>
 </h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">select</span><span class="op">(</span><span class="va">statenum</span>, <span class="va">route</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span>
-
-<span class="va">one_route</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">statenum</span> <span class="op">==</span> <span class="fl">2</span>,
-         <span class="va">route</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">mutate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="va">speciestotal</span>,
-         species_id <span class="op">=</span> <span class="va">aou</span><span class="op">)</span>
-<span class="va">one_cleaned_route</span> <span class="op">&lt;-</span> <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">combine_bbs_subspecies</span><span class="op">(</span><span class="va">one_route</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">filter_bbs_species</span><span class="op">(</span>species_table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">one_cleaned_route</span><span class="op">$</span><span class="va">aou</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">raw_masses</span><span class="op">$</span><span class="va">species_id</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">select</span><span class="op">(</span><span class="va">statenum</span>, <span class="va">route</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">one_route</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">statenum</span> <span class="op">==</span> <span class="fl">2</span>,</span>
+<span>         <span class="va">route</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="va">speciestotal</span>,</span>
+<span>         species_id <span class="op">=</span> <span class="va">aou</span><span class="op">)</span></span>
+<span><span class="va">one_cleaned_route</span> <span class="op">&lt;-</span> <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">combine_bbs_subspecies</span><span class="op">(</span><span class="va">one_route</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">filter_bbs_species</span><span class="op">(</span>species_table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">one_cleaned_route</span><span class="op">$</span><span class="va">aou</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">raw_masses</span><span class="op">$</span><span class="va">species_id</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">DBI</span><span class="fu">::</span><span class="fu">dbDisconnect</span><span class="op">(</span><span class="va">bbs_db</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">DBI</span><span class="fu">::</span><span class="fu">dbDisconnect</span><span class="op">(</span><span class="va">bbs_db</span><span class="op">)</span></span></code></pre></div>
 <p>The above is notes for later-RMD. For inclusion in a vignette, there will need to be a portable version of a subset of this data, possibly included in the package. I’m not sure on exactly what output version I’ll want. And note you want to clean the raw survey data to remove nightbirds etc.</p>
 </div>
   </div>
@@ -167,7 +167,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
