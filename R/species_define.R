@@ -93,7 +93,7 @@ species_lookup <- function(aou = NA, genus = NA, species = NA) {
     }
 
     return(sd_table %>%
-      dplyr::filter(.data$aou == provided_aou))
+      dplyr::filter(aou == provided_aou))
 
   } else if (all(is.character(genus), is.character(species))) {
     proper_genus <- tolower(genus)
