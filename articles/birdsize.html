@@ -53,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/bbsdata.html">Working with BBS data</a>
+      <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
       <a href="../articles/sim_community.html">sim_community</a>
@@ -62,7 +62,7 @@
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
-      <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+      <a href="../articles/stdev_scaling.html">Scaling of mean and standard deviation of body mass</a>
     </li>
     <li>
       <a href="../articles/summarize.html">summarize</a>
@@ -102,11 +102,41 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span></span></code></pre></div>
+<p>The core functions in <code>birdsize</code> apply at 3 levels of
+organization: species, population, and community.</p>
+<p>The <code>species_*</code> functions take information about a real or
+hypothetical species and generates the parameters necessary to simulate
+body size distributions for that species.</p>
+<p>The <code>population_*</code> functions use species-level parameters
+and abundances (population sizes) to simulate individual body size and
+basal metabolic rate measurements to make up populations of that
+species, and calculate population-wide summary statistics.</p>
+<p>The <code>community_*</code> functions generate population-level
+estimates for numerous populations (e.g. populations of different
+species, or populations of the same species at different points in time
+or different sampling locations), and calculate summary statistics with
+flexible grouping structures.</p>
+<p>This vignette walks through each of these operations in detail.</p>
+<div class="section level2">
+<h2 id="species-level-parameters">Species-level parameters<a class="anchor" aria-label="anchor" href="#species-level-parameters"></a>
+</h2>
+<p>The `</p>
+</div>
+<div class="section level2">
+<h2 id="population-level-estimates">Population-level estimates<a class="anchor" aria-label="anchor" href="#population-level-estimates"></a>
+</h2>
+</div>
+<div class="section level2">
+<h2 id="community-level-simulations">Community-level simulations<a class="anchor" aria-label="anchor" href="#community-level-simulations"></a>
+</h2>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
