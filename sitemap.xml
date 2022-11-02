@@ -52,6 +52,9 @@
     <loc>/reference/community_summarize.html</loc>
   </url>
   <url>
+    <loc>/reference/demo_route_clean.html</loc>
+  </url>
+  <url>
     <loc>/reference/demo_route_raw.html</loc>
   </url>
   <url>
@@ -86,12 +89,6 @@
   </url>
   <url>
     <loc>/reference/is_unidentified.html</loc>
-  </url>
-  <url>
-    <loc>/reference/new_hartford_clean.html</loc>
-  </url>
-  <url>
-    <loc>/reference/new_hartford_raw.html</loc>
   </url>
   <url>
     <loc>/reference/nontarget_species.html</loc>
