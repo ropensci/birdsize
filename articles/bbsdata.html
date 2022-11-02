@@ -53,10 +53,16 @@
       <a href="../articles/bbsdata.html">Working with BBS data</a>
     </li>
     <li>
+      <a href="../articles/sim_community.html">sim_community</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+    </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
     </li>
   </ul>
 </li>
@@ -91,62 +97,79 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org" class="external-link">DBI</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="downloading-data-using-the-data-retriever">Downloading data using the data retriever<a class="anchor" aria-label="anchor" href="#downloading-data-using-the-data-retriever"></a>
 </h2>
-<p>The <code>rdataretriever</code> package provides an interface for accessing the Breeding Bird Survey data.</p>
-<p>First, install the <code>rdataretriever</code> (and associated python installs) using the instructions <a href="https://docs.ropensci.org/rdataretriever/#basic-installation" class="external-link">here</a>. The following, taken from the Basic Install instructions at the link, worked for RMD in June 2022 on a 2020 Macbook Air running Catalina 10.15.7, R 4.0.3, existing conda but no preexisting miniconda install:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>The <code>rdataretriever</code> package provides an interface for
+accessing the Breeding Bird Survey data.</p>
+<p>To install the retriever and use it to access BBS data, follow the
+instructions <a href="https://docs.ropensci.org/rdataretriever/#basic-installation" class="external-link">here</a>.
+For example:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'reticulate'</span><span class="op">)</span> <span class="co"># Install R package for interacting with Python</span></span>
 <span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">install_miniconda</span><span class="op">(</span><span class="op">)</span> <span class="co"># Install Python</span></span>
 <span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">py_install</span><span class="op">(</span><span class="st">'retriever'</span><span class="op">)</span> <span class="co"># Install the Python retriever package</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'rdataretriever'</span><span class="op">)</span> <span class="co"># Install the R package for running the retriever</span></span>
-<span><span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">get_updates</span><span class="op">(</span><span class="op">)</span> <span class="co"># Update the available datasets</span></span></code></pre></div>
-<p>Then use the retriever to download and preprocess the Breeding Bird Survey data. The path to the <code>data_dir</code> argument in <code>rdataretriever::install_sqlite</code> is <em>relative to the current working directory</em>. (Flagging this as something that may be problematic for inclusion in a package vignette.)</p>
-<p>The following works for RMD:</p>
+<span><span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">get_updates</span><span class="op">(</span><span class="op">)</span> <span class="co"># Update the available datasets</span></span>
+<span></span>
+<span><span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">install_sqlite</span><span class="op">(</span><span class="st">"breed-bird-survey"</span>, file <span class="op">=</span> <span class="st">"bbs.sqlite"</span>, data_dir <span class="op">=</span> <span class="st">"../retriever_data"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org" class="external-link">DBI</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bbs_db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu">SQLite</span><span class="op">(</span><span class="op">)</span>, <span class="st">'../../retriever_data/bbs.sqlite'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_counts"</span><span class="op">)</span></span>
+<span><span class="va">sites</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_routes"</span><span class="op">)</span></span>
+<span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_species"</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>community_</code> functions operate on a single survey
+route. The <code>sites</code> table contains information about the
+location, data quality of survey routes. The following extracts the
+route for New Hartford, CT.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sites</span>, <span class="va">statenum</span> <span class="op">==</span> <span class="fl">18</span>, <span class="va">route</span> <span class="op">==</span> <span class="fl">102</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">myroute</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">statenum</span> <span class="op">==</span> <span class="fl">18</span>,</span>
+<span>         <span class="va">route</span> <span class="op">==</span> <span class="fl">102</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="co"># substitute the state number and </span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu">DBI</span><span class="fu">::</span><span class="fu">dbDisconnect</span><span class="op">(</span><span class="va">bbs_db</span><span class="op">)</span></span></code></pre></div>
+<p>Synthetic data for a fictional route with the same column names and
+types are included in <code>birdsize</code> as
+<code>demo_route_raw</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu">rdataretriever</span><span class="fu">::</span><span class="fu">install_sqlite</span><span class="op">(</span><span class="st">"breed-bird-survey"</span>, file <span class="op">=</span> <span class="st">"bbs.sqlite"</span>, data_dir <span class="op">=</span> <span class="st">"../retriever_data"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">demo_route_raw</span> <span class="op">&lt;-</span> <span class="va">demo_route_raw</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_route_raw</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  aou count10</span></span>
+<span><span class="co">#&gt; 1    900000 9009911011994        900       99     1  101 1994 4730       8</span></span>
+<span><span class="co">#&gt; 2    900001 9009911011995        900       99     1  101 1995 4730      13</span></span>
+<span><span class="co">#&gt; 3    900002 9009911011996        900       99     1  101 1996 4730       8</span></span>
+<span><span class="co">#&gt; 4    900003 9009911011997        900       99     1  101 1997 4730       9</span></span>
+<span><span class="co">#&gt; 5    900004 9009911011998        900       99     1  101 1998 4730      10</span></span>
+<span><span class="co">#&gt; 6    900005 9009911011999        900       99     1  101 1999 4730      12</span></span>
+<span><span class="co">#&gt;   count20 count30 count40 count50 stoptotal speciestotal</span></span>
+<span><span class="co">#&gt; 1      12      15      12      15         5           62</span></span>
+<span><span class="co">#&gt; 2       9      11      10      10         5           53</span></span>
+<span><span class="co">#&gt; 3      11       9      13      15         5           56</span></span>
+<span><span class="co">#&gt; 4      13      16       9      12         5           59</span></span>
+<span><span class="co">#&gt; 5       6      12       8       7         5           43</span></span>
+<span><span class="co">#&gt; 6      13       5       9       5         5           44</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="accessing-the-data">Accessing the data<a class="anchor" aria-label="anchor" href="#accessing-the-data"></a>
+<h2 id="cleaning-data">Cleaning data<a class="anchor" aria-label="anchor" href="#cleaning-data"></a>
 </h2>
+<p>Following Harris et al (2018) and convention, removing taxa not well
+captured by the BBS methodology (nightbirds, waterbirds) and
+unidentified species.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">bbs_db</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu">SQLite</span><span class="op">(</span><span class="op">)</span>, <span class="st">'../../retriever_data/bbs.sqlite'</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_counts"</span><span class="op">)</span></span>
-<span><span class="va">sites</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_routes"</span><span class="op">)</span></span>
-<span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">bbs_db</span>, <span class="st">"breed_bird_survey_species"</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">aou</span>, <span class="va">speciestotal</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">surveys</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="surveys-cleaning-after-matss">Surveys cleaning after MATSS<a class="anchor" aria-label="anchor" href="#surveys-cleaning-after-matss"></a>
-</h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">select</span><span class="op">(</span><span class="va">statenum</span>, <span class="va">route</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">one_route</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">statenum</span> <span class="op">==</span> <span class="fl">2</span>,</span>
-<span>         <span class="va">route</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="va">speciestotal</span>,</span>
-<span>         species_id <span class="op">=</span> <span class="va">aou</span><span class="op">)</span></span>
-<span><span class="va">one_cleaned_route</span> <span class="op">&lt;-</span> <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">combine_bbs_subspecies</span><span class="op">(</span><span class="va">one_route</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">MATSS</span><span class="fu">::</span><span class="fu">filter_bbs_species</span><span class="op">(</span>species_table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">one_cleaned_route</span><span class="op">$</span><span class="va">aou</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">raw_masses</span><span class="op">$</span><span class="va">species_id</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">DBI</span><span class="fu">::</span><span class="fu">dbDisconnect</span><span class="op">(</span><span class="va">bbs_db</span><span class="op">)</span></span></code></pre></div>
-<p>The above is notes for later-RMD. For inclusion in a vignette, there will need to be a portable version of a subset of this data, possibly included in the package. I’m not sure on exactly what output version I’ll want. And note you want to clean the raw survey data to remove nightbirds etc.</p>
+<span><span class="va">demo_route_cleaned</span> <span class="op">&lt;-</span> <span class="va">demo_route_raw</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>For the New Hartford route, this removes 377 records of 13
+species.</p>
 </div>
   </div>
 

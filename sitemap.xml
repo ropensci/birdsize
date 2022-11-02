@@ -19,10 +19,16 @@
     <loc>/articles/index.html</loc>
   </url>
   <url>
+    <loc>/articles/sim_community.html</loc>
+  </url>
+  <url>
     <loc>/articles/sim_populations.html</loc>
   </url>
   <url>
     <loc>/articles/stdev_scaling.html</loc>
+  </url>
+  <url>
+    <loc>/articles/summarize.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
@@ -37,6 +43,24 @@
     <loc>/reference/clean_sp_size_data.html</loc>
   </url>
   <url>
+    <loc>/reference/community_generate.html</loc>
+  </url>
+  <url>
+    <loc>/reference/community_summarize.html</loc>
+  </url>
+  <url>
+    <loc>/reference/demo_route_raw.html</loc>
+  </url>
+  <url>
+    <loc>/reference/filter_bbs_survey.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_nontarget_species.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_unidentified_species.html</loc>
+  </url>
+  <url>
     <loc>/reference/generate_sd_table.html</loc>
   </url>
   <url>
@@ -46,16 +70,37 @@
     <loc>/reference/get_sp_mean_size.html</loc>
   </url>
   <url>
+    <loc>/reference/identify_richness_designator.html</loc>
+  </url>
+  <url>
     <loc>/reference/ind_draw.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/individual_metabolic_rate.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_unidentified.html</loc>
+  </url>
+  <url>
+    <loc>/reference/new_hartford_clean.html</loc>
+  </url>
+  <url>
+    <loc>/reference/new_hartford_raw.html</loc>
+  </url>
+  <url>
+    <loc>/reference/nontarget_species.html</loc>
+  </url>
+  <url>
     <loc>/reference/pipe.html</loc>
   </url>
   <url>
     <loc>/reference/pop_generate.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pop_summarize.html</loc>
   </url>
   <url>
     <loc>/reference/raw_masses.html</loc>
@@ -71,5 +116,8 @@
   </url>
   <url>
     <loc>/reference/species_lookup.html</loc>
+  </url>
+  <url>
+    <loc>/reference/unidentified_species.html</loc>
   </url>
 </urlset>

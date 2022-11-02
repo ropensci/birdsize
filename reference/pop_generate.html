@@ -35,10 +35,16 @@
       <a href="../articles/bbsdata.html">Working with BBS data</a>
     </li>
     <li>
+      <a href="../articles/sim_community.html">sim_community</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+    </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
     </li>
   </ul></li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
@@ -67,13 +73,13 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pop_generate</span><span class="op">(</span></span>
-<span>  abundance <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  aou <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  genus <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  species <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  mean_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  sd_size <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  id <span class="op">=</span> <span class="fl">1</span></span>
+<span>  abundance <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  aou <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  genus <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  species <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  mean_size <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  sd_size <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  sim_species_id <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -103,7 +109,7 @@
 <dd><p>numeric, standard deviation of body mass for this species.</p></dd>
 
 
-<dt>id</dt>
+<dt>sim_species_id</dt>
 <dd><p>defaults AOU or 1</p></dd>
 
 </dl></div>
@@ -122,44 +128,44 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">pop_generate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">5</span>, aou <span class="op">=</span> <span class="fl">2881</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    aou   id  genus species individual_mass mean_size sd_size abundance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2881 2881 Perdix  perdix        429.0552     405.5      31         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2881 2881 Perdix  perdix        343.4386     405.5      31         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2881 2881 Perdix  perdix        412.7139     405.5      31         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2881 2881 Perdix  perdix        358.3712     405.5      31         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2881 2881 Perdix  perdix        411.9100     405.5      31         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    sd_method</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    aou sim_species_id  genus species individual_mass individual_bmr mean_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2881           2881 Perdix  perdix        463.9326       836.3184     405.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2881           2881 Perdix  perdix        356.1872       692.6852     405.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2881           2881 Perdix  perdix        394.3305       744.7967     405.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2881           2881 Perdix  perdix        422.6064       782.4952     405.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2881           2881 Perdix  perdix        426.2087       787.2452     405.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sd_size abundance  sd_method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      31         5 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      31         5 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      31         5 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      31         5 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      31         5 AOU lookup</span>
 <span class="r-in"><span><span class="fu">pop_generate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">5</span>, genus <span class="op">=</span> <span class="st">"Selasphorus"</span>, species <span class="op">=</span> <span class="st">"calliope"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    aou   id       genus  species individual_mass mean_size   sd_size abundance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 4360 4360 Selasphorus calliope        2.897407      2.65 0.1828933         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 4360 4360 Selasphorus calliope        2.529929      2.65 0.1828933         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 4360 4360 Selasphorus calliope        2.756850      2.65 0.1828933         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 4360 4360 Selasphorus calliope        2.861865      2.65 0.1828933         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 4360 4360 Selasphorus calliope        2.885999      2.65 0.1828933         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                sd_method</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Scientific name lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Scientific name lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Scientific name lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Scientific name lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Scientific name lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    aou sim_species_id       genus  species individual_mass individual_bmr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 4360           4360 Selasphorus calliope        2.450117       19.89205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 4360           4360 Selasphorus calliope        2.767081       21.69456</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 4360           4360 Selasphorus calliope        2.757474       21.64083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 4360           4360 Selasphorus calliope        3.011340       23.04332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 4360           4360 Selasphorus calliope        2.413158       19.67764</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean_size   sd_size abundance              sd_method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      2.65 0.1818394         5 Scientific name lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      2.65 0.1818394         5 Scientific name lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      2.65 0.1818394         5 Scientific name lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      2.65 0.1818394         5 Scientific name lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      2.65 0.1818394         5 Scientific name lookup</span>
 <span class="r-in"><span><span class="fu">pop_generate</span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">5</span>, mean_size <span class="op">=</span> <span class="fl">20</span>, sd_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   aou id genus species individual_mass mean_size sd_size abundance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        18.87004        20       3         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        16.59803        20       3         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.72198        20       3         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.95725        20       3         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.86808        20       3         5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              sd_method</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Mean and SD provided</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Mean and SD provided</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Mean and SD provided</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Mean and SD provided</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Mean and SD provided</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   aou sim_species_id genus species individual_mass individual_bmr mean_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  NA              1  &lt;NA&gt;    &lt;NA&gt;        20.47452       90.38256        20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  NA              1  &lt;NA&gt;    &lt;NA&gt;        20.24941       89.67293        20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  NA              1  &lt;NA&gt;    &lt;NA&gt;        17.88339       82.07030        20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  NA              1  &lt;NA&gt;    &lt;NA&gt;        17.16898       79.71904        20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  NA              1  &lt;NA&gt;    &lt;NA&gt;        14.04701       69.09023        20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sd_size abundance            sd_method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       3         5 Mean and SD provided</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       3         5 Mean and SD provided</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       3         5 Mean and SD provided</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       3         5 Mean and SD provided</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       3         5 Mean and SD provided</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
