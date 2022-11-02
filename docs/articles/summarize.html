@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">birdsize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -73,7 +69,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/diazrenata/birdsize/">
+  <a href="https://github.com/diazrenata/birdsize/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -88,13 +84,13 @@
 
       
 
-      </header><script src="summarize_files/header-attrs-2.14/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>summarize</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/master/vignettes/summarize.Rmd"><code>vignettes/summarize.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/HEAD/vignettes/summarize.Rmd" class="external-link"><code>vignettes/summarize.Rmd</code></a></small>
       <div class="hidden name"><code>summarize.Rmd</code></div>
 
     </div>
@@ -102,138 +98,147 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize">birdsize</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bbs_data</span> <span class="op">&lt;-</span> <span class="va">demo_route_raw</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">22</span><span class="op">)</span>
-
-<span class="va">a_community</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">bbs_data</span><span class="op">)</span></code></pre></div>
-<div id="summarize-grouping-by-year" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summarize-grouping-by-year" class="anchor"></a>Summarize grouping by year</h1>
+<code class="sourceCode R"><span><span class="va">bbs_data</span> <span class="op">&lt;-</span> <span class="va">demo_route_raw</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">22</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">a_community</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">bbs_data</span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="summarize-grouping-by-year">Summarize grouping by year<a class="anchor" aria-label="anchor" href="#summarize-grouping-by-year"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">annual_summary</span> <span class="op">&lt;-</span> <span class="va">a_community</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">annual_summary</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 × 15</span>
-<span class="co">#&gt;   routedataid   countrynum statenum route  rpid  year species_designator</span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 9009911011994        900       99     1   101  1994 aou               </span>
-<span class="co">#&gt; 2 9009911011995        900       99     1   101  1995 aou               </span>
-<span class="co">#&gt; 3 9009911011996        900       99     1   101  1996 aou               </span>
-<span class="co">#&gt; 4 9009911011997        900       99     1   101  1997 aou               </span>
-<span class="co">#&gt; 5 9009911011998        900       99     1   101  1998 aou               </span>
-<span class="co">#&gt; 6 9009911011999        900       99     1   101  1999 aou               </span>
-<span class="co">#&gt; # … with 8 more variables: total_abundance &lt;int&gt;, total_biomass &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   total_metabolic_rate &lt;dbl&gt;, total_richness &lt;int&gt;,</span>
-<span class="co">#&gt; #   mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;</span>
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">annual_summary</span> <span class="op">&lt;-</span> <span class="va">a_community</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">annual_summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 15</span></span></span>
+<span><span class="co">#&gt;   routedataid  count…¹ state…² route  rpid  year speci…³ total…⁴ total…⁵ total…⁶</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>994 aou        <span style="text-decoration: underline;">1</span>361 <span style="text-decoration: underline;">157</span>742. <span style="text-decoration: underline;">353</span>471.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>995 aou        <span style="text-decoration: underline;">1</span>443 <span style="text-decoration: underline;">162</span>130. <span style="text-decoration: underline;">366</span>250.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>996 aou        <span style="text-decoration: underline;">1</span>413 <span style="text-decoration: underline;">166</span>114. <span style="text-decoration: underline;">368</span>670.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>997 aou        <span style="text-decoration: underline;">1</span>381 <span style="text-decoration: underline;">158</span>790. <span style="text-decoration: underline;">357</span>307.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>998 aou        <span style="text-decoration: underline;">1</span>415 <span style="text-decoration: underline;">156</span>500. <span style="text-decoration: underline;">356</span>167.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>999 aou        <span style="text-decoration: underline;">1</span>412 <span style="text-decoration: underline;">164</span>269. <span style="text-decoration: underline;">368</span>489.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 5 more variables: total_richness &lt;int&gt;, mean_individual_mass &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   sd_individual_mass &lt;dbl&gt;, mean_metabolic_rate &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   sd_metabolic_rate &lt;dbl&gt;, and abbreviated variable names ¹​countrynum,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ²​statenum, ³​species_designator, ⁴​total_abundance, ⁵​total_biomass,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁶​total_metabolic_rate</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="summarize_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
-<div id="summarize-grouping-by-year-and-species" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summarize-grouping-by-year-and-species" class="anchor"></a>Summarize grouping by year <em>and</em> species</h1>
+<div class="section level2">
+<h2 id="summarize-grouping-by-year-and-species">Summarize grouping by year <em>and</em> species<a class="anchor" aria-label="anchor" href="#summarize-grouping-by-year-and-species"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-
-<span class="va">species_annual_summary</span> <span class="op">&lt;-</span> <span class="va">a_community</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"species_and_year"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">species_annual_summary</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 × 19</span>
-<span class="co">#&gt;   routedataid   countrynum statenum route  rpid  year   aou sim_species_id genus</span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;          &lt;int&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 9009911011994        900       99     1   101  1994  3000           3000 Bona…</span>
-<span class="co">#&gt; 2 9009911011994        900       99     1   101  1994  3151           3151 Stre…</span>
-<span class="co">#&gt; 3 9009911011994        900       99     1   101  1994  3152           3152 Stre…</span>
-<span class="co">#&gt; 4 9009911011994        900       99     1   101  1994  3280           3280 Elan…</span>
-<span class="co">#&gt; 5 9009911011994        900       99     1   101  1994  3460           3460 Buteo</span>
-<span class="co">#&gt; 6 9009911011994        900       99     1   101  1994  3550           3550 Falco</span>
-<span class="co">#&gt; # … with 10 more variables: species &lt;chr&gt;, species_designator &lt;chr&gt;,</span>
-<span class="co">#&gt; #   total_abundance &lt;int&gt;, total_biomass &lt;dbl&gt;, total_metabolic_rate &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   total_richness &lt;int&gt;, mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;</span>
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">species_annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">species_annual_summary</span> <span class="op">&lt;-</span> <span class="va">a_community</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"species_and_year"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">species_annual_summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 21</span></span></span>
+<span><span class="co">#&gt;   routed…¹ count…² state…³ route  rpid  year   aou sim_s…⁴ genus species mean_…⁵</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 9009911…     900      99     1   101  <span style="text-decoration: underline;">1</span>994  <span style="text-decoration: underline;">3</span>000    <span style="text-decoration: underline;">3</span>000 Bona… umbell…    532 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 9009911…     900      99     1   101  <span style="text-decoration: underline;">1</span>994  <span style="text-decoration: underline;">3</span>151    <span style="text-decoration: underline;">3</span>151 Stre… chinen…    159 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 9009911…     900      99     1   101  <span style="text-decoration: underline;">1</span>994  <span style="text-decoration: underline;">3</span>152    <span style="text-decoration: underline;">3</span>152 Stre… roseog…    155 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 9009911…     900      99     1   101  <span style="text-decoration: underline;">1</span>994  <span style="text-decoration: underline;">3</span>280    <span style="text-decoration: underline;">3</span>280 Elan… leucur…    346 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 9009911…     900      99     1   101  <span style="text-decoration: underline;">1</span>994  <span style="text-decoration: underline;">3</span>460    <span style="text-decoration: underline;">3</span>460 Buteo plagia…    528.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 9009911…     900      99     1   101  <span style="text-decoration: underline;">1</span>994  <span style="text-decoration: underline;">3</span>550    <span style="text-decoration: underline;">3</span>550 Falco mexica…    734 </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 10 more variables: sd_size &lt;dbl&gt;, species_designator &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   total_abundance &lt;int&gt;, total_biomass &lt;dbl&gt;, total_metabolic_rate &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   total_richness &lt;int&gt;, mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;, and abbreviated</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   variable names ¹​routedataid, ²​countrynum, ³​statenum, ⁴​sim_species_id,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁵​mean_size</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">species_annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="summarize_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
 </div>
-<div id="summarize-grouping-by-species" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summarize-grouping-by-species" class="anchor"></a>Summarize grouping by species</h1>
+<div class="section level2">
+<h2 id="summarize-grouping-by-species">Summarize grouping by species<a class="anchor" aria-label="anchor" href="#summarize-grouping-by-species"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">species_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">a_community</span>, level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">species_summary</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 × 17</span>
-<span class="co">#&gt;   countrynum statenum route  rpid   aou sim_species_id genus        species    </span>
-<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;          &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;      </span>
-<span class="co">#&gt; 1        900       99     1   101  3000           3000 Bonasa       umbellus   </span>
-<span class="co">#&gt; 2        900       99     1   101  3151           3151 Streptopelia chinensis  </span>
-<span class="co">#&gt; 3        900       99     1   101  3152           3152 Streptopelia roseogrisea</span>
-<span class="co">#&gt; 4        900       99     1   101  3280           3280 Elanus       leucurus   </span>
-<span class="co">#&gt; 5        900       99     1   101  3460           3460 Buteo        plagiatus  </span>
-<span class="co">#&gt; 6        900       99     1   101  3550           3550 Falco        mexicanus  </span>
-<span class="co">#&gt; # … with 9 more variables: species_designator &lt;chr&gt;, total_abundance &lt;int&gt;,</span>
-<span class="co">#&gt; #   total_biomass &lt;dbl&gt;, total_metabolic_rate &lt;dbl&gt;, total_richness &lt;int&gt;,</span>
-<span class="co">#&gt; #   mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;</span>
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">species_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">species_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">a_community</span>, level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">species_summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 19</span></span></span>
+<span><span class="co">#&gt;   countrynum statenum route  rpid   aou sim_spec…¹ genus species mean_…² sd_size</span></span>
+<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        900       99     1   101  <span style="text-decoration: underline;">3</span>000       <span style="text-decoration: underline;">3</span>000 Bona… umbell…    532     38.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>        900       99     1   101  <span style="text-decoration: underline;">3</span>151       <span style="text-decoration: underline;">3</span>151 Stre… chinen…    159     11  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>        900       99     1   101  <span style="text-decoration: underline;">3</span>152       <span style="text-decoration: underline;">3</span>152 Stre… roseog…    155     11.0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>        900       99     1   101  <span style="text-decoration: underline;">3</span>280       <span style="text-decoration: underline;">3</span>280 Elan… leucur…    346     23.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>        900       99     1   101  <span style="text-decoration: underline;">3</span>460       <span style="text-decoration: underline;">3</span>460 Buteo plagia…    528.    37.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>        900       99     1   101  <span style="text-decoration: underline;">3</span>550       <span style="text-decoration: underline;">3</span>550 Falco mexica…    734     51.0</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 9 more variables: species_designator &lt;chr&gt;, total_abundance &lt;int&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   total_biomass &lt;dbl&gt;, total_metabolic_rate &lt;dbl&gt;, total_richness &lt;int&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;, and abbreviated</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   variable names ¹​sim_species_id, ²​mean_size</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">species_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="summarize_files/figure-html/unnamed-chunk-5-1.png" width="480"></p>
 </div>
-<div id="summarize-with-custom-grouping" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summarize-with-custom-grouping" class="anchor"></a>Summarize with custom grouping</h1>
+<div class="section level2">
+<h2 id="summarize-with-custom-grouping">Summarize with custom grouping<a class="anchor" aria-label="anchor" href="#summarize-with-custom-grouping"></a>
+</h2>
 <p>For example, if you wanted to group by year and genus but not
 species:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">annual_genera_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">a_community</span>, level <span class="op">=</span> <span class="st">"custom"</span>, id_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">annual_genera_summary</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 × 11</span>
-<span class="co">#&gt;    year genus    species_designa… total_abundance total_biomass total_metabolic…</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                      &lt;int&gt;         &lt;dbl&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  1994 Acridot… aou                           13         1539.            4103.</span>
-<span class="co">#&gt; 2  1994 Alauda   aou                           62         2350.            8686.</span>
-<span class="co">#&gt; 3  1994 Amphisp… aou                           52          942.            4308.</span>
-<span class="co">#&gt; 4  1994 Bonasa   aou                           45        24065.           41629.</span>
-<span class="co">#&gt; 5  1994 Buteo    aou                           69        36921.           63859.</span>
-<span class="co">#&gt; 6  1994 Carduel… aou                           50          796.            3774.</span>
-<span class="co">#&gt; # … with 5 more variables: total_richness &lt;int&gt;, mean_individual_mass &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   sd_individual_mass &lt;dbl&gt;, mean_metabolic_rate &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   sd_metabolic_rate &lt;dbl&gt;</span>
-
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">annual_genera_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">genus</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">annual_genera_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">a_community</span>, level <span class="op">=</span> <span class="st">"custom"</span>, id_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">annual_genera_summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 11</span></span></span>
+<span><span class="co">#&gt;    year genus    speci…¹ total…² total…³ total…⁴ total…⁵ mean_…⁶ sd_in…⁷ mean_…⁸</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">1</span>994 Acridot… aou          13   <span style="text-decoration: underline;">1</span>539.   <span style="text-decoration: underline;">4</span>103.       1   118.    8.16    316. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">1</span>994 Alauda   aou          62   <span style="text-decoration: underline;">2</span>350.   <span style="text-decoration: underline;">8</span>686.       1    37.9   3.43    140. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">1</span>994 Amphisp… aou          52    942.   <span style="text-decoration: underline;">4</span>308.       1    18.1   0.224    82.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">1</span>994 Bonasa   aou          45  <span style="text-decoration: underline;">24</span>065.  <span style="text-decoration: underline;">41</span>629.       1   535.   34.7     925. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">1</span>994 Buteo    aou          69  <span style="text-decoration: underline;">36</span>921.  <span style="text-decoration: underline;">63</span>859.       1   535.   34.8     925. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>  <span style="text-decoration: underline;">1</span>994 Carduel… aou          50    796.   <span style="text-decoration: underline;">3</span>774.       1    15.9   1.03     75.5</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more variable: sd_metabolic_rate &lt;dbl&gt;, and abbreviated variable</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   names ¹​species_designator, ²​total_abundance, ³​total_biomass,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​total_metabolic_rate, ⁵​total_richness, ⁶​mean_individual_mass,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁷​sd_individual_mass, ⁸​mean_metabolic_rate</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
+<span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">annual_genera_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">genus</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="summarize_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
 </div>
   </div>
@@ -249,11 +254,13 @@ species:</p>
 
 
       <footer><div class="copyright">
-  <p>Developed by Renata Diaz.</p>
+  <p></p>
+<p>Developed by Renata Diaz.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -261,6 +268,8 @@ species:</p>
 
   
 
+
+  
 
   </body>
 </html>

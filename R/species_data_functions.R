@@ -18,16 +18,16 @@
 get_sd_parameters <- function(raw_size_data) {
   sp_for_sd <- dplyr::filter(
     raw_size_data,
-    !is.na(.data$sd)
+    !is.na(sd)
   ) %>%
     dplyr::mutate(
-      mass = as.numeric(.data$mass),
-      sd = as.numeric(.data$sd)
+      mass = as.numeric(mass),
+      sd = as.numeric(sd)
     ) %>%
-    dplyr::mutate(var = .data$sd^2) %>%
+    dplyr::mutate(var = sd^2) %>%
     dplyr::mutate(
-      log_m = log(.data$mass),
-      log_var = log(.data$var)
+      log_m = log(mass),
+      log_var = log(var)
     )
 
   sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
@@ -82,27 +82,27 @@ species_estimate_sd <- function(sp_mean, pars = NULL) {
 #' @importFrom rlang .data
 clean_sp_size_data <- function(raw_size_data) {
   sp_clean <- raw_size_data %>%
-    dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
-    dplyr::mutate(mass = as.numeric(.data$mass))
+    dplyr::select(-english_common_name, -sporder, -family) %>%
+    dplyr::mutate(mass = as.numeric(mass))
 
-  name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)
+  name_change <- dplyr::filter(sp_clean, not_in_dunning == 1)
 
-  sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
+  sp_clean <- dplyr::filter(sp_clean, is.na(not_in_dunning)) %>%
     dplyr::mutate(added_flag = NA)
 
   for (i in 1:nrow(name_change)) {
     if (!is.na(name_change$close_subspecies[i])) {
       matched_rows <- dplyr::filter(
         sp_clean,
-        .data$genus == name_change$close_genus[i],
-        .data$species == name_change$close_species[i],
-        .data$subspecies == name_change$close_subspecies[i]
+        genus == name_change$close_genus[i],
+        species == name_change$close_species[i],
+        subspecies == name_change$close_subspecies[i]
       )
     } else {
       matched_rows <- dplyr::filter(
         sp_clean,
-        .data$genus == name_change$close_genus[i],
-        .data$species == name_change$close_species[i]
+        genus == name_change$close_genus[i],
+        species == name_change$close_species[i]
       )
     }
 
@@ -161,14 +161,14 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' @importFrom rlang .data
 get_sp_mean_size <- function(sd_dat) {
   sp_means <- sd_dat %>%
-    dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
+    dplyr::group_by(aou, genus, species) %>%
     dplyr::summarize(
-      mean_mass = mean(.data$mass),
-      mean_sd = mean(.data$sd, na.rm = F),
-      contains_estimates = any(.data$estimated_sd)
+      mean_mass = mean(mass),
+      mean_sd = mean(sd, na.rm = F),
+      contains_estimates = any(estimated_sd)
     ) %>%
     dplyr::ungroup() %>%
-    dplyr::filter(!is.na(.data$aou))
+    dplyr::filter(!is.na(aou))
 
   sp_means
 }

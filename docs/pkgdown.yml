@@ -1,11 +1,12 @@
-pandoc: 2.17.1.1
-pkgdown: 1.6.1
+pandoc: '2.18'
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   bbsdata: bbsdata.html
+  birdsize: birdsize.html
   sim_community: sim_community.html
   sim_populations: sim_populations.html
   stdev_scaling: stdev_scaling.html
   summarize: summarize.html
-last_built: 2022-07-01T18:41Z
+last_built: 2022-10-13T22:55Z
 
