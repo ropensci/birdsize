@@ -1,8 +1,8 @@
 ---
-title: "Scaling of standard deviation and mean body mass"
+title: "Scaling of mean and standard deviation of body mass"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Scaling of standard deviation and mean body mass}
+  %\VignetteIndexEntry{Scaling of mean and standard deviation of body mass}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -131,5 +131,7 @@ sqrt(0.0047 * 100 ^ 2.01)
 
 
 See also Thibault et al. (2011) for this scaling relationship for a slightly different subset of the Breeding Bird Survey. 
+
+## References
 
 

@@ -1,0 +1,101 @@
+---
+title: "bbs-data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bbs-data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(birdsize)
+```
+
+# birdsize for the Breeding Bird Survey
+
+`birdsize` is written to interface naturally with data from the North American Breeding Bird Survey (Pardieck et al. 2019). Beginning with data from a BBS route, `birdsize` can directly simulate body size and basal metabolic rate measurements and calculate year- or species-wide summary statistics.
+
+## Obtaining data
+
+Data releases for the Breeding Bird Survey are available on ScienceBase, e.g. [here](https://doi.org/10.5066/P9J6QUF6).
+
+The [Data Retriever](https://retriever.readthedocs.io/en/latest/) also provides an interface for downloading recent releases. Instructions for installing the Data Retriever for R are available [here](https://docs.ropensci.org/rdataretriever/#basic-installation). 
+
+`birdsize` includes a demo dataset with the same column names as the Breeding Bird Survey data available through ScienceBase or the Retriever, but with synthetic data:
+
+```{r}
+
+demo_raw_data <- birdsize::demo_route_raw
+
+head(demo_raw_data)
+
+```
+
+## Cleaning data
+
+Following Harris et al. (2018), it is recommended to filter the raw BBS data to remove taxa that are poorly sampled via the BBS methods (e.g. nightbirds, waterbirds) and to remove unidenitifed taxa. The `filter_bbs_survey` function performs this cleaning:
+
+```{r}
+
+demo_clean_data <- birdsize::filter_bbs_survey(demo_raw_data)
+
+head(demo_clean_data)
+
+```
+
+## Simulating individual-level measurements 
+
+The `community_generate` function will generate individual-level size and BMR estimates for all individuals recorded in a community data frame of the type available from ScienceBase, the Retriever, or the included demo data:
+
+```{r}
+
+set.seed(2022)
+
+demo_community <- birdsize::community_generate(demo_clean_data)
+
+head(demo_community)
+
+```
+
+The first 15 columns (`record_id` through `aou`) are retained from the input data. For species in the BBS, `sim_species_id` is identical to the AOU used for species identification. `genus` and `species` give the scientific name associated with the AOU. `individual_mass` and `individual_bmr` are *individual-level* mass and BMR estimates, with one for each individual recorded in the input data. `mean_size`, `sd_size`, `abundance`, and `sd_method` give the parameters used to generate the individual-level estimates.
+
+
+## Summary statistics and visualization
+
+The `community_summarize` function will calculate summary statistics - for example, the total, mean, and standard deviation abundance, biomass, and energy use of all individuals on a route over time:
+
+```{r}
+
+demo_summary <- birdsize::community_summarize(demo_community, level = "year")
+
+head(demo_summary)
+
+```
+
+
+This can be useful to explore variation over the duration of time for which a route has been sampled:
+
+```{r, fig.dim = c(6, 3)}
+
+library(ggplot2)
+theme_set(theme_bw())
+
+ggplot(demo_summary, aes(year, total_biomass)) +
+  geom_line()
+
+```
+
+
+
+## References
+
+Harris DJ, Taylor SD, White EP. 2018. Forecasting biodiversity in breeding birds using best practices. PeerJ 6:e4278 https://doi.org/10.7717/peerj.4278 
+
+Pardieck, K.L., Ziolkowski Jr., D.J., Lutmerding, M., Aponte, V., and Hudson, M-A.R., 2019, North American Breeding Bird Survey Dataset 1966 - 2018 (ver. 2018.0): U.S. Geological Survey, Patuxent Wildlife Research Center, https://doi.org/10.5066/P9HE8XYJ.
