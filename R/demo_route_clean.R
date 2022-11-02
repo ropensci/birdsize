@@ -1,10 +1,8 @@
-#' Cleaned data for the New Hartford Breeding Bird Survey route in 1994.
+#' Cleaned data for a hypothetical Breeding Bird Survey route.
 #'
-#' Downloaded using the rdataretriever in June 2022.
 #' For inclusion in package vignettes, function testing.
-#' Citation needed!
 #'
-#' @format A data frame with 62 rows and 15 variables:
+#' @format A data frame with 27 rows and 15 variables:
 #' \describe{
 #'   \item{record_id}{inherited}
 #'   \item{routedataid}{inherited}
@@ -27,4 +25,4 @@
 #' }
 #'
 #'
-"new_hartford_clean"
+"demo_route_clean"

@@ -5,7 +5,7 @@
 \alias{demo_route_raw}
 \title{Raw data for a hypothetical Breeding Bird Survey route.}
 \format{
-A data frame with 1470 rows and 15 variables:
+A data frame with 1160 rows and 15 variables:
 \describe{
 \item{record_id}{inherited}
 \item{routedataid}{inherited}

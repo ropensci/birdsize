@@ -6,7 +6,7 @@ test_that("filter bbs data works", {
 
   expect_error(filter_bbs_survey(bad_bbs_data), regexp = "`aou` column is required!")
 
-  raw_bbs_data <- new_hartford_raw
+  raw_bbs_data <- demo_route_raw
 
   bad_species <- which(raw_bbs_data$aou %in% birdsize::unidentified_species$aou |
                          raw_bbs_data$aou %in% birdsize::nontarget_species$aou)

@@ -2,7 +2,7 @@
 #'
 #' For inclusion in package vignettes, function testing.
 #'
-#' @format A data frame with 1470 rows and 15 variables:
+#' @format A data frame with 1160 rows and 15 variables:
 #' \describe{
 #'   \item{record_id}{inherited}
 #'   \item{routedataid}{inherited}
