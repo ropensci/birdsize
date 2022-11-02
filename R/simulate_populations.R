@@ -10,16 +10,16 @@
 #'
 #' @importFrom stats rnorm
 #' @keywords internal
-ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance = NULL) {
-  if (is.null(species_mean)) {
+ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA) {
+  if (is.na(species_mean)) {
     stop("`species_mean` must be provided")
   }
 
-  if (is.null(species_sd)) {
+  if (is.na(species_sd)) {
     stop("`species_sd` must be provided")
   }
 
-  if (is.null(species_abundance)) {
+  if (is.na(species_abundance)) {
     stop("`species_abundance` must be provided")
   }
 
@@ -54,7 +54,7 @@ ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance =
 #' @param species species
 #' @param mean_size numeric, mean body mass (in grams) for this species.
 #' @param sd_size numeric, standard deviation of body mass for this species.
-#' @param id defaults AOU or 1
+#' @param sim_species_id defaults AOU or 1
 #'
 #' @return a dataframe with `abundance` rows and columns for species attributes.
 #' @export
@@ -64,25 +64,28 @@ ind_draw <- function(species_mean = NULL, species_sd = NULL, species_abundance =
 #' pop_generate(abundance = 5, genus = "Selasphorus", species = "calliope")
 #' pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 #'
-pop_generate <- function(abundance = NULL, aou = NULL, genus = NULL, species = NULL, mean_size = NULL, sd_size = NULL, id = 1) {
+pop_generate <- function(abundance = NA, aou = NA, genus = NA, species = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
   this_species <- species_define(
     aou = aou,
     genus = genus,
     species = species,
     mean_size = mean_size,
     sd_size = sd_size,
-    id = id
+    sim_species_id = sim_species_id
   )
 
 
   this_population <- ind_draw(species_mean = this_species$mean_size, species_sd = this_species$sd_size, species_abundance = abundance)
 
+  this_population_bmr <- individual_metabolic_rate(this_population)
+
   population_df <- data.frame(
     aou = this_species$aou,
-    id = this_species$id,
+    sim_species_id = this_species$sim_species_id,
     genus = this_species$genus,
     species = this_species$species,
     individual_mass = this_population,
+    individual_bmr = this_population_bmr,
     mean_size = this_species$mean_size,
     sd_size = this_species$sd_size,
     abundance = abundance,

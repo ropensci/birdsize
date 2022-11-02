@@ -5,12 +5,12 @@
 \title{Define a species}
 \usage{
 species_define(
-  aou = NULL,
-  genus = NULL,
-  species = NULL,
-  mean_size = NULL,
-  sd_size = NULL,
-  id = 1
+  aou = NA,
+  genus = NA,
+  species = NA,
+  mean_size = NA,
+  sd_size = NA,
+  sim_species_id = 1
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ species_define(
 
 \item{sd_size}{sd of body size}
 
-\item{id}{identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.}
+\item{sim_species_id}{identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.}
 }
 \value{
 list with species parameter information

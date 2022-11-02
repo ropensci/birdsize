@@ -1,0 +1,124 @@
+---
+title: "sim_community"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{sim_community}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(birdsize)
+library(dplyr)
+```
+
+# Simulation from a hypothetical BBS route
+
+Load and preprocess data. The `demo_route_raw` dataset is a synthetic dataset with the same column names and AOUs drawn from the BBS data set.
+
+```{r}
+
+demo_route_raw <- demo_route_raw
+
+demo_route_clean <- demo_route_raw %>%
+  filter_bbs_survey() %>%
+  dplyr::filter(year == 1994)
+
+head(demo_route_clean)
+```
+
+
+```{r}
+set.seed(22)
+
+demo_route_sims <- community_generate(community_data_table = demo_route_clean)
+
+head(demo_route_sims)
+```
+
+# Simulation given species' names
+
+```{r}
+
+demo_route_names <- demo_route_clean %>%
+  left_join(select(sd_table, aou, genus, species)) %>%
+  select(-aou)
+
+```
+
+```{r}
+
+set.seed(22)
+
+demo_route_names_sims <- community_generate(demo_route_names)
+
+head(demo_route_names_sims)
+
+```
+
+
+# Simulation given mean size measurements
+
+```{r}
+
+demo_route_means <- demo_route_clean %>%
+  left_join(select(sd_table, aou, mean_mass)) %>%
+  select(-aou) %>%
+  rename(mean_size = mean_mass)
+
+
+
+set.seed(22)
+
+demo_route_means_sims <- community_generate(demo_route_means)
+
+head(demo_route_means_sims)
+
+
+```
+
+
+# Simulation given mean size and sd measurements
+
+```{r}
+
+demo_route_mean_sds <- demo_route_clean %>%
+  left_join(select(sd_table, aou, mean_mass, mean_sd)) %>%
+  select(-aou) %>%
+  rename(mean_size = mean_mass,
+         sd_size = mean_sd)
+
+
+
+set.seed(22)
+
+demo_route_mean_sds_sims <- community_generate(demo_route_mean_sds)
+
+head(demo_route_mean_sds_sims)
+
+```
+
+# Simulation given a mix of AOUs and mean sizes
+
+```{r}
+demo_route_mix <- bind_rows(
+  demo_route_clean[1:14,],
+  demo_route_means[15:27,]
+)
+
+head(demo_route_mix)
+
+set.seed(22)
+
+demo_route_mix_sims <- community_generate(demo_route_mix)
+
+head(demo_route_mix_sims)
+tail(demo_route_mix_sims)
+```

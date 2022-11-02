@@ -98,10 +98,16 @@
       <a href="../articles/bbsdata.html">Working with BBS data</a>
     </li>
     <li>
+      <a href="../articles/sim_community.html">sim_community</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+    </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
     </li>
   </ul>
 </li>
@@ -136,12 +142,12 @@
     </div>
 
     <pre class="usage"><span class='fu'>species_define</span><span class='op'>(</span>
-  aou <span class='op'>=</span> <span class='cn'>NULL</span>,
-  genus <span class='op'>=</span> <span class='cn'>NULL</span>,
-  species <span class='op'>=</span> <span class='cn'>NULL</span>,
-  mean_size <span class='op'>=</span> <span class='cn'>NULL</span>,
-  sd_size <span class='op'>=</span> <span class='cn'>NULL</span>,
-  id <span class='op'>=</span> <span class='fl'>1</span>
+  aou <span class='op'>=</span> <span class='cn'>NA</span>,
+  genus <span class='op'>=</span> <span class='cn'>NA</span>,
+  species <span class='op'>=</span> <span class='cn'>NA</span>,
+  mean_size <span class='op'>=</span> <span class='cn'>NA</span>,
+  sd_size <span class='op'>=</span> <span class='cn'>NA</span>,
+  sim_species_id <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -168,7 +174,7 @@
       <td><p>sd of body size</p></td>
     </tr>
     <tr>
-      <th>id</th>
+      <th>sim_species_id</th>
       <td><p>identifier; if using taxonomic info, defaults to AOU. If not, defaults to 1. Supplying other values can be useful for simulation models.</p></td>
     </tr>
     </table>
@@ -200,7 +206,7 @@
 #&gt; $sd_method
 #&gt; [1] "AOU lookup"
 #&gt; 
-#&gt; $id
+#&gt; $sim_species_id
 #&gt; [1] 2881
 #&gt; </div><div class='input'><span class='fu'>species_define</span><span class='op'>(</span>genus <span class='op'>=</span> <span class='st'>"Perdix"</span>, species <span class='op'>=</span> <span class='st'>"perdix"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $aou
@@ -221,7 +227,7 @@
 #&gt; $sd_method
 #&gt; [1] "Scientific name lookup"
 #&gt; 
-#&gt; $id
+#&gt; $sim_species_id
 #&gt; [1] 2881
 #&gt; </div><div class='input'><span class='fu'>species_define</span><span class='op'>(</span>mean_size <span class='op'>=</span> <span class='fl'>400</span>, sd_size <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $aou
@@ -242,7 +248,7 @@
 #&gt; $sd_method
 #&gt; [1] "Mean and SD provided"
 #&gt; 
-#&gt; $id
+#&gt; $sim_species_id
 #&gt; [1] 1
 #&gt; </div><div class='input'><span class='fu'>species_define</span><span class='op'>(</span>mean_size <span class='op'>=</span> <span class='fl'>400</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $aou
@@ -258,12 +264,12 @@
 #&gt; [1] 400
 #&gt; 
 #&gt; $sd_size
-#&gt; [1] 28.27589
+#&gt; [1] 28.55916
 #&gt; 
 #&gt; $sd_method
 #&gt; [1] "SD estimated from mean"
 #&gt; 
-#&gt; $id
+#&gt; $sim_species_id
 #&gt; [1] 1
 #&gt; </div></pre>
   </div>

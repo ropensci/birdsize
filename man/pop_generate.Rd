@@ -5,13 +5,13 @@
 \title{Simulate body masses for a population}
 \usage{
 pop_generate(
-  abundance = NULL,
-  aou = NULL,
-  genus = NULL,
-  species = NULL,
-  mean_size = NULL,
-  sd_size = NULL,
-  id = 1
+  abundance = NA,
+  aou = NA,
+  genus = NA,
+  species = NA,
+  mean_size = NA,
+  sd_size = NA,
+  sim_species_id = 1
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ pop_generate(
 
 \item{sd_size}{numeric, standard deviation of body mass for this species.}
 
-\item{id}{defaults AOU or 1}
+\item{sim_species_id}{defaults AOU or 1}
 }
 \value{
 a dataframe with \code{abundance} rows and columns for species attributes.

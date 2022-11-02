@@ -98,10 +98,16 @@
       <a href="../articles/bbsdata.html">Working with BBS data</a>
     </li>
     <li>
+      <a href="../articles/sim_community.html">sim_community</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+    </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
     </li>
   </ul>
 </li>
@@ -136,13 +142,13 @@
     </div>
 
     <pre class="usage"><span class='fu'>pop_generate</span><span class='op'>(</span>
-  abundance <span class='op'>=</span> <span class='cn'>NULL</span>,
-  aou <span class='op'>=</span> <span class='cn'>NULL</span>,
-  genus <span class='op'>=</span> <span class='cn'>NULL</span>,
-  species <span class='op'>=</span> <span class='cn'>NULL</span>,
-  mean_size <span class='op'>=</span> <span class='cn'>NULL</span>,
-  sd_size <span class='op'>=</span> <span class='cn'>NULL</span>,
-  id <span class='op'>=</span> <span class='fl'>1</span>
+  abundance <span class='op'>=</span> <span class='cn'>NA</span>,
+  aou <span class='op'>=</span> <span class='cn'>NA</span>,
+  genus <span class='op'>=</span> <span class='cn'>NA</span>,
+  species <span class='op'>=</span> <span class='cn'>NA</span>,
+  mean_size <span class='op'>=</span> <span class='cn'>NA</span>,
+  sd_size <span class='op'>=</span> <span class='cn'>NA</span>,
+  sim_species_id <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -173,7 +179,7 @@
       <td><p>numeric, standard deviation of body mass for this species.</p></td>
     </tr>
     <tr>
-      <th>id</th>
+      <th>sim_species_id</th>
       <td><p>defaults AOU or 1</p></td>
     </tr>
     </table>
@@ -188,42 +194,42 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, aou <span class='op'>=</span> <span class='fl'>2881</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    aou   id  genus species individual_mass mean_size sd_size abundance
-#&gt; 1 2881 2881 Perdix  perdix        362.0987     405.5      31         5
-#&gt; 2 2881 2881 Perdix  perdix        413.4148     405.5      31         5
-#&gt; 3 2881 2881 Perdix  perdix        329.9448     405.5      31         5
-#&gt; 4 2881 2881 Perdix  perdix        405.3273     405.5      31         5
-#&gt; 5 2881 2881 Perdix  perdix        424.7681     405.5      31         5
-#&gt;    sd_method
-#&gt; 1 AOU lookup
-#&gt; 2 AOU lookup
-#&gt; 3 AOU lookup
-#&gt; 4 AOU lookup
-#&gt; 5 AOU lookup</div><div class='input'><span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, genus <span class='op'>=</span> <span class='st'>"Selasphorus"</span>, species <span class='op'>=</span> <span class='st'>"calliope"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    aou   id       genus  species individual_mass mean_size   sd_size abundance
-#&gt; 1 4360 4360 Selasphorus calliope        2.860037      2.65 0.1828933         5
-#&gt; 2 4360 4360 Selasphorus calliope        2.316802      2.65 0.1828933         5
-#&gt; 3 4360 4360 Selasphorus calliope        2.604766      2.65 0.1828933         5
-#&gt; 4 4360 4360 Selasphorus calliope        2.605338      2.65 0.1828933         5
-#&gt; 5 4360 4360 Selasphorus calliope        2.598295      2.65 0.1828933         5
-#&gt;                sd_method
-#&gt; 1 Scientific name lookup
-#&gt; 2 Scientific name lookup
-#&gt; 3 Scientific name lookup
-#&gt; 4 Scientific name lookup
-#&gt; 5 Scientific name lookup</div><div class='input'><span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, mean_size <span class='op'>=</span> <span class='fl'>20</span>, sd_size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   aou id genus species individual_mass mean_size sd_size abundance
-#&gt; 1  NA  1  &lt;NA&gt;    &lt;NA&gt;        18.33890        20       3         5
-#&gt; 2  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.88695        20       3         5
-#&gt; 3  NA  1  &lt;NA&gt;    &lt;NA&gt;        26.19507        20       3         5
-#&gt; 4  NA  1  &lt;NA&gt;    &lt;NA&gt;        15.10703        20       3         5
-#&gt; 5  NA  1  &lt;NA&gt;    &lt;NA&gt;        21.53728        20       3         5
-#&gt;              sd_method
-#&gt; 1 Mean and SD provided
-#&gt; 2 Mean and SD provided
-#&gt; 3 Mean and SD provided
-#&gt; 4 Mean and SD provided
-#&gt; 5 Mean and SD provided</div><div class='input'>
+</div><div class='output co'>#&gt;    aou sim_species_id  genus species individual_mass individual_bmr mean_size
+#&gt; 1 2881           2881 Perdix  perdix        376.7256       720.9335     405.5
+#&gt; 2 2881           2881 Perdix  perdix        364.2060       703.7684     405.5
+#&gt; 3 2881           2881 Perdix  perdix        364.9729       704.8247     405.5
+#&gt; 4 2881           2881 Perdix  perdix        384.4316       731.4175     405.5
+#&gt; 5 2881           2881 Perdix  perdix        411.2038       767.3827     405.5
+#&gt;   sd_size abundance  sd_method
+#&gt; 1      31         5 AOU lookup
+#&gt; 2      31         5 AOU lookup
+#&gt; 3      31         5 AOU lookup
+#&gt; 4      31         5 AOU lookup
+#&gt; 5      31         5 AOU lookup</div><div class='input'><span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, genus <span class='op'>=</span> <span class='st'>"Selasphorus"</span>, species <span class='op'>=</span> <span class='st'>"calliope"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    aou sim_species_id       genus  species individual_mass individual_bmr
+#&gt; 1 4360           4360 Selasphorus calliope        2.535091       20.38152
+#&gt; 2 4360           4360 Selasphorus calliope        2.550593       20.47031
+#&gt; 3 4360           4360 Selasphorus calliope        2.800381       21.88039
+#&gt; 4 4360           4360 Selasphorus calliope        2.264706       18.80671
+#&gt; 5 4360           4360 Selasphorus calliope        3.039852       23.19867
+#&gt;   mean_size   sd_size abundance              sd_method
+#&gt; 1      2.65 0.1818394         5 Scientific name lookup
+#&gt; 2      2.65 0.1818394         5 Scientific name lookup
+#&gt; 3      2.65 0.1818394         5 Scientific name lookup
+#&gt; 4      2.65 0.1818394         5 Scientific name lookup
+#&gt; 5      2.65 0.1818394         5 Scientific name lookup</div><div class='input'><span class='fu'>pop_generate</span><span class='op'>(</span>abundance <span class='op'>=</span> <span class='fl'>5</span>, mean_size <span class='op'>=</span> <span class='fl'>20</span>, sd_size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   aou sim_species_id genus species individual_mass individual_bmr mean_size
+#&gt; 1  NA              1  &lt;NA&gt;    &lt;NA&gt;        24.59786      103.01467        20
+#&gt; 2  NA              1  &lt;NA&gt;    &lt;NA&gt;        17.53184       80.91674        20
+#&gt; 3  NA              1  &lt;NA&gt;    &lt;NA&gt;        21.02924       92.12182        20
+#&gt; 4  NA              1  &lt;NA&gt;    &lt;NA&gt;        18.44234       83.89114        20
+#&gt; 5  NA              1  &lt;NA&gt;    &lt;NA&gt;        18.55212       84.24688        20
+#&gt;   sd_size abundance            sd_method
+#&gt; 1       3         5 Mean and SD provided
+#&gt; 2       3         5 Mean and SD provided
+#&gt; 3       3         5 Mean and SD provided
+#&gt; 4       3         5 Mean and SD provided
+#&gt; 5       3         5 Mean and SD provided</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

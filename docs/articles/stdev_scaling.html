@@ -57,10 +57,16 @@
       <a href="../articles/bbsdata.html">Working with BBS data</a>
     </li>
     <li>
+      <a href="../articles/sim_community.html">sim_community</a>
+    </li>
+    <li>
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
       <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+    </li>
+    <li>
+      <a href="../articles/summarize.html">summarize</a>
     </li>
   </ul>
 </li>
@@ -114,8 +120,8 @@ relationship and how it is used in the package.</p>
 Survey.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">raw_masses</span> <span class="op">&lt;-</span> <span class="va">raw_masses</span></code></pre></div>
-<p>Of the 897 records in <code>raw_masses</code>, 327 are missing the
-standard deviation (affecting 185 species).</p>
+<p>Of the 928 records in <code>raw_masses</code>, 353 are missing the
+standard deviation (affecting 204 species).</p>
 <p>For records <em>with</em> reports of standard deviation, there is a
 close scaling relationship between mean and variance of body mass. A
 linear model of the form
@@ -124,12 +130,12 @@ R2 of 0.89.</p>
 <p><img src="stdev_scaling_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
 <p>The model parameters are:</p>
 <pre><code>#&gt; (Intercept)       log_m 
-#&gt;   -5.356149    2.009553</code></pre>
+#&gt;   -5.373838    2.015833</code></pre>
 <p>Which translate into a scaling relationship of:</p>
 <p><span class="math inline">\(var(m) =
 0.0047\bar{m}^{2.01}\)</span></p>
 <p>We use this scaling relationship to estimate the standard deviations
-for records that have mass, but no reported standard deviation (327
+for records that have mass, but no reported standard deviation (353
 records), shown in green in this plot:</p>
 <p><img src="stdev_scaling_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
 <p>The internal function <code>birdsize:::species_estimate_sd</code> can
@@ -139,7 +145,7 @@ mean:</p>
 <code class="sourceCode R">
 <span class="co"># Using species_estimate:</span>
 <span class="fu">birdsize</span><span class="fu">:::</span><span class="fu"><a href="../reference/species_estimate_sd.html">species_estimate_sd</a></span><span class="op">(</span>sp_mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
-<span class="co">#&gt; [1] 7.022316</span>
+<span class="co">#&gt; [1] 7.061862</span>
 
 
 <span class="co"># Calculated manually - note slight numeric discrepancy due to truncating parameters:</span>

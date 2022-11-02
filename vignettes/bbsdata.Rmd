@@ -10,21 +10,21 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  eval = F
+  comment = "#>"
 )
+
+
+library(birdsize)
+library(dplyr)
+
 ```
 
-```{r setup}
-library(birdsize)
-library(DBI)
-```
 
 # Downloading data using the data retriever
 
 The `rdataretriever` package provides an interface for accessing the Breeding Bird Survey data. 
 
-First, install the `rdataretriever` (and associated python installs) using the instructions [here](https://docs.ropensci.org/rdataretriever/#basic-installation). The following, taken from the Basic Install instructions at the link, worked for RMD in June 2022 on a 2020 Macbook Air running Catalina 10.15.7, R 4.0.3, existing conda but no preexisting miniconda install:
+To install the retriever and use it to access BBS data, follow the instructions [here](https://docs.ropensci.org/rdataretriever/#basic-installation). For example:
 
 ```{r, eval = F}
 install.packages('reticulate') # Install R package for interacting with Python
@@ -32,64 +32,58 @@ reticulate::install_miniconda() # Install Python
 reticulate::py_install('retriever') # Install the Python retriever package
 install.packages('rdataretriever') # Install the R package for running the retriever
 rdataretriever::get_updates() # Update the available datasets
-```
-
-Then use the retriever to download and preprocess the Breeding Bird Survey data. The path to the `data_dir` argument in `rdataretriever::install_sqlite` is *relative to the current working directory*. (Flagging this as something that may be problematic for inclusion in a package vignette.) 
-
-The following works for RMD:
-
-```{r, eval = F}
 
 rdataretriever::install_sqlite("breed-bird-survey", file = "bbs.sqlite", data_dir = "../retriever_data")
 
-```
-
-
-# Accessing the data
-
-
-```{r}
+library(DBI)
 
 bbs_db <- dbConnect(RSQLite::SQLite(), '../../retriever_data/bbs.sqlite')
 
-```
-
-
-```{r}
 surveys <- dplyr::tbl(bbs_db, "breed_bird_survey_counts")
 sites <- dplyr::tbl(bbs_db, "breed_bird_survey_routes")
 species <- dplyr::tbl(bbs_db, "breed_bird_survey_species")
 
-
-surveys %>% dplyr::select(aou, speciestotal)
-
-colnames(surveys)
-
-
 ```
 
-# Surveys cleaning after MATSS
+The `community_` functions operate on a single survey route. The `sites` table contains information about the location, data quality of survey routes. The following extracts the route for New Hartford, CT. 
 
-```{r}
+```{r, eval = F}
 
-surveys %>% select(statenum, route) %>% distinct()
+filter(sites, statenum == 18, route == 102)
 
-one_route <- surveys %>%
-  filter(statenum == 2,
-         route == 1) %>%
-  as.data.frame() %>%
-  mutate(abundance = speciestotal,
-         species_id = aou)
-one_cleaned_route <- MATSS::combine_bbs_subspecies(one_route, as.data.frame(species)) %>%
-  MATSS::filter_bbs_species(species_table = as.data.frame(species))
+myroute <- surveys %>%
+  filter(statenum == 18,
+         route == 102) %>% # substitute the state number and 
+  as.data.frame() 
 
-sum(one_cleaned_route$aou %in% raw_masses$species_id)
-
-```
-
-```{r}
 DBI::dbDisconnect(bbs_db)
+
+```
+Synthetic data for a fictional route with the same column names and types are included in `birdsize` as `demo_route_raw`.
+
+```{r, results = T}
+
+demo_route_raw <- demo_route_raw
+
+head(demo_route_raw)
+
 ```
 
-The above is notes for later-RMD. For inclusion in a vignette, there will need to be a portable version of a subset of this data, possibly included in the package. I'm not sure on exactly what output version I'll want. And note you want to clean the raw survey data to remove nightbirds etc.
+
+
+# Cleaning data
+
+Following Harris et al (2018) and convention, removing taxa not well captured by the BBS methodology (nightbirds, waterbirds) and unidentified species.
+
+```{r}
+
+demo_route_cleaned <- demo_route_raw %>%
+  filter_bbs_survey()
+
+```
+
+
+For the New Hartford route, this removes `r nrow(demo_route_raw) - nrow(demo_route_cleaned)` records of `r length(unique(demo_route_raw$aou)) - length(unique(demo_route_cleaned$aou))` species.
+
+
 
