@@ -1,16 +1,31 @@
-#' Generate samples community-wide
+#' Simulate individual measurements for many populations
+#'
+#' For a community (i.e. a collection of populations of different species, or of the same species at different points in time or locations, etc), simulate individual-level size and metabolic rate measurements.
 #'
 #' @param community_data_table dataframe containing at least one of `aou`, `genus` *and* `species`, or `mean_size` and a column for species abundances
-#' @param abundance_column_name character, the name of the column with species abundances. Defaults to "speciestotal"
-#' @return dataframe
+#' @param abundance_column_name character, the name of the column with species abundances. Defaults to "speciestotal".
+#' @return a dataframe one row per individual, all columns from `community_data_table`, and additional columns for species attributes.
+#'
+#' Specifically:
+#'
+#' * `aou`: the AOU, if provided
+#' *  `sim_species_id`: the `sim_species_id` if provided
+#' * `genus`: the genus associated with the AOU if provided, or the genus if provided
+#' *  `species`: the species associated with the AOU if provided, or the species if provided
+#' *  `individual_mass`: the simulated body mass (in grams) for this individual
+#' *  `individual_bmr`: the simulated basal metabolic rate for this individual
+#' *  `mean_size`: the mean body mass for this species (i.e. the parameter used for simulation)
+#' *  `sd_size`: the standard deviation of body mass for this species (i.e. the parameter used for simulation)
+#' *  `abundance`: the number of individuals simulated of this species (i.e. parameter used for simulation)
+#' *  `sd_method`: the method for finding the standard deviation for body mass for this species
 #' @export
 #' @importFrom purrr pmap_dfr
 #' @importFrom dplyr mutate left_join
 #'
 #' @examples
 #'
-#' demo_route_clean <- filter_bbs_survey(demo_route_raw)
-#' community_generate(demo_route_clean)
+#' demo_community <- community_generate(demo_route_clean)
+#' head(demo_community)
 
 community_generate <- function(community_data_table, abundance_column_name = "speciestotal") {
 
@@ -73,8 +88,9 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
 }
 
-#' Filter BBS survey data to remove non-target species
+#' Clean raw Breeding Bird Survey survey data
 #'
+#' The raw data for the Breeding Bird Survey includes unidentified species and some species that are not well-sampled by the BBS methods. This function filters a dataframe to remove those species.
 #'
 #' @param bbs_survey_data data frame with columns for species and aou
 #'

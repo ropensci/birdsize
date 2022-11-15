@@ -30,13 +30,27 @@ pop_generate(
 \item{sim_species_id}{defaults AOU or 1}
 }
 \value{
-a dataframe with \code{abundance} rows and columns for species attributes.
+a dataframe with \code{abundance} rows - one record per individual - and columns for species attributes.
+
+Specifically:
+\itemize{
+\item \code{aou}: the AOU, if provided
+\item \code{sim_species_id}: the \code{sim_species_id} if provided
+\item \code{genus}: the genus associated with the AOU if provided, or the genus if provided
+\item \code{species}: the species associated with the AOU if provided, or the species if provided
+\item \code{individual_mass}: the simulated body mass (in grams) for this individual
+\item \code{individual_bmr}: the simulated basal metabolic rate for this individual
+\item \code{mean_size}: the mean body mass for this species (i.e. the parameter used for simulation)
+\item \code{sd_size}: the standard deviation of body mass for this species (i.e. the parameter used for simulation)
+\item \code{abundance}: the number of individuals simulated of this species (i.e. parameter used for simulation)
+\item \code{sd_method}: the method for finding the standard deviation for body mass for this species
+}
 }
 \description{
-Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species id or (2) the mean and potentially standard deviation of body mass for that species.
+Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species AOU or (2) the mean and potentially standard deviation of body mass for that species.
 }
 \details{
-Fills in the necessary parameters based on the parameters provided and passes these to \code{\link[=ind_draw]{ind_draw()}}.
+\code{abundance} is required, as well as \emph{one of}: \code{aou}, \code{genus} and \code{species}, or \code{mean_size}.
 }
 \examples{
 

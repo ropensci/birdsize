@@ -2,7 +2,7 @@
 % Please edit documentation in R/simulate_community.R
 \name{community_generate}
 \alias{community_generate}
-\title{Generate samples community-wide}
+\title{Simulate individual measurements for many populations}
 \usage{
 community_generate(
   community_data_table,
@@ -12,16 +12,30 @@ community_generate(
 \arguments{
 \item{community_data_table}{dataframe containing at least one of \code{aou}, \code{genus} \emph{and} \code{species}, or \code{mean_size} and a column for species abundances}
 
-\item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal"}
+\item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal".}
 }
 \value{
-dataframe
+a dataframe one row per individual, all columns from \code{community_data_table}, and additional columns for species attributes.
+
+Specifically:
+\itemize{
+\item \code{aou}: the AOU, if provided
+\item \code{sim_species_id}: the \code{sim_species_id} if provided
+\item \code{genus}: the genus associated with the AOU if provided, or the genus if provided
+\item \code{species}: the species associated with the AOU if provided, or the species if provided
+\item \code{individual_mass}: the simulated body mass (in grams) for this individual
+\item \code{individual_bmr}: the simulated basal metabolic rate for this individual
+\item \code{mean_size}: the mean body mass for this species (i.e. the parameter used for simulation)
+\item \code{sd_size}: the standard deviation of body mass for this species (i.e. the parameter used for simulation)
+\item \code{abundance}: the number of individuals simulated of this species (i.e. parameter used for simulation)
+\item \code{sd_method}: the method for finding the standard deviation for body mass for this species
+}
 }
 \description{
-Generate samples community-wide
+For a community (i.e. a collection of populations of different species, or of the same species at different points in time or locations, etc), simulate individual-level size and metabolic rate measurements.
 }
 \examples{
 
-demo_route_clean <- filter_bbs_survey(demo_route_raw)
-community_generate(demo_route_clean)
+demo_community <- community_generate(demo_route_clean)
+head(demo_community)
 }

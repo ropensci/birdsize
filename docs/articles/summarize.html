@@ -40,6 +40,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="../articles/birdsize.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -50,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/bbsdata.html">Working with BBS data</a>
+      <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
       <a href="../articles/sim_community.html">sim_community</a>
@@ -59,7 +62,7 @@
       <a href="../articles/sim_populations.html">Simulate populations</a>
     </li>
     <li>
-      <a href="../articles/stdev_scaling.html">Scaling of standard deviation and mean body mass</a>
+      <a href="../articles/stdev_scaling.html">Scaling</a>
     </li>
     <li>
       <a href="../articles/summarize.html">summarize</a>
@@ -140,7 +143,6 @@
 <span><span class="co">#&gt; <span style="color: #949494;">#   sd_metabolic_rate &lt;dbl&gt;, and abbreviated variable names ¹​countrynum,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ²​statenum, ³​species_designator, ⁴​total_abundance, ⁵​total_biomass,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁶​total_metabolic_rate</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -172,7 +174,6 @@
 <span><span class="co">#&gt; <span style="color: #949494;">#   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;, and abbreviated</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   variable names ¹​routedataid, ²​countrynum, ³​statenum, ⁴​sim_species_id,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁵​mean_size</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">species_annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -202,7 +203,6 @@
 <span><span class="co">#&gt; <span style="color: #949494;">#   mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;, and abbreviated</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   variable names ¹​sim_species_id, ²​mean_size</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">species_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">aou</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -232,7 +232,6 @@ species:</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   names ¹​species_designator, ²​total_abundance, ³​total_biomass,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​total_metabolic_rate, ⁵​total_richness, ⁶​mean_individual_mass,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁷​sd_individual_mass, ⁸​mean_metabolic_rate</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">annual_genera_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">genus</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>

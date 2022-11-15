@@ -1,8 +1,6 @@
-#' Which AOUs correspond to unidentified species.
+#' Table of AOUs corresponding to unidentified species.
 #'
-#' Downloaded using the rdataretriever in June 2022.
-#' For inclusion in package vignettes, function testing.
-#' Citation needed!
+#' This data table is used internally to filter out unidentified species based on their AOUs. It is derived from the species table available in Pardieck et al. (2019)
 #'
 #' @format A data frame with 72 rows and 4 variables:
 #' \describe{

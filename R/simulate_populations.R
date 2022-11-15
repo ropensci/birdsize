@@ -1,6 +1,6 @@
 #' Draw individuals to make a population.
 #'
-#' This is not a user-facing function; rather it is the random number generator under-the-hood for [pop_generate].
+#' This is not a user-facing function; it is the random number generator under-the-hood for [pop_generate].
 #'
 #' @param species_mean mean body size
 #' @param species_sd standard deviation of body size
@@ -44,9 +44,9 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
 
 #' Simulate body masses for a population
 #'
-#' Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species id or (2) the mean and potentially standard deviation of body mass for that species.
+#' Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species AOU or (2) the mean and potentially standard deviation of body mass for that species.
 #'
-#' Fills in the necessary parameters based on the parameters provided and passes these to [ind_draw()].
+#' `abundance` is required, as well as *one of*: `aou`, `genus` and `species`, or `mean_size`.
 #'
 #' @param abundance integer number of individuals to draw. *Required*.
 #' @param aou aou
@@ -56,7 +56,21 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
 #' @param sd_size numeric, standard deviation of body mass for this species.
 #' @param sim_species_id defaults AOU or 1
 #'
-#' @return a dataframe with `abundance` rows and columns for species attributes.
+#' @return a dataframe with `abundance` rows - one record per individual - and columns for species attributes.
+#'
+#' Specifically:
+#'
+#' * `aou`: the AOU, if provided
+#' *  `sim_species_id`: the `sim_species_id` if provided
+#' * `genus`: the genus associated with the AOU if provided, or the genus if provided
+#' *  `species`: the species associated with the AOU if provided, or the species if provided
+#' *  `individual_mass`: the simulated body mass (in grams) for this individual
+#' *  `individual_bmr`: the simulated basal metabolic rate for this individual
+#' *  `mean_size`: the mean body mass for this species (i.e. the parameter used for simulation)
+#' *  `sd_size`: the standard deviation of body mass for this species (i.e. the parameter used for simulation)
+#' *  `abundance`: the number of individuals simulated of this species (i.e. parameter used for simulation)
+#' *  `sd_method`: the method for finding the standard deviation for body mass for this species
+#'
 #' @export
 #' @examples
 #'

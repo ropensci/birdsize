@@ -3,7 +3,7 @@
 \docType{data}
 \name{unidentified_species}
 \alias{unidentified_species}
-\title{Which AOUs correspond to unidentified species.}
+\title{Table of AOUs corresponding to unidentified species.}
 \format{
 A data frame with 72 rows and 4 variables:
 \describe{
@@ -17,9 +17,7 @@ A data frame with 72 rows and 4 variables:
 unidentified_species
 }
 \description{
-Downloaded using the rdataretriever in June 2022.
-For inclusion in package vignettes, function testing.
-Citation needed!
+This data table is used internally to filter out unidentified species based on their AOUs. It is derived from the species table available in Pardieck et al. (2019)
 }
 \references{
 \itemize{

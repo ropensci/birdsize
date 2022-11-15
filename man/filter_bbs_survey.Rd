@@ -2,7 +2,7 @@
 % Please edit documentation in R/simulate_community.R
 \name{filter_bbs_survey}
 \alias{filter_bbs_survey}
-\title{Filter BBS survey data to remove non-target species}
+\title{Clean raw Breeding Bird Survey survey data}
 \usage{
 filter_bbs_survey(bbs_survey_data)
 }
@@ -13,7 +13,7 @@ filter_bbs_survey(bbs_survey_data)
 bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed
 }
 \description{
-Filter BBS survey data to remove non-target species
+The raw data for the Breeding Bird Survey includes unidentified species and some species that are not well-sampled by the BBS methods. This function filters a dataframe to remove those species.
 }
 \examples{
 

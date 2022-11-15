@@ -1,8 +1,8 @@
 ---
-title: "Scaling of mean and standard deviation of body mass"
+title: "Scaling"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Scaling of mean and standard deviation of body mass}
+  %\VignetteIndexEntry{Scaling}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

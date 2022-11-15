@@ -30,8 +30,6 @@ This vignette walks through each of these operations in detail.
 
 ## Species-level parameters
 
-The `
-
 ## Population-level estimates
 
 ## Community-level simulations

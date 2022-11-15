@@ -17,6 +17,6 @@ ind_draw(species_mean = NA, species_sd = NA, species_abundance = NA)
 vector of individuals' simulated body masses
 }
 \description{
-This is not a user-facing function; rather it is the random number generator under-the-hood for \link{pop_generate}.
+This is not a user-facing function; it is the random number generator under-the-hood for \link{pop_generate}.
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/metabolic_rate.R
 \name{individual_metabolic_rate}
 \alias{individual_metabolic_rate}
-\title{Estimate individual-level basal metabolic rate}
+\title{Estimate individual-level BMR}
 \usage{
 individual_metabolic_rate(mass)
 }
@@ -10,11 +10,16 @@ individual_metabolic_rate(mass)
 \item{mass}{mass in grams}
 }
 \value{
-estimated basal metabolic rate using pars from Fristoe 2015
+estimated basal metabolic rate
 }
 \description{
-Estimate individual-level basal metabolic rate
+Given an individual's body mass (in grams), use allometric scaling (Fristoe 2015) to estimate basal metabolic rate.
 }
 \examples{
 individual_metabolic_rate(10)
+}
+\references{
+\itemize{
+\item{Fristoe, T. S. (2015). Energy use by migrants and residents in North American breeding bird communities. Global Ecology and Biogeography, 24(4), 406–415. https://doi.org/10.1111/geb.12262}
+}
 }
