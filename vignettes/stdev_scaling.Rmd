@@ -1,8 +1,8 @@
 ---
-title: "Scaling"
+title: "scaling"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Scaling}
+  %\VignetteIndexEntry{scaling}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

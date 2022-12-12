@@ -1,8 +1,8 @@
 ---
-title: "Simulate populations"
+title: "populations"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{sim_populations}
+  %\VignetteIndexEntry{populations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
