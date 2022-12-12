@@ -7,28 +7,31 @@
 \format{
 A data frame with 1160 rows and 15 variables:
 \describe{
-\item{record_id}{inherited}
-\item{routedataid}{inherited}
-\item{countrynum}{inherited}
-\item{statenum}{inherited}
-\item{route}{inherited}
-\item{rpid}{inherited}
-\item{year}{inherited}
-\item{aou}{inherited}
-\item{count10}{inherited}
-\item{count20}{inherited}
-\item{count30}{inherited}
-\item{count40}{inherited}
-\item{count50}{inherited}
-\item{stoptotal}{inherited}
-\item{speciestotal}{inherited}
+\item{record_id}{inherited from data downloaded through the Data Retriever}
+\item{routedataid}{inherited from Pardieck et al. 2018 (as are all following fields). Unique data identification number.}
+\item{countrynum}{inherited. Three-digit numerical code for country. In these data, the toy countrynum is 900.}
+\item{statenum}{inherited. Two-digit numerical code for state, province, or territory. For these data, the toy number is 99.}
+\item{route}{inherited. Three-digit code identifying the route, unique within states. For this dataset, 1.}
+\item{rpid}{inherited. Three-digit run protocol identifier. Here, set to 101.}
+\item{year}{inherited. Four-digit year of the survey.}
+\item{aou}{inherited. Five-digit species identification number.}
+\item{count10}{inherited. Total individuals of the species recorded on stops 1-10.}
+\item{count20}{inherited. Total individuals of the species recorded on stops 11-20.}
+\item{count30}{inherited. Total individuals of the species recorded on stops 21-30.}
+\item{count40}{inherited. Total individuals of the species recorded on stops 31-40.}
+\item{count50}{inherited. Total individuals of the species recorded on stops 40-50.}
+\item{stoptotal}{inherited. Total number of stops (of 50), where the species was recorded.}
+\item{speciestotal}{inherited. Total individuals of the species recorded across the entire run of the route (sum of stops).}
 }
 }
 \usage{
 demo_route_raw
 }
 \description{
-For inclusion in package vignettes, function testing.
+A toy dataset for use in vignettes and function testing. It contains all the same column names as would be expected for a Breeding Bird survey route dataset downloaded, e.g. from ScienceBase or the Data Retriever (Pardieck et al. 2019). However, the actual data values are simulated data.
+}
+\details{
+Nearly all column names are inherited from Pardieck et al. (2019) and are further explained in the Files and Fields Definitions document included as part of the Breeding Bird Survey data release.
 }
 \references{
 \itemize{
