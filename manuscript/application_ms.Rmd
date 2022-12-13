@@ -1,0 +1,23 @@
+---
+title: "Simulating avian body mass measurements using `birdsize`"
+output:
+  pdf_document: default
+csl: ecology.csl
+bibliography: refs.bib
+---
+
+# Introduction
+
+Different currencies of measurement - e.g. total number of individuals, total biomass, or total metabolic flux or energy use - provide linked, but qualitatively very different, perspectives on the structure and function of ecological systems (@white2007). The study of the interrelated dynamics of size structure, species composition, individual abundance, and biomass and energy use is well-established for systems for which data on both individuals' body sizes and individual organismal abundance are widely available, including aquatic systems, terrestrial forest systems, and, to a lesser extent, small mammal systems (@kerr2001, @white2007). Work in these systems has yielded important insight into - for example - how ecological degradation can manifest in the relationship between total abundance and total biomass (@warwick1994), or how shifts in community-wide mean body size can buffer total energy use against apparent changes in total individual abundance (@white2004). Efforts to generalize these efforts to terrestrial vertebrate systems have been constrained due to the lack of body size measurements for these communities (@white2007, @thibault2011). Sampling methodologies for avian communities often rely on visual or auditory point-counts, which provide information about species abundance and diversity but do not directly capture information about body size or energy use. 
+
+The `birdsize` R package offers a way around this limitation by estimating individual-level (and therefore population or community-wide) body size measurements for birds given either species identity or a species' mean and/or standard deviation of body size. Birds exhibit determinate growth, and `birdsize` assumes that intraspecific body size distributions for birds are, to a first approximation, well-described by normal distributions parameterized with a species-specific mean and standard deviation (see also @thibault2011). Moreover, there is a strong scaling relationship between a species' mean body size and its standard deviation of body size, meaning that, for species for which the standard deviation is not known, the standard deviation can be estimated from the mean (see also @thibault2011). Estimates obtained in this way are, of course, considerably less precise than those that could be obtained through exhaustive field sampling, and may not be appropriate for all use cases. However, given the logistical constraints on field operations of this scale (and the even harsher constraint of time, which prevents us from retroactively taking these measurements for ecological timeseries), `birdsize` makes it possible to conduct macroecological-scale analyses of avian communities that would not otherwise be possible. This approach was first used at scale by @thibault2011, and subsequently by @diaz2022b. `birdsize` formalizes this method and makes it accessible via a straightforward user interface, in order to facilitate use by other research groups with diverse use cases. 
+
+# The estimation procedure in `birdsize`
+
+# Use case 1: Simulation over the Breeding Bird Survey timeseries
+
+# Use case 2: Simulating temporal shifts in body size based on the Breeding Bird Survey
+
+# Use case 3: Simulating imaginary birds 
+
+# References
