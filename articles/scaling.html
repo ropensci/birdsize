@@ -56,19 +56,16 @@
       <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="../articles/sim_community.html">community</a>
+      <a href="../articles/community.html">community</a>
     </li>
     <li>
-      <a href="../articles/sim_populations.html">populations</a>
+      <a href="../articles/populations.html">populations</a>
+    </li>
+    <li>
+      <a href="../articles/scaling.html">scaling</a>
     </li>
     <li>
       <a href="../articles/species.html">species</a>
-    </li>
-    <li>
-      <a href="../articles/stdev_scaling.html">scaling</a>
-    </li>
-    <li>
-      <a href="../articles/summarize.html">summarize</a>
     </li>
   </ul>
 </li>
@@ -96,8 +93,8 @@
       <h1 data-toc-skip>scaling</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/HEAD/vignettes/stdev_scaling.Rmd" class="external-link"><code>vignettes/stdev_scaling.Rmd</code></a></small>
-      <div class="hidden name"><code>stdev_scaling.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/HEAD/vignettes/scaling.Rmd" class="external-link"><code>vignettes/scaling.Rmd</code></a></small>
+      <div class="hidden name"><code>scaling.Rmd</code></div>
 
     </div>
 
@@ -128,7 +125,7 @@ close scaling relationship between mean and variance of body mass. A
 linear model of the form
 <code>log(variance(body_mass)) ~ log(mean(body_mass))</code> has a model
 R2 of 0.89.</p>
-<p><img src="stdev_scaling_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
+<p><img src="scaling_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
 <p>The model parameters are:</p>
 <pre><code><span><span class="co">#&gt; (Intercept)       log_m </span></span>
 <span><span class="co">#&gt;   -5.373838    2.015833</span></span></code></pre>
@@ -138,7 +135,7 @@ R2 of 0.89.</p>
 <p>We use this scaling relationship to estimate the standard deviations
 for records that have mass, but no reported standard deviation (353
 records), shown in green in this plot:</p>
-<p><img src="stdev_scaling_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
+<p><img src="scaling_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
 <p>The internal function <code>birdsize:::species_estimate_sd</code> can
 be used to estimate the standard deviation of body mass from the
 mean:</p>
