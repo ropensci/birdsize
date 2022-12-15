@@ -21,13 +21,13 @@ get_sd_parameters <- function(raw_size_data) {
     !is.na(sd)
   ) %>%
     dplyr::mutate(
-      mass = as.numeric(mass),
-      sd = as.numeric(sd)
+      mass = as.numeric(.data$mass),
+      sd = as.numeric(.data$sd)
     ) %>%
     dplyr::mutate(var = sd^2) %>%
     dplyr::mutate(
-      log_m = log(mass),
-      log_var = log(var)
+      log_m = log(.data$mass),
+      log_var = log(.data$var)
     )
 
   sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
@@ -101,8 +101,8 @@ clean_sp_size_data <- function(raw_size_data) {
     } else {
       matched_rows <- dplyr::filter(
         sp_clean,
-        genus == name_change$close_genus[i],
-        species == name_change$close_species[i]
+        .data$genus == name_change$close_genus[i],
+        .data$species == name_change$close_species[i]
       )
     }
 
@@ -161,14 +161,14 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' @importFrom rlang .data
 get_sp_mean_size <- function(sd_dat) {
   sp_means <- sd_dat %>%
-    dplyr::group_by(aou, genus, species) %>%
+    dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
     dplyr::summarize(
-      mean_mass = mean(mass),
-      mean_sd = mean(sd, na.rm = F),
-      contains_estimates = any(estimated_sd)
+      mean_mass = mean(.data$mass),
+      mean_sd = mean(.data$sd, na.rm = F),
+      contains_estimates = any(.data$estimated_sd)
     ) %>%
     dplyr::ungroup() %>%
-    dplyr::filter(!is.na(aou))
+    dplyr::filter(!is.na(.data$aou))
 
   sp_means
 }

@@ -27,12 +27,12 @@ pop_summarize <- function(population) {
   population %>%
     dplyr::group_by_at(id_vars) %>%
     dplyr::summarize(population_abundance = dplyr::n(),
-                     population_biomass = sum(individual_mass),
-                     population_metabolic_rate = sum(individual_bmr),
-                     population_mean_size = mean(individual_mass),
-                     population_sd_size = sd(individual_mass),
-                     population_mean_bmr = mean(individual_bmr),
-                     population_sd_bmr = sd(individual_bmr)) %>%
+                     population_biomass = sum(.data$individual_mass),
+                     population_metabolic_rate = sum(.data$individual_bmr),
+                     population_mean_size = mean(.data$individual_mass),
+                     population_sd_size = sd(.data$individual_mass),
+                     population_mean_bmr = mean(.data$individual_bmr),
+                     population_sd_bmr = sd(.data$individual_bmr)) %>%
     dplyr::ungroup()
 
 }
@@ -94,13 +94,13 @@ community_summarize <- function(community, level = c("year", "species", "species
     dplyr::group_by_at(c(id_vars, "species_designator")) %>%
     dplyr::summarize(
       total_abundance = dplyr::n(),
-      total_biomass = sum(individual_mass),
-      total_metabolic_rate = sum(individual_bmr),
-      total_richness = length(unique(richnessSpecies)),
-      mean_individual_mass = mean(individual_mass),
-      sd_individual_mass = sd(individual_mass),
-      mean_metabolic_rate = mean(individual_bmr),
-      sd_metabolic_rate = sd(individual_bmr)
+      total_biomass = sum(.data$individual_mass),
+      total_metabolic_rate = sum(.data$individual_bmr),
+      total_richness = length(unique(.data$richnessSpecies)),
+      mean_individual_mass = mean(.data$individual_mass),
+      sd_individual_mass = sd(.data$individual_mass),
+      mean_metabolic_rate = mean(.data$individual_bmr),
+      sd_metabolic_rate = sd(.data$individual_bmr)
     ) %>%
     dplyr::ungroup()
 
@@ -136,7 +136,7 @@ identify_richness_designator <- function(community) {
     if(!anyNA(community$aou)) {
       community <- community %>%
         dplyr::mutate(
-          richnessSpecies = aou,
+          richnessSpecies = .data$aou,
           species_designator = "aou"
         )
       return(community)
@@ -147,7 +147,7 @@ identify_richness_designator <- function(community) {
     if(!anyNA(community$genus) && !anyNA(community$species)) {
       community <- community %>%
         dplyr::mutate(
-          richnessSpecies = paste0(genus, species),
+          richnessSpecies = paste0(.data$genus, .data$species),
           species_designator = "scientificName"
         )
       return(community)
@@ -158,7 +158,7 @@ identify_richness_designator <- function(community) {
     if(!anyNA(community$sim_species_id)) {
       community <- community %>%
         dplyr::mutate(
-          richnessSpecies = sim_species_id,
+          richnessSpecies = .data$sim_species_id,
           species_designator = "sim_species_id"
         )
       return(community)
@@ -167,7 +167,7 @@ identify_richness_designator <- function(community) {
 
   community <- community %>%
     dplyr::mutate(
-      richnessSpecies = paste(mean_size, sd_size, sep = "_"),
+      richnessSpecies = paste(.data$mean_size, .data$sd_size, sep = "_"),
       species_designator = "sim_parameters"
     )
 

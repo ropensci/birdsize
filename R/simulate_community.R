@@ -82,7 +82,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
     dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
 
 
-  community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-rejoining_id))
+  community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-.data$rejoining_id))
 
   return(community)
 
@@ -115,8 +115,8 @@ filter_bbs_survey <- function(bbs_survey_data) {
   nontarget_species <- nontarget_species
 
   bbs_survey_data <- bbs_survey_data %>%
-    dplyr::filter(!(aou %in% unidentified_species$aou)) %>%
-    dplyr::filter(!(aou %in% nontarget_species$aou))
+    dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
+    dplyr::filter(!(.data$aou %in% nontarget_species$aou))
 
   bbs_survey_data
 
