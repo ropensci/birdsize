@@ -1,6 +1,8 @@
 ---
 title: "populations"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+      toc: true
 vignette: >
   %\VignetteIndexEntry{populations}
   %\VignetteEngine{knitr::rmarkdown}

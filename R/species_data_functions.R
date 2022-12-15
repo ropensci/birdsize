@@ -14,7 +14,7 @@
 #'
 #' @importFrom dplyr filter mutate
 #' @importFrom rlang .data
-#' @importFrom stats lm
+#' @importFrom stats lm var family
 get_sd_parameters <- function(raw_size_data) {
   sp_for_sd <- dplyr::filter(
     raw_size_data,
@@ -82,21 +82,21 @@ species_estimate_sd <- function(sp_mean, pars = NULL) {
 #' @importFrom rlang .data
 clean_sp_size_data <- function(raw_size_data) {
   sp_clean <- raw_size_data %>%
-    dplyr::select(-english_common_name, -sporder, -family) %>%
-    dplyr::mutate(mass = as.numeric(mass))
+    dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
+    dplyr::mutate(mass = as.numeric(.data$mass))
 
-  name_change <- dplyr::filter(sp_clean, not_in_dunning == 1)
+  name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)
 
-  sp_clean <- dplyr::filter(sp_clean, is.na(not_in_dunning)) %>%
+  sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
     dplyr::mutate(added_flag = NA)
 
   for (i in 1:nrow(name_change)) {
     if (!is.na(name_change$close_subspecies[i])) {
       matched_rows <- dplyr::filter(
         sp_clean,
-        genus == name_change$close_genus[i],
-        species == name_change$close_species[i],
-        subspecies == name_change$close_subspecies[i]
+        .data$genus == name_change$close_genus[i],
+        .data$species == name_change$close_species[i],
+        .data$subspecies == name_change$close_subspecies[i]
       )
     } else {
       matched_rows <- dplyr::filter(

@@ -33,7 +33,7 @@ This is the cleaned version of \link{demo_route_raw}, a toy dataset for use in v
 \details{
 Nearly all column names are inherited from Pardieck et al. (2019) and are further explained in the Files and Fields Definitions document included as part of the Breeding Bird Survey data release.
 
-The cleaning process removes unidentified species and those poorly sampled by Breeding Bird Survey methods (using the \link{filter_bbs_species} function) and, for these data, filters the \code{year} to \code{1994} for rapid testing.
+The cleaning process removes unidentified species and those poorly sampled by Breeding Bird Survey methods (using the \link{filter_bbs_survey} function) and, for these data, filters the \code{year} to \code{1994} for rapid testing.
 }
 \references{
 \itemize{

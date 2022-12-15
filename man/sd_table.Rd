@@ -5,7 +5,7 @@
 \alias{sd_table}
 \title{Species-level means for the mean and standard deviation of body size for species in the North American Breeding Bird Survey.}
 \format{
-A data frame with 421 rows and 8 variables:
+A data frame with 443 rows and 6 variables:
 \describe{
 \item{aou}{AOU used in Paradieck et al. (2019)}
 \item{genus}{genus, from Paradieck et al. (2019)}

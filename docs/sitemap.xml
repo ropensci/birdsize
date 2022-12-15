@@ -22,7 +22,16 @@
     <loc>/articles/birdsize.html</loc>
   </url>
   <url>
+    <loc>/articles/community.html</loc>
+  </url>
+  <url>
     <loc>/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>/articles/populations.html</loc>
+  </url>
+  <url>
+    <loc>/articles/scaling.html</loc>
   </url>
   <url>
     <loc>/articles/sim_community.html</loc>
@@ -98,6 +107,9 @@
   </url>
   <url>
     <loc>/reference/is_unidentified.html</loc>
+  </url>
+  <url>
+    <loc>/reference/known_species.html</loc>
   </url>
   <url>
     <loc>/reference/new_hartford_clean.html</loc>

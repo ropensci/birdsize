@@ -4,7 +4,7 @@
 #'
 #' Nearly all column names are inherited from Pardieck et al. (2019) and are further explained in the Files and Fields Definitions document included as part of the Breeding Bird Survey data release.
 #'
-#' The cleaning process removes unidentified species and those poorly sampled by Breeding Bird Survey methods (using the [filter_bbs_species] function) and, for these data, filters the `year` to `1994` for rapid testing.
+#' The cleaning process removes unidentified species and those poorly sampled by Breeding Bird Survey methods (using the [filter_bbs_survey] function) and, for these data, filters the `year` to `1994` for rapid testing.
 #'
 #' @format A data frame with 27 rows and 15 variables:
 #' \describe{

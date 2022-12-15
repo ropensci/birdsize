@@ -79,7 +79,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   populations <- purrr::pmap_dfr(sim_vars_table,
                                  pop_generate,
                                  .id = "rejoining_id") %>%
-    dplyr::mutate(rejoining_id = as.numeric(rejoining_id))
+    dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
 
 
   community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-rejoining_id))
