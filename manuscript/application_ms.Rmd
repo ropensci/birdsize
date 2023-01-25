@@ -16,11 +16,13 @@ The `birdsize` R package offers a way around this limitation by estimating indiv
 
 The core functionality of `birdsize` is to generate estimates of individual body size for populations of birds by drawing from a normal distribution parameterized with a species-level mean and standard deviation of body size. It includes built-in values for these parameters for 443 species found in the North American Breeding Bird Survey (@pardieck2019), and can accept user-supplied parameter values for additional species. 
 
-For the 443 species included with `birdsize`, mean and standard deviation values were manually obtained from the CRC Handbook of Avian Body Masses (@dunning2008). These species are listed in the data frame `birdsize::known_species`. For records in @dunning2008 with mean, but no standard deviation, reported, the standard deviation is estimated via a scaling relationship between the mean and standard deviation of body mass (see also @thibault2011). Specifically, a linear model of the form `log(variance(body_size)) ~ log(mean(body_size))` has a model R^2 of 0.89, and produces the scaling relationship of `variance(body_size) = 0.0047(body_size) ^ 2.01`. This scaling relationship is used to generate estimated standard deviations for records without standard deviation recorded, affecting 353 of 928 raw records. Finally, many species in @dunning2008 have multiple records from different time periods, locations, and subspecies. In these instances, parameter values are averaged across records to obtain a single species-wide value. 
+For the 443 species included with `birdsize`, mean and standard deviation values were manually obtained from the CRC Handbook of Avian Body Masses (@dunning2008). These species are listed in the data frame `birdsize::known_species`. Many species in @dunning2008 have multiple records from different time periods, locations, and subspecies. In these instances, parameter values are averaged across records to obtain a single species-wide value. For records in @dunning2008 with mean, but no standard deviation, reported, the standard deviation is estimated via a scaling relationship between the mean and standard deviation of body mass (see also @thibault2011). Specifically, a linear model of the form `log(variance(body_size)) ~ log(mean(body_size))` has a model R^2 of 0.89, and produces the scaling relationship of `variance(body_size) = 0.0047(body_size) ^ 2.01`. This scaling relationship is used to generate estimated standard deviations for records without standard deviation recorded, affecting 353 of 928 raw records.
 
-A user may also manually supply parameter values, in order to generate estimates for species not included in `birdsize::knownspecies`, or to use different parameter values than those included with `birdsize`. This may be of particular interest for users wishing to explore questions related to  (for example) intraspecific variation in body size across different populations of the same species affects, or extending to species not common found North America. In this case, if both mean and standard deviation are supplied, they will be used, and if only the mean is provided, the standard deviation is estimated via the scaling relationship explained above. 
+A user may also manually supply parameter values, in order to generate estimates for species not included in `birdsize::knownspecies`, or to use different parameter values than those included with `birdsize`. This may be of particular interest for users wishing to explore questions related to  (for example) intraspecific variation in body size across different populations of the same species, or extending to species not common to North America. In this case, if both mean and standard deviation are supplied, they will be used, and if only the mean is provided, the standard deviation is estimated via the scaling relationship explained above. 
 
 # Population and community-wide summaries
+
+While `birdsize` generates estimated body size measurements at the level of individual birds, in many instances the quantity of interest is actually the population or community-wide total biomass or metabolic rate. Indeed, given the several layers of estimation involved in obtaining measurements via `birdsize`, it is likely to generally be more appropriate to focus on these aggregate properties than on estimates for "individuals". Accordingly, `birdsize` includes functions to compute these summaries, grouping by species, year, or other variables supplied by the user. These are demonstrated in the package vignettes and use cases, below.
 
 # Integration with the Breeding Bird Survey
 
@@ -29,6 +31,87 @@ The methodology in `birdsize` was first developed and applied to the North Ameri
 However, `birdsize` is not constrained to work _only_ with Breeding Bird Survey data. It accepts any dataset, real or synthetic, that includes population sizes and species identity and/or body size parameters (see above); see Use case #3, below.
 
 # Use case 1: Simulation over the Breeding Bird Survey timeseries
+
+```{r setup, include = F, echo = F}
+
+library(birdsize)
+library(dplyr)
+library(ggplot2)
+theme_set(theme_bw())
+
+```
+
+A common anticipated use case for `birdsize` is to generate estimates of species- and community- level biomass and metabolic rate for a Breeding Bird Survey route over time. Here, we generate these estimates using the `demo_route_raw` dataset, which has the same shape and structure as data from the Breeding Bird Survey, but contains simulated values for the actual data. 
+
+First, it is recommended to clean the raw data to remove species poorly sampled via Breeding Bird Survey methods and remove records not identified to species. This is accomplished using the `filter_bbs_survey` function:
+
+```{r}
+
+clean_data = filter_bbs_survey(demo_route_raw)
+head(clean_data)
+
+```
+
+For the purposes of simulating body size and metabolic rate, the relevant columns in these data are `year`, `aou`, and `speciestotal`, which refer to the year of the survey, the species identity, and the total number of individuals of that species recorded on that route in that year, respectively.
+
+Given a dataframe like this, `birdsize::community_generate` iterates over rows and draw `speciestotal` individuals of the appropriate species (identified by the `aou`, or species code). The resulting data frame has one row per simulated individual. It retains all columns from the original data frame, and adds columns for `sim_species_id`, `genus`, `species`, `individual_mass`, `individual_bmr`, `mean_size`, `sd_size`, `abundance`, and `sd_method`. Most of these are bookkeeping columns explained in the package documentation (see `?birdsize::community_generate`). Of particular relevance are the `individual_mass` and `individual_bmr` columns, which include the estimated body mass (in grams) and estimated basal metabolic rate for each simulated "individual". The `sd_method` column notes which method (see above) was used to obtain parameters for the species' mean and standard deviation body size. In this instance, it is `AOU lookup`, meaning parameters were obtained based on the `aou` column.
+
+```{r}
+
+simulated_community <- community_generate(clean_data)
+
+head(simulated_community)
+
+```
+
+These individual-level estimates can be condensed into year and species totals using `birdsize::community_summarize`. Summarizing by `"species_and_year"` will produce species-level totals for each year surveyed:
+
+```{r}
+
+annual_species_summaries <- community_summarize(simulated_community, level = "species_and_year")
+
+head(annual_species_summaries)
+
+```
+
+Summarizing by only `"year"` will produce community-wide totals (over all species) for each year::
+
+```{r}
+
+annual_summaries <- community_summarize(simulated_community, level = "year")
+
+head(annual_summaries)
+```
+
+Similarly, summarizing by only `"species"` will produce species-level totals over all years:
+
+
+```{r}
+
+species_summaries <- community_summarize(simulated_community, level = "species")
+
+head(species_summaries)
+
+```
+
+
+Finally, `community_summarize` can group by other variables as specified by setting `level = "custom"` and supplying column names via the `id_vars` argument. Here, we group by `genus` and `year`:
+
+```{r}
+
+genus_year_summaries <- community_summarize(simulated_community, level = "custom", id_vars = c("year", "genus"))
+
+head(genus_year_summaries)
+```
+
+These functions can be used to generate plots of species or community level biomass over time. For example, here we plot community-wide biomass in each year surveyed:
+
+```{r}
+
+ggplot(annual_summaries, aes(year, total_biomass)) +
+  geom_line()
+
+```
 
 # Use case 2: Simulating temporal shifts in body size based on the Breeding Bird Survey
 
