@@ -1,5 +1,6 @@
 ---
-title: "Simulating avian body mass measurements using `birdsize`"
+title: "Simulating avian body mass measurements using the R package `birdsize`"
+author: Renata M. Diaz
 output:
   pdf_document: default
 csl: ecology.csl
@@ -113,8 +114,100 @@ ggplot(annual_summaries, aes(year, total_biomass)) +
 
 ```
 
-# Use case 2: Simulating temporal shifts in body size based on the Breeding Bird Survey
+# Use case 2: Using user-provided parameters to simulate changes in body size over time
+
+The data tables provided in `birdsize` contain geographically- and time-averaged estimates of mean and standard deviation of body size for each species. In order to investigate - for example - how changes in these parameters over space or time affect the body size distributions and ecosystem function for these systems, a user can provide customized parameter values. 
+
+To do this based on the species data provided in `birdsize`, we can modify the mean body size associated with each species in our toy dataset such that mean body size decreases over time. 
+
+First, we obtain the mean masses for each species in our dataset as provided in `birdsize::sd_table`:
+
+```{r}
+
+species_to_simulate <- clean_data %>% 
+  select(year, aou) %>%
+  left_join(sd_table)
+
+head(species_to_simulate)
+
+```
+
+For this example, we can introduce a simple adjustment where `mean_mass` decreases by 1% of its starting value each year, beginning in 1994:
+
+
+```{r}
+species_to_simulate <- species_to_simulate %>%
+  mutate(modified_mass = mean_mass - (.01 * (year - 1994) * mean_mass)) %>%
+  mutate(mean_size = modified_mass)
+
+```
+
+
+
+We can provide these modified `mean_size` values to `community_generate` by adding the `mean_size` column to our original dataset (`clean_data`). Note that, if `aou` or `species` and `genus` are provided, `community_generate` will use these parameters to look up `mean_size` and ignore the user-provided values. To avoid this, we must remove or rename these columns before passing the data: 
+
+```{r}
+
+parameters_to_add <- species_to_simulate %>%
+  select(aou, mean_size, year) 
+
+clean_data_with_size_change <- clean_data %>%
+  left_join(parameters_to_add) %>%
+  rename(speciescode = aou)
+
+simulated_size_change <- community_generate(clean_data_with_size_change)
+
+```
+
+
+Here, we can examine how the mean body size of each species behaves over time in the simulated data, and see a (fuzzy) decline consistent with the decline we introduced via modification to the parameters:
+
+
+```{r}
+
+simulated_mean_change <- simulated_size_change %>%
+  group_by(speciescode, year) %>%
+  summarize(mean_mass = mean(individual_mass)) %>%
+  ungroup()
+
+ggplot(simulated_mean_change, aes(year, mean_mass)) +
+  geom_point() +
+  facet_wrap(vars(speciescode), scales = "free")
+
+```
 
 # Use case 3: Simulating imaginary birds 
+
+Finally, the core `community_generate` functionality of `birdsize` can apply to any dataframe that contains species abundances and mean size values. Here, we manually construct such a table for a set of purely simulated bird species:
+
+```{r}
+
+fictional_abundance_data <-
+  data.frame(
+    sim_species_id = 1:10,
+    mean_size = sample.int(500, size = 10),
+    speciestotal = round(rlnorm(10, 4, 1))
+  )
+
+fictional_community_data <- community_generate(fictional_abundance_data)
+
+
+```
+
+```{r}
+
+fictional_community_summary <- community_summarize(fictional_community_data, level = "species") %>%
+  mutate(sim_species_id = as.factor(sim_species_id))
+
+
+ggplot(fictional_community_summary, aes(sim_species_id, total_abundance)) +
+  geom_col() +
+  ggtitle("Total abundance for each fictional species")
+
+ggplot(fictional_community_summary, aes(sim_species_id, total_biomass)) +
+  geom_col() +
+  ggtitle("Total simulated biomass for each fictional species")
+
+```
 
 # References
