@@ -203,7 +203,7 @@ parameters based on their scientific name.</p>
 <span><span class="va">demo_route_names</span> <span class="op">&lt;-</span> <span class="va">demo_route_clean</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">sd_table</span>, <span class="va">aou</span>, <span class="va">genus</span>, <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">aou</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining, by = "aou"</span></span></code></pre></div>
+<span><span class="co">#&gt; Joining with `by = join_by(aou)`</span></span></code></pre></div>
 <p><code>community_generate</code> still runs, but note that the
 <code>sd_method</code> here is listed as
 <code>Scientific name lookup</code> rather than <code>AOU lookup</code>
@@ -264,7 +264,7 @@ species. Note that the mean body mass must be in a column called
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">sd_table</span>, <span class="va">aou</span>, <span class="va">mean_mass</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">aou</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">rename</span><span class="op">(</span>mean_size <span class="op">=</span> <span class="va">mean_mass</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining, by = "aou"</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(aou)`</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">22</span><span class="op">)</span></span>
 <span></span>
@@ -308,7 +308,7 @@ species. Note that the mean body mass must be in a column called
 <span>  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">aou</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">rename</span><span class="op">(</span>mean_size <span class="op">=</span> <span class="va">mean_mass</span>,</span>
 <span>         sd_size <span class="op">=</span> <span class="va">mean_sd</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining, by = "aou"</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(aou)`</span></span>
 <span></span>
 <span></span>
 <span></span>
