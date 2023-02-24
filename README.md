@@ -11,3 +11,14 @@
 
 R package to generate estimated body size distributions for populations or communities of birds, given either species ID or species' mean body size. Designed to work naturally with the North American Breeding Bird Survey, or with any dataset of bird species, abundance, and/or mean size data.
 
+To install the in-development version, use `remotes` or `devtools`:
+
+```
+remotes::install_github('diazrenata/birdsize')
+```
+
+or 
+
+```
+devtools::install_github('diazrenata/birdsize`)
+```
