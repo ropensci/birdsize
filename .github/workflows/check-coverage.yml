@@ -4,7 +4,6 @@ on:
       - main
       - master
       - dev
-      - community_data
   pull_request:
     branches:
       - main

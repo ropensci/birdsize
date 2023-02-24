@@ -12,7 +12,6 @@ on:
   push:
     branches:
       - main
-      - community_data
 
 jobs:
   pkgcheck:
