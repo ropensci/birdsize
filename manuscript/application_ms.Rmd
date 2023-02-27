@@ -1,7 +1,8 @@
 ---
 title: "Simulating avian body mass measurements using the R package `birdsize`"
-author: Renata M. Diaz
+author: "Renata M. Diaz"
 output:
+  word_document: default
   pdf_document: default
 csl: ecology.csl
 bibliography: refs.bib
