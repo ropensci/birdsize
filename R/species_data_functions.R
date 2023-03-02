@@ -90,7 +90,7 @@ clean_sp_size_data <- function(raw_size_data) {
   sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
     dplyr::mutate(added_flag = NA)
 
-  for (i in 1:nrow(name_change)) {
+  for (i in seq_len(nrow(name_change))) {
     if (!is.na(name_change$close_subspecies[i])) {
       matched_rows <- dplyr::filter(
         sp_clean,
@@ -132,7 +132,7 @@ clean_sp_size_data <- function(raw_size_data) {
 add_estimated_sds <- function(clean_size_data, sd_pars) {
   clean_size_data$estimated_sd <- FALSE
 
-  for (i in 1:nrow(clean_size_data)) {
+  for (i in seq_len(nrow(clean_size_data))) {
     if (is.na(clean_size_data$sd[i])) {
       clean_size_data$estimated_sd[i] <- TRUE
       clean_size_data$sd[i] <- species_estimate_sd(clean_size_data$mass[i], pars = sd_pars)
@@ -164,7 +164,7 @@ get_sp_mean_size <- function(sd_dat) {
     dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
     dplyr::summarize(
       mean_mass = mean(.data$mass),
-      mean_sd = mean(.data$sd, na.rm = F),
+      mean_sd = mean(.data$sd, na.rm = FALSE),
       contains_estimates = any(.data$estimated_sd)
     ) %>%
     dplyr::ungroup() %>%

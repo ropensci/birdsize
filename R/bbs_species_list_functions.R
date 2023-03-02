@@ -9,7 +9,7 @@
 #'
 #'
 is_unidentified <- function(names) {
-  names[names == "auratus auratus x auratus cafer"] = "auratus auratus"
+  names[names == "auratus auratus x auratus cafer"] <- "auratus auratus"
   grepl("sp\\.| x |\\/", names)
 }
 

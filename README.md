@@ -23,13 +23,7 @@ For most users, the [community](https://diazrenata.github.io/birdsize/articles/c
 
 ## Installation
 
-To install the in-development version, use `remotes` or `devtools`:
-
-```
-remotes::install_github('diazrenata/birdsize')
-```
-
-or 
+To install the in-development version, use `devtools`:
 
 ```
 devtools::install_github('diazrenata/birdsize')
