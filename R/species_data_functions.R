@@ -82,7 +82,7 @@ species_estimate_sd <- function(sp_mean, pars = NULL) {
 #' @importFrom rlang .data
 clean_sp_size_data <- function(raw_size_data) {
   sp_clean <- raw_size_data %>%
-    dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
+    dplyr::select(-"english_common_name", -"sporder", -"family") %>%
     dplyr::mutate(mass = as.numeric(.data$mass))
 
   name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)

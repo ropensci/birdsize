@@ -27,7 +27,7 @@ find_unidentified_species <- function(species_table) {
   unidentified_species_table <- species_table %>%
     dplyr::mutate(is_unid = is_unidentified(.data$species)) %>%
     dplyr::filter(.data$is_unid == TRUE) %>%
-    dplyr::select(.data$aou, .data$english_common_name, .data$genus, .data$species)
+    dplyr::select("aou", "english_common_name", "genus", "species")
 
   unidentified_species_table
 }
@@ -53,7 +53,7 @@ find_nontarget_species <- function(species_table) {
 
   nontarget_species_table <- species_table %>%
     dplyr::filter(!(.data$aou %in% nontarget_species_complement$aou)) %>%
-    dplyr::select(.data$aou, .data$english_common_name, .data$genus, .data$species)
+    dplyr::select("aou", "english_common_name", "genus", "species")
 
   nontarget_species_table
 }
