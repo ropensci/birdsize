@@ -82,7 +82,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
     dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
 
 
-  community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-.data$rejoining_id))
+  community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-"rejoining_id"))
 
   return(community)
 

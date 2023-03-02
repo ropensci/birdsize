@@ -69,7 +69,7 @@ community_summarize <- function(community, level = c("year", "species", "species
 
   # Grouping
 
-  level = match.arg(level, several.ok = F)
+  level <- match.arg(level, several.ok = FALSE)
 
 
   id_vars <- switch(level,

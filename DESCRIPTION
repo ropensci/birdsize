@@ -4,28 +4,32 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Renata", "Diaz", , "renata.diaz@weecology.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0803-4734"))
-Date: 2023-02-27
-Description: Generate estimated body size distributions for populations or communities of birds, given either species ID or species' mean body size. Designed to work naturally with the North American Breeding Bird Survey, or with any dataset of bird species, abundance, and/or mean size data.   
+Description: Generate estimated body size distributions for populations or
+    communities of birds, given either species ID or species' mean body
+    size. Designed to work naturally with the North American Breeding Bird
+    Survey, or with any dataset of bird species, abundance, and/or mean
+    size data.
 License: MIT + file LICENSE
 URL: https://github.com/diazrenata/birdsize
 BugReports: https://github.com/diazrenata/birdsize/issues
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+Imports: 
+    dplyr,
+    magrittr,
+    purrr,
+    rlang,
+    stats
 Suggests: 
     covr,
     ggplot2,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-Depends: 
-    R (>= 2.10)
-Imports: 
-    rlang,
-    dplyr,
-    magrittr,
-    purrr,
-    stats
-VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
