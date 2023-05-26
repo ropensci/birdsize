@@ -177,6 +177,7 @@ ggplot(simulated_mean_change, aes(year, mean_mass)) +
 
 ```
 
+
 # Use case 3: Simulating imaginary birds 
 
 Finally, the core `community_generate` functionality of `birdsize` can apply to any dataframe that contains species abundances and mean size values. Here, we manually construct such a table for a set of purely simulated bird species:

@@ -6,6 +6,9 @@ test_that("ind_draw errors work", {
   expect_error(ind_draw(species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be provided")
 
   expect_error(ind_draw(species_abundance = 10.5, species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be a whole number")
+
+  expect_message(ind_draw(species_sd = 2, species_mean = 2, species_abundance = 10))
+
 })
 test_that("ind_draw works given toy inputs", {
   spmean <- 100
@@ -23,7 +26,7 @@ test_that("ind_draw works given toy inputs", {
 
 test_that("ind_draw works given near zero inputs", {
   spmean <- 2
-  spsd <- 2
+  spsd <- 1
   spabund <- 100
 
   set.seed(22)
@@ -32,7 +35,7 @@ test_that("ind_draw works given near zero inputs", {
 
   rounded_spind <- round(spind)
 
-  expect_false(min(spind) < 0)
+  expect_false(min(spind) < 1)
 
-  expect_true(all(rounded_spind[1:5] == c(1, 7, 4, 3, 2)))
+  expect_true(all(rounded_spind[1:5] == c(1, 4, 3, 2, 2)))
 })

@@ -8,7 +8,8 @@
 #'
 #' @return vector of individuals' simulated body masses
 #'
-#' @importFrom stats rnorm
+#' @importFrom truncnorm rtruncnorm
+#' @importFrom stats pnorm
 #' @keywords internal
 ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA) {
   if (is.na(species_mean)) {
@@ -31,11 +32,17 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
     stop("`species_abundance` must be a whole number")
   }
 
-  population <- rnorm(n = species_abundance, mean = species_mean, sd = species_sd)
+  ## print message if the combination of mean and SD is likely (> 1% chance) to produce negative masses
 
-  while (any(population < 0)) {
-    population[which(population < 0)] <- rnorm(n = sum(population < 0), mean = species_mean, sd = species_sd)
+  if (pnorm(1, species_mean, species_sd) > .01) {
+    message("Very tiny species (a greater than 1% chance of a body mass value less than 1g)!")
   }
+
+  population <- truncnorm::rtruncnorm(n = species_abundance, a = 1, b = Inf, mean = species_mean, sd = species_sd)
+#
+#   while (any(population < 0)) {
+#     population[which(population < 0)] <- rnorm(n = sum(population < 0), mean = species_mean, sd = species_sd)
+#   }
 
   population
 }

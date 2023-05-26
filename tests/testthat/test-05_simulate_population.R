@@ -10,6 +10,8 @@ test_that("pop_generate errors work", {
   expect_error(pop_generate(abundance = 10, aou = "abc"), regexp = "`aou` is invalid.")
 
   expect_error(pop_generate(abundance = 10, aou = 1000), regexp = "`aou` is invalid.")
+
+  expect_message(pop_generate(abundance = 10, mean_size = 2, sd_size = 2))
 })
 
 
