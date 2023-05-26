@@ -12,23 +12,30 @@
 #'
 #' @keywords internal
 #'
-#' @importFrom dplyr filter mutate
-#' @importFrom rlang .data
 #' @importFrom stats lm var family
 get_sd_parameters <- function(raw_size_data) {
-  sp_for_sd <- dplyr::filter(
-    raw_size_data,
-    !is.na(sd)
-  ) %>%
-    dplyr::mutate(
-      mass = as.numeric(.data$mass),
-      sd = as.numeric(.data$sd)
-    ) %>%
-    dplyr::mutate(var = sd^2) %>%
-    dplyr::mutate(
-      log_m = log(.data$mass),
-      log_var = log(.data$var)
-    )
+
+  # sp_for_sd <- dplyr::filter(
+  #   raw_size_data,
+  #   !is.na(sd)
+  # ) %>%
+  #   dplyr::mutate(
+  #     mass = as.numeric(.data$mass),
+  #     sd = as.numeric(.data$sd)
+  #   ) %>%
+  #   dplyr::mutate(var = sd^2) %>%
+  #   dplyr::mutate(
+  #     log_m = log(.data$mass),
+  #     log_var = log(.data$var)
+  #   )
+
+  sp_for_sd <- raw_size_data [ !is.na(raw_size_data$sd), ]
+  sp_for_sd$mass = as.numeric(sp_for_sd$mass)
+  sp_for_sd$sd = as.numeric(sp_for_sd$sd)
+  sp_for_sd$var = sp_for_sd$sd ^ 2
+  sp_for_sd$log_m = log(sp_for_sd$mass)
+  sp_for_sd$log_var = log(sp_for_sd$var)
+
 
   sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
 
@@ -78,41 +85,61 @@ species_estimate_sd <- function(sp_mean, pars = NULL) {
 #' }
 #'
 #' @keywords internal
-#' @importFrom dplyr select mutate filter bind_rows
-#' @importFrom rlang .data
 clean_sp_size_data <- function(raw_size_data) {
-  sp_clean <- raw_size_data %>%
-    dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
-    dplyr::mutate(mass = as.numeric(.data$mass))
+  # sp_clean <- raw_size_data %>%
+  #   dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
+  #   dplyr::mutate(mass = as.numeric(.data$mass))
 
-  name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)
+  cols_to_remove <- which(colnames(raw_size_data) %in% c("english_common_name", "sporder", "family"))
+  sp_clean <- raw_size_data[ , -cols_to_remove]
+  sp_clean$mass <- as.numeric(sp_clean$mass)
 
-  sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
-    dplyr::mutate(added_flag = NA)
+  # name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)
+  name_change <- sp_clean[ which(sp_clean$not_in_dunning == 1), ]
+
+  # sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
+  #   dplyr::mutate(added_flag = NA)
+
+  sp_clean <- sp_clean[ which(is.na(sp_clean$not_in_dunning)), ]
+  sp_clean$added_flag = NA
 
   for (i in 1:nrow(name_change)) {
     if (!is.na(name_change$close_subspecies[i])) {
-      matched_rows <- dplyr::filter(
-        sp_clean,
-        .data$genus == name_change$close_genus[i],
-        .data$species == name_change$close_species[i],
-        .data$subspecies == name_change$close_subspecies[i]
-      )
+      # matched_rows <- dplyr::filter(
+      #   sp_clean,
+      #   .data$genus == name_change$close_genus[i],
+      #   .data$species == name_change$close_species[i],
+      #   .data$subspecies == name_change$close_subspecies[i]
+      # )
+
+      matched_rows <- sp_clean[
+          sp_clean$genus == name_change$close_genus[i] &
+          sp_clean$species == name_change$close_species[i] &
+          sp_clean$subspecies == name_change$close_subspecies[i], ]
+
     } else {
-      matched_rows <- dplyr::filter(
-        sp_clean,
-        .data$genus == name_change$close_genus[i],
-        .data$species == name_change$close_species[i]
-      )
+      # matched_rows <- dplyr::filter(
+      #   sp_clean,
+      #   .data$genus == name_change$close_genus[i],
+      #   .data$species == name_change$close_species[i]
+      # )
+
+      matched_rows <- sp_clean[
+        sp_clean$genus == name_change$close_genus[i] &
+        sp_clean$species == name_change$close_species[i], ]
     }
+#
+#     sp_to_add <- matched_rows %>%
+#       dplyr::mutate(
+#         aou = name_change$aou[i],
+#         added_flag = 1
+#       )
 
-    sp_to_add <- matched_rows %>%
-      dplyr::mutate(
-        aou = name_change$aou[i],
-        added_flag = 1
-      )
+    sp_to_add <- matched_rows
+    sp_to_add$aou <- name_change$aou[i]
+    sp_to_add$added_flag = 1
 
-    sp_clean <- dplyr::bind_rows(sp_clean, sp_to_add)
+    sp_clean <- rbind(sp_clean, sp_to_add)
   }
 
   return(sp_clean)

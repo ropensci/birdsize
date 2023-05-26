@@ -78,7 +78,6 @@ species_define <- function(aou = NA, genus = NA, species = NA, mean_size = NA, s
 #' @return data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates
 #' @export
 #'
-#' @importFrom dplyr filter
 #' @examples
 #' species_lookup(aou = 2881)
 #' species_lookup(genus = "Selasphorus", species = "calliope")
@@ -92,19 +91,23 @@ species_lookup <- function(aou = NA, genus = NA, species = NA) {
       stop("`aou` is invalid.")
     }
 
-    return(sd_table %>%
-      dplyr::filter(aou == provided_aou))
+    # return(sd_table %>%
+    #   dplyr::filter(aou == provided_aou))
+    return(sd_table[sd_table$aou == provided_aou, ])
+
 
   } else if (all(is.character(genus), is.character(species))) {
     proper_genus <- tolower(genus)
     substr(proper_genus, 1, 1) <- toupper(substr(proper_genus, 1, 1))
     proper_species <- tolower(species)
 
-    sp_pars <- dplyr::filter(
-      sd_table,
-      genus == proper_genus,
-      species == proper_species
-    )
+    # sp_pars <- dplyr::filter(
+    #   sd_table,
+    #   genus == proper_genus,
+    #   species == proper_species
+    # )
+
+    sp_pars <- sd_table[ sd_table$genus == proper_genus & sd_table$species == proper_species, ]
 
     if(nrow(sp_pars) > 1) {
       sp_pars <- sp_pars[1,]

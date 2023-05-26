@@ -19,8 +19,6 @@
 #' *  `abundance`: the number of individuals simulated of this species (i.e. parameter used for simulation)
 #' *  `sd_method`: the method for finding the standard deviation for body mass for this species
 #' @export
-#' @importFrom purrr pmap_dfr
-#' @importFrom dplyr mutate left_join
 #'
 #' @examples
 #'
@@ -50,9 +48,12 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   # Identify ID/grouping columns and columns to pass to sim fxns.
 
-  community_data_table <- community_data_table %>%
-    dplyr::mutate(rejoining_id = dplyr::row_number(),
-                  abundance = .data[[abundance_column_name]])
+  # community_data_table <- community_data_table %>%
+  #   dplyr::mutate(rejoining_id = dplyr::row_number(),
+  #                 abundance = .data[[abundance_column_name]])
+
+  community_data_table$rejoining_id = 1:nrow(community_data_table)
+  community_data_table$abundance = community_data_table[ , abundance_column_name]
 
   community_vars_mod <- colnames(community_data_table)
 
@@ -72,17 +73,43 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   # Split into 2 tables, one with ID cols and one for the cols to pass in.
   ids_table <- community_data_table[,id_vars]
 
-  sim_vars_table <- community_data_table[ ,sim_vars] %>%
+  sim_vars_table <- community_data_table[ , c(sim_vars, "rejoining_id")] %>%
     cbind(na_table)
 
   # Draw populations
-  populations <- purrr::pmap_dfr(sim_vars_table,
-                                 pop_generate,
-                                 .id = "rejoining_id") %>%
-    dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
+  # populations <- purrr::pmap_dfr(sim_vars_table,
+  #                                pop_generate,
+  #                                .id = "rejoining_id") %>%
+  #   dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
+
+  pop_generate_rejoining <- function(this_id, sim_vars_table) {
+
+    this_row <- sim_vars_table[ sim_vars_table$rejoining_id == this_id, ]
+
+    this_population <- pop_generate(abundance = this_row$abundance[1],
+                                    aou = this_row$aou[1],
+                                    genus = this_row$genus[1],
+                                    species = this_row$species[1],
+                                    mean_size = this_row$mean_size[1],
+                                    sd_size = this_row$sd_size[1],
+                                    sim_species_id = this_row$sim_species_id[1])
 
 
-  community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-.data$rejoining_id))
+    this_population$rejoining_id = this_id
+
+    this_population
+
+  }
+
+  populations_list <- apply(as.matrix(sim_vars_table$rejoining_id), MARGIN = 1, FUN = pop_generate_rejoining, sim_vars_table = sim_vars_table)
+
+  populations <- do.call("rbind", populations_list)
+
+  # community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-.data$rejoining_id))
+
+  community <- merge(ids_table, populations)
+  community <- community[ , -which(colnames(community) == "rejoining_id")]
+
 
   return(community)
 
@@ -102,7 +129,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 #' filter_bbs_survey(demo_route_raw) %>%
 #' head()
 #'
-#' @importFrom dplyr filter
+
 filter_bbs_survey <- function(bbs_survey_data) {
 
   colnames(bbs_survey_data) <- tolower(colnames(bbs_survey_data))
@@ -114,9 +141,12 @@ filter_bbs_survey <- function(bbs_survey_data) {
   unidentified_species <- unidentified_species
   nontarget_species <- nontarget_species
 
-  bbs_survey_data <- bbs_survey_data %>%
-    dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
-    dplyr::filter(!(.data$aou %in% nontarget_species$aou))
+  # bbs_survey_data1 <- bbs_survey_data %>%
+  #   dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
+  #   dplyr::filter(!(.data$aou %in% nontarget_species$aou))
+
+  bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$aou %in% unidentified_species$aou), ]
+  bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$aou %in% nontarget_species$aou), ]
 
   bbs_survey_data
 
