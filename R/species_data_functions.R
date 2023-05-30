@@ -113,7 +113,7 @@ clean_sp_size_data <- function(raw_size_data) {
       # )
 
       matched_rows <- sp_clean[
-          sp_clean$genus == name_change$close_genus[i] &
+        sp_clean$genus == name_change$close_genus[i] &
           sp_clean$species == name_change$close_species[i] &
           sp_clean$subspecies == name_change$close_subspecies[i], ]
 
@@ -126,14 +126,14 @@ clean_sp_size_data <- function(raw_size_data) {
 
       matched_rows <- sp_clean[
         sp_clean$genus == name_change$close_genus[i] &
-        sp_clean$species == name_change$close_species[i], ]
+          sp_clean$species == name_change$close_species[i], ]
     }
-#
-#     sp_to_add <- matched_rows %>%
-#       dplyr::mutate(
-#         aou = name_change$aou[i],
-#         added_flag = 1
-#       )
+    #
+    #     sp_to_add <- matched_rows %>%
+    #       dplyr::mutate(
+    #         aou = name_change$aou[i],
+    #         added_flag = 1
+    #       )
 
     sp_to_add <- matched_rows
     sp_to_add$aou <- name_change$aou[i]
@@ -184,18 +184,40 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' }
 #'
 #'
-#' @importFrom dplyr group_by summarize ungroup filter
-#' @importFrom rlang .data
 get_sp_mean_size <- function(sd_dat) {
-  sp_means <- sd_dat %>%
-    dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
-    dplyr::summarize(
-      mean_mass = mean(.data$mass),
-      mean_sd = mean(.data$sd, na.rm = F),
-      contains_estimates = any(.data$estimated_sd)
-    ) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(!is.na(.data$aou))
+  # sp_means <- sd_dat %>%
+  #   dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
+  #   dplyr::summarize(
+  #     mean_mass = mean(.data$mass),
+  #     mean_sd = mean(.data$sd, na.rm = F),
+  #     contains_estimates = any(.data$estimated_sd)
+  #   ) %>%
+  #   dplyr::ungroup() %>%
+  #   dplyr::filter(!is.na(.data$aou))
+
+  unique_combinations <- sd_dat[ , c("aou", "genus", "species")]
+
+  unique_combinations <- unique(unique_combinations)
+
+  unique_combinations$mean_mass <- NA
+  unique_combinations$mean_sd <- NA
+  unique_combinations$contains_estimates <- NA
+
+
+  for(i in 1:nrow(unique_combinations)) {
+
+    this_combination <- sd_dat[ which(sd_dat$aou == unique_combinations$aou[i] &
+                                  sd_dat$genus == unique_combinations$genus[i] &
+                                  sd_dat$species == unique_combinations$species[i]), ]
+
+    unique_combinations$mean_mass[i] <- mean(this_combination$mass)
+    unique_combinations$mean_sd[i] <- mean(this_combination$sd, na.rm = F)
+    unique_combinations$contains_estimates[i] <- any(this_combination$estimated_sd)
+
+  }
+
+  sp_means <- unique_combinations[ !is.na(unique_combinations$aou), ]
+  sp_means <- sp_means[order(sp_means$aou), ]
 
   sp_means
 }

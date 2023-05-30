@@ -15,18 +15,17 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Suggests: 
     covr,
+    dplyr,
     ggplot2,
     knitr,
+    purrr,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 Imports: 
-    rlang,
-    dplyr,
     magrittr,
-    purrr,
     stats,
     truncnorm
 VignetteBuilder: knitr
