@@ -27,7 +27,7 @@ Calculate summary statistics (total, mean, and standard deviation for abundance,
 For a dataframe of individuals from either numerous populations (of different species, or of the same species at different points in time), calculate summary statistics for each population or timestep, or for a different set of custom-specified grouping variables.
 }
 \examples{
-bbs_route <- demo_route_raw \%>\% filter_bbs_survey()
+bbs_route <- filter_bbs_survey(demo_route_raw)
 community_data <- community_generate(bbs_route)
 community_summarize(community_data)
 

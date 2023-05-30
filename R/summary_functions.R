@@ -91,7 +91,7 @@ pop_summarize <- function(population) {
 #' @export
 #'
 #' @examples
-#' bbs_route <- demo_route_raw %>% filter_bbs_survey()
+#' bbs_route <- filter_bbs_survey(demo_route_raw)
 #' community_data <- community_generate(bbs_route)
 #' community_summarize(community_data)
 #'

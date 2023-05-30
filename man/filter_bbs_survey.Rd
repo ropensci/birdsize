@@ -17,7 +17,6 @@ The raw data for the Breeding Bird Survey includes unidentified species and some
 }
 \examples{
 
-filter_bbs_survey(demo_route_raw) \%>\%
-head()
+head(filter_bbs_survey(demo_route_raw))
 
 }
