@@ -4,7 +4,7 @@ test_that("pop_summarize works", {
 
   a_synthetic_population_summary <- pop_summarize(a_synthetic_population)
 
-  expect_true(all(dim(a_synthetic_population_summary) == c(1, 15)))
+  expect_true(all(dim(a_synthetic_population_summary) == c(1, 14)))
   expect_true(a_synthetic_population_summary$abundance[1] == 10)
   expect_true(anyNA(a_synthetic_population_summary))
 
@@ -12,7 +12,7 @@ test_that("pop_summarize works", {
   an_aou_population_summary <- pop_summarize(an_aou_population)
 
 
-  expect_true(all(dim(an_aou_population_summary) == c(1, 15)))
+  expect_true(all(dim(an_aou_population_summary) == c(1, 14)))
   expect_true(an_aou_population_summary$abundance[1] == 10)
   expect_true(an_aou_population_summary$aou[1] == 4730)
   expect_false(anyNA(an_aou_population_summary))
@@ -47,12 +47,12 @@ test_that("community_summary error catching works", {
 
   # No unique species ids
   no_spid_cols <-a_demo_community %>%
-    dplyr::select(-c("aou", "sim_species_id", "genus", "species", "mean_size", "sd_size", "abundance"))
+    dplyr::select(-c("aou", "sim_species_id", "scientific_name", "mean_size", "sd_size", "abundance"))
 
   expect_message(community_summarize(no_spid_cols), regexp = "No identifiable species designator to calculate species richness!")
 
   na_spid_cols <-a_demo_community %>%
-    dplyr::mutate(aou = NA, sim_species_id = NA, genus = NA, species = NA)
+    dplyr::mutate(aou = NA, sim_species_id = NA, scientific_name = NA)
 
   na_spid_cols_summary <- community_summarize(na_spid_cols, level = "year")
 
@@ -87,6 +87,9 @@ test_that("community_summary works", {
 
   expect_true(nrow(demo_species_summary) == length(unique(a_demo_community$aou)))
   expect_true(all(demo_species_summary$total_richness == 1))
+
+  a_demo_community$genus <- apply(as.matrix(a_demo_community$scientific_name), 1,
+                                  FUN = function(x) return(unlist(strsplit(x, " "))[[1]]))
 
   demo_genus_summary <- community_summarize(a_demo_community, level = "custom", id_vars = c("year", "genus"))
 

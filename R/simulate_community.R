@@ -2,7 +2,7 @@
 #'
 #' For a community (i.e. a collection of populations of different species, or of the same species at different points in time or locations, etc), simulate individual-level size and metabolic rate measurements.
 #'
-#' @param community_data_table dataframe containing at least one of `aou`, `genus` *and* `species`, or `mean_size` and a column for species abundances
+#' @param community_data_table dataframe containing at least one of `aou`, `scientific_name`, or `mean_size` and a column for species abundances
 #' @param abundance_column_name character, the name of the column with species abundances. Defaults to "speciestotal".
 #' @return a dataframe one row per individual, all columns from `community_data_table`, and additional columns for species attributes.
 #'
@@ -18,6 +18,7 @@
 #' *  `sd_size`: the standard deviation of body mass for this species (i.e. the parameter used for simulation)
 #' *  `abundance`: the number of individuals simulated of this species (i.e. parameter used for simulation)
 #' *  `sd_method`: the method for finding the standard deviation for body mass for this species
+#' *  `scientific_name`: the scientific name
 #' @export
 #'
 #' @examples
@@ -34,7 +35,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   # Check that the necessary variables are provided
 
   contains_aou <- "aou" %in% community_vars
-  contains_genus_species <- all("genus" %in% community_vars, "species" %in% community_vars)
+  contains_scientific_name <- "scientific_name" %in% community_vars
   contains_mean <- "mean_size" %in% community_vars
   contains_abundance <- abundance_column_name %in% community_vars
 
@@ -42,8 +43,8 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
     stop("abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
   }
 
-  if(!(contains_aou | contains_mean | contains_genus_species)) {
-    stop("At least one of `aou`, `genus` and `species`, or `mean_size` is required")
+  if(!(contains_aou | contains_mean | contains_scientific_name)) {
+    stop("At least one of `aou`, `scientific_name`, or `mean_size` is required")
   }
 
   # Identify ID/grouping columns and columns to pass to sim fxns.
@@ -57,7 +58,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   community_vars_mod <- colnames(community_data_table)
 
-  possible_sim_vars <- c("abundance", "aou", "mean_size", "sd_size", "sim_species_id", "species", "genus")
+  possible_sim_vars <- c("abundance", "aou", "mean_size", "sd_size", "sim_species_id", "scientific_name")
 
   id_vars <- c(community_vars_mod[ which(!(community_vars_mod %in% possible_sim_vars))])
 
@@ -88,8 +89,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
     this_population <- pop_generate(abundance = this_row$abundance[1],
                                     aou = this_row$aou[1],
-                                    genus = this_row$genus[1],
-                                    species = this_row$species[1],
+                                    scientific_name = this_row$scientific_name[1],
                                     mean_size = this_row$mean_size[1],
                                     sd_size = this_row$sd_size[1],
                                     sim_species_id = this_row$sim_species_id[1])

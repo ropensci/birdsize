@@ -52,7 +52,7 @@ hummingbird_aou_parameters
 
 ```{r}
 
-hummingbird_name_parameters <- species_define(genus = "Selasphorus", species = "calliope")
+hummingbird_name_parameters <- species_define(scientific_name = "Selasphorus calliope")
 
 hummingbird_name_parameters
 
@@ -73,7 +73,7 @@ try(species_define(aou = 100))
 
 ```{r}
 
-try(species_define(genus = "taylor", species = "swift"))
+try(species_define(scientific_name = "Taylor swift"))
 
 ```
 
@@ -125,7 +125,7 @@ pmap_df(multiple_species_info_no_sd, species_define)
 
 # Order of operations
 
-If multiple sets of information are provided (e.g. both `aou` and `genus` and `species`), `species_define` will use it in this order of preference: 
+If multiple sets of information are provided (e.g. both `aou` and `scientific_name`), `species_define` will use it in this order of preference: 
 
 1. AOU
 2. Scientific name

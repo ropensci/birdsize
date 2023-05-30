@@ -6,8 +6,7 @@
 \usage{
 species_define(
   aou = NA,
-  genus = NA,
-  species = NA,
+  scientific_name = NA,
   mean_size = NA,
   sd_size = NA,
   sim_species_id = 1
@@ -16,9 +15,7 @@ species_define(
 \arguments{
 \item{aou}{AOU}
 
-\item{genus}{genus}
-
-\item{species}{species}
+\item{scientific_name}{the species' scientific name, as "Genus species"}
 
 \item{mean_size}{mean body size}
 
@@ -33,11 +30,11 @@ list with species parameter information
 Creates a list with taxonomic/identifying information and parameters for mean and standard deviation of body mass.
 }
 \details{
-The identifying information used depends on which parameters are provided, with the following order of preference: AOU > genus + species > user provided mean and sd > user provided mean and estimated sd.
+The identifying information used depends on which parameters are provided, with the following order of preference: AOU > scientific name > user provided mean and sd > user provided mean and estimated sd.
 }
 \examples{
 species_define(aou = 2881)
-species_define(genus = "Perdix", species = "perdix")
+species_define(scientific_name = "Perdix perdix")
 species_define(mean_size = 400, sd_size = 30)
 species_define(mean_size = 400)
 }

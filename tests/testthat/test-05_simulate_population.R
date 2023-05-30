@@ -1,9 +1,9 @@
 test_that("pop_generate errors work", {
-  expect_error(pop_generate(mean_size = 100, sd_size = 10), regexp = "`species_abundance` must be provided")
+  expect_error(pop_generate(mean_size = 100, sd_size = 10), regexp = "`abundance` must be provided")
 
-  expect_error(pop_generate(abundance = "10", mean_size = 100, sd_size = 10), regexp = "`species_abundance` must be numeric")
+  expect_error(pop_generate(abundance = "10", mean_size = 100, sd_size = 10), regexp = "`abundance` must be numeric")
 
-  expect_error(pop_generate(abundance = 10.5, mean_size = 100, sd_size = 10), regexp = "`species_abundance` must be a whole number")
+  expect_error(pop_generate(abundance = 10.5, mean_size = 100, sd_size = 10), regexp = "`abundance` must be a whole number")
 
   expect_error(pop_generate(abundance = 10))
 

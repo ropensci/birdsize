@@ -10,7 +10,7 @@ community_generate(
 )
 }
 \arguments{
-\item{community_data_table}{dataframe containing at least one of \code{aou}, \code{genus} \emph{and} \code{species}, or \code{mean_size} and a column for species abundances}
+\item{community_data_table}{dataframe containing at least one of \code{aou}, \code{scientific_name}, or \code{mean_size} and a column for species abundances}
 
 \item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal".}
 }
@@ -29,6 +29,7 @@ Specifically:
 \item \code{sd_size}: the standard deviation of body mass for this species (i.e. the parameter used for simulation)
 \item \code{abundance}: the number of individuals simulated of this species (i.e. parameter used for simulation)
 \item \code{sd_method}: the method for finding the standard deviation for body mass for this species
+\item \code{scientific_name}: the scientific name
 }
 }
 \description{

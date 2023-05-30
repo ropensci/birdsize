@@ -254,6 +254,7 @@ generate_sd_table <- function(raw_size_data) {
   # Summarize to species-level means for the mean and standard deviation of body mass
   sp_mean_size_dat <- get_sp_mean_size(sd_size_dat)
 
+  sp_mean_size_dat$scientific_name = paste(sp_mean_size_dat$genus, sp_mean_size_dat$species, sep = " ")
   sp_mean_size_dat
 }
 

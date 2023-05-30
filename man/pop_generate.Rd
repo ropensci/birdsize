@@ -7,8 +7,7 @@
 pop_generate(
   abundance = NA,
   aou = NA,
-  genus = NA,
-  species = NA,
+  scientific_name = NA,
   mean_size = NA,
   sd_size = NA,
   sim_species_id = 1
@@ -19,9 +18,7 @@ pop_generate(
 
 \item{aou}{aou}
 
-\item{genus}{genus}
-
-\item{species}{species}
+\item{scientific_name}{as "Genus species"}
 
 \item{mean_size}{numeric, mean body mass (in grams) for this species.}
 
@@ -36,8 +33,7 @@ Specifically:
 \itemize{
 \item \code{aou}: the AOU, if provided
 \item \code{sim_species_id}: the \code{sim_species_id} if provided
-\item \code{genus}: the genus associated with the AOU if provided, or the genus if provided
-\item \code{species}: the species associated with the AOU if provided, or the species if provided
+\item \code{scientific_name}: the scientific name if provided
 \item \code{individual_mass}: the simulated body mass (in grams) for this individual
 \item \code{individual_bmr}: the simulated basal metabolic rate for this individual
 \item \code{mean_size}: the mean body mass for this species (i.e. the parameter used for simulation)
@@ -55,7 +51,7 @@ Draws body mass measurements for a population of birds (of all the same species)
 \examples{
 
 pop_generate(abundance = 5, aou = 2881)
-pop_generate(abundance = 5, genus = "Selasphorus", species = "calliope")
+pop_generate(abundance = 5, scientific_name = "Selasphorus calliope")
 pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 
 }

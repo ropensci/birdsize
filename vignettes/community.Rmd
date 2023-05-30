@@ -68,7 +68,7 @@ Here we generate a version of `demo_route_clean` with no `aou` column:
 ```{r}
 
 demo_route_names <- demo_route_clean %>%
-  left_join(select(sd_table, aou, genus, species)) %>%
+  left_join(select(sd_table, aou, scientific_name)) %>%
   select(-aou)
 
 ```
@@ -191,6 +191,9 @@ ggplot(species_summary, aes((aou), total_biomass, fill = (aou))) +
 
 
 ```{r, fig.dim = c(8,5)}
+
+demo_route_sims$genus <- apply(as.matrix(demo_route_sims$scientific_name), 1,
+                                  FUN = function(x) return(unlist(strsplit(x, " "))[[1]]))
 
 annual_genera_summary <- community_summarize(demo_route_sims, level = "custom", id_vars = c("year", "genus")) 
 

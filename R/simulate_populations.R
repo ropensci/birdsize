@@ -32,12 +32,6 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
     stop("`species_abundance` must be a whole number")
   }
 
-  ## print message if the combination of mean and SD is likely (> 1% chance) to produce negative masses
-
-  if (pnorm(1, species_mean, species_sd) > .01) {
-    message("Very tiny species (a greater than 1% chance of a body mass value less than 1g)!")
-  }
-
   population <- truncnorm::rtruncnorm(n = species_abundance, a = 1, b = Inf, mean = species_mean, sd = species_sd)
 #
 #   while (any(population < 0)) {
@@ -57,8 +51,7 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
 #'
 #' @param abundance integer number of individuals to draw. *Required*.
 #' @param aou aou
-#' @param genus genus
-#' @param species species
+#' @param scientific_name as "Genus species"
 #' @param mean_size numeric, mean body mass (in grams) for this species.
 #' @param sd_size numeric, standard deviation of body mass for this species.
 #' @param sim_species_id defaults AOU or 1
@@ -69,8 +62,7 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
 #'
 #' * `aou`: the AOU, if provided
 #' *  `sim_species_id`: the `sim_species_id` if provided
-#' * `genus`: the genus associated with the AOU if provided, or the genus if provided
-#' *  `species`: the species associated with the AOU if provided, or the species if provided
+#' * `scientific_name`: the scientific name if provided
 #' *  `individual_mass`: the simulated body mass (in grams) for this individual
 #' *  `individual_bmr`: the simulated basal metabolic rate for this individual
 #' *  `mean_size`: the mean body mass for this species (i.e. the parameter used for simulation)
@@ -82,19 +74,48 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
 #' @examples
 #'
 #' pop_generate(abundance = 5, aou = 2881)
-#' pop_generate(abundance = 5, genus = "Selasphorus", species = "calliope")
+#' pop_generate(abundance = 5, scientific_name = "Selasphorus calliope")
 #' pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 #'
-pop_generate <- function(abundance = NA, aou = NA, genus = NA, species = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
+pop_generate <- function(abundance = NA, aou = NA, scientific_name = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
   this_species <- species_define(
     aou = aou,
-    genus = genus,
-    species = species,
+    scientific_name = scientific_name,
     mean_size = mean_size,
     sd_size = sd_size,
     sim_species_id = sim_species_id
   )
 
+  # abundance errors
+  if (is.na(abundance)) {
+    stop("`abundance` must be provided")
+  }
+
+  if (!is.numeric(abundance)) {
+    stop("`abundance` must be numeric")
+  }
+
+  if (!(round(abundance) == abundance)) {
+    stop("`abundance` must be a whole number")
+  }
+
+  # errors related to size pars
+
+  if (is.na(this_species$mean_size)) {
+    stop("`species_mean` must be provided")
+  }
+
+  if (is.na(this_species$sd_size)) {
+    stop("`species_sd` must be provided")
+  }
+
+  # print message if the combination of mean and SD is likely (> 1% chance) to produce negative masses
+
+  if (pnorm(1, this_species$mean_size, this_species$sd_size) > .01) {
+    message("Very tiny species (a greater than 1% chance of a body mass value less than 1g)!")
+  }
+
+  # draw
 
   this_population <- ind_draw(species_mean = this_species$mean_size, species_sd = this_species$sd_size, species_abundance = abundance)
 
@@ -103,14 +124,13 @@ pop_generate <- function(abundance = NA, aou = NA, genus = NA, species = NA, mea
   population_df <- data.frame(
     aou = this_species$aou,
     sim_species_id = this_species$sim_species_id,
-    genus = this_species$genus,
-    species = this_species$species,
     individual_mass = this_population,
     individual_bmr = this_population_bmr,
     mean_size = this_species$mean_size,
     sd_size = this_species$sd_size,
     abundance = abundance,
-    sd_method = this_species$sd_method
+    sd_method = this_species$sd_method,
+    scientific_name = this_species$scientific_name
   )
 
   population_df

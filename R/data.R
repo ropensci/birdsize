@@ -151,6 +151,7 @@
 #'   \item{mean_mass}{mean mass across all records in Dunning (2008) for that species, in grams}
 #'   \item{mean_sd}{mean standard deviation of body mass across all records from Dunning (2008). For records for which a standard deviation is not provided, the standard deviation is estimated based on the scaling relationship derived from this dataset. Estimated standard deviations are calculated prior to taking species-level means.}
 #'   \item{contains_estimates}{TRUE/FALSE whether or not the mean_sd column includes estimated standard deviations}
+#'   \item{scientific_name}{the genus and species together}
 #' }
 #' @references \itemize{
 #'  \item{Dunning, J. B. (2008). CRC handbook of avian body masses (2nd ed.). CRC Press.}

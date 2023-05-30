@@ -113,8 +113,8 @@ community_summarize <- function(community, level = c("year", "species", "species
 
   id_vars <- switch(level,
                     year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year"),
-                    species = c("countrynum", "statenum", "route", "rpid", "aou","sim_species_id", "genus", "species", "mean_size", "sd_size"),
-                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "aou", "sim_species_id", "genus", "species",  "mean_size", "sd_size"),
+                    species = c("countrynum", "statenum", "route", "rpid", "aou","sim_species_id", "scientific_name", "mean_size", "sd_size"),
+                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "aou", "sim_species_id", "scientific_name",  "mean_size", "sd_size"),
                     custom = id_vars)
 
   if(level == "custom" && is.null(id_vars)) {
@@ -195,7 +195,7 @@ identify_richness_designator <- function(community) {
 
   if(!(any("aou" %in% colnames(community),
            "sim_species_id" %in% colnames(community),
-           all(c("genus", "species") %in% colnames(community)),
+           "scientific_name" %in% colnames(community),
            all(c("mean_size", "sd_size") %in% colnames(community))))) {
 
     #     community <- community %>%
@@ -226,14 +226,14 @@ identify_richness_designator <- function(community) {
     }
   }
 
-  if(all(c("genus", "species") %in% colnames(community))) {
-    if(!anyNA(community$genus) && !anyNA(community$species)) {
+  if("scientific_name" %in% colnames(community)) {
+    if(!anyNA(community$scientific_name)) {
       # community <- community %>%
       #   dplyr::mutate(
       #     richnessSpecies = paste0(.data$genus, .data$species),
       #     species_designator = "scientificName"
       #   )
-      community$richnessSpecies <- paste0(community$genus, community$species)
+      community$richnessSpecies <- community$scientific_name
       community$species_designator <- "scientificName"
       return(community)
     }
