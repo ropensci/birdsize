@@ -5,7 +5,7 @@
 \title{Define a species}
 \usage{
 species_define(
-  aou = NA_integer_,
+  AOU = NA_integer_,
   scientific_name = NA_character_,
   mean_size = NA_real_,
   sd_size = NA_real_,
@@ -13,7 +13,7 @@ species_define(
 )
 }
 \arguments{
-\item{aou}{AOU}
+\item{AOU}{AOU}
 
 \item{scientific_name}{the species' scientific name, as "Genus species"}
 
@@ -33,7 +33,7 @@ Creates a list with taxonomic/identifying information and parameters for mean an
 The identifying information used depends on which parameters are provided, with the following order of preference: AOU > scientific name > user provided mean and sd > user provided mean and estimated sd.
 }
 \examples{
-species_define(aou = 2881)
+species_define(AOU = 2881)
 species_define(scientific_name = "Perdix perdix")
 species_define(mean_size = 400, sd_size = 30)
 species_define(mean_size = 400)

@@ -34,7 +34,7 @@ For most birds in the North American Breeding Bird Survey, you can use the speci
 
 ```{r, fig.dim =c(3.5,3)}
 
-a_hundred_hummingbirds <- pop_generate(abundance = 100, aou = 4360)
+a_hundred_hummingbirds <- pop_generate(abundance = 100, AOU = 4360)
 
 head(a_hundred_hummingbirds)
 

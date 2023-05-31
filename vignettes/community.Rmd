@@ -48,7 +48,7 @@ demo_route_clean <- demo_route_raw %>%
 head(demo_route_clean)
 ```
 
-`community_generate` can take this table and generate simulated individual measurements with no additional tweaks. It uses the `aou` and `speciestotal` columns from `demo_route_clean` to look up species' mean and standard deviation body masses based on their AOU and then draw individual size measurements from a normal distribution with those parameters. 
+`community_generate` can take this table and generate simulated individual measurements with no additional tweaks. It uses the `AOU` and `speciestotal` columns from `demo_route_clean` to look up species' mean and standard deviation body masses based on their AOU and then draw individual size measurements from a normal distribution with those parameters. 
 
 ```{r}
 set.seed(22)
@@ -63,13 +63,13 @@ head(demo_route_sims)
 
 If the AOU is not known or not provided, `community_generate` will attempt to look up species' size parameters based on their scientific name.
 
-Here we generate a version of `demo_route_clean` with no `aou` column:
+Here we generate a version of `demo_route_clean` with no `AOU` column:
 
 ```{r}
 
 demo_route_names <- demo_route_clean %>%
-  left_join(select(sd_table, aou, scientific_name)) %>%
-  select(-aou)
+  left_join(select(sd_table, AOU, scientific_name)) %>%
+  select(-AOU)
 
 ```
 
@@ -95,8 +95,8 @@ Here we generate a version of `demo_route_clean` with no AOU or species name col
 ```{r}
 
 demo_route_means <- demo_route_clean %>%
-  left_join(select(sd_table, aou, mean_mass)) %>%
-  select(-aou) %>%
+  left_join(select(sd_table, AOU, mean_mass)) %>%
+  select(-AOU) %>%
   rename(mean_size = mean_mass)
 
 set.seed(22)
@@ -113,8 +113,8 @@ Here, we include standard deviation measurements in a column called `sd_size`:
 ```{r}
 
 demo_route_mean_sds <- demo_route_clean %>%
-  left_join(select(sd_table, aou, mean_mass, mean_sd)) %>%
-  select(-aou) %>%
+  left_join(select(sd_table, AOU, mean_mass, mean_sd)) %>%
+  select(-AOU) %>%
   rename(mean_size = mean_mass,
          sd_size = mean_sd)
 
@@ -158,11 +158,11 @@ Grouping by year and species gives the total biomass _for each species_ in each 
 
 species_annual_summary <- demo_route_sims %>%
   community_summarize(level = "species_and_year") %>%
-  mutate(aou = as.factor(aou))
+  mutate(AOU = as.factor(AOU))
 
 head(species_annual_summary)
 
-ggplot(species_annual_summary, aes(year, total_biomass, color = aou)) + 
+ggplot(species_annual_summary, aes(year, total_biomass, color = AOU)) + 
   geom_point() +
   geom_line() +
   theme(legend.position = "bottom")
@@ -175,11 +175,11 @@ Grouping by species gives the total biomass (etc) for each species over all surv
 ```{r, fig.dim = c(8,5)}
 
 species_summary <- community_summarize(demo_route_sims, level = "species") %>%
-  mutate(aou = as.factor(aou))
+  mutate(AOU = as.factor(AOU))
 
 head(species_summary)
 
-ggplot(species_summary, aes((aou), total_biomass, fill = (aou))) + 
+ggplot(species_summary, aes((AOU), total_biomass, fill = (AOU))) + 
   geom_col() +
   theme(legend.position = "bottom")
 

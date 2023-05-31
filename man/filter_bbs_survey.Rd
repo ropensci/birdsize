@@ -7,7 +7,7 @@
 filter_bbs_survey(bbs_survey_data)
 }
 \arguments{
-\item{bbs_survey_data}{data frame with columns for species and aou}
+\item{bbs_survey_data}{data frame with columns for species and AOU}
 }
 \value{
 bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed

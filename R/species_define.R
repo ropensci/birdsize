@@ -4,7 +4,7 @@
 #'
 #' The identifying information used depends on which parameters are provided, with the following order of preference: AOU > scientific name > user provided mean and sd > user provided mean and estimated sd.
 #'
-#' @param aou AOU
+#' @param AOU AOU
 #' @param scientific_name the species' scientific name, as "Genus species"
 #' @param mean_size mean body size
 #' @param sd_size sd of body size
@@ -13,17 +13,17 @@
 #' @return list with species parameter information
 #' @export
 #' @examples
-#' species_define(aou = 2881)
+#' species_define(AOU = 2881)
 #' species_define(scientific_name = "Perdix perdix")
 #' species_define(mean_size = 400, sd_size = 30)
 #' species_define(mean_size = 400)
 
-species_define <- function(aou = NA_integer_, scientific_name = NA_character_, mean_size = NA_real_, sd_size = NA_real_, sim_species_id = 1) {
-  if (!is.na(aou)) {
+species_define <- function(AOU = NA_integer_, scientific_name = NA_character_, mean_size = NA_real_, sd_size = NA_real_, sim_species_id = 1) {
+  if (!is.na(AOU)) {
 
     # use AOU to get mean, sd, genus, and species
-    spPars <- species_lookup(aou = aou)
-    thisSpecies <- list(aou = aou, scientific_name = spPars$scientific_name, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "AOU lookup", sim_species_id = aou)
+    spPars <- species_lookup(AOU = AOU)
+    thisSpecies <- list(AOU = AOU, scientific_name = spPars$scientific_name, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "AOU lookup", sim_species_id = AOU)
 
     # Check that any user-supplied taxonomic info matches the AOU provided
     if (!is.na(scientific_name)) {
@@ -39,19 +39,19 @@ species_define <- function(aou = NA_integer_, scientific_name = NA_character_, m
 
   if (all(!is.na(scientific_name))) {
     spPars <- species_lookup(scientific_name = scientific_name)
-    thisSpecies <- list(aou = spPars$aou, scientific_name = spPars$scientific_name, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", sim_species_id = spPars$aou)
+    thisSpecies <- list(AOU = spPars$AOU, scientific_name = spPars$scientific_name, mean_size = spPars$mean_mass, sd_size = spPars$mean_sd, sd_method = "Scientific name lookup", sim_species_id = spPars$AOU)
     return(thisSpecies)
   }
 
   # If neither of AOU or scientific name is provided (implicit in order)
   if (!is.na(mean_size)) {
     if (!is.na(sd_size)) {
-      thisSpecies <- list(aou = NA_integer_, scientific_name = NA_character_, mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", sim_species_id = sim_species_id)
+      thisSpecies <- list(AOU = NA_integer_, scientific_name = NA_character_, mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", sim_species_id = sim_species_id)
       return(thisSpecies)
     }
 
     this_sd <- species_estimate_sd(mean_size)
-    thisSpecies <- list(aou = NA_integer_, scientific_name = NA_character_, mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", sim_species_id = sim_species_id)
+    thisSpecies <- list(AOU = NA_integer_, scientific_name = NA_character_, mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", sim_species_id = sim_species_id)
     return(thisSpecies)
   }
 
@@ -64,28 +64,28 @@ species_define <- function(aou = NA_integer_, scientific_name = NA_character_, m
 #'
 #' Given either AOU or scientific name, looks up a species' taxonomic information and mean and standard deviation of body size in [sd_table].
 #'
-#' @param aou AOU species code as specified in the Breeding Bird Survey
+#' @param AOU AOU species code as specified in the Breeding Bird Survey
 #' @param scientific_name the species' scientific name, as "Genus species"
 #'
-#' @return data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates, scientific_name
+#' @return data frame with columns AOU, genus, species, mean_mass, mean_sd, contains_estimates, scientific_name
 #' @export
 #'
 #' @examples
-#' species_lookup(aou = 2881)
+#' species_lookup(AOU = 2881)
 #' species_lookup(scientific_name = "Selasphorus calliope")
-species_lookup <- function(aou = NA_integer_, scientific_name = NA_character_) {
+species_lookup <- function(AOU = NA_integer_, scientific_name = NA_character_) {
   sd_table <- sd_table
 
-  provided_aou <- aou
+  provided_AOU <- AOU
 
-  if (!is.na(provided_aou)) {
-    if (!(provided_aou %in% sd_table$aou)) {
-      stop("`aou` is invalid.")
+  if (!is.na(provided_AOU)) {
+    if (!(provided_AOU %in% sd_table$AOU)) {
+      stop("`AOU` is invalid.")
     }
 
     # return(sd_table %>%
-    #   dplyr::filter(aou == provided_aou))
-    return(sd_table[sd_table$aou == provided_aou, ])
+    #   dplyr::filter(AOU == provided_AOU))
+    return(sd_table[sd_table$AOU == provided_AOU, ])
 
 
   } else if (is.character(scientific_name)) {
@@ -112,6 +112,6 @@ species_lookup <- function(aou = NA_integer_, scientific_name = NA_character_) {
       stop("Scientific name is invalid.")
     }
   } else {
-    stop("Either `aou` or a valid scientific name must be provided.")
+    stop("Either `AOU` or a valid scientific name must be provided.")
   }
 }

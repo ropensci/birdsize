@@ -2,13 +2,13 @@
 #'
 #' For a community (i.e. a collection of populations of different species, or of the same species at different points in time or locations, etc), simulate individual-level size and metabolic rate measurements.
 #'
-#' @param community_data_table dataframe containing at least one of `aou`, `scientific_name`, or `mean_size` and a column for species abundances
+#' @param community_data_table dataframe containing at least one of `AOU`, `scientific_name`, or `mean_size` and a column for species abundances
 #' @param abundance_column_name character, the name of the column with species abundances. Defaults to "speciestotal".
 #' @return a dataframe one row per individual, all columns from `community_data_table`, and additional columns for species attributes.
 #'
 #' Specifically:
 #'
-#' * `aou`: the AOU, if provided
+#' * `AOU`: the AOU, if provided
 #' *  `sim_species_id`: the `sim_species_id` if provided
 #' * `genus`: the genus associated with the AOU if provided, or the genus if provided
 #' *  `species`: the species associated with the AOU if provided, or the species if provided
@@ -29,12 +29,13 @@
 community_generate <- function(community_data_table, abundance_column_name = "speciestotal") {
 
   colnames(community_data_table) <- tolower(colnames(community_data_table))
+  colnames(community_data_table)[ which(colnames(community_data_table) == "aou")] <- "AOU"
 
   community_vars <- colnames(community_data_table)
 
   # Check that the necessary variables are provided
 
-  contains_aou <- "aou" %in% community_vars
+  contains_AOU <- "AOU" %in% community_vars
   contains_scientific_name <- "scientific_name" %in% community_vars
   contains_mean <- "mean_size" %in% community_vars
   contains_abundance <- abundance_column_name %in% community_vars
@@ -43,8 +44,8 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
     stop("abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
   }
 
-  if(!(contains_aou | contains_mean | contains_scientific_name)) {
-    stop("At least one of `aou`, `scientific_name`, or `mean_size` is required")
+  if(!(contains_AOU | contains_mean | contains_scientific_name)) {
+    stop("At least one of `AOU`, `scientific_name`, or `mean_size` is required")
   }
 
   # Identify ID/grouping columns and columns to pass to sim fxns.
@@ -58,7 +59,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   community_vars_mod <- colnames(community_data_table)
 
-  possible_sim_vars <- c("abundance", "aou", "mean_size", "sd_size", "sim_species_id", "scientific_name")
+  possible_sim_vars <- c("abundance", "AOU", "mean_size", "sd_size", "sim_species_id", "scientific_name")
 
   id_vars <- c(community_vars_mod[ which(!(community_vars_mod %in% possible_sim_vars))])
 
@@ -88,7 +89,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
     this_row <- sim_vars_table[ sim_vars_table$rejoining_id == this_id, ]
 
     this_population <- pop_generate(abundance = this_row$abundance[1],
-                                    aou = this_row$aou[1],
+                                    AOU = this_row$AOU[1],
                                     scientific_name = this_row$scientific_name[1],
                                     mean_size = this_row$mean_size[1],
                                     sd_size = this_row$sd_size[1],
@@ -119,7 +120,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 #'
 #' The raw data for the Breeding Bird Survey includes unidentified species and some species that are not well-sampled by the BBS methods. This function filters a dataframe to remove those species.
 #'
-#' @param bbs_survey_data data frame with columns for species and aou
+#' @param bbs_survey_data data frame with columns for species and AOU
 #'
 #' @return bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed
 #' @export
@@ -131,21 +132,24 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
 filter_bbs_survey <- function(bbs_survey_data) {
 
-  colnames(bbs_survey_data) <- tolower(colnames(bbs_survey_data))
 
-  if(!("aou" %in% colnames(bbs_survey_data))) {
-    stop("`aou` column is required!")
+  colnames(bbs_survey_data) <- tolower(colnames(bbs_survey_data))
+  colnames(bbs_survey_data)[ which(colnames(bbs_survey_data) == "aou")] <- "AOU"
+
+
+  if(!("AOU" %in% colnames(bbs_survey_data))) {
+    stop("`AOU` column is required!")
   }
 
   unidentified_species <- unidentified_species
   nontarget_species <- nontarget_species
 
   # bbs_survey_data1 <- bbs_survey_data %>%
-  #   dplyr::filter(!(.data$aou %in% unidentified_species$aou)) %>%
-  #   dplyr::filter(!(.data$aou %in% nontarget_species$aou))
+  #   dplyr::filter(!(.data$AOU %in% unidentified_species$AOU)) %>%
+  #   dplyr::filter(!(.data$AOU %in% nontarget_species$AOU))
 
-  bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$aou %in% unidentified_species$aou), ]
-  bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$aou %in% nontarget_species$aou), ]
+  bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$AOU %in% unidentified_species$AOU), ]
+  bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$AOU %in% nontarget_species$AOU), ]
 
   bbs_survey_data
 

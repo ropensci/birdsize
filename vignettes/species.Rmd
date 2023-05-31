@@ -42,9 +42,9 @@ Species included in `known_species` can be retrieved via either their AOU or sci
 
 ```{r}
 
-hummingbird_aou_parameters <- species_define(aou = 4360)
+hummingbird_AOU_parameters <- species_define(AOU = 4360)
 
-hummingbird_aou_parameters
+hummingbird_AOU_parameters
 
 ```
 
@@ -66,7 +66,7 @@ Attempting to use `species_define` with an AOU or species not known to `birdsize
 
 ```{r}
 
-try(species_define(aou = 100))
+try(species_define(AOU = 100))
 
 ```
 
@@ -125,7 +125,7 @@ pmap_df(multiple_species_info_no_sd, species_define)
 
 # Order of operations
 
-If multiple sets of information are provided (e.g. both `aou` and `scientific_name`), `species_define` will use it in this order of preference: 
+If multiple sets of information are provided (e.g. both `AOU` and `scientific_name`), `species_define` will use it in this order of preference: 
 
 1. AOU
 2. Scientific name

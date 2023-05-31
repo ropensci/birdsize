@@ -131,12 +131,12 @@ clean_sp_size_data <- function(raw_size_data) {
     #
     #     sp_to_add <- matched_rows %>%
     #       dplyr::mutate(
-    #         aou = name_change$aou[i],
+    #         AOU = name_change$AOU[i],
     #         added_flag = 1
     #       )
 
     sp_to_add <- matched_rows
-    sp_to_add$aou <- name_change$aou[i]
+    sp_to_add$AOU <- name_change$AOU[i]
     sp_to_add$added_flag = 1
 
     sp_clean <- rbind(sp_clean, sp_to_add)
@@ -186,16 +186,16 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #'
 get_sp_mean_size <- function(sd_dat) {
   # sp_means <- sd_dat %>%
-  #   dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
+  #   dplyr::group_by(.data$AOU, .data$genus, .data$species) %>%
   #   dplyr::summarize(
   #     mean_mass = mean(.data$mass),
   #     mean_sd = mean(.data$sd, na.rm = F),
   #     contains_estimates = any(.data$estimated_sd)
   #   ) %>%
   #   dplyr::ungroup() %>%
-  #   dplyr::filter(!is.na(.data$aou))
+  #   dplyr::filter(!is.na(.data$AOU))
 
-  unique_combinations <- sd_dat[ , c("aou", "genus", "species")]
+  unique_combinations <- sd_dat[ , c("AOU", "genus", "species")]
 
   unique_combinations <- unique(unique_combinations)
 
@@ -206,7 +206,7 @@ get_sp_mean_size <- function(sd_dat) {
 
   for(i in 1:nrow(unique_combinations)) {
 
-    this_combination <- sd_dat[ which(sd_dat$aou == unique_combinations$aou[i] &
+    this_combination <- sd_dat[ which(sd_dat$AOU == unique_combinations$AOU[i] &
                                   sd_dat$genus == unique_combinations$genus[i] &
                                   sd_dat$species == unique_combinations$species[i]), ]
 
@@ -216,8 +216,8 @@ get_sp_mean_size <- function(sd_dat) {
 
   }
 
-  sp_means <- unique_combinations[ !is.na(unique_combinations$aou), ]
-  sp_means <- sp_means[order(sp_means$aou), ]
+  sp_means <- unique_combinations[ !is.na(unique_combinations$AOU), ]
+  sp_means <- sp_means[order(sp_means$AOU), ]
 
   sp_means
 }

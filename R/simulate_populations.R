@@ -47,10 +47,10 @@ ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abu
 #'
 #' Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species AOU or (2) the mean and potentially standard deviation of body mass for that species.
 #'
-#' `abundance` is required, as well as *one of*: `aou`, `genus` and `species`, or `mean_size`.
+#' `abundance` is required, as well as *one of*: `AOU`, `scientific_name`, or `mean_size`.
 #'
 #' @param abundance integer number of individuals to draw. *Required*.
-#' @param aou aou
+#' @param AOU AOU
 #' @param scientific_name as "Genus species"
 #' @param mean_size numeric, mean body mass (in grams) for this species.
 #' @param sd_size numeric, standard deviation of body mass for this species.
@@ -60,7 +60,7 @@ ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abu
 #'
 #' Specifically:
 #'
-#' * `aou`: the AOU, if provided
+#' * `AOU`: the AOU, if provided
 #' *  `sim_species_id`: the `sim_species_id` if provided
 #' * `scientific_name`: the scientific name if provided
 #' *  `individual_mass`: the simulated body mass (in grams) for this individual
@@ -73,13 +73,13 @@ ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abu
 #' @export
 #' @examples
 #'
-#' pop_generate(abundance = 5, aou = 2881)
+#' pop_generate(abundance = 5, AOU = 2881)
 #' pop_generate(abundance = 5, scientific_name = "Selasphorus calliope")
 #' pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 #'
-pop_generate <- function(abundance = NA_integer_, aou = NA_integer_, scientific_name = NA_character_, mean_size = NA_real_, sd_size = NA_real_, sim_species_id = 1) {
+pop_generate <- function(abundance = NA_integer_, AOU = NA_integer_, scientific_name = NA_character_, mean_size = NA_real_, sd_size = NA_real_, sim_species_id = 1) {
   this_species <- species_define(
-    aou = aou,
+    AOU = AOU,
     scientific_name = scientific_name,
     mean_size = mean_size,
     sd_size = sd_size,
@@ -122,7 +122,7 @@ pop_generate <- function(abundance = NA_integer_, aou = NA_integer_, scientific_
   this_population_bmr <- individual_metabolic_rate(this_population)
 
   population_df <- data.frame(
-    aou = this_species$aou,
+    AOU = this_species$AOU,
     sim_species_id = this_species$sim_species_id,
     individual_mass = this_population,
     individual_bmr = this_population_bmr,

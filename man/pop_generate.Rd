@@ -6,7 +6,7 @@
 \usage{
 pop_generate(
   abundance = NA_integer_,
-  aou = NA_integer_,
+  AOU = NA_integer_,
   scientific_name = NA_character_,
   mean_size = NA_real_,
   sd_size = NA_real_,
@@ -16,7 +16,7 @@ pop_generate(
 \arguments{
 \item{abundance}{integer number of individuals to draw. \emph{Required}.}
 
-\item{aou}{aou}
+\item{AOU}{AOU}
 
 \item{scientific_name}{as "Genus species"}
 
@@ -31,7 +31,7 @@ a dataframe with \code{abundance} rows - one record per individual - and columns
 
 Specifically:
 \itemize{
-\item \code{aou}: the AOU, if provided
+\item \code{AOU}: the AOU, if provided
 \item \code{sim_species_id}: the \code{sim_species_id} if provided
 \item \code{scientific_name}: the scientific name if provided
 \item \code{individual_mass}: the simulated body mass (in grams) for this individual
@@ -46,11 +46,11 @@ Specifically:
 Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species AOU or (2) the mean and potentially standard deviation of body mass for that species.
 }
 \details{
-\code{abundance} is required, as well as \emph{one of}: \code{aou}, \code{genus} and \code{species}, or \code{mean_size}.
+\code{abundance} is required, as well as \emph{one of}: \code{AOU}, \code{scientific_name}, or \code{mean_size}.
 }
 \examples{
 
-pop_generate(abundance = 5, aou = 2881)
+pop_generate(abundance = 5, AOU = 2881)
 pop_generate(abundance = 5, scientific_name = "Selasphorus calliope")
 pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 

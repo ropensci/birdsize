@@ -7,9 +7,9 @@ test_that("pop_generate errors work", {
 
   expect_error(pop_generate(abundance = 10))
 
-  expect_error(pop_generate(abundance = 10, aou = "abc"), regexp = "`aou` is invalid.")
+  expect_error(pop_generate(abundance = 10, AOU = "abc"), regexp = "`AOU` is invalid.")
 
-  expect_error(pop_generate(abundance = 10, aou = 1000), regexp = "`aou` is invalid.")
+  expect_error(pop_generate(abundance = 10, AOU = 1000), regexp = "`AOU` is invalid.")
 
   expect_message(pop_generate(abundance = 10, mean_size = 2, sd_size = 2))
 })
@@ -20,7 +20,7 @@ test_that("pop_generate works given mean and sd", {
 
   a_population <- pop_generate(abundance = 100, mean_size = 10, sd_size = 2)
 
-  expect_true(is.na(a_population$aou[1]))
+  expect_true(is.na(a_population$AOU[1]))
   expect_true(all(a_population$species_mean_mass == 10))
   expect_true(all(a_population$species_sd_mass == 2))
   expect_true(all(a_population$abundance == 100))
@@ -34,7 +34,7 @@ test_that("pop_generate works given only mean", {
 
   a_population <- pop_generate(abundance = 100, mean_size = 10)
 
-  expect_true(is.na(a_population$aou[1]))
+  expect_true(is.na(a_population$AOU[1]))
   expect_true(all(a_population$species_mean_mass == 10))
   expect_true(all(a_population$species_sd_mass == birdsize:::species_estimate_sd(10)))
   expect_true(all(a_population$abundance == 100))
@@ -48,7 +48,7 @@ test_that("pop_generate works given only mean", {
 
   a_population <- pop_generate(abundance = 100, mean_size = 10)
 
-  expect_true(is.na(a_population$aou[1]))
+  expect_true(is.na(a_population$AOU[1]))
   expect_true(all(a_population$species_mean_mass == 10))
   expect_true(all(a_population$species_sd_mass == birdsize:::species_estimate_sd(10)))
   expect_true(all(a_population$abundance == 100))
@@ -59,11 +59,11 @@ test_that("pop_generate works given only mean", {
 test_that("pop_generate works given species code", {
   set.seed(22)
 
-  a_population <- pop_generate(abundance = 100, aou = 2940)
+  a_population <- pop_generate(abundance = 100, AOU = 2940)
 
-  this_pars <- dplyr::filter(sd_table, aou == 2940)
+  this_pars <- dplyr::filter(sd_table, AOU == 2940)
 
-  expect_true(all(a_population$aou == 2940))
+  expect_true(all(a_population$AOU == 2940))
   expect_true(all(a_population$species_mean_mass == this_pars$mean_mass))
   expect_true(all(a_population$species_sd_mass == this_pars$mean_sd))
   expect_true(all(a_population$abundance == 100))
@@ -76,11 +76,11 @@ test_that("pop_generate works given species code", {
 test_that("pop_generate works given species code *and* species mean", {
   set.seed(22)
 
-  a_population <- pop_generate(abundance = 100, aou = 6340, mean_size = 50)
+  a_population <- pop_generate(abundance = 100, AOU = 6340, mean_size = 50)
 
-  this_pars <- dplyr::filter(sd_table, aou == 6340)
+  this_pars <- dplyr::filter(sd_table, AOU == 6340)
 
-  expect_true(all(a_population$aou == 6340))
+  expect_true(all(a_population$AOU == 6340))
   expect_true(all(a_population$species_mean_mass == this_pars$mean_mass))
   expect_true(all(a_population$species_sd_mass == this_pars$mean_sd))
   expect_true(all(a_population$abundance == 100))

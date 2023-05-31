@@ -3,10 +3,10 @@ test_that("error catching works", {
   bbs_data <- demo_route_raw %>%
     filter_bbs_survey()
 
-  no_aou <- bbs_data %>%
-    dplyr::select(-aou)
+  no_AOU <- bbs_data %>%
+    dplyr::select(-AOU)
 
-  expect_error(community_generate(no_aou), regexp = "At least one of `aou`, `scientific_name`, or `mean_size` is required")
+  expect_error(community_generate(no_AOU), regexp = "At least one of `AOU`, `scientific_name`, or `mean_size` is required")
 
   no_abundance <- bbs_data %>%
     dplyr::select(-speciestotal)
@@ -66,8 +66,8 @@ test_that("simulation from species name works", {
 
   short_bbs_data <- bbs_data %>%
     dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, aou, scientific_name)) %>%
-    dplyr::select(-aou)
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, scientific_name)) %>%
+    dplyr::select(-AOU)
 
   set.seed(22)
   bbs_data_sims <- community_generate(short_bbs_data)
@@ -90,8 +90,8 @@ test_that("simulation from mean size works", {
 
   short_bbs_data <- bbs_data %>%
     dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, aou, mean_mass)) %>%
-    dplyr::select(-aou) %>%
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass)) %>%
+    dplyr::select(-AOU) %>%
     dplyr::rename(mean_size = mean_mass)
 
   set.seed(22)
@@ -99,7 +99,7 @@ test_that("simulation from mean size works", {
 
 #  expect_true(ncol(bbs_data_sims) == 23)
   expect_true(nrow(bbs_data_sims) == sum(short_bbs_data$speciestotal))
-  expect_true(all(is.na(bbs_data_sims$aou)))
+  expect_true(all(is.na(bbs_data_sims$AOU)))
   expect_true(all(is.na(bbs_data_sims$scientific_name)))
  # expect_true(all(round(bbs_data_sims$individual_mass[1:5]) == c(5824, 7147, 127, 121, 117)))
   expect_true(all(bbs_data_sims$sd_method == "SD estimated from mean"))
@@ -114,8 +114,8 @@ test_that("simulation from mean and sd size works", {
 
   short_bbs_data <- bbs_data %>%
     dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, aou, mean_mass, mean_sd)) %>%
-    dplyr::select(-aou) %>%
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass, mean_sd)) %>%
+    dplyr::select(-AOU) %>%
     dplyr::rename(mean_size = mean_mass,
                   sd_size = mean_sd)
 
@@ -124,7 +124,7 @@ test_that("simulation from mean and sd size works", {
 
  # expect_true(ncol(bbs_data_sims) == 23)
   expect_true(nrow(bbs_data_sims) == sum(short_bbs_data$speciestotal))
-  expect_true(all(is.na(bbs_data_sims$aou)))
+  expect_true(all(is.na(bbs_data_sims$AOU)))
   expect_true(all(is.na(bbs_data_sims$scientific_name)))
   #expect_true(all(round(bbs_data_sims$individual_mass[1:5]) == c(5824, 7147, 121, 120, 119)))
   expect_true(all(bbs_data_sims$sd_method == "Mean and SD provided"))
@@ -145,7 +145,7 @@ test_that("simulation from toy df works", {
 
   #expect_true(ncol(toy_sims) == 10)
   expect_true(nrow(toy_sims) == sum(toy_df$speciestotal))
-  expect_true(all(is.na(toy_sims$aou)))
+  expect_true(all(is.na(toy_sims$AOU)))
   expect_true(all(is.na(toy_sims$scientific_name)))
   expect_false(any(is.na(toy_sims$sim_species_id)))
   expect_true(all(round(toy_sims$individual_mass[1:5]) == c(96, 118, 107, 102, 99)))

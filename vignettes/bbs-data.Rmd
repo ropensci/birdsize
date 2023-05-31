@@ -64,7 +64,7 @@ head(demo_community)
 
 ```
 
-The first 15 columns (`record_id` through `aou`) are retained from the input data. For species in the BBS, `sim_species_id` is identical to the AOU used for species identification. `scientific_name` gives the scientific name associated with the AOU. `individual_mass` and `individual_bmr` are *individual-level* mass and BMR estimates, with one for each individual recorded in the input data. `mean_size`, `sd_size`, `abundance`, and `sd_method` give the parameters used to generate the individual-level estimates.
+The first 15 columns (`record_id` through `AOU`) are retained from the input data. For species in the BBS, `sim_species_id` is identical to the AOU used for species identification. `scientific_name` gives the scientific name associated with the AOU. `individual_mass` and `individual_bmr` are *individual-level* mass and BMR estimates, with one for each individual recorded in the input data. `mean_size`, `sd_size`, `abundance`, and `sd_method` give the parameters used to generate the individual-level estimates.
 
 
 ## Summary statistics and visualization

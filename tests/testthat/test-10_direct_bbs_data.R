@@ -20,8 +20,8 @@ test_that("direct download works", {
   new_hartford_route <- data %>%
     dplyr::filter(Route == 102)
 
-  expect_true(any(new_hartford_route$AOU %in% nontarget_species$aou))
-  expect_false(any(new_hartford_route$AOU %in% unidentified_species$aou))
+  expect_true(any(new_hartford_route$AOU %in% nontarget_species$AOU))
+  expect_false(any(new_hartford_route$AOU %in% unidentified_species$AOU))
 
   new_hartford_route_clean <- new_hartford_route %>%
     filter_bbs_survey()

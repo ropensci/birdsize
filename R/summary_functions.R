@@ -113,8 +113,8 @@ community_summarize <- function(community, level = c("year", "species", "species
 
   id_vars <- switch(level,
                     year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year"),
-                    species = c("countrynum", "statenum", "route", "rpid", "aou","sim_species_id", "scientific_name", "mean_size", "sd_size"),
-                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "aou", "sim_species_id", "scientific_name",  "mean_size", "sd_size"),
+                    species = c("countrynum", "statenum", "route", "rpid", "AOU","sim_species_id", "scientific_name", "mean_size", "sd_size"),
+                    species_and_year = c("routedataid", "countrynum", "statenum", "route", "rpid", "year", "AOU", "sim_species_id", "scientific_name",  "mean_size", "sd_size"),
                     custom = id_vars)
 
   if(level == "custom" && is.null(id_vars)) {
@@ -193,7 +193,7 @@ community_summarize <- function(community, level = c("year", "species", "species
 #'
 identify_richness_designator <- function(community) {
 
-  if(!(any("aou" %in% colnames(community),
+  if(!(any("AOU" %in% colnames(community),
            "sim_species_id" %in% colnames(community),
            "scientific_name" %in% colnames(community),
            all(c("mean_size", "sd_size") %in% colnames(community))))) {
@@ -211,16 +211,16 @@ identify_richness_designator <- function(community) {
     return(community)
   }
 
-  if("aou" %in% colnames(community)) {
-    if(!anyNA(community$aou)) {
+  if("AOU" %in% colnames(community)) {
+    if(!anyNA(community$AOU)) {
       # community <- community %>%
       #   dplyr::mutate(
-      #     richnessSpecies = .data$aou,
-      #     species_designator = "aou"
+      #     richnessSpecies = .data$AOU,
+      #     species_designator = "AOU"
       #   )
 
-      community$richnessSpecies <- community$aou
-      community$species_designator <- "aou"
+      community$richnessSpecies <- community$AOU
+      community$species_designator <- "AOU"
 
       return(community)
     }

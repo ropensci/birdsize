@@ -10,7 +10,7 @@ community_generate(
 )
 }
 \arguments{
-\item{community_data_table}{dataframe containing at least one of \code{aou}, \code{scientific_name}, or \code{mean_size} and a column for species abundances}
+\item{community_data_table}{dataframe containing at least one of \code{AOU}, \code{scientific_name}, or \code{mean_size} and a column for species abundances}
 
 \item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal".}
 }
@@ -19,7 +19,7 @@ a dataframe one row per individual, all columns from \code{community_data_table}
 
 Specifically:
 \itemize{
-\item \code{aou}: the AOU, if provided
+\item \code{AOU}: the AOU, if provided
 \item \code{sim_species_id}: the \code{sim_species_id} if provided
 \item \code{genus}: the genus associated with the AOU if provided, or the genus if provided
 \item \code{species}: the species associated with the AOU if provided, or the species if provided

@@ -7,7 +7,7 @@
 \format{
 A data frame with 443 rows and 6 variables:
 \describe{
-\item{aou}{AOU used in Paradieck et al. (2019)}
+\item{AOU}{AOU used in Paradieck et al. (2019)}
 \item{genus}{genus, from Paradieck et al. (2019)}
 \item{species}{species, from Paradieck et al. (2019)}
 \item{mean_mass}{mean mass across all records in Dunning (2008) for that species, in grams}

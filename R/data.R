@@ -15,7 +15,7 @@
 #'   \item{route}{inherited. Three-digit code identifying the route, unique within states. For this dataset, 1.}
 #'   \item{rpid}{inherited. Three-digit run protocol identifier. Here, set to 101.}
 #'   \item{year}{inherited. Four-digit year of the survey.}
-#'   \item{aou}{inherited. Five-digit species identification number.}
+#'   \item{AOU}{inherited. Five-digit species identification number.}
 #'   \item{count10}{inherited. Total individuals of the species recorded on stops 1-10.}
 #'   \item{count20}{inherited. Total individuals of the species recorded on stops 11-20.}
 #'   \item{count30}{inherited. Total individuals of the species recorded on stops 21-30.}
@@ -47,7 +47,7 @@
 #'   \item{route}{inherited. Three-digit code identifying the route, unique within states. For this dataset, 1.}
 #'   \item{rpid}{inherited. Three-digit run protocol identifier. Here, set to 101.}
 #'   \item{year}{inherited. Four-digit year of the survey.}
-#'   \item{aou}{inherited. Five-digit species identification number.}
+#'   \item{AOU}{inherited. Five-digit species identification number.}
 #'   \item{count10}{inherited. Total individuals of the species recorded on stops 1-10.}
 #'   \item{count20}{inherited. Total individuals of the species recorded on stops 11-20.}
 #'   \item{count30}{inherited. Total individuals of the species recorded on stops 21-30.}
@@ -70,7 +70,7 @@
 #'
 #' @format A data frame with 443 rows and 6 variables:
 #' \describe{
-#'   \item{aou}{AOU used in Paradieck et al. (2019)}
+#'   \item{AOU}{AOU used in Paradieck et al. (2019)}
 #'   \item{genus}{genus, from Paradieck et al. (2019)}
 #'   \item{species}{species, from Paradieck et al. (2019)}
 #'   }
@@ -90,7 +90,7 @@
 #'
 #' @format A data frame with 263 rows and 4 variables:
 #' \describe{
-#'   \item{aou}{aou}
+#'   \item{AOU}{AOU}
 #'   \item{english_common_name}{English common name}
 #'   \item{genus}{genus}
 #'   \item{species}{species}
@@ -129,7 +129,7 @@
 #'   \item{close_species}{if a species is not in Dunning (2008), but a closely related species - e.g. recently renamed, or taxonomically divided between 2008 and 2019 - is, the species of that closely related species.}
 #'   \item{close_subspecies}{if a species is not in Dunning (2008), but a closely related species - e.g. recently renamed, or taxonomically divided between 2008 and 2019 - is, the subspecies of that closely related species.}
 #'   \item{close_species_notes}{notes explaining the details of the "closely related" species designations}
-#'   \item{aou}{The AOU}
+#'   \item{AOU}{The AOU}
 #' }
 #' @references \itemize{
 #'  \item{Dunning, J. B. (2008). CRC handbook of avian body masses (2nd ed.). CRC Press.}
@@ -145,7 +145,7 @@
 #'
 #' @format A data frame with 443 rows and 6 variables:
 #' \describe{
-#'   \item{aou}{AOU used in Paradieck et al. (2019)}
+#'   \item{AOU}{AOU used in Paradieck et al. (2019)}
 #'   \item{genus}{genus, from Paradieck et al. (2019)}
 #'   \item{species}{species, from Paradieck et al. (2019)}
 #'   \item{mean_mass}{mean mass across all records in Dunning (2008) for that species, in grams}
@@ -169,7 +169,7 @@
 #'
 #' @format A data frame with 72 rows and 4 variables:
 #' \describe{
-#'   \item{aou}{aou}
+#'   \item{AOU}{AOU}
 #'   \item{english_common_name}{English common name}
 #'   \item{genus}{genus}
 #'   \item{species}{species}

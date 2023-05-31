@@ -7,7 +7,7 @@
 \format{
 A data frame with 263 rows and 4 variables:
 \describe{
-\item{aou}{aou}
+\item{AOU}{AOU}
 \item{english_common_name}{English common name}
 \item{genus}{genus}
 \item{species}{species}

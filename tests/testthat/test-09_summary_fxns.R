@@ -8,14 +8,14 @@ test_that("pop_summarize works", {
   expect_true(a_synthetic_population_summary$abundance[1] == 10)
   expect_true(anyNA(a_synthetic_population_summary))
 
-  an_aou_population <- pop_generate(10, aou = 4730)
-  an_aou_population_summary <- pop_summarize(an_aou_population)
+  an_AOU_population <- pop_generate(10, AOU = 4730)
+  an_AOU_population_summary <- pop_summarize(an_AOU_population)
 
 
-  expect_true(all(dim(an_aou_population_summary) == c(1, 14)))
-  expect_true(an_aou_population_summary$abundance[1] == 10)
-  expect_true(an_aou_population_summary$aou[1] == 4730)
-  expect_false(anyNA(an_aou_population_summary))
+  expect_true(all(dim(an_AOU_population_summary) == c(1, 14)))
+  expect_true(an_AOU_population_summary$abundance[1] == 10)
+  expect_true(an_AOU_population_summary$AOU[1] == 4730)
+  expect_false(anyNA(an_AOU_population_summary))
 
 })
 
@@ -47,12 +47,12 @@ test_that("community_summary error catching works", {
 
   # No unique species ids
   no_spid_cols <-a_demo_community %>%
-    dplyr::select(-c("aou", "sim_species_id", "scientific_name", "mean_size", "sd_size", "abundance"))
+    dplyr::select(-c("AOU", "sim_species_id", "scientific_name", "mean_size", "sd_size", "abundance"))
 
   expect_message(community_summarize(no_spid_cols), regexp = "No identifiable species designator to calculate species richness!")
 
   na_spid_cols <-a_demo_community %>%
-    dplyr::mutate(aou = NA, sim_species_id = NA, scientific_name = NA)
+    dplyr::mutate(AOU = NA, sim_species_id = NA, scientific_name = NA)
 
   na_spid_cols_summary <- community_summarize(na_spid_cols, level = "year")
 
@@ -81,11 +81,11 @@ test_that("community_summary works", {
   demo_species_annual_summary <- community_summarize(a_demo_community, level = "species_and_year")
 
   expect_true(nrow(demo_species_annual_summary) == sum(demo_annual_summary$total_richness))
-  expect_true(all(sort(unique(demo_species_annual_summary$aou)) == sort(unique(a_demo_community$aou))))
+  expect_true(all(sort(unique(demo_species_annual_summary$AOU)) == sort(unique(a_demo_community$AOU))))
 
   demo_species_summary <- community_summarize(a_demo_community, level = "species")
 
-  expect_true(nrow(demo_species_summary) == length(unique(a_demo_community$aou)))
+  expect_true(nrow(demo_species_summary) == length(unique(a_demo_community$AOU)))
   expect_true(all(demo_species_summary$total_richness == 1))
 
   a_demo_community$genus <- apply(as.matrix(a_demo_community$scientific_name), 1,

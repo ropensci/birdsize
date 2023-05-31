@@ -25,8 +25,8 @@ test_that("bmr is returned with communities", {
 
   short_bbs_data <- bbs_data %>%
     dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, aou, mean_mass, mean_sd)) %>%
-    dplyr::select(-aou) %>%
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass, mean_sd)) %>%
+    dplyr::select(-AOU) %>%
     dplyr::rename(mean_size = mean_mass,
                   sd_size = mean_sd)
 
