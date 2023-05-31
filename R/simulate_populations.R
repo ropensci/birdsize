@@ -11,7 +11,7 @@
 #' @importFrom truncnorm rtruncnorm
 #' @importFrom stats pnorm
 #' @keywords internal
-ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA) {
+ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abundance = NA_integer_) {
   if (is.na(species_mean)) {
     stop("`species_mean` must be provided")
   }
@@ -77,7 +77,7 @@ ind_draw <- function(species_mean = NA, species_sd = NA, species_abundance = NA)
 #' pop_generate(abundance = 5, scientific_name = "Selasphorus calliope")
 #' pop_generate(abundance = 5, mean_size = 20, sd_size = 3)
 #'
-pop_generate <- function(abundance = NA, aou = NA, scientific_name = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
+pop_generate <- function(abundance = NA_integer_, aou = NA_integer_, scientific_name = NA_character_, mean_size = NA_real_, sd_size = NA_real_, sim_species_id = 1) {
   this_species <- species_define(
     aou = aou,
     scientific_name = scientific_name,

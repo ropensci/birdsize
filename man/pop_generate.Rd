@@ -5,11 +5,11 @@
 \title{Simulate body masses for a population}
 \usage{
 pop_generate(
-  abundance = NA,
-  aou = NA,
-  scientific_name = NA,
-  mean_size = NA,
-  sd_size = NA,
+  abundance = NA_integer_,
+  aou = NA_integer_,
+  scientific_name = NA_character_,
+  mean_size = NA_real_,
+  sd_size = NA_real_,
   sim_species_id = 1
 )
 }

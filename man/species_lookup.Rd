@@ -4,7 +4,7 @@
 \alias{species_lookup}
 \title{Species lookup}
 \usage{
-species_lookup(aou = NA, scientific_name = NA)
+species_lookup(aou = NA_integer_, scientific_name = NA_character_)
 }
 \arguments{
 \item{aou}{AOU species code as specified in the Breeding Bird Survey}

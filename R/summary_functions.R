@@ -38,13 +38,13 @@ pop_summarize <- function(population) {
   unique_ids <- unique(unique_ids)
 
   out_data <- unique_ids
-  out_data$population_abundance <- NA
-  out_data$population_biomass <- NA
-  out_data$population_metabolic_rate <- NA
-  out_data$population_mean_size <- NA
-  out_data$population_sd_size <- NA
-  out_data$population_mean_bmr <- NA
-  out_data$population_sd_bmr <- NA
+  out_data$population_abundance <- NA_integer_
+  out_data$population_biomass <- NA_real_
+  out_data$population_metabolic_rate <- NA_real_
+  out_data$population_mean_size <- NA_real_
+  out_data$population_sd_size <- NA_real_
+  out_data$population_mean_bmr <- NA_real_
+  out_data$population_sd_bmr <- NA_real_
 
   for(i in 1:nrow(unique_ids)) {
 
@@ -148,14 +148,14 @@ community_summarize <- function(community, level = c("year", "species", "species
 
   out_data <- unique_designators
 
-  out_data$total_abundance <- NA
-  out_data$total_biomass <- NA
-  out_data$total_metabolic_rate <- NA
-  out_data$total_richness <- NA
-  out_data$mean_individual_mass <- NA
-  out_data$sd_individual_mass <- NA
-  out_data$mean_metabolic_rate <- NA
-  out_data$sd_metabolic_rate <- NA
+  out_data$total_abundance <- NA_integer_
+  out_data$total_biomass <- NA_real_
+  out_data$total_metabolic_rate <- NA_real_
+  out_data$total_richness <- NA_real_
+  out_data$mean_individual_mass <- NA_real_
+  out_data$sd_individual_mass <- NA_real_
+  out_data$mean_metabolic_rate <- NA_real_
+  out_data$sd_metabolic_rate <- NA_real_
 
   for(i in 1:nrow(unique_designators)) {
 
@@ -204,7 +204,7 @@ identify_richness_designator <- function(community) {
     #         species_designator = "none_identified"
     #       )
 
-    community$richnessSpecies <- NA
+    community$richnessSpecies <- NA_character_
     community$species_designator <- "none_identified"
 
     message("No identifiable species designator to calculate species richness!")

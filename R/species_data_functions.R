@@ -101,7 +101,7 @@ clean_sp_size_data <- function(raw_size_data) {
   #   dplyr::mutate(added_flag = NA)
 
   sp_clean <- sp_clean[ which(is.na(sp_clean$not_in_dunning)), ]
-  sp_clean$added_flag = NA
+  sp_clean$added_flag = NA_integer_
 
   for (i in 1:nrow(name_change)) {
     if (!is.na(name_change$close_subspecies[i])) {
@@ -199,8 +199,8 @@ get_sp_mean_size <- function(sd_dat) {
 
   unique_combinations <- unique(unique_combinations)
 
-  unique_combinations$mean_mass <- NA
-  unique_combinations$mean_sd <- NA
+  unique_combinations$mean_mass <- NA_real_
+  unique_combinations$mean_sd <- NA_real_
   unique_combinations$contains_estimates <- NA
 
 

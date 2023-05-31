@@ -18,7 +18,7 @@
 #' species_define(mean_size = 400, sd_size = 30)
 #' species_define(mean_size = 400)
 
-species_define <- function(aou = NA, scientific_name = NA, mean_size = NA, sd_size = NA, sim_species_id = 1) {
+species_define <- function(aou = NA_integer_, scientific_name = NA_character_, mean_size = NA_real_, sd_size = NA_real_, sim_species_id = 1) {
   if (!is.na(aou)) {
 
     # use AOU to get mean, sd, genus, and species
@@ -46,12 +46,12 @@ species_define <- function(aou = NA, scientific_name = NA, mean_size = NA, sd_si
   # If neither of AOU or scientific name is provided (implicit in order)
   if (!is.na(mean_size)) {
     if (!is.na(sd_size)) {
-      thisSpecies <- list(aou = as.numeric(NA), scientific_name = NA_character_, mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", sim_species_id = sim_species_id)
+      thisSpecies <- list(aou = NA_integer_, scientific_name = NA_character_, mean_size = mean_size, sd_size = sd_size, sd_method = "Mean and SD provided", sim_species_id = sim_species_id)
       return(thisSpecies)
     }
 
     this_sd <- species_estimate_sd(mean_size)
-    thisSpecies <- list(aou = as.numeric(NA), scientific_name = NA_character_, mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", sim_species_id = sim_species_id)
+    thisSpecies <- list(aou = NA_integer_, scientific_name = NA_character_, mean_size = mean_size, sd_size = this_sd, sd_method = "SD estimated from mean", sim_species_id = sim_species_id)
     return(thisSpecies)
   }
 
@@ -73,7 +73,7 @@ species_define <- function(aou = NA, scientific_name = NA, mean_size = NA, sd_si
 #' @examples
 #' species_lookup(aou = 2881)
 #' species_lookup(scientific_name = "Selasphorus calliope")
-species_lookup <- function(aou = NA, scientific_name = NA) {
+species_lookup <- function(aou = NA_integer_, scientific_name = NA_character_) {
   sd_table <- sd_table
 
   provided_aou <- aou

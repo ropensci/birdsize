@@ -5,10 +5,10 @@
 \title{Define a species}
 \usage{
 species_define(
-  aou = NA,
-  scientific_name = NA,
-  mean_size = NA,
-  sd_size = NA,
+  aou = NA_integer_,
+  scientific_name = NA_character_,
+  mean_size = NA_real_,
+  sd_size = NA_real_,
   sim_species_id = 1
 )
 }
