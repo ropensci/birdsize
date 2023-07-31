@@ -13,3 +13,4 @@ R\species_class.R
 review_edits.md
 review_template.md
 review_edits_todo.md
+^README\.Rmd$

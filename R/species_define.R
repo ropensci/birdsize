@@ -74,7 +74,7 @@ species_define <- function(AOU = NA_integer_, scientific_name = NA_character_, m
 #' species_lookup(AOU = 2881)
 #' species_lookup(scientific_name = "Selasphorus calliope")
 species_lookup <- function(AOU = NA_integer_, scientific_name = NA_character_) {
-  sd_table <- sd_table
+#  sd_table <- sd_table
 
   provided_AOU <- AOU
 

@@ -1,5 +1,5 @@
 test_that("raw_masses has expected properties", {
-  raw_masses <- raw_masses
+  #raw_masses <- raw_masses
 
   expect_true(nrow(raw_masses) == 928)
   expect_true(ncol(raw_masses) == 19)
@@ -32,7 +32,7 @@ test_that("sd_table is up to date", {
   generated_sd_table <- birdsize:::generate_sd_table(raw_masses)
   row.names(generated_sd_table) <- NULL
 
-  included_sd_table <- as.data.frame(sd_table)
+  included_sd_table <- sd_table
   row.names(included_sd_table) <- NULL
 
   expect_equal(included_sd_table, generated_sd_table)

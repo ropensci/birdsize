@@ -37,7 +37,7 @@ get_sd_parameters <- function(raw_size_data) {
   sp_for_sd$log_var = log(sp_for_sd$var)
 
 
-  sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
+  sd_fit <- stats::lm(data = sp_for_sd, formula = log_var ~ log_m)
 
   intercept <- exp(sd_fit$coefficients[[1]])
   slope <- sd_fit$coefficient[[2]]
@@ -61,7 +61,7 @@ get_sd_parameters <- function(raw_size_data) {
 #'
 species_estimate_sd <- function(sp_mean, pars = NULL) {
   if (is.null(pars)) {
-    raw_masses <- raw_masses
+  #  raw_masses <- raw_masses
 
     pars <- get_sd_parameters(raw_masses)
   }
