@@ -54,8 +54,10 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   #   dplyr::mutate(rejoining_id = dplyr::row_number(),
   #                 abundance = .data[[abundance_column_name]])
 
-  community_data_table$rejoining_id = 1:nrow(community_data_table)
-  community_data_table$abundance = community_data_table[ , abundance_column_name]
+  community_data_table$rejoining_id <- 1:nrow(community_data_table)
+  abundance_values <- as.matrix(community_data_table[ , abundance_column_name])
+  abundance_values <- as.vector(abundance_values[,1])
+  community_data_table$abundance = abundance_values
 
   community_vars_mod <- colnames(community_data_table)
 

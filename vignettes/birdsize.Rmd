@@ -12,11 +12,223 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(birdsize)
+library(dplyr)
+library(ggplot2)
+theme_set(theme_bw())
+set.seed(22)
 ```
 
 
-`birdsize` simulates size measurements for populations or communities of birds. It is designed to interface naturally with data downloaded from the North American Breeding Bird Survey, or to work with other datasets (including synthetic data) as long as they include *population sizes* and either *species identity* (for species found in the Breeding Bird Survey) or *species mean, and optionally standard deviation, body size* (for other species, including hypothetical or simulated species).  
+## Overview
 
-The core functions in `birdsize` apply at 3 levels of organization: species, population, and community. The `community_*` functions generate population-level estimates for numerous populations (e.g. populations of different species, or populations of the same species at different points in time or different sampling locations), and calculate summary statistics with flexible grouping structures. The `population_*` functions use species-level parameters and abundances (population sizes) to simulate individual body size and basal metabolic rate measurements to make up populations of that species, and calculate population-wide summary statistics. The `species_*` functions take information about a real or hypothetical species and generates the parameters necessary to simulate body size distributions for that species.
+`birdsize` simulates mass measurements (g) for birds. Working from the assumption that individuals of a species have body masses normally distributed around a species-wide mean and standard deviation, `birdsize` simulates individual-level body mass measurements by drawing from species-specific normal distributions. There are parameters built-in for 450 bird species, or a user may supply mean and optionally standard deviation values for additional species. 
 
- For most users, the `community` vignette will provide a high-level overview of using `birdsize` to simulate and summarize community properties. The `bbs-data` vignette illustrates how to access and work with data from the Breeding Bird Survey. The `populations` and `species` vignettes provide more detail on using these functions and may be especially useful for working with birds not in the included set of species. Finally, the size estimates in `birdsize` use a scaling relationship between the mean and standard deviation of body size for some species, which is further illustrated in the `scaling` vignette.
+The core functions in `birdsize` apply at 3 levels of organization: species, population, and community:
+
+* The `species_*` functions take information about a real or hypothetical species and look up or calculate the parameters necessary to simulate body size distributions for that species.
+* The `population_*` functions use species-level parameters and abundances (population sizes) to simulate individual body size and basal metabolic rate measurements to make up populations of that species.
+* The `community_*` functions generate individual body mass estimates for multiple populations in one go (e.g. populations of different species, or populations of the same species at different points in time or different sampling locations).
+
+## Species-level parameters
+
+In order to generate body mass estimates for a species, `birdsize` needs an *abundance value* (how many individuals to generate estimates for) and at least one of:
+
+* For one of the 450 species known to `birdsize`: the scientific name (as `"Genus species"`) or the AOU code used by the American Ornithological Union (see *LINK*). See *LINK* for a list of the species with data included in `birdsize`.
+* For any other species: the mean body mass (in g) for that species. If a standard deviation value is provided, it will be used. Otherwise, it will be estimated based on the mean body mass via the scaling relationship described in the scaling vignette.
+
+The `species_define` function uses the information provided to look up, or calculate, the mean and standard deviation of body mass to use to generate individuals of the desired species. This function usually operates under the hood, but may be of interest to advanced users or those interested in complex simulations involving changes to the species-wide parameters. 
+ 
+## Population (one species) simulations
+ 
+ 
+### Using species identity
+
+For the birds known to `birdsize` you can use the species' code (AOU) to simulate a population directly. For the hummingbird _Selasphorus calliope_: 
+
+```{r, fig.dim =c(3.5,3)}
+
+a_hundred_hummingbirds <- pop_generate(abundance = 100, AOU = 4360)
+
+head(a_hundred_hummingbirds)
+
+ggplot(a_hundred_hummingbirds, aes(individual_mass)) + 
+  geom_histogram(bins = 25) +
+  xlab("Mass (g)") +
+  ylab("Count") +
+  ggtitle("A population of hummingbirds") 
+
+```
+
+
+### Using a known mean and standard deviation
+
+Alternatively, you  can simulate body masses for a population by supplying the body size parameters yourself. This may be useful if you would like to work with a species not included in `birdsize`, test sensitivities to different parameter ranges, or generate values for simulation/null models (or, other applications!). 
+
+**Note that, if both mean mass and a species code are provided, the species code will be used and the mean mass provided will be ignored!**
+
+```{r, fig.dim =c(3.5,3)}
+
+a_hundred_hypotheticals <- pop_generate(abundance = 100, mean_size = 25, sd_size = 3)
+
+head(a_hundred_hypotheticals)
+
+ggplot(a_hundred_hypotheticals, aes(individual_mass)) + 
+  geom_histogram(bins = 25) +
+  xlab("Mass (g)") +
+  ylab("Count") +
+  ggtitle("A population of hypothetical birds", subtitle ="Mean mass = 25 g\nStandard deviation = 3") 
+
+
+```
+
+### Using a known mean, but no standard deviation
+
+If the mean mass is not known or not provided, `pop_generate` will estimate the standard deviation based on scaling between the mean and standard deviation of body mass:
+
+
+```{r, fig.dim =c(3.5,3)}
+
+
+another_hundred_hypotheticals <- pop_generate(abundance = 100, mean_size = 25)
+
+head(another_hundred_hypotheticals)
+
+ggplot(another_hundred_hypotheticals, aes(individual_mass)) + 
+  geom_histogram(bins = 25) +
+  xlab("Mass (g)") +
+  ylab("Count") +
+  ggtitle("A population of hypothetical birds", subtitle ="Mean mass = 25 g\nStandard deviation = 1.74") 
+
+
+```
+ 
+## Community (multiple populations) simulations
+
+
+`community_generate` takes a dataframe with species-level information (AOU, scientific name, or mean and/or standard deviation body mass) and population sizes, and returns a dataframe of individual-level mass and BMR measurements for all the entries in the input data frame. 
+
+### Simulations using AOU 
+
+Here, we use a synthetic dataset with records of `AOU` and `abundance` for 5 species, to make up a community: 
+
+
+```{r}
+data("toy_aou_community")
+
+head(toy_aou_community)
+```
+
+`community_generate` can take this table and generate simulated individual measurements with no additional tweaks. It uses the `AOU` and `abundance` columns from `toy_aou_community` to look up species' mean and standard deviation body masses based on their AOU and then draw individual size measurements from a normal distribution with those parameters. 
+
+```{r}
+
+toy_aou_sims <- community_generate(community_data_table = toy_aou_community, abundance_column_name = "abundance")
+
+head(toy_aou_sims)
+```
+
+The resulting table has one row per individual, with a unique `individual_size` and `individual_bmr`  estimate for that individual.
+
+We can then plot the individual size distribution for the community, colored by species ID:
+
+```{r, fig.dim = c(5,3)}
+
+toy_aou_sims$AOU <- as.character(toy_aou_sims$AOU)
+
+ggplot(toy_aou_sims, aes(individual_mass, fill = AOU)) +
+  geom_histogram(position = "stack") +
+  scale_fill_viridis_d() +
+  scale_x_log10() +
+  ggtitle("Community simulated via AOU") +
+  xlab("Body mass (g)") +
+  ylab("Number of individuals") +
+  theme(legend.position = "right")
+
+```
+
+
+### Simulation given species' names
+
+If the AOU is not known or not provided, `community_generate` will attempt to look up species' size parameters based on their scientific name. 
+
+```{r}
+
+data("toy_species_name_community")
+
+head(toy_species_name_community)
+
+```
+
+`community_generate` still runs, but note that the `sd_method` here is listed as `Scientific name lookup` rather than `AOU lookup` (above). 
+
+```{r}
+
+
+toy_species_name_sims <- community_generate(toy_species_name_community, abundance_column_name = "abundance")
+
+head(toy_species_name_sims)
+
+
+```
+
+
+
+```{r, fig.dim = c(6,3)}
+
+toy_species_name_sims$scientific_name <- as.character(toy_species_name_sims$scientific_name)
+
+ggplot(toy_species_name_sims, aes(individual_mass, fill = scientific_name)) +
+  geom_histogram(position = "stack") +
+  scale_fill_viridis_d() +
+  scale_x_log10() +
+  ggtitle("Community simulated via scientific name") +
+  xlab("Body mass (g)") +
+  ylab("Number of individuals") +
+  theme(legend.position = "right", legend.direction = "vertical")
+
+```
+
+### Simulation given mean size measurements
+
+If species name or AOU are not known, or are not included in this dataset (see `known_species` for the full set of included species), estimates can still be generated by providing the mean and, if available, standard deviation of body mass directly. If standard deviation is provided, it will be used; if not, it will be estimated based on the scaling relationship between mean and standard deviation of body mass for birds (see the `scaling` vignette).
+
+This functionality may be especially useful for users interested in using their own parameter values, rather than relying on the ones provided in `birdsize`. For example, `birdsize` does not take into account temporal or geographic variation in body size, which may be significant. A user could manually provide values to explore these scenarios.
+
+Note that 1) the mean body size data must be provided in a column named `mean_size` and 2) the `sim_species_id` column acts as a species identifier in the absence of other taxonomic information:
+
+```{r}
+data(toy_size_community)
+
+head(toy_size_community)
+
+```
+
+```{r}
+
+
+toy_size_sims <- community_generate(toy_size_community, abundance_column_name = "abundance")
+
+head(toy_size_sims)
+
+
+```
+
+
+```{r, fig.dim = c(5,3)}
+
+toy_size_sims$sim_species_id <- as.character(toy_size_sims$sim_species_id)
+
+ggplot(toy_size_sims, aes(individual_mass, fill = sim_species_id)) +
+  geom_histogram(position = "stack") +
+  scale_fill_viridis_d() +
+  scale_x_log10() +
+  ggtitle("Community simulated via mean body size") +
+  xlab("Body mass (g)") +
+  ylab("Number of individuals") +
+  theme(legend.position = "right")
+
+```
+
+
+### Community-wide summary statistics

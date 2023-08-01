@@ -182,3 +182,46 @@
 #'
 #'
 "unidentified_species"
+
+
+#' Toy data frame of abundances and AOUs (for vignettes)
+#'
+#' This data table is a toy data frame for the vignettes. It has abundances and AOU codes for 5 species to make up a hypothetical community.
+#' @format A data frame with 5 rows and 2 variables:
+#' \describe{
+#'   \item{AOU}{AOU}
+#'   \item{abundance}{Number of individuals to simulate masses for}
+#' }
+#'
+#'
+#'
+"toy_aou_community"
+
+
+#' Toy data frame of abundances and species names (for vignettes)
+#'
+#' This data table is a toy data frame for the vignettes. It has abundances and AOU codes for 5 species to make up a hypothetical community.
+#' @format A data frame with 5 rows and 2 variables:
+#' \describe{
+#'   \item{scientific_name}{Scientific name}
+#'   \item{abundance}{Number of individuals to simulate masses for}
+#' }
+#'
+#'
+#'
+"toy_species_name_community"
+
+
+#' Toy data frame of abundances and species mean sizes (for vignettes)
+#'
+#' This data table is a toy data frame for the vignettes. It has abundances and AOU codes for 5 species to make up a hypothetical community.
+#' @format A data frame with 5 rows and 3 variables:
+#' \describe{
+#'   \item{mean_size}{Mean mass, in g}
+#'   \item{abundance}{Number of individuals to simulate masses for}
+#'   \item{sim_species_id}{ID}
+#' }
+#'
+#'
+#'
+"toy_size_community"

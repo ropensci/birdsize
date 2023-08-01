@@ -100,43 +100,363 @@
 
     
     
-<p><code>birdsize</code> simulates size measurements for populations or
-communities of birds. It is designed to interface naturally with data
-downloaded from the North American Breeding Bird Survey, or to work with
-other datasets (including synthetic data) as long as they include
-<em>population sizes</em> and either <em>species identity</em> (for
-species found in the Breeding Bird Survey) or <em>species mean, and
-optionally standard deviation, body size</em> (for other species,
-including hypothetical or simulated species).</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p><code>birdsize</code> simulates mass measurements (g) for birds.
+Working from the assumption that individuals of a species have body
+masses normally distributed around a species-wide mean and standard
+deviation, <code>birdsize</code> simulates individual-level body mass
+measurements by drawing from species-specific normal distributions.
+There are parameters built-in for 450 bird species, or a user may supply
+mean and optionally standard deviation values for additional
+species.</p>
 <p>The core functions in <code>birdsize</code> apply at 3 levels of
-organization: species, population, and community. The
-<code>community_*</code> functions generate population-level estimates
-for numerous populations (e.g. populations of different species, or
-populations of the same species at different points in time or different
-sampling locations), and calculate summary statistics with flexible
-grouping structures. The <code>population_*</code> functions use
-species-level parameters and abundances (population sizes) to simulate
-individual body size and basal metabolic rate measurements to make up
-populations of that species, and calculate population-wide summary
-statistics. The <code>species_*</code> functions take information about
-a real or hypothetical species and generates the parameters necessary to
-simulate body size distributions for that species.</p>
-<p>For most users, the <code>community</code> vignette will provide a
-high-level overview of using <code>birdsize</code> to simulate and
-summarize community properties. The <code>bbs-data</code> vignette
-illustrates how to access and work with data from the Breeding Bird
-Survey. The <code>populations</code> and <code>species</code> vignettes
-provide more detail on using these functions and may be especially
-useful for working with birds not in the included set of species.
-Finally, the size estimates in <code>birdsize</code> use a scaling
-relationship between the mean and standard deviation of body size for
-some species, which is further illustrated in the <code>scaling</code>
-vignette.</p>
+organization: species, population, and community:</p>
+<ul>
+<li>The <code>species_*</code> functions take information about a real
+or hypothetical species and look up or calculate the parameters
+necessary to simulate body size distributions for that species.</li>
+<li>The <code>population_*</code> functions use species-level parameters
+and abundances (population sizes) to simulate individual body size and
+basal metabolic rate measurements to make up populations of that
+species.</li>
+<li>The <code>community_*</code> functions generate individual body mass
+estimates for multiple populations in one go (e.g. populations of
+different species, or populations of the same species at different
+points in time or different sampling locations).</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="species-level-parameters">Species-level parameters<a class="anchor" aria-label="anchor" href="#species-level-parameters"></a>
+</h2>
+<p>In order to generate body mass estimates for a species,
+<code>birdsize</code> needs an <em>abundance value</em> (how many
+individuals to generate estimates for) and at least one of:</p>
+<ul>
+<li>For one of the 450 species known to <code>birdsize</code>: the
+scientific name (as <code>"Genus species"</code>) or the AOU code used
+by the American Ornithological Union (see <em>LINK</em>). See
+<em>LINK</em> for a list of the species with data included in
+<code>birdsize</code>.</li>
+<li>For any other species: the mean body mass (in g) for that species.
+If a standard deviation value is provided, it will be used. Otherwise,
+it will be estimated based on the mean body mass via the scaling
+relationship described in the scaling vignette.</li>
+</ul>
+<p>The <code>species_define</code> function uses the information
+provided to look up, or calculate, the mean and standard deviation of
+body mass to use to generate individuals of the desired species. This
+function usually operates under the hood, but may be of interest to
+advanced users or those interested in complex simulations involving
+changes to the species-wide parameters.</p>
+</div>
+<div class="section level2">
+<h2 id="population-one-species-simulations">Population (one species) simulations<a class="anchor" aria-label="anchor" href="#population-one-species-simulations"></a>
+</h2>
+<div class="section level3">
+<h3 id="using-species-identity">Using species identity<a class="anchor" aria-label="anchor" href="#using-species-identity"></a>
+</h3>
+<p>For the birds known to <code>birdsize</code> you can use the species’
+code (AOU) to simulate a population directly. For the hummingbird
+<em>Selasphorus calliope</em>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">a_hundred_hummingbirds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, AOU <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    AOU sim_species_id individual_mass individual_bmr mean_size   sd_size</span></span>
+<span><span class="co">#&gt; 1 4360           4360        2.556873       20.50623      2.65 0.1818394</span></span>
+<span><span class="co">#&gt; 2 4360           4360        3.101904       23.53533      2.65 0.1818394</span></span>
+<span><span class="co">#&gt; 3 4360           4360        2.833263       22.06327      2.65 0.1818394</span></span>
+<span><span class="co">#&gt; 4 4360           4360        2.703245       21.33652      2.65 0.1818394</span></span>
+<span><span class="co">#&gt; 5 4360           4360        2.612003       20.82052      2.65 0.1818394</span></span>
+<span><span class="co">#&gt; 6 4360           4360        2.987874       22.91515      2.65 0.1818394</span></span>
+<span><span class="co">#&gt;   abundance  sd_method      scientific_name</span></span>
+<span><span class="co">#&gt; 1       100 AOU lookup Selasphorus calliope</span></span>
+<span><span class="co">#&gt; 2       100 AOU lookup Selasphorus calliope</span></span>
+<span><span class="co">#&gt; 3       100 AOU lookup Selasphorus calliope</span></span>
+<span><span class="co">#&gt; 4       100 AOU lookup Selasphorus calliope</span></span>
+<span><span class="co">#&gt; 5       100 AOU lookup Selasphorus calliope</span></span>
+<span><span class="co">#&gt; 6       100 AOU lookup Selasphorus calliope</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"A population of hummingbirds"</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-2-1.png" width="336"></p>
+</div>
+<div class="section level3">
+<h3 id="using-a-known-mean-and-standard-deviation">Using a known mean and standard deviation<a class="anchor" aria-label="anchor" href="#using-a-known-mean-and-standard-deviation"></a>
+</h3>
+<p>Alternatively, you can simulate body masses for a population by
+supplying the body size parameters yourself. This may be useful if you
+would like to work with a species not included in <code>birdsize</code>,
+test sensitivities to different parameter ranges, or generate values for
+simulation/null models (or, other applications!).</p>
+<p><strong>Note that, if both mean mass and a species code are provided,
+the species code will be used and the mean mass provided will be
+ignored!</strong></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">a_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span>, sd_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   AOU sim_species_id individual_mass individual_bmr mean_size sd_size abundance</span></span>
+<span><span class="co">#&gt; 1  NA              1        19.86281       88.44888        25       3       100</span></span>
+<span><span class="co">#&gt; 2  NA              1        22.60234       96.98414        25       3       100</span></span>
+<span><span class="co">#&gt; 3  NA              1        20.76744       91.30263        25       3       100</span></span>
+<span><span class="co">#&gt; 4  NA              1        26.59827      108.92055        25       3       100</span></span>
+<span><span class="co">#&gt; 5  NA              1        23.80690      100.64180        25       3       100</span></span>
+<span><span class="co">#&gt; 6  NA              1        24.14694      101.66465        25       3       100</span></span>
+<span><span class="co">#&gt;              sd_method scientific_name</span></span>
+<span><span class="co">#&gt; 1 Mean and SD provided            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2 Mean and SD provided            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3 Mean and SD provided            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4 Mean and SD provided            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5 Mean and SD provided            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6 Mean and SD provided            &lt;NA&gt;</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 3"</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-3-1.png" width="336"></p>
+</div>
+<div class="section level3">
+<h3 id="using-a-known-mean-but-no-standard-deviation">Using a known mean, but no standard deviation<a class="anchor" aria-label="anchor" href="#using-a-known-mean-but-no-standard-deviation"></a>
+</h3>
+<p>If the mean mass is not known or not provided,
+<code>pop_generate</code> will estimate the standard deviation based on
+scaling between the mean and standard deviation of body mass:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">another_hundred_hypotheticals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>, mean_size <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   AOU sim_species_id individual_mass individual_bmr mean_size  sd_size</span></span>
+<span><span class="co">#&gt; 1  NA              1        26.24416      107.88463        25 1.746196</span></span>
+<span><span class="co">#&gt; 2  NA              1        21.44791       93.42580        25 1.746196</span></span>
+<span><span class="co">#&gt; 3  NA              1        20.79538       91.39020        25 1.746196</span></span>
+<span><span class="co">#&gt; 4  NA              1        23.75958      100.49914        25 1.746196</span></span>
+<span><span class="co">#&gt; 5  NA              1        22.17191       95.66364        25 1.746196</span></span>
+<span><span class="co">#&gt; 6  NA              1        22.58620       96.93474        25 1.746196</span></span>
+<span><span class="co">#&gt;   abundance              sd_method scientific_name</span></span>
+<span><span class="co">#&gt; 1       100 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2       100 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3       100 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4       100 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5       100 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6       100 SD estimated from mean            &lt;NA&gt;</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 1.74"</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-4-1.png" width="336"></p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="community-multiple-populations-simulations">Community (multiple populations) simulations<a class="anchor" aria-label="anchor" href="#community-multiple-populations-simulations"></a>
+</h2>
+<p><code>community_generate</code> takes a dataframe with species-level
+information (AOU, scientific name, or mean and/or standard deviation
+body mass) and population sizes, and returns a dataframe of
+individual-level mass and BMR measurements for all the entries in the
+input data frame.</p>
+<div class="section level3">
+<h3 id="simulations-using-aou">Simulations using AOU<a class="anchor" aria-label="anchor" href="#simulations-using-aou"></a>
+</h3>
+<p>Here, we use a synthetic dataset with records of <code>AOU</code> and
+<code>abundance</code> for 5 species, to make up a community:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"toy_aou_community"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">toy_aou_community</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
+<span><span class="co">#&gt;     AOU abundance</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>730        95</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">3</span>000        40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">3</span>280        63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">3</span>860        69</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">4</span>460        53</span></span></code></pre></div>
+<p><code>community_generate</code> can take this table and generate
+simulated individual measurements with no additional tweaks. It uses the
+<code>AOU</code> and <code>abundance</code> columns from
+<code>toy_aou_community</code> to look up species’ mean and standard
+deviation body masses based on their AOU and then draw individual size
+measurements from a normal distribution with those parameters.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">toy_aou_sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span>community_data_table <span class="op">=</span> <span class="va">toy_aou_community</span>, abundance_column_name <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">toy_aou_sims</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    AOU sim_species_id individual_mass individual_bmr mean_size  sd_size</span></span>
+<span><span class="co">#&gt; 1 4730           4730        38.82847       142.6440    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 2 4730           4730        40.41270       146.7697    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 3 4730           4730        42.74367       152.7569    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 4 4730           4730        34.45230       130.9863    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 5 4730           4730        36.21842       135.7394    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 6 4730           4730        42.32158       151.6799    37.475 3.300613</span></span>
+<span><span class="co">#&gt;   abundance  sd_method scientific_name</span></span>
+<span><span class="co">#&gt; 1        95 AOU lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 2        95 AOU lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 3        95 AOU lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 4        95 AOU lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 5        95 AOU lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 6        95 AOU lookup Alauda arvensis</span></span></code></pre></div>
+<p>The resulting table has one row per individual, with a unique
+<code>individual_size</code> and <code>individual_bmr</code> estimate
+for that individual.</p>
+<p>We can then plot the individual size distribution for the community,
+colored by species ID:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">toy_aou_sims</span><span class="op">$</span><span class="va">AOU</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_aou_sims</span><span class="op">$</span><span class="va">AOU</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">toy_aou_sims</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">AOU</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Community simulated via AOU"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-7-1.png" width="480"></p>
+</div>
+<div class="section level3">
+<h3 id="simulation-given-species-names">Simulation given species’ names<a class="anchor" aria-label="anchor" href="#simulation-given-species-names"></a>
+</h3>
+<p>If the AOU is not known or not provided,
+<code>community_generate</code> will attempt to look up species’ size
+parameters based on their scientific name.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"toy_species_name_community"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">toy_species_name_community</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
+<span><span class="co">#&gt;   scientific_name        abundance</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Alauda arvensis               95</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Bonasa umbellus               40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Elanus leucurus               63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Coccyzus minor                69</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Tyrannus melancholicus        53</span></span></code></pre></div>
+<p><code>community_generate</code> still runs, but note that the
+<code>sd_method</code> here is listed as
+<code>Scientific name lookup</code> rather than <code>AOU lookup</code>
+(above).</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">toy_species_name_sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">toy_species_name_community</span>, abundance_column_name <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">toy_species_name_sims</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    AOU sim_species_id individual_mass individual_bmr mean_size  sd_size</span></span>
+<span><span class="co">#&gt; 1 4730           4730        39.97640       145.6382    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 2 4730           4730        38.37580       141.4563    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 3 4730           4730        37.62253       139.4709    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 4 4730           4730        39.98764       145.6674    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 5 4730           4730        38.66003       142.2025    37.475 3.300613</span></span>
+<span><span class="co">#&gt; 6 4730           4730        37.95838       140.3575    37.475 3.300613</span></span>
+<span><span class="co">#&gt;   abundance              sd_method scientific_name</span></span>
+<span><span class="co">#&gt; 1        95 Scientific name lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 2        95 Scientific name lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 3        95 Scientific name lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 4        95 Scientific name lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 5        95 Scientific name lookup Alauda arvensis</span></span>
+<span><span class="co">#&gt; 6        95 Scientific name lookup Alauda arvensis</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">toy_species_name_sims</span><span class="op">$</span><span class="va">AOU</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_species_name_sims</span><span class="op">$</span><span class="va">AOU</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">toy_species_name_sims</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">AOU</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Community simulated via scientific name"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-10-1.png" width="480"></p>
+</div>
+<div class="section level3">
+<h3 id="simulation-given-mean-size-measurements">Simulation given mean size measurements<a class="anchor" aria-label="anchor" href="#simulation-given-mean-size-measurements"></a>
+</h3>
+<p>If species name or AOU are not known, or are not included in this
+dataset (see <code>known_species</code> for the full set of included
+species), estimates can still be generated by providing the mean and, if
+available, standard deviation of body mass directly. If standard
+deviation is provided, it will be used; if not, it will be estimated
+based on the scaling relationship between mean and standard deviation of
+body mass for birds (see the <code>scaling</code> vignette).</p>
+<p>Note that 1) the mean body size data must be provided in a column
+named <code>mean_size</code> and 2) the <code>sim_species_id</code>
+column acts as a species identifier in the absence of other taxonomic
+information:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">toy_size_community</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">toy_size_community</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
+<span><span class="co">#&gt;   abundance mean_size sim_species_id</span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        95      37.5              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>        40     532                2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>        63     346                3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>        69      63.9              4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>        53      37.4              5</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">toy_size_sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">toy_size_community</span>, abundance_column_name <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">toy_size_sims</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   AOU sim_species_id individual_mass individual_bmr mean_size  sd_size</span></span>
+<span><span class="co">#&gt; 1  NA              1        39.74559       145.0382    37.475 2.625949</span></span>
+<span><span class="co">#&gt; 2  NA              1        38.47302       141.7117    37.475 2.625949</span></span>
+<span><span class="co">#&gt; 3  NA              1        35.73167       134.4362    37.475 2.625949</span></span>
+<span><span class="co">#&gt; 4  NA              1        41.46384       149.4816    37.475 2.625949</span></span>
+<span><span class="co">#&gt; 5  NA              1        38.36155       141.4188    37.475 2.625949</span></span>
+<span><span class="co">#&gt; 6  NA              1        37.59558       139.3997    37.475 2.625949</span></span>
+<span><span class="co">#&gt;   abundance              sd_method scientific_name</span></span>
+<span><span class="co">#&gt; 1        95 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2        95 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3        95 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4        95 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5        95 SD estimated from mean            &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6        95 SD estimated from mean            &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">toy_size_sims</span><span class="op">$</span><span class="va">sim_species_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_size_sims</span><span class="op">$</span><span class="va">sim_species_id</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">toy_size_sims</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">sim_species_id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Community simulated via scientific name"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-13-1.png" width="480"></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
