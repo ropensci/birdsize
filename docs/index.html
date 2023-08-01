@@ -94,26 +94,95 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a> <!-- badges: end --></p>
+<p><a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></p>
+<p><a href="https://github.com/diazrenata/birdsize/actions?query=workflow%3Apkgcheck" class="external-link"><img src="https://github.com/diazrenata/birdsize/workflows/pkgcheck/badge.svg" alt="pkgcheck"></a></p>
+<p><a href="https://github.com/ropensci/software-review/issues/577" class="external-link"><img src="https://badges.ropensci.org/577_status.svg" alt="Status at rOpenSci Software Peer Review"></a> <!-- badges: end --></p>
 <div class="section level2">
-<h2 id="package-summary">Package summary<a class="anchor" aria-label="anchor" href="#package-summary"></a>
+<h2 id="package-functionality-and-limitations">Package functionality and limitations<a class="anchor" aria-label="anchor" href="#package-functionality-and-limitations"></a>
 </h2>
-<p><code>birdsize</code> simulates size measurements for populations or communities of birds. Because avian populuation monitoring often relies on auditory or visual methods, and therefore does not provide information about individual body <em>size</em>, it is challenging to conduct large-scale analyses of trends in biomass, energy use, community body size structure, or other, similar patterns for these species. <code>birdsize</code> solves this problem by using species’ traits to generate size estimates for birds based on species ID or user-specified parameters. It is designed to interface naturally with data downloaded from the North American Breeding Bird Survey, or to work with other datasets (including synthetic data) as long as they include <em>population sizes</em> and either <em>species identity</em> (for species found in the Breeding Bird Survey) or <em>species mean, and optionally standard deviation, body size</em> (for other species, including hypothetical or simulated species).</p>
-<p>The core functions in <code>birdsize</code> apply at 3 levels of organization: species, population, and community. The <code>community_*</code> functions generate population-level estimates for numerous populations (e.g. populations of different species, or populations of the same species at different points in time or different sampling locations), and calculate summary statistics with flexible grouping structures. The <code>population_*</code> functions use species-level parameters and abundances (population sizes) to simulate individual body size and basal metabolic rate measurements to make up populations of that species, and calculate population-wide summary statistics. The <code>species_*</code> functions take information about a real or hypothetical species and generates the parameters necessary to simulate body size distributions for that species.</p>
-<p>For most users, the <a href="https://diazrenata.github.io/birdsize/articles/community.html" class="external-link">community</a> vignette will provide a high-level overview of using <code>birdsize</code> to simulate and summarize community properties. The <a href="https://diazrenata.github.io/birdsize/articles/bbs-data.html" class="external-link">bbs-data</a> vignette illustrates how to access and work with data from the Breeding Bird Survey. The <a href="https://diazrenata.github.io/birdsize/articles/populations.html" class="external-link">populations</a> and <a href="https://diazrenata.github.io/birdsize/articles/species.html" class="external-link">species</a> vignettes provide more detail on using these functions and may be especially useful for working with birds not in the included set of species. Finally, the size estimates in <code>birdsize</code> use a scaling relationship between the mean and standard deviation of body size for some species, which is further illustrated in the <a href="https://diazrenata.github.io/birdsize/articles/scaling.html" class="external-link">scaling</a> vignette.</p>
+<p><code>birdsize</code> simulates body mass (in g) measurements for birds. Because avian monitoring methodologies often rely on auditory or visual cues, datasets on bird populations and communities often lack measurements of body mass for individuals. Without information on individuals’ body <em>size</em>, it is challenging to conduct large-scale analyses of trends in biomass, energy use, community body size structure, or other, similar patterns for these species. <code>birdsize</code> addresses this need by using species’ traits to generate size estimates for birds based on species identity or user-specified parameters.</p>
+<p>Specifically, <code>birdsize</code> assumes that body mass is normally distributed within a species, with a species-specific mean and standard deviation. <code>birdsize</code> uses species-level parameters (mean and standard deviation) to make estimates of individual-level body mass by drawing from the corresponding normal distributions. Because of the (very) broad nature of these assumptions, <code>birdsize</code> should probably not be used to generate fine-scale estimates of body mass. Rather, the estimates generated through <code>birdsize</code> are suitable for broad-scale macroecological studies, or for scenario exploration (via tweaking parameters), which would otherwise be impossible given the logistical constraints on <em>collecting</em> individual body mass measurements at massive scale.</p>
+<p><code>birdsize</code> contains built-in species-level parameters for 450 species (mostly those found in North America north of Mexico). It is also designed to take user-provided parameters to generate body size estimates for species not included in the built-in data, or indeed for hypothetical or simulated species. <code>birdsize</code> can generate estimates for populations (one or many individuals, all of the same species) or communities (multiple populations of different species, or of the same species at different locations or points in time).</p>
+</div>
+<div class="section level2">
+<h2 id="birdsize-and-the-breeding-bird-survey">
+<code>birdsize</code> and the Breeding Bird Survey<a class="anchor" aria-label="anchor" href="#birdsize-and-the-breeding-bird-survey"></a>
+</h2>
+<p><code>birdsize</code> was originally developed to be applied to the North American Breeding Bird Survey (BBS). In brief, the North American Breeding Bird Survey is a community science program run by the USGS for more than 60 years. Each year, during the avian breeding season, volunteer surveyors conduct auditory point-counts of all the birds observed along 50-km routes. There are nearly 3,000 such routes distributed across the United States and Canada, making the BBS an invaluable dataset on avian populations and community structure over time and over large geographic extents. For more detail on the BBS, and to access the BBS data, see the Breeding Bird Survey <a href="https://www.pwrc.usgs.gov/bbs/" class="external-link">website</a> and <a href="https://doi.org/10.5066/P9J6QUF6" class="external-link">repository on ScienceBase</a>.</p>
+<p>To facilitate applications to the BBS, <code>birdsize</code> contains built-in species parameters for 450 species found in the BBS from 1980 until present, and contains built-in “demo” datasets that mimic the structure of the BBS data. The <a href="">bbs-data</a> vignette illustrates how to use <code>birdsize</code> to generate estimates of biomass and energy use for a route from the Breeding Bird Survey.</p>
+<p>Note, however, that <code>birdsize</code> does not contain any actual data from the Breeding Bird Survey. There are multiple interfaces for connecting to the BBS data releases (e.g. the R Data Retriever, ScienceBase) and, wherever possible, users are encouraged to go directly to the source to access the most up-to-date data.</p>
+</div>
+<div class="section level2">
+<h2 id="how-to-use-this-readme">How to use this README<a class="anchor" aria-label="anchor" href="#how-to-use-this-readme"></a>
+</h2>
+<div class="section level3">
+<h3 id="and-where-to-get-more-help">(and where to get more help)<a class="anchor" aria-label="anchor" href="#and-where-to-get-more-help"></a>
+</h3>
+<p>This README contains instructions to download <code>birdsize</code>, use the core <code>pop_generate</code> and <code>community_generate</code> function to generate body mass estimates, and a demonstration of summarizing and visualizing these data. For a more detailed tutorial on using <code>birdsize</code>, see the <em>Getting Started</em> vignette. For detail on integration with the Breeding Bird Survey, see the <em>Breeding Bird Survey</em> vignette. Finally, <code>birdsize</code> leverages an allometric scaling relationship between the mean and standard deviation of body mass, which is further detailed in the <em>Scaling</em> vignette.</p>
+<p>To submit bug reports or ask for additional help, please see the <em>Contributing</em> section.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>To install the in-development version, use <code>remotes</code> or <code>devtools</code>:</p>
-<pre><code><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'diazrenata/birdsize'</span><span class="op">)</span></span></code></pre>
-<p>or</p>
-<pre><code>devtools::install_github('diazrenata/birdsize`)</code></pre>
+<p>To install the in-development version:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'diazrenata/birdsize'</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="basic-use-cases">Basic use cases<a class="anchor" aria-label="anchor" href="#basic-use-cases"></a>
+<h2 id="core-functions">Core functions<a class="anchor" aria-label="anchor" href="#core-functions"></a>
 </h2>
-<p>For an illustration of the core workflow in <code>birdsize</code>, see the <a href="https://diazrenata.github.io/birdsize/articles/community.html" class="external-link">community</a> vignette.</p>
+</div>
+<div class="section level2">
+<h2 id="estimating-body-masses-for-a-population">Estimating body masses for a population<a class="anchor" aria-label="anchor" href="#estimating-body-masses-for-a-population"></a>
+</h2>
+<p>The core functionality of <code>birdsize</code> is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass, by drawing individuals from a normal distribution. At minimum, this requires a population size (abundance) and either the species’ mean body size, or the species’ identifier (scientific name, or <a href="">AOU code</a> for species found in the BBS. If the standard deviation of body mass is not provided, <code>birdsize</code> will estimate it based on a scaling relationship between the mean and standard deviation of body mass.</p>
+<p>The key function for this is <code>pop_generate</code>.</p>
+<p>Here, we generate body mass estimates for a population of a hypothetical species with a mean body size of 10g:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">first_population</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>                                 mean_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">first_population</span><span class="op">$</span><span class="va">individual_mass</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"First population masses"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Body mass (g)"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
+<p>Alternatively, for a species known to <code>birdsize</code>, we can simply provide the scientific name or AOU code. Here, <em>Melanerpes carolinus</em> is the red-headed woodpecker:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span></span>
+<span><span class="va">woodpecker_population</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>                                 scientific_name <span class="op">=</span> <span class="st">"Melanerpes carolinus"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">first_population</span><span class="op">$</span><span class="va">individual_mass</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"M. carolinus population masses"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"Body mass (g)"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
+</div>
+<div class="section level2">
+<h2 id="estimating-body-masses-for-a-whole-community">Estimating body masses for a whole community<a class="anchor" aria-label="anchor" href="#estimating-body-masses-for-a-whole-community"></a>
+</h2>
+<p>To generate body size estimates for a whole community, we use the <code>community_generate</code> function. <code>community_generate</code> takes population sizes and species identifiers or parameters for multiple species, and simulates populations for each species.</p>
+<p>We can create estimates for a community without species codes by providing population sizes and mean body sizes:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">first_community</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  abundance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">150</span><span class="op">)</span>,</span>
+<span>  mean_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">first_community_sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">first_community</span>, abundance_column_name <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">first_community_sims</span><span class="op">$</span><span class="va">individual_mass</span>, main <span class="op">=</span> <span class="st">"Community body size distribution"</span>, xlab <span class="op">=</span> <span class="st">"Body mass"</span>, breaks <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
+</div>
+<div class="section level2">
+<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h2>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>

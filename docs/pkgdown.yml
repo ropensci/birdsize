@@ -1,4 +1,4 @@
-pandoc: 2.19.2
+pandoc: 3.1.1
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
@@ -8,5 +8,5 @@ articles:
   populations: populations.html
   scaling: scaling.html
   species: species.html
-last_built: 2023-05-31T18:07Z
+last_built: 2023-08-01T14:46Z
 

@@ -109,27 +109,129 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">bbs_route</span> <span class="op">&lt;-</span> <span class="va">demo_route_raw</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu"><a href="filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">bbs_route</span> <span class="op">&lt;-</span> <span class="fu"><a href="filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="va">demo_route_raw</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">community_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">bbs_route</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">community_summarize</span><span class="op">(</span><span class="va">community_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 29 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    routedataid count…¹ state…² route  rpid  year speci…³ total…⁴ total…⁵ total…⁶</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 9009911011…     900      99     1   101  <span style="text-decoration: underline;">1</span>994 aou        <span style="text-decoration: underline;">1</span>361 <span style="text-decoration: underline;">156</span>962. <span style="text-decoration: underline;">352</span>356.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 9009911011…     900      99     1   101  <span style="text-decoration: underline;">1</span>995 aou        <span style="text-decoration: underline;">1</span>443 <span style="text-decoration: underline;">161</span>848. <span style="text-decoration: underline;">365</span>563.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 9009911011…     900      99     1   101  <span style="text-decoration: underline;">1</span>996 aou        <span style="text-decoration: underline;">1</span>413 <span style="text-decoration: underline;">166</span>107. <span style="text-decoration: underline;">368</span>680.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 9009911011…     900      99     1   101  <span style="text-decoration: underline;">1</span>997 aou        <span style="text-decoration: underline;">1</span>381 <span style="text-decoration: underline;">159</span>139. <span style="text-decoration: underline;">357</span>840.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 9009911011…     900      99     1   101  <span style="text-decoration: underline;">1</span>998 aou        <span style="text-decoration: underline;">1</span>415 <span style="text-decoration: underline;">157</span>476. <span style="text-decoration: underline;">357</span>845.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 9009911011…     900      99     1   101  <span style="text-decoration: underline;">1</span>999 aou        <span style="text-decoration: underline;">1</span>412 <span style="text-decoration: underline;">164</span>099. <span style="text-decoration: underline;">367</span>981.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 9009911012…     900      99     1   101  <span style="text-decoration: underline;">2</span>000 aou        <span style="text-decoration: underline;">1</span>423 <span style="text-decoration: underline;">156</span>269. <span style="text-decoration: underline;">355</span>425.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 9009911012…     900      99     1   101  <span style="text-decoration: underline;">2</span>001 aou        <span style="text-decoration: underline;">1</span>462 <span style="text-decoration: underline;">167</span>902. <span style="text-decoration: underline;">379</span>103.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 9009911012…     900      99     1   101  <span style="text-decoration: underline;">2</span>002 aou        <span style="text-decoration: underline;">1</span>443 <span style="text-decoration: underline;">171</span>367. <span style="text-decoration: underline;">380</span>175.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 9009911012…     900      99     1   101  <span style="text-decoration: underline;">2</span>003 aou        <span style="text-decoration: underline;">1</span>431 <span style="text-decoration: underline;">169</span>726. <span style="text-decoration: underline;">378</span>603.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 19 more rows, 5 more variables: total_richness &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   mean_individual_mass &lt;dbl&gt;, sd_individual_mass &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   mean_metabolic_rate &lt;dbl&gt;, sd_metabolic_rate &lt;dbl&gt;, and abbreviated</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   variable names ¹​countrynum, ²​statenum, ³​species_designator,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​total_abundance, ⁵​total_biomass, ⁶​total_metabolic_rate</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        routedataid countrynum statenum route rpid year species_designator</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    9009911011994        900       99     1  101 1994                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63   9009911011995        900       99     1  101 1995                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116  9009911011996        900       99     1  101 1996                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172  9009911011997        900       99     1  101 1997                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231  9009911011998        900       99     1  101 1998                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274  9009911011999        900       99     1  101 1999                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318  9009911012000        900       99     1  101 2000                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 366  9009911012001        900       99     1  101 2001                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 423  9009911012002        900       99     1  101 2002                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 481  9009911012003        900       99     1  101 2003                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 547  9009911012004        900       99     1  101 2004                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 607  9009911012005        900       99     1  101 2005                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 683  9009911012006        900       99     1  101 2006                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 734  9009911012007        900       99     1  101 2007                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 789  9009911012008        900       99     1  101 2008                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 833  9009911012009        900       99     1  101 2009                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 888  9009911012010        900       99     1  101 2010                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 933  9009911012011        900       99     1  101 2011                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 975  9009911012012        900       99     1  101 2012                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1022 9009911012013        900       99     1  101 2013                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1074 9009911012014        900       99     1  101 2014                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1138 9009911012015        900       99     1  101 2015                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1184 9009911012016        900       99     1  101 2016                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1233 9009911012017        900       99     1  101 2017                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1280 9009911012018        900       99     1  101 2018                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1325 9009911012019        900       99     1  101 2019                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1377 9009911012020        900       99     1  101 2020                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1423 9009911012021        900       99     1  101 2021                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1494 9009911012022        900       99     1  101 2022                AOU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      total_abundance total_biomass total_metabolic_rate total_richness</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1               1361      157003.4             352344.6             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63              1443      162259.4             366086.8             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116             1413      166877.9             369664.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172             1381      158999.5             357523.1             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231             1415      157590.2             357897.4             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274             1412      163510.4             367447.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318             1423      157603.5             357064.3             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 366             1462      168701.5             379950.0             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 423             1443      169619.9             377964.2             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 481             1431      170094.9             378629.0             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 547             1484      175413.7             390017.8             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 607             1499      168710.1             380379.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 683             1450      168200.8             375682.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 734             1450      174394.2             385474.4             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 789             1449      162471.3             366751.0             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 833             1403      152805.2             348098.6             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 888             1419      154343.9             349202.7             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 933             1488      182288.3             402015.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 975             1470      167006.5             376922.6             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1022            1443      167113.4             374837.4             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1074            1439      156470.7             358078.3             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1138            1374      162259.3             362141.1             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1184            1442      155837.6             356254.3             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1233            1430      179685.4             395188.0             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1280            1415      152846.8             350668.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1325            1465      168518.1             380111.4             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1377            1441      169635.4             380723.4             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1423            1437      170162.3             378397.5             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1494            1453      170938.5             381907.3             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      mean_individual_mass sd_individual_mass mean_metabolic_rate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                115.3588           178.4827            258.8866</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63               112.4459           175.3540            253.6984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116              118.1018           186.5550            261.6168</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172              115.1336           176.5018            258.8871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231              111.3712           172.1708            252.9310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274              115.8006           176.3661            260.2319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318              110.7544           175.2302            250.9236</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 366              115.3909           177.7823            259.8837</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 423              117.5467           182.3794            261.9295</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 481              118.8643           179.4472            264.5905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 547              118.2033           182.6107            262.8153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 607              112.5485           176.7614            253.7555</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 683              116.0006           179.8658            259.0914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 734              120.2718           185.0072            265.8444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 789              112.1265           175.2904            253.1063</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 833              108.9132           173.1846            248.1102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 888              108.7695           175.8953            246.0907</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 933              122.5055           185.6088            270.1717</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 975              113.6099           175.0435            256.4099</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1022             115.8097           178.7516            259.7626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1074             108.7357           169.3229            248.8383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1138             118.0926           179.3992            263.5671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1184             108.0704           169.0132            247.0557</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1233             125.6541           185.7020            276.3552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1280             108.0189           169.3626            247.8223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1325             115.0294           174.5868            259.4617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1377             117.7206           178.0205            264.2077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1423             118.4149           182.6680            263.3247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1494             117.6452           178.7454            262.8405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      sd_metabolic_rate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             287.9700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63            284.3703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116           297.6795</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172           285.9658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231           279.8597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274           286.0590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318           282.6823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 366           285.9284</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 423           292.7602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 481           291.5874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 547           293.9297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 607           285.4411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 683           290.7071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 734           297.5945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 789           284.1006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 833           279.5574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 888           284.0219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 933           298.5724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 975           283.9412</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1022          288.1862</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1074          275.5811</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1138          290.3735</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1184          275.9924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1233          299.3674</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1280          274.6548</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1325          283.6725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1377          287.2722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1423          293.8106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1494          289.8445</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
