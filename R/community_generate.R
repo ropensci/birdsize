@@ -75,7 +75,9 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   colnames(na_table) <- na_vars
 
   # Split into 2 tables, one with ID cols and one for the cols to pass in.
-  ids_table <- community_data_table[,id_vars]
+  ids_table <- as.data.frame(community_data_table[,id_vars])
+  colnames(ids_table) <- id_vars
+
 
   sim_vars_table <- community_data_table[ , c(sim_vars, "rejoining_id")]
   sim_vars_table <-  cbind(sim_vars_table, na_table)
@@ -110,7 +112,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   # community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-.data$rejoining_id))
 
-  community <- merge(ids_table, populations)
+  community <- merge(ids_table, populations, by = "rejoining_id") # here is where it goes from 300 to 900 rows
   community <- community[ , -which(colnames(community) == "rejoining_id")]
 
 
