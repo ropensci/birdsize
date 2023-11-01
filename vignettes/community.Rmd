@@ -23,7 +23,7 @@ library(ggplot2)
 theme_set(theme_bw())
 ```
 
-The `community_generate` and `community_summarize` functions are flexible, high-level functions for generating individual-level body mass and metabolic rate estimates for all the individuals in a community and summarizing these measurements at different levels of hierarchy.
+The `community_generate` and `community_summarize` functions are flexible, high-level functions for generating individual-level body mass and metabolic rate estimates for all the individuals in a community.
 
 
 # Generating estimates using `community_generate`
@@ -128,80 +128,3 @@ head(demo_route_mean_sds_sims)
 
 ```
 
-
-# Summarizing results using `community_summarize`
-
-`community_summarize` reports summary metrics (total abundance, biomass, and energy use; and mean and standard deviation biomass and metabolic rate) with flexible grouping. By default, it can group by year - e.g. giving the total biomass of all birds in each year of a survey - by species, or both. It can also group by additional variables via the `custom` grouping option.
-
-## Summarize grouping by year
-
-Here, we summarize grouping by year to show the total biomass of all species of birds in each year surveyed:
-
-```{r}
-
-annual_summary <- demo_route_sims %>%
-  community_summarize(level = "year")
-
-head(annual_summary)
-
-ggplot(annual_summary, aes(year, total_biomass)) + 
-  geom_point() +
-  geom_line()
-```
-
-## Summarize grouping by year and species
-
-Grouping by year and species gives the total biomass _for each species_ in each year:
-
-```{r, fig.dim = c(5, 9)}
-
-
-species_annual_summary <- demo_route_sims %>%
-  community_summarize(level = "species_and_year") %>%
-  mutate(AOU = as.factor(AOU))
-
-head(species_annual_summary)
-
-ggplot(species_annual_summary, aes(year, total_biomass, color = AOU)) + 
-  geom_point() +
-  geom_line() +
-  theme(legend.position = "bottom")
-```
-
-## Summarize grouping by species
-
-Grouping by species gives the total biomass (etc) for each species over all survey years:
-
-```{r, fig.dim = c(8,5)}
-
-species_summary <- community_summarize(demo_route_sims, level = "species") %>%
-  mutate(AOU = as.factor(AOU))
-
-head(species_summary)
-
-ggplot(species_summary, aes((AOU), total_biomass, fill = (AOU))) + 
-  geom_col() +
-  theme(legend.position = "bottom")
-
-```
-
-## Summarize with custom grouping
-
-`community_generate` can use the `level = "custom"` setting to group by additional `id_vars`. Here, we group by `year` and `genus`:
-
-
-```{r, fig.dim = c(8,5)}
-
-demo_route_sims$genus <- apply(as.matrix(demo_route_sims$scientific_name), 1,
-                                  FUN = function(x) return(unlist(strsplit(x, " "))[[1]]))
-
-annual_genera_summary <- community_summarize(demo_route_sims, level = "custom", id_vars = c("year", "genus")) 
-
-head(annual_genera_summary)
-
-
-ggplot(annual_genera_summary, aes(year, total_biomass, color = genus)) + 
-  geom_point() +
-  geom_line() +
-  theme(legend.position = "bottom")
-```

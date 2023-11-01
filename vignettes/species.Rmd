@@ -24,7 +24,7 @@ library(purrr)
 theme_set(theme_bw())
 ```
 
-The `species_define` function works mostly behind the scenes to set up the parameters needed to simulate individual body size measurements. Given any of: (1) the AOU as used in the North American Breeding Bird Survey (Pardieck et al. 2019), (2) the scientific name, (3) the species' mean body size, or (4) the species' mean _and standard deviation_ body size, `species_define` returns the parameters used by `pop_generate` and `community_generate` to simulate individual size measurements for individuals of that species, or returns an error message asking for more or different information. In most instances, `species_define` is called under-the-hood by the `generate` functions, and users do not need to interact with it directly. 
+The `species_define` function works mostly behind the scenes to set up the parameters needed to simulate individual body size measurements. Given any of: (1) the [AOU as used in the North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/specieslist.html) (Pardieck et al. 2019), (2) the scientific name, (3) the species' mean body size, or (4) the species' mean _and standard deviation_ body size, `species_define` returns the parameters used by `pop_generate` and `community_generate` to simulate individual size measurements for individuals of that species, or returns an error message asking for more or different information. In most instances, `species_define` is called under-the-hood by the `generate` functions, and users do not need to interact with it directly. 
 
 # Species known to `birdsize`
 

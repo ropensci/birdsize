@@ -34,7 +34,7 @@ The core functions in `birdsize` apply at 3 levels of organization: species, pop
 
 In order to generate body mass estimates for a species, `birdsize` needs an *abundance value* (how many individuals to generate estimates for) and at least one of:
 
-* For one of the 450 species known to `birdsize`: the scientific name (as `"Genus species"`) or the AOU code used by the American Ornithological Union (see *LINK*). See *LINK* for a list of the species with data included in `birdsize`.
+* For one of the 450 species known to `birdsize`: the scientific name (as `"Genus species"`) or the [AOU numeric code](https://www.pwrc.usgs.gov/bbs/specieslist.html). See *LINK* for a list of the species with data included in `birdsize`.
 * For any other species: the mean body mass (in g) for that species. If a standard deviation value is provided, it will be used. Otherwise, it will be estimated based on the mean body mass via the scaling relationship described in the scaling vignette.
 
 The `species_define` function uses the information provided to look up, or calculate, the mean and standard deviation of body mass to use to generate individuals of the desired species. This function usually operates under the hood, but may be of interest to advanced users or those interested in complex simulations involving changes to the species-wide parameters. 

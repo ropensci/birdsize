@@ -63,7 +63,7 @@ library(birdsize)
 
 ## Estimating body masses for a population
 
-The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass, by drawing individuals from a normal distribution. At minimum, this requires a population size (abundance) and either the species' mean body size, or the species' identifier (scientific name, or [AOU code]() for species found in the BBS. If the standard deviation of body mass is not provided, `birdsize` will estimate it based on a scaling relationship between the mean and standard deviation of body mass. 
+The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass, by drawing individuals from a normal distribution. At minimum, this requires a population size (abundance) and either the species' mean body size, or the species' identifier (scientific name, or [AOU numeric code](https://www.pwrc.usgs.gov/bbs/specieslist.html) for species found in the BBS). If the standard deviation of body mass is not provided, `birdsize` will estimate it based on a scaling relationship between the mean and standard deviation of body mass. 
 
 The key function for this is `pop_generate`. 
 
@@ -103,7 +103,7 @@ hist(first_population$individual_mass,
 
 To generate body size estimates for a whole community, we use the `community_generate` function. `community_generate` takes population sizes and species identifiers or parameters for multiple species, and simulates populations for each species.
 
-We can create estimates for a community without species codes by providing population sizes and mean body sizes:
+We can create estimates for a hypothetical community by providing population sizes and scientific names:
 
 ```{r, fig.dim = c(5,3)}
 
@@ -130,17 +130,30 @@ For example, using `dplyr`:
 
 ```{r}
 
-first_community_summary <-
+first_community_species_summary <-
   first_community_sims |>
-  group_by(sim_species_id) |>
-  summarize(total_mass = sum(individual_mass))
+  dplyr::group_by(scientific_name) |>
+  dplyr::summarize(total_mass = sum(individual_mass),
+                   total_n_individuals = dplyr::n())
   
-
+first_community_species_summary
 ```
 
 #### Community total biomass
 
+```{r}
 
+first_community_summary <- 
+  first_community_sims |>
+  dplyr::summarize(
+    total_mass = sum(individual_mass),
+    total_n_individuals = dplyr::n(),
+    total_species_richness = length(unique(scientific_name))
+  )
+
+first_community_summary
+
+```
 
 
 ## Citation

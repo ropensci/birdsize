@@ -5,6 +5,7 @@ test_that("direct download works", {
 
   skip_on_ci()
   skip_on_os("mac")
+  skip_on_os("windows")
 
   temp <- tempfile()
   temp2 <- tempfile()

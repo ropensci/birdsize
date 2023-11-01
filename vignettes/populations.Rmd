@@ -25,7 +25,7 @@ theme_set(theme_bw())
 
 # Simulate populations of individuals of a single species
 
-The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass. `pop_generate` achieves this for a single species. ~`comm_generate` uses `pop_generate` to simulate body masses for multiple populations of birds of different species.~
+The core functionality of `birdsize` is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass. `pop_generate` achieves this for a single species.
 
 
 ## Using species identity
@@ -46,10 +46,11 @@ ggplot(a_hundred_hummingbirds, aes(individual_mass)) +
 
 ```
 
-To look up the AOU based on the species' scientific name, explore the included `sd_table` dataset:
+To look up the AOU based on the species' scientific name, explore the [list](https://www.pwrc.usgs.gov/bbs/specieslist.html) maintained by the USGS, or the included `sd_table` dataset:
 
 ```{r}
-sd_table
+sd_table |>
+  head()
 
 ```
 
