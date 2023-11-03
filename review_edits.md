@@ -124,7 +124,7 @@ Yikes, and this is good to keep in mind. I've removed all `dplyr` verbs except f
 > of formatting your code and sticking with it. See
 > <https://style.tidyverse.org/>.
 
-To-do: catch the styling
+I've reformatted the code using `styler`. 
 
 > In a few places I see you're using as.numeric(NA) or is.character(NA)
 > (e.g.
@@ -133,17 +133,15 @@ To-do: catch the styling
 > NA_real\_ and NA_character\_. It seems cleaner to use these rather
 > than casting NA to different data types.
 
-I've never done this, but seems good to start! To-do:
-NA_character/NA_real.
+I've replaced nonspecific NAs with data-type-specific NAs.  
 
 > There are a handful of unnecessarily nested if statements (e.g.
 > <https://github.com/diazrenata/birdsize/blob/main/R/species_define.R#L54>).
 > Anywhere you have if (A) {if (B) {...}} I think it's cleaner to use if
 > (A && B) {...}, but that may just be personal preference.
 
-To-do: check these. I think I personally find it easier to use the
-nested logic than the combination for some vague personal cognitive-flow
-thing, but it's definitely more verbose.
+I've kept these mostly as written, perhaps because it's just much easier for me to parse. 
+I'm happy to revisit this!
 
 # R2
 
@@ -159,14 +157,14 @@ thing, but it's definitely more verbose.
 > The DESCRIPTION file states that the package depends on R \>=2.10 but
 > the tidyverse dependencies require R \>= 3.3.
 
-🤔 See below, I think the solution to this *may* be to untidy.
+With the removal of tidyverse dependencies, I _believe_ R >= 2.10 will be sufficient. 
 
 > I agree with Matt that the documentation of the package datasets
 > should be in one data.R file which is a little easier to navigate
 > (though this is not too relevant to users as they won't ever see that,
 > but it would be helpful for contributors)
 
-+1 on consolidating data documentation to data.R
+Absolutely! The dataset documentation is now consolidated in data.R. 
 
 > This is a tough one, but I generally try to shy away from having
 > tidyverse dependencies in packages. For example the lines with
@@ -193,28 +191,26 @@ thing, but it's definitely more verbose.
 > ```
 
 These comments (and conversations outside this) encourage me to move
-away from tidyverse dependencies. Most of the operations here are pretty
-simple and should translate to base reasonably easily, so *todo* start
-by reverting to base, and revisit this if there are components that
-really seem to need tidyverse.
+away from tidyverse dependencies. In this revision, the tidyverse packages are removed, except for examples shown in the vignettes. 
 
 > I also agree with Matt that it would be good to at least rewrite the
 > code not to use the magrittr pipes %\>% for the reasons he cited.
 
-I think most of the pipes are in tidyverse paragraphs! *todo* make sure,
-though.
+This revision has removed the magrittr pipe. The examples use the new base R pipe (`|>`).
 
 > ```         
 > In filter_bbs_survey(), package data are loaded with unidentified_species <- unidentified_species. I am not sure that is the recommended way to internally use package data. I noticed Matt also brought this up so I would follow his advice there.
 > ```
 
-*Todo* fix how this is called.
+I've removed these calls loading internal data. This has introduced the NOTES of "no visible binding for global variable". 
 
 > In simulate_populations(), the error checking routines that cause
 > failure if things like mean and standard deviation aren't provided is
 > one level down in the ind_draw() function. To me it would make more
 > sense if the input is checked for errors right away instead of further
 > down.
+
+#### RMD START HERE ####
 
 Can do!
 

@@ -20,8 +20,6 @@ filter_bbs_survey <- function(bbs_survey_data) {
     stop("`AOU` column is required!")
   }
 
-  unidentified_species <- unidentified_species
-  nontarget_species <- nontarget_species
   bbs_survey_data <- bbs_survey_data[!(bbs_survey_data$AOU %in% unidentified_species$AOU), ]
   bbs_survey_data <- bbs_survey_data[!(bbs_survey_data$AOU %in% nontarget_species$AOU), ]
 

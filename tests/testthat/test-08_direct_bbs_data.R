@@ -17,15 +17,15 @@ test_that("direct download works", {
 
   unlink(c(temp, temp2, temp3))
 
-  new_hartford_route <- data %>%
+  new_hartford_route <- data |>
     dplyr::filter(Route == 102)
 
   expect_true(any(new_hartford_route$AOU %in% nontarget_species$AOU))
   expect_false(any(new_hartford_route$AOU %in% unidentified_species$AOU))
 
-  new_hartford_route_clean <- new_hartford_route %>%
+  new_hartford_route_clean <- new_hartford_route |>
     filter_bbs_survey()
-  short_bbs_data <- new_hartford_route_clean %>%
+  short_bbs_data <- new_hartford_route_clean |>
     dplyr::filter(year == 2019)
 
   set.seed(22)

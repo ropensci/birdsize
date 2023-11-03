@@ -12,13 +12,13 @@ test_that("bmr is returned with populations", {
 
 
 test_that("bmr is returned with communities", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  short_bbs_data <- bbs_data %>%
-    dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass, mean_sd)) %>%
-    dplyr::select(-AOU) %>%
+  short_bbs_data <- bbs_data |>
+    dplyr::filter(year == 2019) |>
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass, mean_sd)) |>
+    dplyr::select(-AOU) |>
     dplyr::rename(
       mean_size = mean_mass,
       sd_size = mean_sd

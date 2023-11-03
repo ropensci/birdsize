@@ -1,27 +1,27 @@
 test_that("error catching works", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  no_AOU <- bbs_data %>%
+  no_AOU <- bbs_data |>
     dplyr::select(-AOU)
 
   expect_error(community_generate(no_AOU), regexp = "At least one of `AOU`, `scientific_name`, or `mean_size` is required")
 
-  no_abundance <- bbs_data %>%
+  no_abundance <- bbs_data |>
     dplyr::select(-speciestotal)
 
   expect_error(community_generate(no_abundance), regexp = "abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
 
-  misnamed_abundance <- bbs_data %>%
+  misnamed_abundance <- bbs_data |>
     dplyr::rename(abund = speciestotal)
 
   expect_error(community_generate(misnamed_abundance), regexp = "abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
 })
 test_that("simulation from AOU works", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  short_bbs_data <- bbs_data %>%
+  short_bbs_data <- bbs_data |>
     dplyr::filter(year == 2019)
 
   set.seed(22)
@@ -34,11 +34,11 @@ test_that("simulation from AOU works", {
 })
 
 test_that("simulation from AOU works with nonstandard abund name", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  short_bbs_data <- bbs_data %>%
-    dplyr::filter(year == 2019) %>%
+  short_bbs_data <- bbs_data |>
+    dplyr::filter(year == 2019) |>
     dplyr::rename(abund = speciestotal)
 
   set.seed(22)
@@ -52,12 +52,12 @@ test_that("simulation from AOU works with nonstandard abund name", {
 })
 
 test_that("simulation from species name works", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  short_bbs_data <- bbs_data %>%
-    dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, scientific_name)) %>%
+  short_bbs_data <- bbs_data |>
+    dplyr::filter(year == 2019) |>
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, scientific_name)) |>
     dplyr::select(-AOU)
 
   set.seed(22)
@@ -73,13 +73,13 @@ test_that("simulation from species name works", {
 
 
 test_that("simulation from mean size works", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  short_bbs_data <- bbs_data %>%
-    dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass)) %>%
-    dplyr::select(-AOU) %>%
+  short_bbs_data <- bbs_data |>
+    dplyr::filter(year == 2019) |>
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass)) |>
+    dplyr::select(-AOU) |>
     dplyr::rename(mean_size = mean_mass)
 
   set.seed(22)
@@ -95,13 +95,13 @@ test_that("simulation from mean size works", {
 
 
 test_that("simulation from mean and sd size works", {
-  bbs_data <- demo_route_raw %>%
+  bbs_data <- demo_route_raw |>
     filter_bbs_survey()
 
-  short_bbs_data <- bbs_data %>%
-    dplyr::filter(year == 2019) %>%
-    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass, mean_sd)) %>%
-    dplyr::select(-AOU) %>%
+  short_bbs_data <- bbs_data |>
+    dplyr::filter(year == 2019) |>
+    dplyr::left_join(dplyr::select(birdsize::sd_table, AOU, mean_mass, mean_sd)) |>
+    dplyr::select(-AOU) |>
     dplyr::rename(
       mean_size = mean_mass,
       sd_size = mean_sd
