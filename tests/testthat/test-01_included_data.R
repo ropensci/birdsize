@@ -1,6 +1,4 @@
 test_that("raw_masses has expected properties", {
-  # raw_masses <- raw_masses
-
   expect_true(nrow(raw_masses) == 928)
   expect_true(ncol(raw_masses) == 19)
 
