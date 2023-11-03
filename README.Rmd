@@ -10,9 +10,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  fig.dim = c(5,3)
+  fig.dim = c(5, 3)
 )
-
 ```
 
 # birdsize
@@ -52,7 +51,7 @@ Note, however, that `birdsize` does not contain any actual data from the Breedin
 To install the in-development version:
 
 ```{r, eval = F}
-devtools::install_github('diazrenata/birdsize')
+devtools::install_github("diazrenata/birdsize")
 ```
 
 ```{r}
@@ -72,29 +71,30 @@ Here, we generate body mass estimates for a population of a hypothetical species
 ```{r, fig.dim = c(5,3)}
 set.seed(13)
 
-first_population <- pop_generate(abundance = 100,
-                                 mean_size = 10)
+first_population <- pop_generate(
+  abundance = 100,
+  mean_size = 10
+)
 
 hist(first_population$individual_mass,
-     main = "First population masses", 
-     xlab = "Body mass (g)")
-
+  main = "First population masses",
+  xlab = "Body mass (g)"
+)
 ```
 
 
 Alternatively, for a species known to `birdsize`, we can simply provide the scientific name or AOU code. Here, _Melanerpes carolinus_ is the red-headed woodpecker:
 
 ```{r, fig.dim = c(5,3)}
-
-
-woodpecker_population <- pop_generate(abundance = 100,
-                                 scientific_name = "Melanerpes carolinus")
+woodpecker_population <- pop_generate(
+  abundance = 100,
+  scientific_name = "Melanerpes carolinus"
+)
 
 hist(first_population$individual_mass,
-     main = "M. carolinus population masses", 
-     xlab = "Body mass (g)")
-
-
+  main = "M. carolinus population masses",
+  xlab = "Body mass (g)"
+)
 ```
 
 
@@ -106,7 +106,6 @@ To generate body size estimates for a whole community, we use the `community_gen
 We can create estimates for a hypothetical community by providing population sizes and scientific names:
 
 ```{r, fig.dim = c(5,3)}
-
 first_community <- data.frame(
   abundance = c(50, 100, 150),
   scientific_name = c("Melanerpes carolinus", "Myiarchus crinitus", "Sayornis phoebe")
@@ -115,7 +114,6 @@ first_community <- data.frame(
 first_community_sims <- community_generate(first_community, abundance_column_name = "abundance")
 
 hist(first_community_sims$individual_mass, main = "Community body size distribution", xlab = "Body mass", breaks = 50)
-
 ```
 
 ## Citation

@@ -6,7 +6,6 @@ test_that("ind_draw errors work", {
   expect_error(ind_draw(species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be provided")
 
   expect_error(ind_draw(species_abundance = 10.5, species_sd = 10, species_mean = 100), regexp = "`species_abundance` must be a whole number")
-
 })
 test_that("ind_draw works given toy inputs", {
   spmean <- 100

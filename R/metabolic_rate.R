@@ -12,8 +12,5 @@
 #' @examples
 #' individual_metabolic_rate(10)
 individual_metabolic_rate <- function(mass) {
-
-  return(10.5 * (mass ^ .713))
-
+  return(10.5 * (mass^.713))
 }
-
