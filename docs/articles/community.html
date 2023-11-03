@@ -103,8 +103,7 @@
 <p>The <code>community_generate</code> and
 <code>community_summarize</code> functions are flexible, high-level
 functions for generating individual-level body mass and metabolic rate
-estimates for all the individuals in a community and summarizing these
-measurements at different levels of hierarchy.</p>
+estimates for all the individuals in a community.</p>
 <div class="section level2">
 <h2 id="generating-estimates-using-community_generate">Generating estimates using <code>community_generate</code><a class="anchor" aria-label="anchor" href="#generating-estimates-using-community_generate"></a>
 </h2>
@@ -347,186 +346,6 @@ species. Note that the mean body mass must be in a column called
 <span><span class="co">#&gt; 6 Mean and SD provided            &lt;NA&gt;</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="summarizing-results-using-community_summarize">Summarizing results using <code>community_summarize</code><a class="anchor" aria-label="anchor" href="#summarizing-results-using-community_summarize"></a>
-</h2>
-<p><code>community_summarize</code> reports summary metrics (total
-abundance, biomass, and energy use; and mean and standard deviation
-biomass and metabolic rate) with flexible grouping. By default, it can
-group by year - e.g. giving the total biomass of all birds in each year
-of a survey - by species, or both. It can also group by additional
-variables via the <code>custom</code> grouping option.</p>
-<div class="section level3">
-<h3 id="summarize-grouping-by-year">Summarize grouping by year<a class="anchor" aria-label="anchor" href="#summarize-grouping-by-year"></a>
-</h3>
-<p>Here, we summarize grouping by year to show the total biomass of all
-species of birds in each year surveyed:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">annual_summary</span> <span class="op">&lt;-</span> <span class="va">demo_route_sims</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">annual_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       routedataid countrynum statenum route rpid year species_designator</span></span>
-<span><span class="co">#&gt; 1   9009911011994        900       99     1  101 1994                AOU</span></span>
-<span><span class="co">#&gt; 63  9009911011995        900       99     1  101 1995                AOU</span></span>
-<span><span class="co">#&gt; 116 9009911011996        900       99     1  101 1996                AOU</span></span>
-<span><span class="co">#&gt;     total_abundance total_biomass total_metabolic_rate total_richness</span></span>
-<span><span class="co">#&gt; 1              1361      157363.5             352777.0             27</span></span>
-<span><span class="co">#&gt; 63             1443      161697.1             364962.8             27</span></span>
-<span><span class="co">#&gt; 116            1413      166112.8             368952.9             27</span></span>
-<span><span class="co">#&gt;     mean_individual_mass sd_individual_mass mean_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1               115.6234           179.2453            259.2043</span></span>
-<span><span class="co">#&gt; 63              112.0562           175.1756            252.9195</span></span>
-<span><span class="co">#&gt; 116             117.5603           184.4482            261.1132</span></span>
-<span><span class="co">#&gt;     sd_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1            288.8112</span></span>
-<span><span class="co">#&gt; 63           284.1798</span></span>
-<span><span class="co">#&gt; 116          295.4902</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="community_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
-</div>
-<div class="section level3">
-<h3 id="summarize-grouping-by-year-and-species">Summarize grouping by year and species<a class="anchor" aria-label="anchor" href="#summarize-grouping-by-year-and-species"></a>
-</h3>
-<p>Grouping by year and species gives the total biomass <em>for each
-species</em> in each year:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span></span>
-<span><span class="va">species_annual_summary</span> <span class="op">&lt;-</span> <span class="va">demo_route_sims</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span>level <span class="op">=</span> <span class="st">"species_and_year"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>AOU <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">AOU</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">species_annual_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       routedataid countrynum statenum route rpid year  AOU sim_species_id</span></span>
-<span><span class="co">#&gt; 1   9009911011994        900       99     1  101 1994 4730           4730</span></span>
-<span><span class="co">#&gt; 63  9009911011995        900       99     1  101 1995 4730           4730</span></span>
-<span><span class="co">#&gt; 116 9009911011996        900       99     1  101 1996 4730           4730</span></span>
-<span><span class="co">#&gt; 172 9009911011994        900       99     1  101 1994 3570           3570</span></span>
-<span><span class="co">#&gt; 234 9009911011995        900       99     1  101 1995 3570           3570</span></span>
-<span><span class="co">#&gt; 303 9009911011996        900       99     1  101 1996 3570           3570</span></span>
-<span><span class="co">#&gt;       scientific_name mean_size   sd_size species_designator total_abundance</span></span>
-<span><span class="co">#&gt; 1     Alauda arvensis    37.475  3.300613                AOU              62</span></span>
-<span><span class="co">#&gt; 63    Alauda arvensis    37.475  3.300613                AOU              53</span></span>
-<span><span class="co">#&gt; 116   Alauda arvensis    37.475  3.300613                AOU              56</span></span>
-<span><span class="co">#&gt; 172 Falco columbarius   190.500 15.650000                AOU              62</span></span>
-<span><span class="co">#&gt; 234 Falco columbarius   190.500 15.650000                AOU              69</span></span>
-<span><span class="co">#&gt; 303 Falco columbarius   190.500 15.650000                AOU              70</span></span>
-<span><span class="co">#&gt;     total_biomass total_metabolic_rate total_richness mean_individual_mass</span></span>
-<span><span class="co">#&gt; 1        2350.136             8686.477              1             37.90542</span></span>
-<span><span class="co">#&gt; 63       1949.481             7268.589              1             36.78265</span></span>
-<span><span class="co">#&gt; 116      2068.832             7703.940              1             36.94343</span></span>
-<span><span class="co">#&gt; 172     11623.179            27157.348              1            187.47063</span></span>
-<span><span class="co">#&gt; 234     13076.778            30451.413              1            189.51853</span></span>
-<span><span class="co">#&gt; 303     13404.315            31133.849              1            191.49022</span></span>
-<span><span class="co">#&gt;     sd_individual_mass mean_metabolic_rate sd_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1             3.426614            140.1045          8.983515</span></span>
-<span><span class="co">#&gt; 63            3.156561            137.1432          8.371939</span></span>
-<span><span class="co">#&gt; 116           3.155008            137.5704          8.381389</span></span>
-<span><span class="co">#&gt; 172          15.328031            438.0217         25.624170</span></span>
-<span><span class="co">#&gt; 234          17.937689            441.3248         29.899519</span></span>
-<span><span class="co">#&gt; 303          13.658842            444.7693         22.699730</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">species_annual_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="va">AOU</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="community_files/figure-html/unnamed-chunk-9-1.png" width="480"></p>
-</div>
-<div class="section level3">
-<h3 id="summarize-grouping-by-species">Summarize grouping by species<a class="anchor" aria-label="anchor" href="#summarize-grouping-by-species"></a>
-</h3>
-<p>Grouping by species gives the total biomass (etc) for each species
-over all survey years:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">species_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">demo_route_sims</span>, level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>AOU <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">AOU</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">species_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      countrynum statenum route rpid  AOU sim_species_id     scientific_name</span></span>
-<span><span class="co">#&gt; 1           900       99     1  101 4730           4730     Alauda arvensis</span></span>
-<span><span class="co">#&gt; 172         900       99     1  101 3570           3570   Falco columbarius</span></span>
-<span><span class="co">#&gt; 373         900       99     1  101 5261           5261 Carduelis carduelis</span></span>
-<span><span class="co">#&gt; 561         900       99     1  101 3460           3460     Buteo plagiatus</span></span>
-<span><span class="co">#&gt; 784         900       99     1  101 3950           3950  Dryobates borealis</span></span>
-<span><span class="co">#&gt; 1043        900       99     1  101 3280           3280     Elanus leucurus</span></span>
-<span><span class="co">#&gt;      mean_size   sd_size species_designator total_abundance total_biomass</span></span>
-<span><span class="co">#&gt; 1       37.475  3.300613                AOU             171      6368.449</span></span>
-<span><span class="co">#&gt; 172    190.500 15.650000                AOU             201     38104.272</span></span>
-<span><span class="co">#&gt; 373     16.000  1.113624                AOU             188      3017.984</span></span>
-<span><span class="co">#&gt; 561    528.500 37.822484                AOU             223    117903.604</span></span>
-<span><span class="co">#&gt; 784     48.000  7.600000                AOU             259     12517.993</span></span>
-<span><span class="co">#&gt; 1043   346.000 23.300000                AOU             184     63771.282</span></span>
-<span><span class="co">#&gt;      total_metabolic_rate total_richness mean_individual_mass</span></span>
-<span><span class="co">#&gt; 1                23659.01              1             37.24239</span></span>
-<span><span class="co">#&gt; 172              88742.61              1            189.57349</span></span>
-<span><span class="co">#&gt; 373              14279.17              1             16.05311</span></span>
-<span><span class="co">#&gt; 561             204599.98              1            528.71571</span></span>
-<span><span class="co">#&gt; 784              43063.20              1             48.33202</span></span>
-<span><span class="co">#&gt; 1043            124935.25              1            346.58306</span></span>
-<span><span class="co">#&gt;      sd_individual_mass mean_metabolic_rate sd_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1              3.276746           138.35676          8.654565</span></span>
-<span><span class="co">#&gt; 172           15.750562           441.50552         26.258117</span></span>
-<span><span class="co">#&gt; 373            1.100745            75.95302          3.714519</span></span>
-<span><span class="co">#&gt; 561           39.559433           917.48869         48.850299</span></span>
-<span><span class="co">#&gt; 784            8.026146           166.26719         19.828227</span></span>
-<span><span class="co">#&gt; 1043          23.501363           678.99590         32.919925</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">species_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="op">(</span><span class="va">AOU</span><span class="op">)</span>, <span class="va">total_biomass</span>, fill <span class="op">=</span> <span class="op">(</span><span class="va">AOU</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="community_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
-</div>
-<div class="section level3">
-<h3 id="summarize-with-custom-grouping">Summarize with custom grouping<a class="anchor" aria-label="anchor" href="#summarize-with-custom-grouping"></a>
-</h3>
-<p><code>community_generate</code> can use the
-<code>level = "custom"</code> setting to group by additional
-<code>id_vars</code>. Here, we group by <code>year</code> and
-<code>genus</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_route_sims</span><span class="op">$</span><span class="va">genus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">demo_route_sims</span><span class="op">$</span><span class="va">scientific_name</span><span class="op">)</span>, <span class="fl">1</span>,</span>
-<span>                                  FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">annual_genera_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">demo_route_sims</span>, level <span class="op">=</span> <span class="st">"custom"</span>, id_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">annual_genera_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     year  genus species_designator total_abundance total_biomass</span></span>
-<span><span class="co">#&gt; 1   1994 Alauda                AOU              62      2350.136</span></span>
-<span><span class="co">#&gt; 63  1995 Alauda                AOU              53      1949.481</span></span>
-<span><span class="co">#&gt; 116 1996 Alauda                AOU              56      2068.832</span></span>
-<span><span class="co">#&gt; 172 1994  Falco                AOU              94     35238.707</span></span>
-<span><span class="co">#&gt; 234 1995  Falco                AOU              97     33743.982</span></span>
-<span><span class="co">#&gt; 303 1996  Falco                AOU             117     47264.748</span></span>
-<span><span class="co">#&gt;     total_metabolic_rate total_richness mean_individual_mass sd_individual_mass</span></span>
-<span><span class="co">#&gt; 1               8686.477              1             37.90542           3.426614</span></span>
-<span><span class="co">#&gt; 63              7268.589              1             36.78265           3.156561</span></span>
-<span><span class="co">#&gt; 116             7703.940              1             36.94343           3.155008</span></span>
-<span><span class="co">#&gt; 172            64403.357              2            374.87986         263.967052</span></span>
-<span><span class="co">#&gt; 234            63043.590              2            347.87610         251.755083</span></span>
-<span><span class="co">#&gt; 303            84910.029              2            403.97220         262.094600</span></span>
-<span><span class="co">#&gt;     mean_metabolic_rate sd_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1              140.1045          8.983515</span></span>
-<span><span class="co">#&gt; 63             137.1432          8.371939</span></span>
-<span><span class="co">#&gt; 116            137.5704          8.381389</span></span>
-<span><span class="co">#&gt; 172            685.1421        347.804644</span></span>
-<span><span class="co">#&gt; 234            649.9339        331.530089</span></span>
-<span><span class="co">#&gt; 303            725.7267        346.218737</span></span>
-<span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">annual_genera_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span>, color <span class="op">=</span> <span class="va">genus</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="community_files/figure-html/unnamed-chunk-11-1.png" width="768"></p>
-</div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -546,7 +365,7 @@ over all survey years:</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

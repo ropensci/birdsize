@@ -56,12 +56,6 @@
       <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="../articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="../articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="../articles/scaling.html">scaling</a>
     </li>
     <li>
@@ -102,17 +96,17 @@
     
 <p>The <code>species_define</code> function works mostly behind the
 scenes to set up the parameters needed to simulate individual body size
-measurements. Given any of: (1) the AOU as used in the North American
-Breeding Bird Survey (Pardieck et al. 2019), (2) the scientific name,
-(3) the species’ mean body size, or (4) the species’ mean <em>and
-standard deviation</em> body size, <code>species_define</code> returns
-the parameters used by <code>pop_generate</code> and
-<code>community_generate</code> to simulate individual size measurements
-for individuals of that species, or returns an error message asking for
-more or different information. In most instances,
-<code>species_define</code> is called under-the-hood by the
-<code>generate</code> functions, and users do not need to interact with
-it directly.</p>
+measurements. Given any of: (1) the <a href="https://www.pwrc.usgs.gov/bbs/specieslist.html" class="external-link">AOU as used in the
+North American Breeding Bird Survey</a> (Pardieck et al. 2019), (2) the
+scientific name, (3) the species’ mean body size, or (4) the species’
+mean <em>and standard deviation</em> body size,
+<code>species_define</code> returns the parameters used by
+<code>pop_generate</code> and <code>community_generate</code> to
+simulate individual size measurements for individuals of that species,
+or returns an error message asking for more or different information. In
+most instances, <code>species_define</code> is called under-the-hood by
+the <code>generate</code> functions, and users do not need to interact
+with it directly.</p>
 <div class="section level2">
 <h2 id="species-known-to-birdsize">Species known to <code>birdsize</code><a class="anchor" aria-label="anchor" href="#species-known-to-birdsize"></a>
 </h2>
@@ -329,7 +323,7 @@ Center, <a href="https://doi.org/10.5066/P9HE8XYJ" class="external-link uri">htt
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

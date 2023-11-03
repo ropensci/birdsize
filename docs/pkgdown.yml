@@ -1,12 +1,10 @@
 pandoc: 3.1.1
-pkgdown: 2.0.6
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   bbs-data: bbs-data.html
   birdsize: birdsize.html
-  community: community.html
-  populations: populations.html
   scaling: scaling.html
   species: species.html
-last_built: 2023-08-01T17:40Z
+last_built: 2023-11-03T20:01Z
 

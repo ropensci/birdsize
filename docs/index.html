@@ -56,12 +56,6 @@
       <a href="articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="articles/scaling.html">scaling</a>
     </li>
     <li>
@@ -128,7 +122,7 @@
 <div class="section level2">
 <h2 id="estimating-body-masses-for-a-population">Estimating body masses for a population<a class="anchor" aria-label="anchor" href="#estimating-body-masses-for-a-population"></a>
 </h2>
-<p>The core functionality of <code>birdsize</code> is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass, by drawing individuals from a normal distribution. At minimum, this requires a population size (abundance) and either the species’ mean body size, or the species’ identifier (scientific name, or <a href="">AOU code</a> for species found in the BBS. If the standard deviation of body mass is not provided, <code>birdsize</code> will estimate it based on a scaling relationship between the mean and standard deviation of body mass.</p>
+<p>The core functionality of <code>birdsize</code> is to simulate individual body mass measurements for birds given either their species ID or a mean (and possibly standard deviation) of body mass, by drawing individuals from a normal distribution. At minimum, this requires a population size (abundance) and either the species’ mean body size, or the species’ identifier (scientific name, or <a href="https://www.pwrc.usgs.gov/bbs/specieslist.html" class="external-link">AOU numeric code</a> for species found in the BBS). If the standard deviation of body mass is not provided, <code>birdsize</code> will estimate it based on a scaling relationship between the mean and standard deviation of body mass.</p>
 <p>The key function for this is <code>pop_generate</code>.</p>
 <p>Here, we generate body mass estimates for a population of a hypothetical species with a mean body size of 10g:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -157,12 +151,12 @@
 <h2 id="estimating-body-masses-for-a-whole-community">Estimating body masses for a whole community<a class="anchor" aria-label="anchor" href="#estimating-body-masses-for-a-whole-community"></a>
 </h2>
 <p>To generate body size estimates for a whole community, we use the <code>community_generate</code> function. <code>community_generate</code> takes population sizes and species identifiers or parameters for multiple species, and simulates populations for each species.</p>
-<p>We can create estimates for a community without species codes by providing population sizes and mean body sizes:</p>
+<p>We can create estimates for a hypothetical community by providing population sizes and scientific names:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">first_community</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  abundance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">150</span><span class="op">)</span>,</span>
-<span>  mean_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span>  scientific_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Melanerpes carolinus"</span>, <span class="st">"Myiarchus crinitus"</span>, <span class="st">"Sayornis phoebe"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">first_community_sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">first_community</span>, abundance_column_name <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span>
@@ -234,7 +228,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

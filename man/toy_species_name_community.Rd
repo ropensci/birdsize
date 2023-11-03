@@ -15,6 +15,6 @@ A data frame with 5 rows and 2 variables:
 toy_species_name_community
 }
 \description{
-This data table is a toy data frame for the vignettes. It has abundances and AOU codes for 5 species to make up a hypothetical community.
+This data table is a toy data frame for the vignettes. It has abundances and scientific names for 5 species to make up a hypothetical community.
 }
 \keyword{datasets}

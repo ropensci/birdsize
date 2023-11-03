@@ -4,15 +4,6 @@
     <loc>/404.html</loc>
   </url>
   <url>
-    <loc>/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
     <loc>/articles/bbs-data.html</loc>
   </url>
   <url>
@@ -52,10 +43,16 @@
     <loc>/authors.html</loc>
   </url>
   <url>
+    <loc>/CONTRIBUTING.html</loc>
+  </url>
+  <url>
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/Species-class.html</loc>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE.html</loc>
   </url>
   <url>
     <loc>/reference/add_estimated_sds.html</loc>
@@ -97,13 +94,13 @@
     <loc>/reference/identify_richness_designator.html</loc>
   </url>
   <url>
-    <loc>/reference/ind_draw.html</loc>
-  </url>
-  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/individual_metabolic_rate.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ind_draw.html</loc>
   </url>
   <url>
     <loc>/reference/is_unidentified.html</loc>
@@ -137,6 +134,9 @@
   </url>
   <url>
     <loc>/reference/sd_table.html</loc>
+  </url>
+  <url>
+    <loc>/reference/Species-class.html</loc>
   </url>
   <url>
     <loc>/reference/species_define.html</loc>

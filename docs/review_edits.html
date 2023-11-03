@@ -38,12 +38,6 @@
       <a href="articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="articles/scaling.html">scaling</a>
     </li>
     <li>
@@ -78,20 +72,13 @@
 <blockquote>
 <p>Working through the five vignettes, I did wonder if the vignette ordering and organization should be re-worked. For me, I found the population vignette to be the most useful for understanding what the package is actually doing under the hood. After working through this vignette, the community vignette made more sense to me. The species vignette covers an intermediate-level topic, so probably belongs next, followed by scaling since it’s a more advanced topic that many users won’t require knowledge of. Both the README and the “Getting Started” vignette contain essentially no code. This feels like missed opportunity to shown some of the most basic functionality, e.g. simulate a population of a single species and plot a histogram and/or simulate a community. Finally, there is fair amount of duplication in the vignettes, which makes me wonder if some of them could be combined together into one? All this may just be personal preference though, and other users may find the current organization better, but something to think about.</p>
 </blockquote>
-<p>Initial thought: maybe put the high-level workflow demonstration in the README and Getting Started and then re-focus the other vignettes to center more intermediate and advanced <em>topics</em> rather than the “level of organization” approach. So:</p>
-<ul><li>high-level demo in README and/or Getting Started (think about redundancy here)</li>
-<li>under-the-hood in greater detail (mostly, the content from the populations vignette)</li>
-<li>scaling</li>
-<li>species</li>
-<li>integration with BBS (see below, also)</li>
-</ul><blockquote>
+<p>Thanks for the feedback! The vignettes have been re-organized. Most of the content from the “population” and “community” vignettes have been consolidated into the “Getting Started” vignette, with smaller examples shown in the README. The “species”, “scaling”, and “BBS Data” vignettes have remained as separate articles, because those are more in-depth dives into specific subtopics that may be of interest to subpopulations of users.</p>
+<blockquote>
 <p>This package relies heavily on BBS data in all examples and package functionality. Given its prominence, I think there could more description of what the BBS is and the structure of the dataset. I initially assumed the bbs-data vignette would cover this, but it mostly duplicates what’s already found in the community vignette without providing additional explanation of the BBS. I think at the very least a brief description of the route/stop structure, sampling design, and spatial/temporal coverage of the BBS is warranted. Also, I see the fields of demo_route_raw are described in the help for that dataset, but I think you should point users to that help file or directly include a description of the fields in the bbs-data vignette. I don’t think you need to get into extensive detail since all of this is explained in other places, which you’ve referenced, but you should provide at least some explanation.</p>
 </blockquote>
-<p>Super helpful to get a gauge of how <em>much</em> context would seem helpful here (as I’m deep in the too-close-to-this-to-tell vortex). To-dos:</p>
-<ul><li>add some more context on BBS methods and structure. Possibly as a section of the intro documentation (Getting Started), or the BBS vignette.</li>
-<li>adding more explanation of the fields that are inherited in demo_route_raw. Here I am reflexively hesitant to duplicate the contents of the BBS metadata, but it seems like an appropriate context and one where doing so will make a big difference to usability.
-<ul><li>and make sure there is a direct link to the ScienceBase permalink. (I intended there to be but want to confirm).</li>
-</ul></li>
+<p>This is really helpful outside perspective! In this revision:</p>
+<ul><li>There is additional context on the Breeding Bird Survey, including methods and its connection to this project, in the README.</li>
+<li>There is a direct link from the BBS Data vignette to the help page for <code>demo_route_raw</code>, which includes (brief) explanations of the column names, and a link to the main BBS data page for further information.</li>
 </ul><blockquote>
 <p>Defining species in function arguments could be clarified. In the arguments to pop_generate() and species_define(), species can be identified either by AOU code or scientific name. Given that both genus and species are required, it feels more intuitive to me to use a single argument (e.g. scientific_name). The documentation also doesn’t make it clear that species is the species’ epithet and not the scientific or common name. As it stands, it feels like you should be able to call pop_generate(100, species = “Selasphorus calliope”) or even pop_generate(100, species = “Calliope Hummingbird”).</p>
 </blockquote>
@@ -266,7 +253,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -56,12 +56,6 @@
       <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="../articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="../articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="../articles/scaling.html">scaling</a>
     </li>
     <li>
@@ -121,7 +115,9 @@ releases. Instructions for installing the Data Retriever for R are
 available <a href="https://docs.ropensci.org/rdataretriever/#basic-installation" class="external-link">here</a>.</p>
 <p><code>birdsize</code> includes a demo dataset with the same column
 names as the Breeding Bird Survey data available through ScienceBase or
-the Retriever, but with synthetic data:</p>
+the Retriever, but with synthetic data. For an explanation of each of
+the column names, see the Help page for <a href="../reference/demo_route_raw.html">demo_route_raw</a> or the
+metadata available on ScienceBase.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">demo_raw_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="va"><a href="../reference/demo_route_raw.html">demo_route_raw</a></span></span>
@@ -223,57 +219,6 @@ and <code>sd_method</code> give the parameters used to generate the
 individual-level estimates.</p>
 </div>
 <div class="section level3">
-<h3 id="summary-statistics-and-visualization">Summary statistics and visualization<a class="anchor" aria-label="anchor" href="#summary-statistics-and-visualization"></a>
-</h3>
-<p>The <code>community_summarize</code> function will calculate summary
-statistics - for example, the total, mean, and standard deviation
-abundance, biomass, and energy use of all individuals on a route over
-time:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_summary</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">demo_community</span>, level <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       routedataid countrynum statenum route rpid year species_designator</span></span>
-<span><span class="co">#&gt; 1   9009911011994        900       99     1  101 1994                AOU</span></span>
-<span><span class="co">#&gt; 63  9009911011995        900       99     1  101 1995                AOU</span></span>
-<span><span class="co">#&gt; 116 9009911011996        900       99     1  101 1996                AOU</span></span>
-<span><span class="co">#&gt; 172 9009911011997        900       99     1  101 1997                AOU</span></span>
-<span><span class="co">#&gt; 231 9009911011998        900       99     1  101 1998                AOU</span></span>
-<span><span class="co">#&gt; 274 9009911011999        900       99     1  101 1999                AOU</span></span>
-<span><span class="co">#&gt;     total_abundance total_biomass total_metabolic_rate total_richness</span></span>
-<span><span class="co">#&gt; 1              1361      157120.1             352457.3             27</span></span>
-<span><span class="co">#&gt; 63             1443      161413.5             364630.8             27</span></span>
-<span><span class="co">#&gt; 116            1413      166266.8             368934.3             27</span></span>
-<span><span class="co">#&gt; 172            1381      158887.6             357190.1             27</span></span>
-<span><span class="co">#&gt; 231            1415      157009.1             357502.0             27</span></span>
-<span><span class="co">#&gt; 274            1412      163439.6             367196.5             27</span></span>
-<span><span class="co">#&gt;     mean_individual_mass sd_individual_mass mean_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1               115.4446           178.5161            258.9694</span></span>
-<span><span class="co">#&gt; 63              111.8597           174.3683            252.6894</span></span>
-<span><span class="co">#&gt; 116             117.6693           185.4601            261.1000</span></span>
-<span><span class="co">#&gt; 172             115.0526           177.0452            258.6460</span></span>
-<span><span class="co">#&gt; 231             110.9605           170.5123            252.6516</span></span>
-<span><span class="co">#&gt; 274             115.7504           176.7922            260.0542</span></span>
-<span><span class="co">#&gt;     sd_metabolic_rate</span></span>
-<span><span class="co">#&gt; 1            288.1834</span></span>
-<span><span class="co">#&gt; 63           283.4444</span></span>
-<span><span class="co">#&gt; 116          296.3750</span></span>
-<span><span class="co">#&gt; 172          286.3233</span></span>
-<span><span class="co">#&gt; 231          277.9370</span></span>
-<span><span class="co">#&gt; 274          286.3906</span></span></code></pre></div>
-<p>This can be useful to explore variation over the duration of time for
-which a route has been sampled:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">demo_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="bbs-data_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
-</div>
-<div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h3>
 <p>Harris DJ, Taylor SD, White EP. 2018. Forecasting biodiversity in
@@ -303,7 +248,7 @@ Center, <a href="https://doi.org/10.5066/P9HE8XYJ" class="external-link uri">htt
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

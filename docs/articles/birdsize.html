@@ -56,12 +56,6 @@
       <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="../articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="../articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="../articles/scaling.html">scaling</a>
     </li>
     <li>
@@ -103,7 +97,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><code>birdsize</code> simulates mass measurements (g) for birds.
+<p><code>birdsize</code> simulates mass measurements (in g) for birds.
 Working from the assumption that individuals of a species have body
 masses normally distributed around a species-wide mean and standard
 deviation, <code>birdsize</code> simulates individual-level body mass
@@ -135,10 +129,9 @@ points in time or different sampling locations).</li>
 individuals to generate estimates for) and at least one of:</p>
 <ul>
 <li>For one of the 450 species known to <code>birdsize</code>: the
-scientific name (as <code>"Genus species"</code>) or the AOU code used
-by the American Ornithological Union (see <em>LINK</em>). See
-<em>LINK</em> for a list of the species with data included in
-<code>birdsize</code>.</li>
+scientific name (as <code>"Genus species"</code>) or the <a href="https://www.pwrc.usgs.gov/bbs/specieslist.html" class="external-link">AOU numeric
+code</a>. See <em>LINK</em> for a list of the species with data included
+in <code>birdsize</code>.</li>
 <li>For any other species: the mean body mass (in g) for that species.
 If a standard deviation value is provided, it will be used. Otherwise,
 it will be estimated based on the mean body mass via the scaling
@@ -180,11 +173,11 @@ code (AOU) to simulate a population directly. For the hummingbird
 <span><span class="co">#&gt; 5       100 AOU lookup Selasphorus calliope</span></span>
 <span><span class="co">#&gt; 6       100 AOU lookup Selasphorus calliope</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"A population of hummingbirds"</span><span class="op">)</span> </span></code></pre></div>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hummingbirds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hummingbirds"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="birdsize_files/figure-html/unnamed-chunk-2-1.png" width="336"></p>
 </div>
 <div class="section level3">
@@ -218,11 +211,11 @@ ignored!</strong></p>
 <span><span class="co">#&gt; 5 Mean and SD provided            &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6 Mean and SD provided            &lt;NA&gt;</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 3"</span><span class="op">)</span> </span></code></pre></div>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">a_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 3"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="birdsize_files/figure-html/unnamed-chunk-3-1.png" width="336"></p>
 </div>
 <div class="section level3">
@@ -252,11 +245,11 @@ scaling between the mean and standard deviation of body mass:</p>
 <span><span class="co">#&gt; 5       100 SD estimated from mean            &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6       100 SD estimated from mean            &lt;NA&gt;</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 1.74"</span><span class="op">)</span> </span></code></pre></div>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">another_hundred_hypotheticals</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"A population of hypothetical birds"</span>, subtitle <span class="op">=</span><span class="st">"Mean mass = 25 g\nStandard deviation = 1.74"</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="birdsize_files/figure-html/unnamed-chunk-4-1.png" width="336"></p>
 </div>
 </div>
@@ -319,14 +312,14 @@ colored by species ID:</p>
 <code class="sourceCode R"><span></span>
 <span><span class="va">toy_aou_sims</span><span class="op">$</span><span class="va">AOU</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_aou_sims</span><span class="op">$</span><span class="va">AOU</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">toy_aou_sims</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">AOU</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Community simulated via AOU"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">toy_aou_sims</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">AOU</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Community simulated via AOU"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
 <p><img src="birdsize_files/figure-html/unnamed-chunk-7-1.png" width="480"></p>
 </div>
@@ -375,18 +368,18 @@ parameters based on their scientific name.</p>
 <span><span class="co">#&gt; 6        95 Scientific name lookup Alauda arvensis</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">toy_species_name_sims</span><span class="op">$</span><span class="va">AOU</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_species_name_sims</span><span class="op">$</span><span class="va">AOU</span><span class="op">)</span></span>
+<span><span class="va">toy_species_name_sims</span><span class="op">$</span><span class="va">scientific_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_species_name_sims</span><span class="op">$</span><span class="va">scientific_name</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">toy_species_name_sims</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">AOU</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Community simulated via scientific name"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">toy_species_name_sims</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">scientific_name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Community simulated via scientific name"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span>, legend.direction <span class="op">=</span> <span class="st">"vertical"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
-<p><img src="birdsize_files/figure-html/unnamed-chunk-10-1.png" width="480"></p>
+<p><img src="birdsize_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="simulation-given-mean-size-measurements">Simulation given mean size measurements<a class="anchor" aria-label="anchor" href="#simulation-given-mean-size-measurements"></a>
@@ -398,6 +391,12 @@ available, standard deviation of body mass directly. If standard
 deviation is provided, it will be used; if not, it will be estimated
 based on the scaling relationship between mean and standard deviation of
 body mass for birds (see the <code>scaling</code> vignette).</p>
+<p>This functionality may be especially useful for users interested in
+using their own parameter values, rather than relying on the ones
+provided in <code>birdsize</code>. For example, <code>birdsize</code>
+does not take into account temporal or geographic variation in body
+size, which may be significant. A user could manually provide values to
+explore these scenarios.</p>
 <p>Note that 1) the mean body size data must be provided in a column
 named <code>mean_size</code> and 2) the <code>sim_species_id</code>
 column acts as a species identifier in the absence of other taxonomic
@@ -438,16 +437,63 @@ information:</p>
 <code class="sourceCode R"><span></span>
 <span><span class="va">toy_size_sims</span><span class="op">$</span><span class="va">sim_species_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">toy_size_sims</span><span class="op">$</span><span class="va">sim_species_id</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">toy_size_sims</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">sim_species_id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Community simulated via scientific name"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">toy_size_sims</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">individual_mass</span>, fill <span class="op">=</span> <span class="va">sim_species_id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>position <span class="op">=</span> <span class="st">"stack"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Community simulated via mean body size"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Body mass (g)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number of individuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
 <p><img src="birdsize_files/figure-html/unnamed-chunk-13-1.png" width="480"></p>
+</div>
+<div class="section level3">
+<h3 id="community-wide-summary-statistics">Community-wide summary statistics<a class="anchor" aria-label="anchor" href="#community-wide-summary-statistics"></a>
+</h3>
+<p>The body size measurements generated by <code>birdsize</code> are
+estimates and are generally best-suited for large-scale, aggregate
+analyses. For these bigger-picture analyses, use general aggregation and
+summary functions to generate community-wide summaries.</p>
+<p>For example, using <code>dplyr</code>:</p>
+<div class="section level4">
+<h4 id="biomass-total-by-species">Biomass total by species<a class="anchor" aria-label="anchor" href="#biomass-total-by-species"></a>
+</h4>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">toy_species_name_sims_summary</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">toy_species_name_sims</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">scientific_name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>total_mass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span>,</span>
+<span>                   total_n_individuals <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">toy_species_name_sims_summary</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
+<span><span class="co">#&gt;   scientific_name        total_mass total_n_individuals</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Alauda arvensis             <span style="text-decoration: underline;">3</span>566.                  95</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Bonasa umbellus            <span style="text-decoration: underline;">21</span>273.                  40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Coccyzus minor              <span style="text-decoration: underline;">4</span>409.                  69</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Elanus leucurus            <span style="text-decoration: underline;">21</span>765.                  63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Tyrannus melancholicus      <span style="text-decoration: underline;">1</span>980.                  53</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="community-total-biomass">Community total biomass<a class="anchor" aria-label="anchor" href="#community-total-biomass"></a>
+</h4>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">toy_species_name_sims_totals</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">toy_species_name_sims</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>    total_mass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">individual_mass</span><span class="op">)</span>,</span>
+<span>    total_n_individuals <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    total_species_richness <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">scientific_name</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">toy_species_name_sims_totals</span></span>
+<span><span class="co">#&gt;   total_mass total_n_individuals total_species_richness</span></span>
+<span><span class="co">#&gt; 1   52992.77                 320                      5</span></span></code></pre></div>
+</div>
 </div>
 </div>
   </div>
@@ -469,7 +515,7 @@ information:</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
