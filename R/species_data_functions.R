@@ -15,20 +15,6 @@
 #' @importFrom stats lm var family
 get_sd_parameters <- function(raw_size_data) {
 
-  # sp_for_sd <- dplyr::filter(
-  #   raw_size_data,
-  #   !is.na(sd)
-  # ) %>%
-  #   dplyr::mutate(
-  #     mass = as.numeric(.data$mass),
-  #     sd = as.numeric(.data$sd)
-  #   ) %>%
-  #   dplyr::mutate(var = sd^2) %>%
-  #   dplyr::mutate(
-  #     log_m = log(.data$mass),
-  #     log_var = log(.data$var)
-  #   )
-
   sp_for_sd <- raw_size_data [ !is.na(raw_size_data$sd), ]
   sp_for_sd$mass = as.numeric(sp_for_sd$mass)
   sp_for_sd$sd = as.numeric(sp_for_sd$sd)
@@ -61,7 +47,6 @@ get_sd_parameters <- function(raw_size_data) {
 #'
 species_estimate_sd <- function(sp_mean, pars = NULL) {
   if (is.null(pars)) {
-  #  raw_masses <- raw_masses
 
     pars <- get_sd_parameters(raw_masses)
   }
@@ -86,31 +71,19 @@ species_estimate_sd <- function(sp_mean, pars = NULL) {
 #'
 #' @keywords internal
 clean_sp_size_data <- function(raw_size_data) {
-  # sp_clean <- raw_size_data %>%
-  #   dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
-  #   dplyr::mutate(mass = as.numeric(.data$mass))
 
   cols_to_remove <- which(colnames(raw_size_data) %in% c("english_common_name", "sporder", "family"))
   sp_clean <- raw_size_data[ , -cols_to_remove]
   sp_clean$mass <- as.numeric(sp_clean$mass)
 
-  # name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)
   name_change <- sp_clean[ which(sp_clean$not_in_dunning == 1), ]
 
-  # sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
-  #   dplyr::mutate(added_flag = NA)
 
   sp_clean <- sp_clean[ which(is.na(sp_clean$not_in_dunning)), ]
   sp_clean$added_flag = NA_integer_
 
   for (i in 1:nrow(name_change)) {
     if (!is.na(name_change$close_subspecies[i])) {
-      # matched_rows <- dplyr::filter(
-      #   sp_clean,
-      #   .data$genus == name_change$close_genus[i],
-      #   .data$species == name_change$close_species[i],
-      #   .data$subspecies == name_change$close_subspecies[i]
-      # )
 
       matched_rows <- sp_clean[
         sp_clean$genus == name_change$close_genus[i] &
@@ -118,22 +91,11 @@ clean_sp_size_data <- function(raw_size_data) {
           sp_clean$subspecies == name_change$close_subspecies[i], ]
 
     } else {
-      # matched_rows <- dplyr::filter(
-      #   sp_clean,
-      #   .data$genus == name_change$close_genus[i],
-      #   .data$species == name_change$close_species[i]
-      # )
 
       matched_rows <- sp_clean[
         sp_clean$genus == name_change$close_genus[i] &
           sp_clean$species == name_change$close_species[i], ]
     }
-    #
-    #     sp_to_add <- matched_rows %>%
-    #       dplyr::mutate(
-    #         AOU = name_change$AOU[i],
-    #         added_flag = 1
-    #       )
 
     sp_to_add <- matched_rows
     sp_to_add$AOU <- name_change$AOU[i]
@@ -185,15 +147,6 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #'
 #'
 get_sp_mean_size <- function(sd_dat) {
-  # sp_means <- sd_dat %>%
-  #   dplyr::group_by(.data$AOU, .data$genus, .data$species) %>%
-  #   dplyr::summarize(
-  #     mean_mass = mean(.data$mass),
-  #     mean_sd = mean(.data$sd, na.rm = F),
-  #     contains_estimates = any(.data$estimated_sd)
-  #   ) %>%
-  #   dplyr::ungroup() %>%
-  #   dplyr::filter(!is.na(.data$AOU))
 
   unique_combinations <- sd_dat[ , c("AOU", "genus", "species")]
 

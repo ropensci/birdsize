@@ -26,11 +26,6 @@ filter_bbs_survey <- function(bbs_survey_data) {
 
   unidentified_species <- unidentified_species
   nontarget_species <- nontarget_species
-
-  # bbs_survey_data1 <- bbs_survey_data %>%
-  #   dplyr::filter(!(.data$AOU %in% unidentified_species$AOU)) %>%
-  #   dplyr::filter(!(.data$AOU %in% nontarget_species$AOU))
-
   bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$AOU %in% unidentified_species$AOU), ]
   bbs_survey_data <- bbs_survey_data[ !(bbs_survey_data$AOU %in% nontarget_species$AOU), ]
 

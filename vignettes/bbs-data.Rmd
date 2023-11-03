@@ -28,7 +28,7 @@ Data releases for the Breeding Bird Survey are available on ScienceBase, e.g. [h
 
 The [Data Retriever](https://retriever.readthedocs.io/en/latest/) also provides an interface for downloading recent releases. Instructions for installing the Data Retriever for R are available [here](https://docs.ropensci.org/rdataretriever/#basic-installation). 
 
-`birdsize` includes a demo dataset with the same column names as the Breeding Bird Survey data available through ScienceBase or the Retriever, but with synthetic data:
+`birdsize` includes a demo dataset with the same column names as the Breeding Bird Survey data available through ScienceBase or the Retriever, but with synthetic data. For an explanation of each of the column names, see the Help page for [demo_route_raw](../reference/demo_route_raw.html) or the metadata available on ScienceBase.
 
 ```{r}
 

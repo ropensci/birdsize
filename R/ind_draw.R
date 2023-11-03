@@ -33,10 +33,7 @@ ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abu
   }
 
   population <- truncnorm::rtruncnorm(n = species_abundance, a = 1, b = Inf, mean = species_mean, sd = species_sd)
-  #
-  #   while (any(population < 0)) {
-  #     population[which(population < 0)] <- rnorm(n = sum(population < 0), mean = species_mean, sd = species_sd)
-  #   }
+
 
   population
 }

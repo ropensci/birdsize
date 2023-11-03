@@ -50,9 +50,6 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   # Identify ID/grouping columns and columns to pass to sim fxns.
 
-  # community_data_table <- community_data_table %>%
-  #   dplyr::mutate(rejoining_id = dplyr::row_number(),
-  #                 abundance = .data[[abundance_column_name]])
 
   community_data_table$rejoining_id <- 1:nrow(community_data_table)
   abundance_values <- as.matrix(community_data_table[ , abundance_column_name])
@@ -82,12 +79,6 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   sim_vars_table <- community_data_table[ , c(sim_vars, "rejoining_id")]
   sim_vars_table <-  cbind(sim_vars_table, na_table)
 
-  # Draw populations
-  # populations <- purrr::pmap_dfr(sim_vars_table,
-  #                                pop_generate,
-  #                                .id = "rejoining_id") %>%
-  #   dplyr::mutate(rejoining_id = as.numeric(.data$rejoining_id))
-
   pop_generate_rejoining <- function(this_id, sim_vars_table) {
 
     this_row <- sim_vars_table[ sim_vars_table$rejoining_id == this_id, ]
@@ -110,9 +101,8 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
   populations <- do.call("rbind", populations_list)
 
-  # community <- suppressMessages(dplyr::left_join(ids_table, populations) %>% dplyr::select(-.data$rejoining_id))
 
-  community <- merge(ids_table, populations, by = "rejoining_id") # here is where it goes from 300 to 900 rows
+  community <- merge(ids_table, populations, by = "rejoining_id")
   community <- community[ , -which(colnames(community) == "rejoining_id")]
 
 

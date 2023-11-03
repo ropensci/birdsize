@@ -99,10 +99,11 @@ measurements for birds given either their species ID or a mean (and
 possibly standard deviation) of body mass, by drawing individuals from a
 normal distribution. At minimum, this requires a population size
 (abundance) and either the species’ mean body size, or the species’
-identifier (scientific name, or [AOU code]() for species found in the
-BBS. If the standard deviation of body mass is not provided, `birdsize`
-will estimate it based on a scaling relationship between the mean and
-standard deviation of body mass.
+identifier (scientific name, or [AOU numeric
+code](https://www.pwrc.usgs.gov/bbs/specieslist.html) for species found
+in the BBS). If the standard deviation of body mass is not provided,
+`birdsize` will estimate it based on a scaling relationship between the
+mean and standard deviation of body mass.
 
 The key function for this is `pop_generate`.
 
@@ -146,14 +147,14 @@ To generate body size estimates for a whole community, we use the
 sizes and species identifiers or parameters for multiple species, and
 simulates populations for each species.
 
-We can create estimates for a community without species codes by
-providing population sizes and mean body sizes:
+We can create estimates for a hypothetical community by providing
+population sizes and scientific names:
 
 ``` r
 
 first_community <- data.frame(
   abundance = c(50, 100, 150),
-  mean_size = c(200, 50, 10)
+  scientific_name = c("Melanerpes carolinus", "Myiarchus crinitus", "Sayornis phoebe")
 )
 
 first_community_sims <- community_generate(first_community, abundance_column_name = "abundance")

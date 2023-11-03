@@ -92,12 +92,6 @@ species_lookup <- function(AOU = NA_integer_, scientific_name = NA_character_) {
     proper_scientific_name <- tolower(scientific_name)
     substr(proper_scientific_name, 1, 1) <- toupper(substr(proper_scientific_name, 1, 1))
 
-    # sp_pars <- dplyr::filter(
-    #   sd_table,
-    #   genus == proper_genus,
-    #   species == proper_species
-    # )
-
     sp_pars <- sd_table[ sd_table$scientific_name == proper_scientific_name, ]
 
     if(nrow(sp_pars) > 1) {
