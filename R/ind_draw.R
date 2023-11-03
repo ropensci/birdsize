@@ -12,23 +12,23 @@
 #' @importFrom stats pnorm
 #' @keywords internal
 ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abundance = NA_integer_) {
-  if(is.na(species_mean)) {
+  if (is.na(species_mean)) {
     stop("`species_mean` must be provided")
   }
 
-  if(is.na(species_sd)) {
+  if (is.na(species_sd)) {
     stop("`species_sd` must be provided")
   }
 
-  if(is.na(species_abundance)) {
+  if (is.na(species_abundance)) {
     stop("`species_abundance` must be provided")
   }
 
-  if(!is.numeric(species_abundance)) {
+  if (!is.numeric(species_abundance)) {
     stop("`species_abundance` must be numeric")
   }
 
-  if(!(round(species_abundance) == species_abundance)) {
+  if (!(round(species_abundance) == species_abundance)) {
     stop("`species_abundance` must be a whole number")
   }
 
@@ -37,4 +37,3 @@ ind_draw <- function(species_mean = NA_real_, species_sd = NA_real_, species_abu
 
   population
 }
-

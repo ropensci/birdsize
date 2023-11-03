@@ -31,11 +31,9 @@ The [Data Retriever](https://retriever.readthedocs.io/en/latest/) also provides 
 `birdsize` includes a demo dataset with the same column names as the Breeding Bird Survey data available through ScienceBase or the Retriever, but with synthetic data. For an explanation of each of the column names, see the Help page for [demo_route_raw](../reference/demo_route_raw.html) or the metadata available on ScienceBase.
 
 ```{r}
-
 demo_raw_data <- birdsize::demo_route_raw
 
 head(demo_raw_data)
-
 ```
 
 ## Cleaning data
@@ -43,11 +41,9 @@ head(demo_raw_data)
 Following Harris et al. (2018), it is recommended to filter the raw BBS data to remove taxa that are poorly sampled via the BBS methods (e.g. nightbirds, waterbirds) and to remove unidenitifed taxa. The `filter_bbs_survey` function performs this cleaning:
 
 ```{r}
-
 demo_clean_data <- birdsize::filter_bbs_survey(demo_raw_data)
 
 head(demo_clean_data)
-
 ```
 
 ## Simulating individual-level measurements 
@@ -55,13 +51,11 @@ head(demo_clean_data)
 The `community_generate` function will generate individual-level size and BMR estimates for all individuals recorded in a community data frame of the type available from ScienceBase, the Retriever, or the included demo data:
 
 ```{r}
-
 set.seed(2022)
 
 demo_community <- birdsize::community_generate(demo_clean_data)
 
 head(demo_community)
-
 ```
 
 The first 15 columns (`record_id` through `AOU`) are retained from the input data. For species in the BBS, `sim_species_id` is identical to the AOU used for species identification. `scientific_name` gives the scientific name associated with the AOU. `individual_mass` and `individual_bmr` are *individual-level* mass and BMR estimates, with one for each individual recorded in the input data. `mean_size`, `sd_size`, `abundance`, and `sd_method` give the parameters used to generate the individual-level estimates.

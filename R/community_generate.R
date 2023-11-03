@@ -25,11 +25,9 @@
 #'
 #' demo_community <- community_generate(demo_route_clean)
 #' head(demo_community)
-
 community_generate <- function(community_data_table, abundance_column_name = "speciestotal") {
-
   colnames(community_data_table) <- tolower(colnames(community_data_table))
-  colnames(community_data_table)[ which(colnames(community_data_table) == "aou")] <- "AOU"
+  colnames(community_data_table)[which(colnames(community_data_table) == "aou")] <- "AOU"
 
   community_vars <- colnames(community_data_table)
 
@@ -40,11 +38,11 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   contains_mean <- "mean_size" %in% community_vars
   contains_abundance <- abundance_column_name %in% community_vars
 
-  if(!contains_abundance) {
+  if (!contains_abundance) {
     stop("abundance column is required. If the name is not `speciestotal` specify using the `abundance_column_name` argument")
   }
 
-  if(!(contains_AOU | contains_mean | contains_scientific_name)) {
+  if (!(contains_AOU | contains_mean | contains_scientific_name)) {
     stop("At least one of `AOU`, `scientific_name`, or `mean_size` is required")
   }
 
@@ -52,49 +50,49 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
 
   community_data_table$rejoining_id <- 1:nrow(community_data_table)
-  abundance_values <- as.matrix(community_data_table[ , abundance_column_name])
-  abundance_values <- as.vector(abundance_values[,1])
-  community_data_table$abundance = abundance_values
+  abundance_values <- as.matrix(community_data_table[, abundance_column_name])
+  abundance_values <- as.vector(abundance_values[, 1])
+  community_data_table$abundance <- abundance_values
 
   community_vars_mod <- colnames(community_data_table)
 
   possible_sim_vars <- c("abundance", "AOU", "mean_size", "sd_size", "sim_species_id", "scientific_name")
 
-  id_vars <- c(community_vars_mod[ which(!(community_vars_mod %in% possible_sim_vars))])
+  id_vars <- c(community_vars_mod[which(!(community_vars_mod %in% possible_sim_vars))])
 
-  sim_vars <- c(community_vars_mod[ which(community_vars_mod %in% possible_sim_vars)])
+  sim_vars <- c(community_vars_mod[which(community_vars_mod %in% possible_sim_vars)])
 
   # # For the cols to pass in, add NA columns for any of the variables that the sim fxns can use that aren't included
-  na_vars <- possible_sim_vars[ which(!(possible_sim_vars %in% community_vars_mod))]
+  na_vars <- possible_sim_vars[which(!(possible_sim_vars %in% community_vars_mod))]
 
   na_table <- matrix(nrow = nrow(community_data_table), ncol = length(na_vars))
-  na_table <-  as.data.frame(na_table)
+  na_table <- as.data.frame(na_table)
   colnames(na_table) <- na_vars
 
   # Split into 2 tables, one with ID cols and one for the cols to pass in.
-  ids_table <- as.data.frame(community_data_table[,id_vars])
+  ids_table <- as.data.frame(community_data_table[, id_vars])
   colnames(ids_table) <- id_vars
 
 
-  sim_vars_table <- community_data_table[ , c(sim_vars, "rejoining_id")]
-  sim_vars_table <-  cbind(sim_vars_table, na_table)
+  sim_vars_table <- community_data_table[, c(sim_vars, "rejoining_id")]
+  sim_vars_table <- cbind(sim_vars_table, na_table)
 
   pop_generate_rejoining <- function(this_id, sim_vars_table) {
+    this_row <- sim_vars_table[sim_vars_table$rejoining_id == this_id, ]
 
-    this_row <- sim_vars_table[ sim_vars_table$rejoining_id == this_id, ]
+    this_population <- pop_generate(
+      abundance = this_row$abundance[1],
+      AOU = this_row$AOU[1],
+      scientific_name = this_row$scientific_name[1],
+      mean_size = this_row$mean_size[1],
+      sd_size = this_row$sd_size[1],
+      sim_species_id = this_row$sim_species_id[1]
+    )
 
-    this_population <- pop_generate(abundance = this_row$abundance[1],
-                                    AOU = this_row$AOU[1],
-                                    scientific_name = this_row$scientific_name[1],
-                                    mean_size = this_row$mean_size[1],
-                                    sd_size = this_row$sd_size[1],
-                                    sim_species_id = this_row$sim_species_id[1])
 
-
-    this_population$rejoining_id = this_id
+    this_population$rejoining_id <- this_id
 
     this_population
-
   }
 
   populations_list <- apply(as.matrix(sim_vars_table$rejoining_id), MARGIN = 1, FUN = pop_generate_rejoining, sim_vars_table = sim_vars_table)
@@ -103,11 +101,8 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
 
 
   community <- merge(ids_table, populations, by = "rejoining_id")
-  community <- community[ , -which(colnames(community) == "rejoining_id")]
+  community <- community[, -which(colnames(community) == "rejoining_id")]
 
 
   return(community)
-
 }
-
-

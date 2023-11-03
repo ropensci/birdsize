@@ -42,31 +42,31 @@ pop_generate <- function(abundance = NA_integer_, AOU = NA_integer_, scientific_
   )
 
   # abundance errors
-  if(is.na(abundance)) {
+  if (is.na(abundance)) {
     stop("`abundance` must be provided")
   }
 
-  if(!is.numeric(abundance)) {
+  if (!is.numeric(abundance)) {
     stop("`abundance` must be numeric")
   }
 
-  if(!(round(abundance) == abundance)) {
+  if (!(round(abundance) == abundance)) {
     stop("`abundance` must be a whole number")
   }
 
   # errors related to size pars
 
-  if(is.na(this_species$mean_size)) {
+  if (is.na(this_species$mean_size)) {
     stop("`species_mean` must be provided")
   }
 
-  if(is.na(this_species$sd_size)) {
+  if (is.na(this_species$sd_size)) {
     stop("`species_sd` must be provided")
   }
 
   # print message if the combination of mean and SD is likely (> 1% chance) to produce negative masses
 
-  if(pnorm(1, this_species$mean_size, this_species$sd_size) > .01) {
+  if (pnorm(1, this_species$mean_size, this_species$sd_size) > .01) {
     message("Very tiny species (a greater than 1% chance of a body mass value less than 1g)!")
   }
 
