@@ -72,8 +72,6 @@ species_define <- function(AOU = NA_integer_, scientific_name = NA_character_, m
 #' species_lookup(AOU = 2881)
 #' species_lookup(scientific_name = "Selasphorus calliope")
 species_lookup <- function(AOU = NA_integer_, scientific_name = NA_character_) {
-  #  sd_table <- sd_table
-
   provided_AOU <- AOU
 
   if (!is.na(provided_AOU)) {
@@ -81,8 +79,6 @@ species_lookup <- function(AOU = NA_integer_, scientific_name = NA_character_) {
       stop("`AOU` is invalid.")
     }
 
-    # return(sd_table %>%
-    #   dplyr::filter(AOU == provided_AOU))
     return(sd_table[sd_table$AOU == provided_AOU, ])
   } else if (is.character(scientific_name)) {
     proper_scientific_name <- tolower(scientific_name)
