@@ -32,18 +32,7 @@ Review Comments (annotations mine :))
 > and other users may find the current organization better, but
 > something to think about.
 
-Initial thought: maybe put the high-level workflow demonstration in the
-README and Getting Started and then re-focus the other vignettes to
-center more intermediate and advanced *topics* rather than the "level of
-organization" approach. So:
-
--   high-level demo in README and/or Getting Started (think about
-    redundancy here)
--   under-the-hood in greater detail (mostly, the content from the
-    populations vignette)
--   scaling
--   species
--   integration with BBS (see below, also)
+Thanks for the feedback! The vignettes have been re-organized. Most of the content from the "population" and "community" vignettes have been consolidated into the "Getting Started" vignette, with smaller examples shown in the README. The "species", "scaling", and "BBS Data" vignettes have remained as separate articles, because those are more in-depth dives into specific subtopics that may be of interest to subpopulations of users. 
 
 > This package relies heavily on BBS data in all examples and package
 > functionality. Given its prominence, I think there could more
@@ -60,19 +49,11 @@ organization" approach. So:
 > is explained in other places, which you've referenced, but you should
 > provide at least some explanation.
 
-Super helpful to get a gauge of how *much* context would seem helpful
-here (as I'm deep in the too-close-to-this-to-tell vortex). To-dos:
 
--   add some more context on BBS methods and structure. Possibly as a
-    section of the intro documentation (Getting Started), or the BBS
-    vignette.
--   adding more explanation of the fields that are inherited in
-    demo_route_raw. Here I am reflexively hesitant to duplicate the
-    contents of the BBS metadata, but it seems like an appropriate
-    context and one where doing so will make a big difference to
-    usability.
-    -   and make sure there is a direct link to the ScienceBase
-        permalink. (I intended there to be but want to confirm).
+This is really helpful outside perspective! In this revision:
+
+- There is additional context on the Breeding Bird Survey, including methods and its connection to this project, in the README. 
+- There is a direct link from the BBS Data vignette to the help page for `demo_route_raw`, which includes (brief) explanations of the column names, and a link to the main BBS data page for further information.
 
 > Defining species in function arguments could be clarified. In the
 > arguments to pop_generate() and species_define(), species can be
@@ -84,12 +65,9 @@ here (as I'm deep in the too-close-to-this-to-tell vortex). To-dos:
 > able to call pop_generate(100, species = "Selasphorus calliope") or
 > even pop_generate(100, species = "Calliope Hummingbird").
 
-+1 on combining genus and species as `scientific_name`.
+In this version, the `genus` + `species` designation has been replaced by a single argument, `scientific_name`. 
 
-I am of two minds on the common name lookup. It does seem intuitive and
-nice, but I wonder how accurate the matching would be? It would be easy
-to implement *perfect* matching. Or, to clarify in the docs that it has
-to be the scientific name.
+In this revision, I did _not_ try to implement name matching based on the common name. My reasoning here was that the common name would be more prone to variations in spelling, etc, and so matching common names would be another layer of computational infrastructure. This does seem like a good feature to add in later iterations, or one that I could put more thought into if it seems like it would be very widely used! 
 
 > I wonder if the \_summarize() functions are necessary since they're
 > essentially just calling group_by() %\>% summarize(). Personally I'd
@@ -98,9 +76,7 @@ to be the scientific name.
 > do it. However, I can imagine that some users aren't as comfortable
 > with dplyr so these convenience functions could be useful.
 
-Always a tough call. I like the idea of scooting it to the vignette for
-transparency. This would also help reduce, or at least compartmentalize,
-tidyverse deps.
+I agree. In this version, the `*summarize` functions are removed. I added a short demo of computing summary values using `dplyr` in the Getting Started vignette. (This also made it easier to remove tidyverse dependencies, see later comments!)
 
 > The internal function ind_draw() seems dangerous to me since it has a
 > while loop to get rid of negative sizes with potential to run for a
@@ -119,13 +95,9 @@ tidyverse deps.
 > simple solutions like take the absolute value, won't preserve the
 > desired normal distribution.
 
-This completely didn't occur to me and is completely on point 😆.
+Wow, thank you for recognizing this! This completely did not occur to me, but is of course a significant potential bug! 
 
-To-do:
-
--   test a truncated normal vs. rejection sampling with rules
--   add protections so the functions won't take negative means
--   update docs
+In this version, I've taken the suggestion to use `truncnorm::rtruncnorm` to draw from a normal distribution truncated with a lower bound of 1 (i.e. 1 gram of bird). 
 
 > Some additional, specific comments about the code:
 
@@ -133,21 +105,19 @@ To-do:
 > I believe the standard for documenting package datasets is to document them all in R/data.R rather than individual R files. Not a huge issue, but I think this would help anyone interested find the source for the documentation more easily. See https://r-pkgs.org/data.html#sec-documenting-data.
 > ```
 
-Ah, ok!
+Ah, ok! The dataset documentation is now all in R/data.R.
 
 > ```         
 > Related to the previous point, you might consider renaming or re-grouping some of the other source files. For example, the only exported function in R/simulate_populations.R is pop_generate(), so why not call that file R/pop_generate.R so it's more obvious what's in the file?
 > ```
 
-To-do: revisit grouping of functions in .R files, thinking about
-readability.
+I've rearranged the functions and tried to create a closer match between the functions in a file and the file name. I've kept some single-function scripts (ind_draw.R, pop_generate.R) and grouped others thematically. I hope this is easier to navigate?
 
 > dplyr has deprecated or superseded a lot of the "scoped" verbs, e.g.
 > group_by_at(). Please replace these as appropriate to future proof
 > your package. See <https://dplyr.tidyverse.org/reference/scoped.html>
 
-Yikes. To-do: check this, unless it gets addressed as part of a
-de-tidyversing (see R2).
+Yikes, and this is good to keep in mind. I've removed all `dplyr` verbs except for those in the vignette. 
 
 > I see some inconsistency in code styling. For example, in some places
 > you use if() and in other places if (). I recommend picking one method

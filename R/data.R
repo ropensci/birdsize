@@ -200,7 +200,7 @@
 
 #' Toy data frame of abundances and species names (for vignettes)
 #'
-#' This data table is a toy data frame for the vignettes. It has abundances and AOU codes for 5 species to make up a hypothetical community.
+#' This data table is a toy data frame for the vignettes. It has abundances and scientific names for 5 species to make up a hypothetical community.
 #' @format A data frame with 5 rows and 2 variables:
 #' \describe{
 #'   \item{scientific_name}{Scientific name}
@@ -214,7 +214,7 @@
 
 #' Toy data frame of abundances and species mean sizes (for vignettes)
 #'
-#' This data table is a toy data frame for the vignettes. It has abundances and AOU codes for 5 species to make up a hypothetical community.
+#' This data table is a toy data frame for the vignettes. It has abundances and mean body sizes for 5 species to make up a hypothetical community.
 #' @format A data frame with 5 rows and 3 variables:
 #' \describe{
 #'   \item{mean_size}{Mean mass, in g}

@@ -46,7 +46,7 @@ get_sd_parameters <- function(raw_size_data) {
 #'
 #'
 species_estimate_sd <- function(sp_mean, pars = NULL) {
-  if (is.null(pars)) {
+  if(is.null(pars)) {
 
     pars <- get_sd_parameters(raw_masses)
   }
@@ -83,7 +83,7 @@ clean_sp_size_data <- function(raw_size_data) {
   sp_clean$added_flag = NA_integer_
 
   for (i in 1:nrow(name_change)) {
-    if (!is.na(name_change$close_subspecies[i])) {
+    if(!is.na(name_change$close_subspecies[i])) {
 
       matched_rows <- sp_clean[
         sp_clean$genus == name_change$close_genus[i] &
@@ -122,7 +122,7 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
   clean_size_data$estimated_sd <- FALSE
 
   for (i in 1:nrow(clean_size_data)) {
-    if (is.na(clean_size_data$sd[i])) {
+    if(is.na(clean_size_data$sd[i])) {
       clean_size_data$estimated_sd[i] <- TRUE
       clean_size_data$sd[i] <- species_estimate_sd(clean_size_data$mass[i], pars = sd_pars)
     } else {
