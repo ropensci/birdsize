@@ -4,7 +4,7 @@
 #'
 #' The identifying information used depends on which parameters are provided, with the following order of preference: AOU > scientific name > user provided mean and sd > user provided mean and estimated sd.
 #'
-#' @param AOU AOU
+#' @param AOU  the numeric AOU code used for this species in the Breeding Bird Survey
 #' @param scientific_name the species' scientific name, as "Genus species"
 #' @param mean_size mean body size
 #' @param sd_size sd of body size
@@ -62,7 +62,7 @@ species_define <- function(AOU = NA_integer_, scientific_name = NA_character_, m
 #'
 #' Given either AOU or scientific name, looks up a species' taxonomic information and mean and standard deviation of body size in [sd_table].
 #'
-#' @param AOU AOU species code as specified in the Breeding Bird Survey
+#' @param AOU  the numeric AOU code used for this species in the Breeding Bird Survey
 #' @param scientific_name the species' scientific name, as "Genus species"
 #'
 #' @return data frame with columns AOU, genus, species, mean_mass, mean_sd, contains_estimates, scientific_name

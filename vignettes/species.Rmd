@@ -64,7 +64,7 @@ try(species_define(AOU = 100))
 
 
 ```{r}
-try(species_define(scientific_name = "Taylor swift"))
+try(species_define(scientific_name = "Swiftus Taylor"))
 ```
 
 # Species not known to `birdsize`

@@ -5,7 +5,7 @@
 #' `abundance` is required, as well as *one of*: `AOU`, `scientific_name`, or `mean_size`.
 #'
 #' @param abundance integer number of individuals to draw. *Required*.
-#' @param AOU AOU
+#' @param AOU the numeric AOU code used for this species in the Breeding Bird Survey
 #' @param scientific_name as "Genus species"
 #' @param mean_size numeric, mean body mass (in grams) for this species.
 #' @param sd_size numeric, standard deviation of body mass for this species.

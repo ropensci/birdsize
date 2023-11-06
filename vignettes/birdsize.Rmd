@@ -12,11 +12,16 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+set.seed(22)
+
+
+```
+
+```{r}
 library(birdsize)
 library(dplyr)
 library(ggplot2)
 theme_set(theme_bw())
-set.seed(22)
 ```
 
 
@@ -122,17 +127,18 @@ The resulting table has one row per individual, with a unique `individual_size` 
 
 We can then plot the individual size distribution for the community, colored by species ID:
 
-```{r, fig.dim = c(5,3)}
-toy_aou_sims$AOU <- as.character(toy_aou_sims$AOU)
+```{r, fig.dim = c(5,5)}
 
-ggplot(toy_aou_sims, aes(individual_mass, fill = AOU)) +
+toy_aou_sims$`Scientific name` = toy_aou_sims$scientific_name
+
+ggplot(toy_aou_sims, aes(individual_mass, fill = `Scientific name`)) +
   geom_histogram(position = "stack") +
   scale_fill_viridis_d() +
   scale_x_log10() +
   ggtitle("Community simulated via AOU") +
   xlab("Body mass (g)") +
   ylab("Number of individuals") +
-  theme(legend.position = "right")
+  theme(legend.position = "bottom", legend.direction = "vertical")
 ```
 
 
@@ -156,8 +162,8 @@ head(toy_species_name_sims)
 
 
 
-```{r, fig.dim = c(6,3)}
-toy_species_name_sims$scientific_name <- as.character(toy_species_name_sims$scientific_name)
+```{r, fig.dim = c(5,5)}
+toy_species_name_sims$`Scientific name` = toy_species_name_sims$scientific_name
 
 ggplot(toy_species_name_sims, aes(individual_mass, fill = scientific_name)) +
   geom_histogram(position = "stack") +
@@ -166,7 +172,7 @@ ggplot(toy_species_name_sims, aes(individual_mass, fill = scientific_name)) +
   ggtitle("Community simulated via scientific name") +
   xlab("Body mass (g)") +
   ylab("Number of individuals") +
-  theme(legend.position = "right", legend.direction = "vertical")
+  theme(legend.position = "bottom", legend.direction = "vertical")
 ```
 
 ### Simulation given mean size measurements
@@ -190,17 +196,17 @@ head(toy_size_sims)
 ```
 
 
-```{r, fig.dim = c(5,3)}
-toy_size_sims$sim_species_id <- as.character(toy_size_sims$sim_species_id)
+```{r, fig.dim = c(5,5)}
+toy_size_sims$`Sim species ID` <- as.character(toy_size_sims$sim_species_id)
 
-ggplot(toy_size_sims, aes(individual_mass, fill = sim_species_id)) +
+ggplot(toy_size_sims, aes(individual_mass, fill = `Sim species ID`)) +
   geom_histogram(position = "stack") +
   scale_fill_viridis_d() +
   scale_x_log10() +
   ggtitle("Community simulated via mean body size") +
   xlab("Body mass (g)") +
   ylab("Number of individuals") +
-  theme(legend.position = "right")
+  theme(legend.position = "bottom")
 ```
 
 
@@ -217,10 +223,10 @@ For example, using `dplyr`:
 ```{r}
 toy_species_name_sims_summary <-
   toy_species_name_sims |>
-  dplyr::group_by(scientific_name) |>
-  dplyr::summarize(
+  group_by(scientific_name) |>
+  summarize(
     total_mass = sum(individual_mass),
-    total_n_individuals = dplyr::n()
+    total_n_individuals = n()
   )
 
 toy_species_name_sims_summary
@@ -231,9 +237,9 @@ toy_species_name_sims_summary
 ```{r}
 toy_species_name_sims_totals <-
   toy_species_name_sims |>
-  dplyr::summarize(
+  summarize(
     total_mass = sum(individual_mass),
-    total_n_individuals = dplyr::n(),
+    total_n_individuals = n(),
     total_species_richness = length(unique(scientific_name))
   )
 

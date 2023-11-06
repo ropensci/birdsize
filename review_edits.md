@@ -97,7 +97,7 @@ I agree. In this version, the `*summarize` functions are removed. I added a shor
 
 Wow, thank you for recognizing this! This completely did not occur to me, but is of course a significant potential bug! 
 
-In this version, I've taken the suggestion to use `truncnorm::rtruncnorm` to draw from a normal distribution truncated with a lower bound of 1 (i.e. 1 gram of bird). 
+In this version, I've taken the suggestion to use `truncnorm::rtruncnorm` to draw from a normal distribution truncated with a lower bound of 1 (i.e. 1 gram of bird). Additionally, `pop_generate` now issues a message if the combined mean and standard deviations provided are likely to produce negative values.
 
 > Some additional, specific comments about the code:
 
@@ -202,7 +202,7 @@ This revision has removed the magrittr pipe. The examples use the new base R pip
 > In filter_bbs_survey(), package data are loaded with unidentified_species <- unidentified_species. I am not sure that is the recommended way to internally use package data. I noticed Matt also brought this up so I would follow his advice there.
 > ```
 
-I've removed these calls loading internal data. This has introduced the NOTES of "no visible binding for global variable". 
+I've removed these calls loading internal data. This has introduced the NOTES of "no visible binding for global variable". [RMD - Check that this is still the case when next connected to wifi]
 
 > In simulate_populations(), the error checking routines that cause
 > failure if things like mean and standard deviation aren't provided is
@@ -210,14 +210,12 @@ I've removed these calls loading internal data. This has introduced the NOTES of
 > sense if the input is checked for errors right away instead of further
 > down.
 
-#### RMD START HERE ####
-
-Can do!
+This version has the error checking occurring at both levels. This makes it slightly easier to trace if a user is running `pop_generate` (new name for `simulate_populations`), and keeps the guardrails on within `ind_draw` as well. 
 
 > Line 33 of species_data_functions.R: the argument data to lm() should
 > be named.
 
-Can do!
+Done! (Now at line 24).
 
 > Documentation review
 
@@ -225,20 +223,19 @@ Can do!
 > I thought the vignettes were well-organized and do a good job of providing examples of all the functions. One suggestion is that the vignettes could have more informative titles. Just the word community does not make it clear exactly what can be learned from going through the vignette.
 > ```
 
-I think this would be well-addressed by refocusing on topics (see above)
+I hope this is addressed by re-organizing the vignettes so most of the general-purpose information is in "Getting Started", and the remaining vignettes have clear, specific content (BBS data, scaling relationship, species definitions). 
 
 > I also liked the Taylor Swift example but shouldn't the species be
 > Taylor and the genus Swift? :-D
 
-Here for it.
+Noted, and updated. :D 
 
 > A user copying and pasting code from the vignettes will not be able to
 > run the code containing tidyverse functions including select() and
 > pmap_df() because those packages are not explicitly loaded in the
 > vignette.
 
-*Todo* if any tidyverse stays in the vignettes, make sure they are
-loaded visibly in the vignettes.
+The package calls have been made visible in the vignettes. 
 
 > The term "AOU" should be defined somewhere - it is known to North
 > Americans but not otherwise. I understand this package is most
@@ -249,8 +246,9 @@ loaded visibly in the vignettes.
 > in lowercase aou but I think it would be more consistent to make it
 > capitalized AOU.
 
-*Todo* Make sure to explain AOU (maybe as part of wider explanation of
-BBS data), and capitalize the argument.
+I've expanded references to the AOU in the vignettes and code documentation to the "AOU numeric code" and added links to the BBS page. I've also capitalized user-facing instances of "AOU".
+
+Interestingly, in doing this I found that the BBS AOUs appear to differ from the (more recent) codes put out by the American Ornithological Union. It looks to me like the AOU itself has switched to four-letter alpha character codes, but the BBS has kept with the (original, I believe) numeric codes. So the only lookup table for the AOU numbers to species is the BBS list, which I have linked to. 
 
 > The bar plot with total biomass by AOU in the community vignette, as
 > Matt mentioned, would be more informative with species names instead
@@ -258,7 +256,7 @@ BBS data), and capitalize the argument.
 > the axis labels, it would be cleaner to just label the x axis with the
 > species names and suppress the legend of fill colors.
 
-*Todo* Make sure this plot gets updated.
+This plot has been removed with the vignette rearrangement, but I've updated the other plot legends to use scientific names instead of AOUs. 
 
 > Comments on science stuff
 
@@ -270,14 +268,14 @@ BBS data), and capitalize the argument.
 > standard deviations. Is there any way of incorporating uncertainty in
 > those scaling parameters?
 
-I need to think about this one. Generally when I work with this method,
+This is a tough question. Generally when _I_ work with this method,
 I take the estimated mass and sd as the limit of the precision of this
 approach. The uncertainty is also variable among species - for some we
 have estimates and some measurements; for some species many measurements
 and some just one; and from different locations and times and
 investigators. For these reasons, I handle these estimates as
 "best-guesses suitable for broad-scale questions, but with some
-significant limitations as things get precise"....more thought needed.
+significant limitations as things get precise". I've added language to this effect in the vignettes and README. 
 
 > It would be nice to allow filter_bbs_survey() to take arguments so
 > that the user could customize removing specific species groups. For

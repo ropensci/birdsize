@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  echo = F,
+  echo = T,
   message = F
 )
 ```
@@ -22,7 +22,7 @@ The CRC Handbook of Avian Body Masses (Dunning 2008) contains records of the mea
 
 
 
-```{r setup, echo = F}
+```{r setup}
 library(birdsize)
 library(dplyr)
 library(ggplot2)
