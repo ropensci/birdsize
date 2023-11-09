@@ -49,7 +49,7 @@ community_generate <- function(community_data_table, abundance_column_name = "sp
   # Identify ID/grouping columns and columns to pass to sim fxns.
 
 
-  community_data_table$rejoining_id <- 1:nrow(community_data_table)
+  community_data_table$rejoining_id <- seq_len(nrow(community_data_table))
   abundance_values <- as.matrix(community_data_table[, abundance_column_name])
   abundance_values <- as.vector(abundance_values[, 1])
   community_data_table$abundance <- abundance_values

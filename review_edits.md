@@ -324,8 +324,7 @@ I've also added sections right at the beginning of both the README and Getting S
 
 # Others
 
--   make sure test file names // source files names
+-   Regarding @ maelle's comment regarding test files and source file names: I have renamed the test files to correspond more closely to the file names.
 -   tests fail due to an issue with unzip on windows. 👀
--   reach out to Dunning re: contributor-ship
--   and see the Small Fixes PR (which looks extremely helpful and
-    above-and-beyond for peer review! :raised_hands:)
+-   I've reached out to Dr. Dunning and he agreed to be listed as a Data Contributor. I've added him with this revision. 
+-   I reviewed the Small Fixes PR from @ mstrimas. Because of the scope of revisions, I ended up not merging that pull request and instead implementing the same changes on the revised codebase. Specifically, I tidied up the DESCRIPTION using desc::desc_normalize(), removed `remotes::install_github` from the README, switched T/F to TRUE/FALSE, and switched 1:nrow() to seq_len(nrow()). = was changed to <- via the lintr cleanup, and use of .data$ was removed with the removal of tidyverse functions.

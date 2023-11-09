@@ -79,7 +79,7 @@ clean_sp_size_data <- function(raw_size_data) {
   sp_clean <- sp_clean[which(is.na(sp_clean$not_in_dunning)), ]
   sp_clean$added_flag <- NA_integer_
 
-  for (i in 1:nrow(name_change)) {
+  for (i in seq_len(nrow(name_change))) {
     if (!is.na(name_change$close_subspecies[i])) {
       matched_rows <- sp_clean[
         sp_clean$genus == name_change$close_genus[i] &
@@ -117,7 +117,7 @@ clean_sp_size_data <- function(raw_size_data) {
 add_estimated_sds <- function(clean_size_data, sd_pars) {
   clean_size_data$estimated_sd <- FALSE
 
-  for (i in 1:nrow(clean_size_data)) {
+  for (i in seq_len(nrow(clean_size_data))) {
     if (is.na(clean_size_data$sd[i])) {
       clean_size_data$estimated_sd[i] <- TRUE
       clean_size_data$sd[i] <- species_estimate_sd(clean_size_data$mass[i], pars = sd_pars)
@@ -152,13 +152,13 @@ get_sp_mean_size <- function(sd_dat) {
   unique_combinations$contains_estimates <- NA
 
 
-  for (i in 1:nrow(unique_combinations)) {
+  for (i in seq_len(nrow(unique_combinations))) {
     this_combination <- sd_dat[which(sd_dat$AOU == unique_combinations$AOU[i] &
       sd_dat$genus == unique_combinations$genus[i] &
       sd_dat$species == unique_combinations$species[i]), ]
 
     unique_combinations$mean_mass[i] <- mean(this_combination$mass)
-    unique_combinations$mean_sd[i] <- mean(this_combination$sd, na.rm = F)
+    unique_combinations$mean_sd[i] <- mean(this_combination$sd, na.rm = FALSE)
     unique_combinations$contains_estimates[i] <- any(this_combination$estimated_sd)
   }
 

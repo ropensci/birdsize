@@ -7,7 +7,7 @@
 species_lookup(AOU = NA_integer_, scientific_name = NA_character_)
 }
 \arguments{
-\item{AOU}{AOU species code as specified in the Breeding Bird Survey}
+\item{AOU}{the numeric AOU code used for this species in the Breeding Bird Survey}
 
 \item{scientific_name}{the species' scientific name, as "Genus species"}
 }

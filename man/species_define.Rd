@@ -13,7 +13,7 @@ species_define(
 )
 }
 \arguments{
-\item{AOU}{AOU}
+\item{AOU}{the numeric AOU code used for this species in the Breeding Bird Survey}
 
 \item{scientific_name}{the species' scientific name, as "Genus species"}
 

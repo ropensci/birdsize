@@ -16,7 +16,7 @@ pop_generate(
 \arguments{
 \item{abundance}{integer number of individuals to draw. \emph{Required}.}
 
-\item{AOU}{AOU}
+\item{AOU}{the numeric AOU code used for this species in the Breeding Bird Survey}
 
 \item{scientific_name}{as "Genus species"}
 
