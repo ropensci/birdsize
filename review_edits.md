@@ -282,8 +282,7 @@ significant limitations as things get precise". I've added language to this effe
 > instance it would be interesting if the user could remove only
 > waterbirds and keep nocturnal birds, if they were so inclined.
 
-*Todo* Check this out. I might need to go back to Dunning to get masses
-for waterbirds and nocturnal birds :)
+This is an interesting suggestion. To implement it I would need to expand the database of masses included in the package, which would mean going back to Dunning (2008) - which invites expanding the data further than (necessarily) just the Breeding Bird Survey species. I think this becomes a wider conversation about the scope of data reproduction in the package vs. shifting that onto a user. I haven't implemented it in this revision, but if it seems like a necessary value-add it would be possible.
 
 > The real heart of the body mass distribution simulation is in the file
 > simulate_populations.R in ind_draw() at line 34:
@@ -319,13 +318,9 @@ for waterbirds and nocturnal birds :)
 > To further address the point about the rejection sampling method, Matt mentioned in his review that it would be good to use a "less brute force" method to ensure the values are >0. Actually, the method of rejection sampling that you are currently using is a well-accepted method. It is used by the R package truncnorm. For almost any realistic values of body mass mean and sd, you will get very few negative values on the initial sample, so the while loop would hardly ever even be necessary. However, if you are interested in a more direct method of sampling from a truncated normal without the while loop, I would check out [this Stackoverflow thread](https://stats.stackexchange.com/questions/56747/simulate-constrained-normal-on-lower-or-upper-bound-in-r) especially [this answer](https://stats.stackexchange.com/a/510821/54923). There are also the existing functions msm::tnorm() and truncnorm::truncnorm() but you may not want to add a dependency to your package.
 > ```
 
-!!!! see above.
+This is a really good and important observation (see the earlier response to Matt's comment)! I went ahead and switched over to `truncnorm::rtruncnorm` to avoid the negative-values problem. 
 
-Additional todos:
-
--   make sure the normal assumption is made crystal clear in the
-    documentation
--   look into a user-specified lower limit other than 0
+I've also added sections right at the beginning of both the README and Getting Started vignette clarifying the assumption of the normal distribution. 
 
 # Others
 
