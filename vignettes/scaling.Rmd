@@ -33,7 +33,7 @@ theme_set(theme_bw())
 The `raw_masses` dataset (included in `bbssize`) includes all records from the CRC Handbook (Dunning 2008) available for species in this subset of the Breeding Bird Survey. 
 
 ```{r, echo = T}
-raw_masses <- raw_masses
+data(raw_masses)
 ```
 
 Of the `r nrow(raw_masses)` records in `raw_masses`, `r sum(is.na(raw_masses$sd))` are missing the standard deviation (affecting `r length(unique(filter(raw_masses, is.na(sd))$species_id))` species).
@@ -117,7 +117,7 @@ ggplot(raw_masses_with_estimated_sd, aes(exp(log_mass), exp(log_var), color = `E
 ```
 
 
-The internal function `birdsize:::species_estimate_sd` can be used to estimate the standard deviation of body mass from the mean:
+The internal function `birdsize:::species_estimate_sd` can be used to estimate the standard deviation of body mass from the mean. This function is called within `species_define` to add estimated standard deviations to records of species that have body mass but no sd measurements. 
 
 ```{r, echo = T, results = T}
 # Using species_estimate:

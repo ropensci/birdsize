@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# birdsize
+# birdsize: Estimate avian body size distributions
 
 
 <!-- badges: start -->

@@ -2,15 +2,15 @@
 # Skip it on CI so as to not overwhelm ScienceBase with queries.
 
 test_that("direct download works", {
-  skip_on_ci()
-  skip_on_os("mac")
-  skip_on_os("windows")
+ # skip_on_ci()
+  #skip_on_os("mac")
+  #skip_on_os("windows")
 
   temp <- tempfile()
   temp2 <- tempfile()
   temp3 <- tempfile()
 
-  download.file("https://www.sciencebase.gov/catalog/file/get/5ea04e9a82cefae35a129d65?f=__disk__38%2F0e%2F1d%2F380e1dd98a48aa48b9cf2efa25f74e07ebc797f8", temp)
+  download.file("https://www.sciencebase.gov/catalog/file/get/5ea04e9a82cefae35a129d65?f=__disk__38%2F0e%2F1d%2F380e1dd98a48aa48b9cf2efa25f74e07ebc797f8", temp, method = "curl")
   unzip(zipfile = temp, exdir = temp2)
   unzip(zipfile = file.path(temp2, "States/Connect.zip"), exdir = temp3)
   data <- read.csv(file.path(temp3, "Connect.csv"), stringsAsFactors = F)
