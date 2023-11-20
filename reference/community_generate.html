@@ -38,18 +38,15 @@
       <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="../articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="../articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="../articles/scaling.html">scaling</a>
     </li>
     <li>
       <a href="../articles/species.html">species</a>
     </li>
   </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/diazrenata/birdsize/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
@@ -66,7 +63,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Simulate individual measurements for many populations</h1>
-    <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/HEAD/R/simulate_community.R" class="external-link"><code>R/simulate_community.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/diazrenata/birdsize/blob/HEAD/R/community_generate.R" class="external-link"><code>R/community_generate.R</code></a></small>
     <div class="hidden name"><code>community_generate.Rd</code></div>
     </div>
 
@@ -84,7 +81,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>community_data_table</dt>
-<dd><p>dataframe containing at least one of <code>aou</code>, <code>genus</code> <em>and</em> <code>species</code>, or <code>mean_size</code> and a column for species abundances</p></dd>
+<dd><p>dataframe containing at least one of <code>AOU</code>, <code>scientific_name</code>, or <code>mean_size</code> and a column for species abundances</p></dd>
 
 
 <dt>abundance_column_name</dt>
@@ -98,7 +95,7 @@
 <p>a dataframe one row per individual, all columns from <code>community_data_table</code>, and additional columns for species attributes.</p>
 
 
-<p>Specifically:</p><ul><li><p><code>aou</code>: the AOU, if provided</p></li>
+<p>Specifically:</p><ul><li><p><code>AOU</code>: the AOU, if provided</p></li>
 <li><p><code>sim_species_id</code>: the <code>sim_species_id</code> if provided</p></li>
 <li><p><code>genus</code>: the genus associated with the AOU if provided, or the genus if provided</p></li>
 <li><p><code>species</code>: the species associated with the AOU if provided, or the species if provided</p></li>
@@ -108,6 +105,7 @@
 <li><p><code>sd_size</code>: the standard deviation of body mass for this species (i.e. the parameter used for simulation)</p></li>
 <li><p><code>abundance</code>: the number of individuals simulated of this species (i.e. parameter used for simulation)</p></li>
 <li><p><code>sd_method</code>: the method for finding the standard deviation for body mass for this species</p></li>
+<li><p><code>scientific_name</code>: the scientific name</p></li>
 </ul></div>
 
     <div id="ref-examples">
@@ -122,27 +120,27 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4    900000 9009911011994        900       99     1  101 1994       8      12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5    900000 9009911011994        900       99     1  101 1994       8      12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6    900000 9009911011994        900       99     1  101 1994       8      12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   count30 count40 count50 stoptotal speciestotal  aou sim_species_id  genus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      15      12      15         5           62 4730           4730 Alauda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      15      12      15         5           62 4730           4730 Alauda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      15      12      15         5           62 4730           4730 Alauda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      15      12      15         5           62 4730           4730 Alauda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      15      12      15         5           62 4730           4730 Alauda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      15      12      15         5           62 4730           4730 Alauda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    species individual_mass individual_bmr mean_size  sd_size abundance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 arvensis        39.78612       145.1436    37.475 3.300613        62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 arvensis        37.35126       138.7532    37.475 3.300613        62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 arvensis        37.01044       137.8493    37.475 3.300613        62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 arvensis        36.94925       137.6867    37.475 3.300613        62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 arvensis        34.51542       131.1574    37.475 3.300613        62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 arvensis        37.33616       138.7132    37.475 3.300613        62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    sd_method</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 AOU lookup</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   count30 count40 count50 stoptotal speciestotal  AOU sim_species_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      15      12      15         5           62 4730           4730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      15      12      15         5           62 4730           4730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      15      12      15         5           62 4730           4730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      15      12      15         5           62 4730           4730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      15      12      15         5           62 4730           4730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      15      12      15         5           62 4730           4730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   individual_mass individual_bmr mean_size  sd_size abundance  sd_method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        42.85926       153.0514    37.475 3.300613        62 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        33.34367       127.9670    37.475 3.300613        62 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        44.47399       157.1408    37.475 3.300613        62 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        35.59023       134.0566    37.475 3.300613        62 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        32.31357       125.1356    37.475 3.300613        62 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        36.88231       137.5088    37.475 3.300613        62 AOU lookup</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   scientific_name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Alauda arvensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Alauda arvensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Alauda arvensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Alauda arvensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 Alauda arvensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 Alauda arvensis</span>
 </code></pre></div>
     </div>
   </div>

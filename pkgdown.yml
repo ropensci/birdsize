@@ -4,9 +4,7 @@ pkgdown_sha: ~
 articles:
   bbs-data: bbs-data.html
   birdsize: birdsize.html
-  community: community.html
-  populations: populations.html
   scaling: scaling.html
   species: species.html
-last_built: 2023-02-28T16:32Z
+last_built: 2023-11-20T14:33Z
 

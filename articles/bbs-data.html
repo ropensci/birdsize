@@ -56,18 +56,15 @@
       <a href="../articles/bbs-data.html">bbs-data</a>
     </li>
     <li>
-      <a href="../articles/community.html">community</a>
-    </li>
-    <li>
-      <a href="../articles/populations.html">populations</a>
-    </li>
-    <li>
       <a href="../articles/scaling.html">scaling</a>
     </li>
     <li>
       <a href="../articles/species.html">species</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -121,13 +118,14 @@ releases. Instructions for installing the Data Retriever for R are
 available <a href="https://docs.ropensci.org/rdataretriever/#basic-installation" class="external-link">here</a>.</p>
 <p><code>birdsize</code> includes a demo dataset with the same column
 names as the Breeding Bird Survey data available through ScienceBase or
-the Retriever, but with synthetic data:</p>
+the Retriever, but with synthetic data. For an explanation of each of
+the column names, see the Help page for <a href="../reference/demo_route_raw.html">demo_route_raw</a> or the
+metadata available on ScienceBase.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_raw_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="va"><a href="../reference/demo_route_raw.html">demo_route_raw</a></span></span>
+<code class="sourceCode R"><span><span class="va">demo_raw_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="va"><a href="../reference/demo_route_raw.html">demo_route_raw</a></span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_raw_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  aou count10</span></span>
+<span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  AOU count10</span></span>
 <span><span class="co">#&gt; 1    900000 9009911011994        900       99     1  101 1994 4730       8</span></span>
 <span><span class="co">#&gt; 2    900001 9009911011995        900       99     1  101 1995 4730      13</span></span>
 <span><span class="co">#&gt; 3    900002 9009911011996        900       99     1  101 1996 4730       8</span></span>
@@ -150,11 +148,10 @@ BBS data to remove taxa that are poorly sampled via the BBS methods
 (e.g. nightbirds, waterbirds) and to remove unidenitifed taxa. The
 <code>filter_bbs_survey</code> function performs this cleaning:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_clean_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="va">demo_raw_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">demo_clean_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="va">demo_raw_data</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_clean_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  aou count10</span></span>
+<span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  AOU count10</span></span>
 <span><span class="co">#&gt; 1    900000 9009911011994        900       99     1  101 1994 4730       8</span></span>
 <span><span class="co">#&gt; 2    900001 9009911011995        900       99     1  101 1995 4730      13</span></span>
 <span><span class="co">#&gt; 3    900002 9009911011996        900       99     1  101 1996 4730       8</span></span>
@@ -177,8 +174,7 @@ individual-level size and BMR estimates for all individuals recorded in
 a community data frame of the type available from ScienceBase, the
 Retriever, or the included demo data:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">demo_community</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">demo_clean_data</span><span class="op">)</span></span>
 <span></span>
@@ -190,74 +186,37 @@ Retriever, or the included demo data:</p>
 <span><span class="co">#&gt; 4    900000 9009911011994        900       99     1  101 1994       8      12</span></span>
 <span><span class="co">#&gt; 5    900000 9009911011994        900       99     1  101 1994       8      12</span></span>
 <span><span class="co">#&gt; 6    900000 9009911011994        900       99     1  101 1994       8      12</span></span>
-<span><span class="co">#&gt;   count30 count40 count50 stoptotal speciestotal  aou sim_species_id  genus</span></span>
-<span><span class="co">#&gt; 1      15      12      15         5           62 4730           4730 Alauda</span></span>
-<span><span class="co">#&gt; 2      15      12      15         5           62 4730           4730 Alauda</span></span>
-<span><span class="co">#&gt; 3      15      12      15         5           62 4730           4730 Alauda</span></span>
-<span><span class="co">#&gt; 4      15      12      15         5           62 4730           4730 Alauda</span></span>
-<span><span class="co">#&gt; 5      15      12      15         5           62 4730           4730 Alauda</span></span>
-<span><span class="co">#&gt; 6      15      12      15         5           62 4730           4730 Alauda</span></span>
-<span><span class="co">#&gt;    species individual_mass individual_bmr mean_size  sd_size abundance</span></span>
-<span><span class="co">#&gt; 1 arvensis        40.44602       146.8560    37.475 3.300613        62</span></span>
-<span><span class="co">#&gt; 2 arvensis        33.60224       128.6737    37.475 3.300613        62</span></span>
-<span><span class="co">#&gt; 3 arvensis        34.51275       131.1501    37.475 3.300613        62</span></span>
-<span><span class="co">#&gt; 4 arvensis        32.70726       126.2207    37.475 3.300613        62</span></span>
-<span><span class="co">#&gt; 5 arvensis        36.38245       136.1775    37.475 3.300613        62</span></span>
-<span><span class="co">#&gt; 6 arvensis        27.90115       112.6984    37.475 3.300613        62</span></span>
-<span><span class="co">#&gt;    sd_method</span></span>
-<span><span class="co">#&gt; 1 AOU lookup</span></span>
-<span><span class="co">#&gt; 2 AOU lookup</span></span>
-<span><span class="co">#&gt; 3 AOU lookup</span></span>
-<span><span class="co">#&gt; 4 AOU lookup</span></span>
-<span><span class="co">#&gt; 5 AOU lookup</span></span>
-<span><span class="co">#&gt; 6 AOU lookup</span></span></code></pre></div>
+<span><span class="co">#&gt;   count30 count40 count50 stoptotal speciestotal  AOU sim_species_id</span></span>
+<span><span class="co">#&gt; 1      15      12      15         5           62 4730           4730</span></span>
+<span><span class="co">#&gt; 2      15      12      15         5           62 4730           4730</span></span>
+<span><span class="co">#&gt; 3      15      12      15         5           62 4730           4730</span></span>
+<span><span class="co">#&gt; 4      15      12      15         5           62 4730           4730</span></span>
+<span><span class="co">#&gt; 5      15      12      15         5           62 4730           4730</span></span>
+<span><span class="co">#&gt; 6      15      12      15         5           62 4730           4730</span></span>
+<span><span class="co">#&gt;   individual_mass individual_bmr mean_size  sd_size abundance  sd_method</span></span>
+<span><span class="co">#&gt; 1        40.44602       146.8560    37.475 3.300613        62 AOU lookup</span></span>
+<span><span class="co">#&gt; 2        33.60224       128.6737    37.475 3.300613        62 AOU lookup</span></span>
+<span><span class="co">#&gt; 3        34.51275       131.1501    37.475 3.300613        62 AOU lookup</span></span>
+<span><span class="co">#&gt; 4        32.70726       126.2207    37.475 3.300613        62 AOU lookup</span></span>
+<span><span class="co">#&gt; 5        36.38245       136.1775    37.475 3.300613        62 AOU lookup</span></span>
+<span><span class="co">#&gt; 6        27.90115       112.6984    37.475 3.300613        62 AOU lookup</span></span>
+<span><span class="co">#&gt;   scientific_name</span></span>
+<span><span class="co">#&gt; 1 Alauda arvensis</span></span>
+<span><span class="co">#&gt; 2 Alauda arvensis</span></span>
+<span><span class="co">#&gt; 3 Alauda arvensis</span></span>
+<span><span class="co">#&gt; 4 Alauda arvensis</span></span>
+<span><span class="co">#&gt; 5 Alauda arvensis</span></span>
+<span><span class="co">#&gt; 6 Alauda arvensis</span></span></code></pre></div>
 <p>The first 15 columns (<code>record_id</code> through
-<code>aou</code>) are retained from the input data. For species in the
+<code>AOU</code>) are retained from the input data. For species in the
 BBS, <code>sim_species_id</code> is identical to the AOU used for
-species identification. <code>genus</code> and <code>species</code> give
-the scientific name associated with the AOU.
-<code>individual_mass</code> and <code>individual_bmr</code> are
-<em>individual-level</em> mass and BMR estimates, with one for each
-individual recorded in the input data. <code>mean_size</code>,
-<code>sd_size</code>, <code>abundance</code>, and <code>sd_method</code>
-give the parameters used to generate the individual-level estimates.</p>
-</div>
-<div class="section level3">
-<h3 id="summary-statistics-and-visualization">Summary statistics and visualization<a class="anchor" aria-label="anchor" href="#summary-statistics-and-visualization"></a>
-</h3>
-<p>The <code>community_summarize</code> function will calculate summary
-statistics - for example, the total, mean, and standard deviation
-abundance, biomass, and energy use of all individuals on a route over
-time:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_summary</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/community_summarize.html">community_summarize</a></span><span class="op">(</span><span class="va">demo_community</span>, level <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 15</span></span></span>
-<span><span class="co">#&gt;   routedataid  count…¹ state…² route  rpid  year speci…³ total…⁴ total…⁵ total…⁶</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>994 aou        <span style="text-decoration: underline;">1</span>361 <span style="text-decoration: underline;">157</span>120. <span style="text-decoration: underline;">352</span>457.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>995 aou        <span style="text-decoration: underline;">1</span>443 <span style="text-decoration: underline;">161</span>413. <span style="text-decoration: underline;">364</span>631.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>996 aou        <span style="text-decoration: underline;">1</span>413 <span style="text-decoration: underline;">166</span>267. <span style="text-decoration: underline;">368</span>934.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>997 aou        <span style="text-decoration: underline;">1</span>381 <span style="text-decoration: underline;">158</span>888. <span style="text-decoration: underline;">357</span>190.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>998 aou        <span style="text-decoration: underline;">1</span>415 <span style="text-decoration: underline;">157</span>009. <span style="text-decoration: underline;">357</span>502.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 90099110119…     900      99     1   101  <span style="text-decoration: underline;">1</span>999 aou        <span style="text-decoration: underline;">1</span>412 <span style="text-decoration: underline;">163</span>440. <span style="text-decoration: underline;">367</span>197.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 5 more variables: total_richness &lt;int&gt;, mean_individual_mass &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   sd_individual_mass &lt;dbl&gt;, mean_metabolic_rate &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   sd_metabolic_rate &lt;dbl&gt;, and abbreviated variable names ¹​countrynum,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ²​statenum, ³​species_designator, ⁴​total_abundance, ⁵​total_biomass,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁶​total_metabolic_rate</span></span></span></code></pre></div>
-<p>This can be useful to explore variation over the duration of time for
-which a route has been sampled:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">demo_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">total_biomass</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="bbs-data_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
+species identification. <code>scientific_name</code> gives the
+scientific name associated with the AOU. <code>individual_mass</code>
+and <code>individual_bmr</code> are <em>individual-level</em> mass and
+BMR estimates, with one for each individual recorded in the input data.
+<code>mean_size</code>, <code>sd_size</code>, <code>abundance</code>,
+and <code>sd_method</code> give the parameters used to generate the
+individual-level estimates.</p>
 </div>
 <div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
