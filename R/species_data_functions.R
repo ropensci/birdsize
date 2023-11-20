@@ -12,25 +12,17 @@
 #'
 #' @keywords internal
 #'
-#' @importFrom dplyr filter mutate
-#' @importFrom rlang .data
 #' @importFrom stats lm var family
 get_sd_parameters <- function(raw_size_data) {
-  sp_for_sd <- dplyr::filter(
-    raw_size_data,
-    !is.na(sd)
-  ) %>%
-    dplyr::mutate(
-      mass = as.numeric(.data$mass),
-      sd = as.numeric(.data$sd)
-    ) %>%
-    dplyr::mutate(var = sd^2) %>%
-    dplyr::mutate(
-      log_m = log(.data$mass),
-      log_var = log(.data$var)
-    )
+  sp_for_sd <- raw_size_data[!is.na(raw_size_data$sd), ]
+  sp_for_sd$mass <- as.numeric(sp_for_sd$mass)
+  sp_for_sd$sd <- as.numeric(sp_for_sd$sd)
+  sp_for_sd$var <- sp_for_sd$sd^2
+  sp_for_sd$log_m <- log(sp_for_sd$mass)
+  sp_for_sd$log_var <- log(sp_for_sd$var)
 
-  sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
+
+  sd_fit <- stats::lm(data = sp_for_sd, formula = log_var ~ log_m)
 
   intercept <- exp(sd_fit$coefficients[[1]])
   slope <- sd_fit$coefficient[[2]]
@@ -54,8 +46,6 @@ get_sd_parameters <- function(raw_size_data) {
 #'
 species_estimate_sd <- function(sp_mean, pars = NULL) {
   if (is.null(pars)) {
-    raw_masses <- raw_masses
-
     pars <- get_sd_parameters(raw_masses)
   }
 
@@ -78,41 +68,36 @@ species_estimate_sd <- function(sp_mean, pars = NULL) {
 #' }
 #'
 #' @keywords internal
-#' @importFrom dplyr select mutate filter bind_rows
-#' @importFrom rlang .data
 clean_sp_size_data <- function(raw_size_data) {
-  sp_clean <- raw_size_data %>%
-    dplyr::select(-.data$english_common_name, -.data$sporder, -.data$family) %>%
-    dplyr::mutate(mass = as.numeric(.data$mass))
+  cols_to_remove <- which(colnames(raw_size_data) %in% c("english_common_name", "sporder", "family"))
+  sp_clean <- raw_size_data[, -cols_to_remove]
+  sp_clean$mass <- as.numeric(sp_clean$mass)
 
-  name_change <- dplyr::filter(sp_clean, .data$not_in_dunning == 1)
+  name_change <- sp_clean[which(sp_clean$not_in_dunning == 1), ]
 
-  sp_clean <- dplyr::filter(sp_clean, is.na(.data$not_in_dunning)) %>%
-    dplyr::mutate(added_flag = NA)
 
-  for (i in 1:nrow(name_change)) {
+  sp_clean <- sp_clean[which(is.na(sp_clean$not_in_dunning)), ]
+  sp_clean$added_flag <- NA_integer_
+
+  for (i in seq_len(nrow(name_change))) {
     if (!is.na(name_change$close_subspecies[i])) {
-      matched_rows <- dplyr::filter(
-        sp_clean,
-        .data$genus == name_change$close_genus[i],
-        .data$species == name_change$close_species[i],
-        .data$subspecies == name_change$close_subspecies[i]
-      )
+      matched_rows <- sp_clean[
+        sp_clean$genus == name_change$close_genus[i] &
+          sp_clean$species == name_change$close_species[i] &
+          sp_clean$subspecies == name_change$close_subspecies[i],
+      ]
     } else {
-      matched_rows <- dplyr::filter(
-        sp_clean,
-        .data$genus == name_change$close_genus[i],
-        .data$species == name_change$close_species[i]
-      )
+      matched_rows <- sp_clean[
+        sp_clean$genus == name_change$close_genus[i] &
+          sp_clean$species == name_change$close_species[i],
+      ]
     }
 
-    sp_to_add <- matched_rows %>%
-      dplyr::mutate(
-        aou = name_change$aou[i],
-        added_flag = 1
-      )
+    sp_to_add <- matched_rows
+    sp_to_add$AOU <- name_change$AOU[i]
+    sp_to_add$added_flag <- 1
 
-    sp_clean <- dplyr::bind_rows(sp_clean, sp_to_add)
+    sp_clean <- rbind(sp_clean, sp_to_add)
   }
 
   return(sp_clean)
@@ -132,7 +117,7 @@ clean_sp_size_data <- function(raw_size_data) {
 add_estimated_sds <- function(clean_size_data, sd_pars) {
   clean_size_data$estimated_sd <- FALSE
 
-  for (i in 1:nrow(clean_size_data)) {
+  for (i in seq_len(nrow(clean_size_data))) {
     if (is.na(clean_size_data$sd[i])) {
       clean_size_data$estimated_sd[i] <- TRUE
       clean_size_data$sd[i] <- species_estimate_sd(clean_size_data$mass[i], pars = sd_pars)
@@ -157,18 +142,28 @@ add_estimated_sds <- function(clean_size_data, sd_pars) {
 #' }
 #'
 #'
-#' @importFrom dplyr group_by summarize ungroup filter
-#' @importFrom rlang .data
 get_sp_mean_size <- function(sd_dat) {
-  sp_means <- sd_dat %>%
-    dplyr::group_by(.data$aou, .data$genus, .data$species) %>%
-    dplyr::summarize(
-      mean_mass = mean(.data$mass),
-      mean_sd = mean(.data$sd, na.rm = F),
-      contains_estimates = any(.data$estimated_sd)
-    ) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(!is.na(.data$aou))
+  unique_combinations <- sd_dat[, c("AOU", "genus", "species")]
+
+  unique_combinations <- unique(unique_combinations)
+
+  unique_combinations$mean_mass <- NA_real_
+  unique_combinations$mean_sd <- NA_real_
+  unique_combinations$contains_estimates <- NA
+
+
+  for (i in seq_len(nrow(unique_combinations))) {
+    this_combination <- sd_dat[which(sd_dat$AOU == unique_combinations$AOU[i] &
+      sd_dat$genus == unique_combinations$genus[i] &
+      sd_dat$species == unique_combinations$species[i]), ]
+
+    unique_combinations$mean_mass[i] <- mean(this_combination$mass)
+    unique_combinations$mean_sd[i] <- mean(this_combination$sd, na.rm = FALSE)
+    unique_combinations$contains_estimates[i] <- any(this_combination$estimated_sd)
+  }
+
+  sp_means <- unique_combinations[!is.na(unique_combinations$AOU), ]
+  sp_means <- sp_means[order(sp_means$AOU), ]
 
   sp_means
 }
@@ -189,7 +184,6 @@ get_sp_mean_size <- function(sd_dat) {
 #' @keywords internal
 #'
 generate_sd_table <- function(raw_size_data) {
-
   # Calculate scaling parameters
   fitted_pars <- get_sd_parameters(raw_size_data)
 
@@ -197,7 +191,7 @@ generate_sd_table <- function(raw_size_data) {
   clean_size_dat <- clean_sp_size_data(raw_size_data)
 
   # Add estimates for missing standard deviation records
-  sd_size_dat <-add_estimated_sds(
+  sd_size_dat <- add_estimated_sds(
     clean_size_data = clean_size_dat,
     sd_pars = fitted_pars
   )
@@ -205,7 +199,6 @@ generate_sd_table <- function(raw_size_data) {
   # Summarize to species-level means for the mean and standard deviation of body mass
   sp_mean_size_dat <- get_sp_mean_size(sd_size_dat)
 
+  sp_mean_size_dat$scientific_name <- paste(sp_mean_size_dat$genus, sp_mean_size_dat$species, sep = " ")
   sp_mean_size_dat
 }
-
-

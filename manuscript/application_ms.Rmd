@@ -125,8 +125,8 @@ First, we obtain the mean masses for each species in our dataset as provided in 
 
 ```{r}
 
-species_to_simulate <- clean_data %>% 
-  select(year, aou) %>%
+species_to_simulate <- clean_data |> 
+  select(year, aou) |>
   left_join(sd_table)
 
 head(species_to_simulate)
@@ -137,8 +137,8 @@ For this example, we can introduce a simple adjustment where `mean_mass` decreas
 
 
 ```{r}
-species_to_simulate <- species_to_simulate %>%
-  mutate(modified_mass = mean_mass - (.01 * (year - 1994) * mean_mass)) %>%
+species_to_simulate <- species_to_simulate |>
+  mutate(modified_mass = mean_mass - (.01 * (year - 1994) * mean_mass)) |>
   mutate(mean_size = modified_mass)
 
 ```
@@ -149,11 +149,11 @@ We can provide these modified `mean_size` values to `community_generate` by addi
 
 ```{r}
 
-parameters_to_add <- species_to_simulate %>%
+parameters_to_add <- species_to_simulate |>
   select(aou, mean_size, year) 
 
-clean_data_with_size_change <- clean_data %>%
-  left_join(parameters_to_add) %>%
+clean_data_with_size_change <- clean_data |>
+  left_join(parameters_to_add) |>
   rename(speciescode = aou)
 
 simulated_size_change <- community_generate(clean_data_with_size_change)
@@ -166,9 +166,9 @@ Here, we can examine how the mean body size of each species behaves over time in
 
 ```{r}
 
-simulated_mean_change <- simulated_size_change %>%
-  group_by(speciescode, year) %>%
-  summarize(mean_mass = mean(individual_mass)) %>%
+simulated_mean_change <- simulated_size_change |>
+  group_by(speciescode, year) |>
+  summarize(mean_mass = mean(individual_mass)) |>
   ungroup()
 
 ggplot(simulated_mean_change, aes(year, mean_mass)) +
@@ -176,6 +176,7 @@ ggplot(simulated_mean_change, aes(year, mean_mass)) +
   facet_wrap(vars(speciescode), scales = "free")
 
 ```
+
 
 # Use case 3: Simulating imaginary birds 
 
@@ -197,7 +198,7 @@ fictional_community_data <- community_generate(fictional_abundance_data)
 
 ```{r}
 
-fictional_community_summary <- community_summarize(fictional_community_data, level = "species") %>%
+fictional_community_summary <- community_summarize(fictional_community_data, level = "species") |>
   mutate(sim_species_id = as.factor(sim_species_id))
 
 

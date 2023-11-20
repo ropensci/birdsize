@@ -10,3 +10,7 @@
 R\species_class.R
 ^codecov\.yml$
 ^manuscript$
+review_edits.md
+review_template.md
+review_edits_todo.md
+^README\.Rmd$

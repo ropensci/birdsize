@@ -24,16 +24,14 @@ library(purrr)
 theme_set(theme_bw())
 ```
 
-The `species_define` function works mostly behind the scenes to set up the parameters needed to simulate individual body size measurements. Given any of: (1) the AOU as used in the North American Breeding Bird Survey (Pardieck et al. 2019), (2) the scientific name, (3) the species' mean body size, or (4) the species' mean _and standard deviation_ body size, `species_define` returns the parameters used by `pop_generate` and `community_generate` to simulate individual size measurements for individuals of that species, or returns an error message asking for more or different information. In most instances, `species_define` is called under-the-hood by the `generate` functions, and users do not need to interact with it directly. 
+The `species_define` function works mostly behind the scenes to set up the parameters needed to simulate individual body size measurements. Given any of: (1) the [AOU as used in the North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/specieslist.html) (Pardieck et al. 2019), (2) the scientific name, (3) the species' mean body size, or (4) the species' mean _and standard deviation_ body size, `species_define` returns the parameters used by `pop_generate` and `community_generate` to simulate individual size measurements for individuals of that species, or returns an error message asking for more or different information. In most instances, `species_define` is called under-the-hood by the `generate` functions, and users do not need to interact with it directly. 
 
 # Species known to `birdsize`
 
 `birdsize` includes species-level parameters for 443 species of birds common in the North American Breeding Bird Survey. To view the list of species included, examine the `known_species` data table, included:
 
 ```{r}
-
 head(known_species)
-
 ```
 
 Species included in `known_species` can be retrieved via either their AOU or scientific name. For example, the hummingbird _Selasphorous calliope_ has an AOU of `4360`. 
@@ -41,21 +39,17 @@ Species included in `known_species` can be retrieved via either their AOU or sci
 ## AOU lookup
 
 ```{r}
+hummingbird_AOU_parameters <- species_define(AOU = 4360)
 
-hummingbird_aou_parameters <- species_define(aou = 4360)
-
-hummingbird_aou_parameters
-
+hummingbird_AOU_parameters
 ```
 
 ## Scientific name lookup
 
 ```{r}
-
-hummingbird_name_parameters <- species_define(genus = "Selasphorus", species = "calliope")
+hummingbird_name_parameters <- species_define(scientific_name = "Selasphorus calliope")
 
 hummingbird_name_parameters
-
 ```
 
 Note that the `sd_method` field tells us which method we used to look up the parameters. This field propagates throughout the `pop_generate` and `community_generate` functions to keep track of the underlying methodology. 
@@ -65,16 +59,12 @@ Note that the `sd_method` field tells us which method we used to look up the par
 Attempting to use `species_define` with an AOU or species not known to `birdsize` will return an error:
 
 ```{r}
-
-try(species_define(aou = 100))
-
+try(species_define(AOU = 100))
 ```
 
 
 ```{r}
-
-try(species_define(genus = "taylor", species = "swift"))
-
+try(species_define(scientific_name = "Swiftus Taylor"))
 ```
 
 # Species not known to `birdsize`
@@ -86,46 +76,39 @@ Some users may want to use this methodology with species not included in `known_
 Suppose we want to work with a hypothetical species with a mean body size of 40g and a standard deviation of 2.5. Because this species doesn't have a scientific name or AOU included in `birdsize`, we label it using the arbitrary `sim_species_id` of 1.
 
 ```{r}
-
 hypothetical_species_parameters <- species_define(mean_size = 40, sd_size = 2.5, sim_species_id = 1)
 
 hypothetical_species_parameters
-
 ```
 
 This can be particularly useful when working with multiple new species. For example, if we have 3 new species, we can store their information in a separate table and iterate over `sim_species_id` to generate parameters for each species. This happens under the hood in `community_generate`.
 
 ```{r}
-
 multiple_species_info <- data.frame(
   mean_size = c(10, 40, 50),
   sd_size = c(1, 2.5, 3),
   sim_species_id = 1:3
-) 
+)
 
 
 pmap_df(multiple_species_info, species_define)
-
 ```
 
 If the standard deviation is not provided, `species_define` will estimate it (see the `scaling` vignette):
 
 ```{r}
-
-
 multiple_species_info_no_sd <- data.frame(
   mean_size = c(10, 40, 50),
   sim_species_id = 1:3
-) 
+)
 
 
 pmap_df(multiple_species_info_no_sd, species_define)
-
 ```
 
 # Order of operations
 
-If multiple sets of information are provided (e.g. both `aou` and `genus` and `species`), `species_define` will use it in this order of preference: 
+If multiple sets of information are provided (e.g. both `AOU` and `scientific_name`), `species_define` will use it in this order of preference: 
 
 1. AOU
 2. Scientific name

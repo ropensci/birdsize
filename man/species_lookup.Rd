@@ -4,22 +4,20 @@
 \alias{species_lookup}
 \title{Species lookup}
 \usage{
-species_lookup(aou = NA, genus = NA, species = NA)
+species_lookup(AOU = NA_integer_, scientific_name = NA_character_)
 }
 \arguments{
-\item{aou}{AOU species code as specified in the Breeding Bird Survey}
+\item{AOU}{the numeric AOU code used for this species in the Breeding Bird Survey}
 
-\item{genus}{genus}
-
-\item{species}{species}
+\item{scientific_name}{the species' scientific name, as "Genus species"}
 }
 \value{
-data frame with columns aou, genus, species, mean_mass, mean_sd, contains_estimates
+data frame with columns AOU, genus, species, mean_mass, mean_sd, contains_estimates, scientific_name
 }
 \description{
-Given either AOU or genus and species, looks up a species' taxonomic information and mean and standard deviation of body size in \link{sd_table}.
+Given either AOU or scientific name, looks up a species' taxonomic information and mean and standard deviation of body size in \link{sd_table}.
 }
 \examples{
-species_lookup(aou = 2881)
-species_lookup(genus = "Selasphorus", species = "calliope")
+species_lookup(AOU = 2881)
+species_lookup(scientific_name = "Selasphorus calliope")
 }

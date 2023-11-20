@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  echo = F,
+  echo = T,
   message = F
 )
 ```
@@ -22,7 +22,7 @@ The CRC Handbook of Avian Body Masses (Dunning 2008) contains records of the mea
 
 
 
-```{r setup, echo = F}
+```{r setup}
 library(birdsize)
 library(dplyr)
 library(ggplot2)
@@ -33,29 +33,33 @@ theme_set(theme_bw())
 The `raw_masses` dataset (included in `bbssize`) includes all records from the CRC Handbook (Dunning 2008) available for species in this subset of the Breeding Bird Survey. 
 
 ```{r, echo = T}
-raw_masses <- raw_masses
+data(raw_masses)
 ```
 
 Of the `r nrow(raw_masses)` records in `raw_masses`, `r sum(is.na(raw_masses$sd))` are missing the standard deviation (affecting `r length(unique(filter(raw_masses, is.na(sd))$species_id))` species).
 
 
 ```{r, results = T}
+sp_for_sd <- dplyr::filter(
+  raw_masses,
+  !is.na(sd)
+) |>
+  dplyr::mutate(
+    mass = as.numeric(mass),
+    sd = as.numeric(sd)
+  ) |>
+  dplyr::mutate(var = sd^2) |>
+  dplyr::mutate(
+    log_m = log(mass),
+    log_var = log(var)
+  )
 
- sp_for_sd <- dplyr::filter(raw_masses,
-                             !is.na(sd)) %>%
-    dplyr::mutate(mass = as.numeric(mass),
-                  sd = as.numeric(sd)) %>%
-    dplyr::mutate(var = sd^2) %>%
-    dplyr::mutate(log_m = log(mass),
-                  log_var = log(var))
+sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
 
-  sd_fit <- stats::lm(sp_for_sd, formula = log_var ~ log_m)
-  
-  sd_fit_summary <- summary(sd_fit)
-  
-sp_for_sd <- sp_for_sd %>%
+sd_fit_summary <- summary(sd_fit)
+
+sp_for_sd <- sp_for_sd |>
   mutate(est_sd = predict(sd_fit))
-
 ```
 
 
@@ -63,25 +67,20 @@ For records *with* reports of standard deviation, there is a close scaling relat
 
 
 ```{r, results = T, fig.dim = c(5,5)}
-
-ggplot(sp_for_sd, aes(exp(log_m), exp(log_var))) + 
-  geom_point() + 
+ggplot(sp_for_sd, aes(exp(log_m), exp(log_var))) +
+  geom_point() +
   geom_line(aes(y = exp(est_sd))) +
- scale_x_log10() +
- scale_y_log10() +
+  scale_x_log10() +
+  scale_y_log10() +
   ggtitle("Scaling of variance with mean body mass") +
   xlab("Mean body mass\n(note log scale)") +
   ylab("Variance of body mass\n(note log scale)")
-
-
 ```
 
 The model parameters are:
 
 ```{r, results = T}
-
 coefficients(sd_fit)
-
 ```
 
 
@@ -94,14 +93,17 @@ We use this scaling relationship to estimate the standard deviations for records
 
 
 ```{r, results = T, fig.dim = c(5, 5.5)}
-
-raw_masses_with_estimated_sd <- raw_masses %>%
-  birdsize:::clean_sp_size_data() %>%
-  birdsize:::add_estimated_sds(sd_pars = birdsize:::get_sd_parameters(raw_masses)) %>%
-  dplyr::mutate(log_mass = log(mass),
-                var = sd ^ 2) %>%
-  dplyr::mutate(log_var = log(var),
-                `Estimated SD` = estimated_sd)
+raw_masses_with_estimated_sd <- raw_masses |>
+  birdsize:::clean_sp_size_data() |>
+  birdsize:::add_estimated_sds(sd_pars = birdsize:::get_sd_parameters(raw_masses)) |>
+  dplyr::mutate(
+    log_mass = log(mass),
+    var = sd^2
+  ) |>
+  dplyr::mutate(
+    log_var = log(var),
+    `Estimated SD` = estimated_sd
+  )
 
 ggplot(raw_masses_with_estimated_sd, aes(exp(log_mass), exp(log_var), color = `Estimated SD`)) +
   geom_point() +
@@ -109,24 +111,21 @@ ggplot(raw_masses_with_estimated_sd, aes(exp(log_mass), exp(log_var), color = `E
   ggtitle("Scaling of variance with mean, with estimates included") +
   xlab("Mean body mass\n(note log scale)") +
   ylab("Variance of body mass\n(note log scale)") +
- scale_x_log10() +
- scale_y_log10() +
+  scale_x_log10() +
+  scale_y_log10() +
   theme(legend.position = "bottom")
-
 ```
 
 
-The internal function `birdsize:::species_estimate_sd` can be used to estimate the standard deviation of body mass from the mean:
+The internal function `birdsize:::species_estimate_sd` can be used to estimate the standard deviation of body mass from the mean. This function is called within `species_define` to add estimated standard deviations to records of species that have body mass but no sd measurements. 
 
 ```{r, echo = T, results = T}
-
 # Using species_estimate:
 birdsize:::species_estimate_sd(sp_mean = 100)
 
 
 # Calculated manually - note slight numeric discrepancy due to truncating parameters:
-sqrt(0.0047 * 100 ^ 2.01)
-
+sqrt(0.0047 * 100^2.01)
 ```
 
 

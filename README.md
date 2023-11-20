@@ -1,46 +1,170 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # birdsize
 
-
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/diazrenata/birdsize/branch/main/graph/badge.svg)](https://codecov.io/gh/diazrenata/birdsize?branch=main)
 
+[![Codecov test
+coverage](https://codecov.io/gh/diazrenata/birdsize/branch/main/graph/badge.svg)](https://codecov.io/gh/diazrenata/birdsize?branch=main)
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 [![pkgcheck](https://github.com/diazrenata/birdsize/workflows/pkgcheck/badge.svg)](https://github.com/diazrenata/birdsize/actions?query=workflow%3Apkgcheck)
 
-[![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/577_status.svg)](https://github.com/ropensci/software-review/issues/577)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/577_status.svg)](https://github.com/ropensci/software-review/issues/577)
 <!-- badges: end -->
 
-## Package summary
+## Package functionality and limitations
 
-`birdsize` simulates size measurements for populations or communities of birds. Because avian populuation monitoring often relies on auditory or visual methods, and therefore does not provide information about individual body *size*, it is challenging to conduct large-scale analyses of trends in biomass, energy use, community body size structure, or other, similar patterns for these species. `birdsize` solves this problem by using species' traits to generate size estimates for birds based on species ID or user-specified parameters. It is designed to interface naturally with data downloaded from the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/), or to work with other datasets (including synthetic data) as long as they include *population sizes* and either *species identity* (for species found in the Breeding Bird Survey) or *species mean, and optionally standard deviation, body size* (for other species, including hypothetical or simulated species).  
+`birdsize` simulates body mass (in g) measurements for birds. Because
+avian monitoring methodologies often rely on auditory or visual cues,
+datasets on bird populations and communities often lack measurements of
+body mass for individuals. Without information on individuals’ body
+*size*, it is challenging to conduct large-scale analyses of trends in
+biomass, energy use, community body size structure, or other, similar
+patterns for these species. `birdsize` addresses this need by using
+species’ traits to generate size estimates for birds based on species
+identity or user-specified parameters.
 
-The core functions in `birdsize` apply at 3 levels of organization: species, population, and community. The `community_*` functions generate population-level estimates for numerous populations (e.g. populations of different species, or populations of the same species at different points in time or different sampling locations), and calculate summary statistics with flexible grouping structures. The `population_*` functions use species-level parameters and abundances (population sizes) to simulate individual body size and basal metabolic rate measurements to make up populations of that species, and calculate population-wide summary statistics. The `species_*` functions take information about a real or hypothetical species and generates the parameters necessary to simulate body size distributions for that species.
+Specifically, `birdsize` assumes that body mass is normally distributed
+within a species, with a species-specific mean and standard deviation.
+`birdsize` uses species-level parameters (mean and standard deviation)
+to make estimates of individual-level body mass by drawing from the
+corresponding normal distributions. Because of the (very) broad nature
+of these assumptions, `birdsize` should probably not be used to generate
+fine-scale estimates of body mass. Rather, the estimates generated
+through `birdsize` are suitable for broad-scale macroecological studies,
+or for scenario exploration (via tweaking parameters), which would
+otherwise be impossible given the logistical constraints on *collecting*
+individual body mass measurements at massive scale.
 
-For most users, the [community](https://diazrenata.github.io/birdsize/articles/community.html) vignette will provide a high-level overview of using `birdsize` to simulate and summarize community properties. The [bbs-data](https://diazrenata.github.io/birdsize/articles/bbs-data.html) vignette illustrates how to access and work with data from the Breeding Bird Survey. The [populations](https://diazrenata.github.io/birdsize/articles/populations.html) and [species](https://diazrenata.github.io/birdsize/articles/species.html) vignettes provide more detail on using these functions and may be especially useful for working with birds not in the included set of species. Finally, the size estimates in `birdsize` use a scaling relationship between the mean and standard deviation of body size for some species, which is further illustrated in the [scaling](https://diazrenata.github.io/birdsize/articles/scaling.html) vignette.
+`birdsize` contains built-in species-level parameters for 450 species
+(mostly those found in North America north of Mexico). It is also
+designed to take user-provided parameters to generate body size
+estimates for species not included in the built-in data, or indeed for
+hypothetical or simulated species. `birdsize` can generate estimates for
+populations (one or many individuals, all of the same species) or
+communities (multiple populations of different species, or of the same
+species at different locations or points in time).
 
+## `birdsize` and the Breeding Bird Survey
+
+`birdsize` was originally developed to be applied to the North American
+Breeding Bird Survey (BBS). In brief, the North American Breeding Bird
+Survey is a community science program run by the USGS for more than 60
+years. Each year, during the avian breeding season, volunteer surveyors
+conduct auditory point-counts of all the birds observed along 50-km
+routes. There are nearly 3,000 such routes distributed across the United
+States and Canada, making the BBS an invaluable dataset on avian
+populations and community structure over time and over large geographic
+extents. For more detail on the BBS, and to access the BBS data, see the
+Breeding Bird Survey [website](https://www.pwrc.usgs.gov/bbs/) and
+[repository on ScienceBase](https://doi.org/10.5066/P9J6QUF6).
+
+To facilitate applications to the BBS, `birdsize` contains built-in
+species parameters for 450 species found in the BBS from 1980 until
+present, and contains built-in “demo” datasets that mimic the structure
+of the BBS data. The [bbs-data]() vignette illustrates how to use
+`birdsize` to generate estimates of biomass and energy use for a route
+from the Breeding Bird Survey.
+
+Note, however, that `birdsize` does not contain any actual data from the
+Breeding Bird Survey. There are multiple interfaces for connecting to
+the BBS data releases (e.g. the R Data Retriever, ScienceBase) and,
+wherever possible, users are encouraged to go directly to the source to
+access the most up-to-date data.
 
 ## Installation
 
-To install the in-development version, use `remotes` or `devtools`:
+To install the in-development version:
 
-```
-remotes::install_github('diazrenata/birdsize')
-```
-
-or 
-
-```
+``` r
 devtools::install_github('diazrenata/birdsize')
 ```
 
-## Basic use cases
+``` r
+library(birdsize)
+```
 
-For an illustration of the core workflow in `birdsize`, see the  [community](https://diazrenata.github.io/birdsize/articles/community.html) vignette.
+## Core functions
 
+## Estimating body masses for a population
+
+The core functionality of `birdsize` is to simulate individual body mass
+measurements for birds given either their species ID or a mean (and
+possibly standard deviation) of body mass, by drawing individuals from a
+normal distribution. At minimum, this requires a population size
+(abundance) and either the species’ mean body size, or the species’
+identifier (scientific name, or [AOU numeric
+code](https://www.pwrc.usgs.gov/bbs/specieslist.html) for species found
+in the BBS). If the standard deviation of body mass is not provided,
+`birdsize` will estimate it based on a scaling relationship between the
+mean and standard deviation of body mass.
+
+The key function for this is `pop_generate`.
+
+Here, we generate body mass estimates for a population of a hypothetical
+species with a mean body size of 10g:
+
+``` r
+set.seed(13)
+
+first_population <- pop_generate(abundance = 100,
+                                 mean_size = 10)
+
+hist(first_population$individual_mass,
+     main = "First population masses", 
+     xlab = "Body mass (g)")
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+Alternatively, for a species known to `birdsize`, we can simply provide
+the scientific name or AOU code. Here, *Melanerpes carolinus* is the
+red-headed woodpecker:
+
+``` r
+
+
+woodpecker_population <- pop_generate(abundance = 100,
+                                 scientific_name = "Melanerpes carolinus")
+
+hist(first_population$individual_mass,
+     main = "M. carolinus population masses", 
+     xlab = "Body mass (g)")
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+## Estimating body masses for a whole community
+
+To generate body size estimates for a whole community, we use the
+`community_generate` function. `community_generate` takes population
+sizes and species identifiers or parameters for multiple species, and
+simulates populations for each species.
+
+We can create estimates for a hypothetical community by providing
+population sizes and scientific names:
+
+``` r
+
+first_community <- data.frame(
+  abundance = c(50, 100, 150),
+  scientific_name = c("Melanerpes carolinus", "Myiarchus crinitus", "Sayornis phoebe")
+)
+
+first_community_sims <- community_generate(first_community, abundance_column_name = "abundance")
+
+hist(first_community_sims$individual_mass, main = "Community body size distribution", xlab = "Body mass", breaks = 50)
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ## Citation
 
 Diaz, Renata M. (2023). birdsize: Estimate Avian Body Size
-  Distributions. GitHub. https://github.com/diazrenata/birdsize 
+Distributions. GitHub. <https://github.com/diazrenata/birdsize>

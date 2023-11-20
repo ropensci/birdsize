@@ -1,31 +1,37 @@
 Package: birdsize
 Title: Estimate Avian Body Size Distributions
 Version: 0.0.0.9000
-Authors@R: 
-    person("Renata", "Diaz", , "renata.diaz@weecology.org", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-0803-4734"))
 Date: 2023-02-27
-Description: Generate estimated body size distributions for populations or communities of birds, given either species ID or species' mean body size. Designed to work naturally with the North American Breeding Bird Survey, or with any dataset of bird species, abundance, and/or mean size data.   
+Authors@R: c(
+    person("Renata", "Diaz", , "renata.diaz@weecology.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-0803-4734")),
+    person("John", "Dunning", role = "dtc")
+  )
+Description: Generate estimated body size distributions for populations or
+    communities of birds, given either species ID or species' mean body
+    size. Designed to work naturally with the North American Breeding Bird
+    Survey, or with any dataset of bird species, abundance, and/or mean
+    size data.
 License: MIT + file LICENSE
 URL: https://github.com/diazrenata/birdsize
 BugReports: https://github.com/diazrenata/birdsize/issues
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
-Suggests: 
-    covr,
-    ggplot2,
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 Imports: 
-    rlang,
+    stats,
+    truncnorm
+Suggests: 
+    covr,
     dplyr,
-    magrittr,
+    ggplot2,
+    knitr,
     purrr,
-    stats
-VignetteBuilder: knitr
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
