@@ -6,11 +6,10 @@
 #'
 #' @return bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed
 #' @export
-#'
+#' @importFrom utils data
 #' @examples
-#'
 #' head(filter_bbs_survey(demo_route_raw))
-#'
+
 filter_bbs_survey <- function(bbs_survey_data) {
   colnames(bbs_survey_data) <- tolower(colnames(bbs_survey_data))
   colnames(bbs_survey_data)[which(colnames(bbs_survey_data) == "aou")] <- "AOU"
@@ -19,6 +18,7 @@ filter_bbs_survey <- function(bbs_survey_data) {
   if (!("AOU" %in% colnames(bbs_survey_data))) {
     stop("`AOU` column is required!")
   }
+
 
   bbs_survey_data <- bbs_survey_data[!(bbs_survey_data$AOU %in% unidentified_species$AOU), ]
   bbs_survey_data <- bbs_survey_data[!(bbs_survey_data$AOU %in% nontarget_species$AOU), ]

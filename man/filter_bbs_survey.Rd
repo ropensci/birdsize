@@ -16,7 +16,5 @@ bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets r
 The raw data for the Breeding Bird Survey includes unidentified species and some species that are not well-sampled by the BBS methods. This function filters a dataframe to remove those species.
 }
 \examples{
-
 head(filter_bbs_survey(demo_route_raw))
-
 }
