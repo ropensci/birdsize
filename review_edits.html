@@ -235,6 +235,30 @@
 <li>I’ve reached out to Dr. Dunning and he agreed to be listed as a Data Contributor. I’ve added him with this revision.</li>
 <li>I reviewed the Small Fixes PR from @ mstrimas. Because of the scope of revisions, I ended up not merging that pull request and instead implementing the same changes on the revised codebase. Specifically, I tidied up the DESCRIPTION using desc::desc_normalize(), removed <code><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">remotes::install_github</a></code> from the README, switched T/F to TRUE/FALSE, and switched 1:nrow() to seq_len(nrow()). = was changed to &lt;- via the lintr cleanup, and use of .data$ was removed with the removal of tidyverse functions.</li>
 </ul></div>
+<div class="section level1">
+<h1 id="from-editor">From editor:<a class="anchor" aria-label="anchor" href="#from-editor"></a></h1>
+<ul><li>I’d recommend running desc::desc_normalize(): it will order DESCRIPTION fields in a standard way and order dependencies alphabetically. <em>Done!</em>
+</li>
+<li>You can remove the {remotes} installation instructions and keep the {devtools} ones only as {devtools} calls {remotes} (might call {pak} in the future?) and is the interface for users. <em>Done!</em>
+</li>
+<li>It’d be nice to add grouping to the reference index <a href="https://pkgdown.r-lib.org/reference/build_reference.html#reference-index" class="external-link uri">https://pkgdown.r-lib.org/reference/build_reference.html#reference-index</a> Given your package’s naming scheme, you might want to use the starts_with() helper. <em>I haven’t done this because there are so few functions, it seems to me like it verges on redundant. I’m happy to revisit this!</em>
+</li>
+<li>In the test filenames, why use numbers? If the R files and test files have the same basename, it’s easier to navigate between the two in RStudio IDE. <a href="https://r-pkgs.org/testing-basics.html#test-organisation" class="external-link uri">https://r-pkgs.org/testing-basics.html#test-organisation</a> <em>Ah, I learned to use the numbers so that tests fail informatively in order. The tests also don’t - all - correspond directly to RScripts. Is this a major barrier? If so, I’m happy to revisit!</em>
+</li>
+<li>In your test files and scripts I see a lot of vertical space, more than one empty lines between some elements. I’d recommend using one empty line only as it increases the amount of code one can see at a time on the screen. It’s still nice to organize the code in paragraphs, I am not suggesting to remove all empty lines. 😁 <em>I think this has been largely addressed via the re-styling I’ve done, but please let me know if the issue peresists!</em>
+</li>
+<li>In the README instead of “Package summary” as a header you could use the same text as this issue “birdsize: Estimate avian body size distributions” which is more informative. <em>Done!</em>
+</li>
+<li>Regarding data yes it might make sense to contact the author of the included dataset? <em>Done! I’ve reached out and Dr. Dunning agreed to be listed as a contributor. I’ve sent a more recent-follow up with the revisions and giving him the opportunity to confirm, and haven’t heard back yet.</em>
+</li>
+<li>For comments such as <a href="https://github.com/diazrenata/birdsize/blob/7469df457989a9016ecc3761b0dd125497a3be51/R/simulate_community.R#L51" class="external-link uri">https://github.com/diazrenata/birdsize/blob/7469df457989a9016ecc3761b0dd125497a3be51/R/simulate_community.R#L51</a> if you add 4 hyphens afterwards —-, the comment will appear in the script outline on the right in RStudio IDE (if you use that IDE), helping code navigation. <a href="https://blog.r-hub.io/2023/01/26/code-comments-self-explaining-code/#use-comments-for-the-scripts-outline" class="external-link uri">https://blog.r-hub.io/2023/01/26/code-comments-self-explaining-code/#use-comments-for-the-scripts-outline</a> <em>I’ve added these to the long community_generate script</em>.</li>
+<li>why have this “trivial” test file? <a href="https://github.com/diazrenata/birdsize/blob/main/tests/testthat/test-01_trivial.R" class="external-link uri">https://github.com/diazrenata/birdsize/blob/main/tests/testthat/test-01_trivial.R</a> <em>I use this to test that CI is working, but it’s not needed now the package is built. Deleted!</em>
+</li>
+<li>in test code you don’t need to write birdsize::: as testthat loads your package code. Example <a href="https://github.com/diazrenata/birdsize/blob/7469df457989a9016ecc3761b0dd125497a3be51/tests/testthat/test-02_included_data.R#L13" class="external-link uri">https://github.com/diazrenata/birdsize/blob/7469df457989a9016ecc3761b0dd125497a3be51/tests/testthat/test-02_included_data.R#L13</a> <em>These are removed!</em>
+</li>
+<li>why are some expectations commented out? <a href="https://github.com/diazrenata/birdsize/blob/7469df457989a9016ecc3761b0dd125497a3be51/tests/testthat/test-07_simulate_community.R#L34" class="external-link uri">https://github.com/diazrenata/birdsize/blob/7469df457989a9016ecc3761b0dd125497a3be51/tests/testthat/test-07_simulate_community.R#L34</a> <em>These were vestigial, removed!</em>
+</li>
+</ul></div>
 
 
   </div>

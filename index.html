@@ -91,7 +91,7 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="birdsize">birdsize<a class="anchor" aria-label="anchor" href="#birdsize"></a>
+<div class="page-header"><h1 id="birdsize-estimate-avian-body-size-distributions">birdsize: Estimate avian body size distributions<a class="anchor" aria-label="anchor" href="#birdsize-estimate-avian-body-size-distributions"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -118,7 +118,7 @@
 </h2>
 <p>To install the in-development version:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'diazrenata/birdsize'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"diazrenata/birdsize"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/diazrenata/birdsize" class="external-link">birdsize</a></span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -135,23 +135,27 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">13</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">first_population</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>                                 mean_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">first_population</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pop_generate.html">pop_generate</a></span><span class="op">(</span></span>
+<span>  abundance <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  mean_size <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">first_population</span><span class="op">$</span><span class="va">individual_mass</span>,</span>
-<span>     main <span class="op">=</span> <span class="st">"First population masses"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"Body mass (g)"</span><span class="op">)</span></span></code></pre></div>
+<span>  main <span class="op">=</span> <span class="st">"First population masses"</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"Body mass (g)"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 <p>Alternatively, for a species known to <code>birdsize</code>, we can simply provide the scientific name or AOU code. Here, <em>Melanerpes carolinus</em> is the red-headed woodpecker:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span></span>
-<span><span class="va">woodpecker_population</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pop_generate.html">pop_generate</a></span><span class="op">(</span>abundance <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>                                 scientific_name <span class="op">=</span> <span class="st">"Melanerpes carolinus"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">woodpecker_population</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pop_generate.html">pop_generate</a></span><span class="op">(</span></span>
+<span>  abundance <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  scientific_name <span class="op">=</span> <span class="st">"Melanerpes carolinus"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">first_population</span><span class="op">$</span><span class="va">individual_mass</span>,</span>
-<span>     main <span class="op">=</span> <span class="st">"M. carolinus population masses"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"Body mass (g)"</span><span class="op">)</span></span></code></pre></div>
+<span>  main <span class="op">=</span> <span class="st">"M. carolinus population masses"</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"Body mass (g)"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 </div>
 <div class="section level2">
@@ -160,8 +164,7 @@
 <p>To generate body size estimates for a whole community, we use the <code>community_generate</code> function. <code>community_generate</code> takes population sizes and species identifiers or parameters for multiple species, and simulates populations for each species.</p>
 <p>We can create estimates for a hypothetical community by providing population sizes and scientific names:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">first_community</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">first_community</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  abundance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">150</span><span class="op">)</span>,</span>
 <span>  scientific_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Melanerpes carolinus"</span>, <span class="st">"Myiarchus crinitus"</span>, <span class="st">"Sayornis phoebe"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
