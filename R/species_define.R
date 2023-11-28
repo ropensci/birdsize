@@ -30,7 +30,7 @@ species_define <-
            sd_size = NA_real_,
            sim_species_id = 1) {
     if (!is.na(AOU)) {
-      # use AOU to get mean, sd, genus, and species
+      # use AOU to get mean, sd, genus, and species  ----
       spPars <- species_lookup(AOU = AOU)
       thisSpecies <-
         list(
@@ -42,7 +42,7 @@ species_define <-
           sim_species_id = AOU
         )
 
-      # Check that any user-supplied taxonomic info matches the AOU provided
+      # Check that any user-supplied taxonomic info matches the AOU provided  ----
       if (!is.na(scientific_name)) {
         if (scientific_name != thisSpecies$scientific_name) {
           warning(
@@ -54,7 +54,7 @@ species_define <-
       return(thisSpecies)
     }
 
-    # If AOU is not provided (implicit in order) try scientific name
+    # If AOU is not provided (implicit in order) try scientific name  ----
 
     if (all(!is.na(scientific_name))) {
       spPars <- species_lookup(scientific_name = scientific_name)
@@ -70,7 +70,7 @@ species_define <-
       return(thisSpecies)
     }
 
-    # If neither of AOU or scientific name is provided (implicit in order)
+    # If neither of AOU or scientific name is provided (implicit in order)  ----
     if (!is.na(mean_size)) {
       if (!is.na(sd_size)) {
         thisSpecies <-
@@ -98,7 +98,7 @@ species_define <-
       return(thisSpecies)
     }
 
-    # If insufficient information is provided, throw an error
+    # If insufficient information is provided, throw an error  ----
 
     stop("At least one of: AOU, scientific_name, or mean_size must be provided!")
   }

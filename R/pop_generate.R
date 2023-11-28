@@ -52,7 +52,7 @@ pop_generate <-
       sim_species_id = sim_species_id
     )
 
-    # abundance errors
+    # abundance errors ----
     if (is.na(abundance)) {
       stop("`abundance` must be provided")
     }
@@ -65,7 +65,7 @@ pop_generate <-
       stop("`abundance` must be a whole number")
     }
 
-    # errors related to size pars
+    # errors related to size pars ----
 
     if (is.na(this_species$mean_size)) {
       stop("`species_mean` must be provided")
@@ -75,7 +75,7 @@ pop_generate <-
       stop("`species_sd` must be provided")
     }
 
-    # print message if the combination of mean and SD is likely (> 1% chance) to produce negative masses
+    # print message if the combination of mean and SD is likely (> 1% chance) to produce negative masses ----
 
     if (pnorm(1, this_species$mean_size, this_species$sd_size) > .01) {
       message("Very tiny species (a greater than 1% chance of a body mass value less than 1g)!")

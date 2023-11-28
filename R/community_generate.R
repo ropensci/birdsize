@@ -40,7 +40,7 @@ community_generate <-
 
     community_vars <- colnames(community_data_table)
 
-    # Check that the necessary variables are provided ####
+    # Check that the necessary variables are provided ----
 
     contains_AOU <- "AOU" %in% community_vars
     contains_scientific_name <- "scientific_name" %in% community_vars
@@ -57,7 +57,7 @@ community_generate <-
       stop("At least one of `AOU`, `scientific_name`, or `mean_size` is required")
     }
 
-    # Identify ID/grouping columns and columns to pass to sim fxns. ####
+    # Identify ID/grouping columns and columns to pass to sim fxns. ----
 
 
     community_data_table$rejoining_id <-
@@ -83,8 +83,7 @@ community_generate <-
     sim_vars <-
       c(community_vars_mod[which(community_vars_mod %in% possible_sim_vars)])
 
-    # For the cols to pass in, add NA columns for any of the variables that the
-    # sim fxns can use that aren't included ####
+    # For the cols to pass in, add NA columns for any of the variables that the sim fxns can use that aren't included ----
     na_vars <-
       possible_sim_vars[which(!(possible_sim_vars %in% community_vars_mod))]
 
