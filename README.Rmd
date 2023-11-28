@@ -9,8 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  fig.dim = c(5, 3)
+  out.width = "100%"
 )
 ```
 
@@ -68,7 +67,7 @@ The key function for this is `pop_generate`.
 
 Here, we generate body mass estimates for a population of a hypothetical species with a mean body size of 10g:
 
-```{r, fig.dim = c(5,3)}
+```{r}
 set.seed(13)
 
 first_population <- pop_generate(
@@ -85,7 +84,7 @@ hist(first_population$individual_mass,
 
 Alternatively, for a species known to `birdsize`, we can simply provide the scientific name or AOU code. Here, _Melanerpes carolinus_ is the red-headed woodpecker:
 
-```{r, fig.dim = c(5,3)}
+```{r}
 woodpecker_population <- pop_generate(
   abundance = 100,
   scientific_name = "Melanerpes carolinus"
@@ -105,7 +104,7 @@ To generate body size estimates for a whole community, we use the `community_gen
 
 We can create estimates for a hypothetical community by providing population sizes and scientific names:
 
-```{r, fig.dim = c(5,3)}
+```{r}
 first_community <- data.frame(
   abundance = c(50, 100, 150),
   scientific_name = c("Melanerpes carolinus", "Myiarchus crinitus", "Sayornis phoebe")

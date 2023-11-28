@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# birdsize
+# birdsize: Estimate avian body size distributions
 
 <!-- badges: start -->
 
@@ -83,7 +83,7 @@ access the most up-to-date data.
 To install the in-development version:
 
 ``` r
-devtools::install_github('diazrenata/birdsize')
+devtools::install_github("diazrenata/birdsize")
 ```
 
 ``` r
@@ -113,12 +113,15 @@ species with a mean body size of 10g:
 ``` r
 set.seed(13)
 
-first_population <- pop_generate(abundance = 100,
-                                 mean_size = 10)
+first_population <- pop_generate(
+  abundance = 100,
+  mean_size = 10
+)
 
 hist(first_population$individual_mass,
-     main = "First population masses", 
-     xlab = "Body mass (g)")
+  main = "First population masses",
+  xlab = "Body mass (g)"
+)
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -128,14 +131,15 @@ the scientific name or AOU code. Here, *Melanerpes carolinus* is the
 red-headed woodpecker:
 
 ``` r
-
-
-woodpecker_population <- pop_generate(abundance = 100,
-                                 scientific_name = "Melanerpes carolinus")
+woodpecker_population <- pop_generate(
+  abundance = 100,
+  scientific_name = "Melanerpes carolinus"
+)
 
 hist(first_population$individual_mass,
-     main = "M. carolinus population masses", 
-     xlab = "Body mass (g)")
+  main = "M. carolinus population masses",
+  xlab = "Body mass (g)"
+)
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -151,7 +155,6 @@ We can create estimates for a hypothetical community by providing
 population sizes and scientific names:
 
 ``` r
-
 first_community <- data.frame(
   abundance = c(50, 100, 150),
   scientific_name = c("Melanerpes carolinus", "Myiarchus crinitus", "Sayornis phoebe")
