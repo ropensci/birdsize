@@ -16,7 +16,8 @@ pop_generate(
 \arguments{
 \item{abundance}{integer number of individuals to draw. \emph{Required}.}
 
-\item{AOU}{the numeric AOU code used for this species in the Breeding Bird Survey}
+\item{AOU}{the numeric AOU code used for this species in the Breeding Bird
+Survey}
 
 \item{scientific_name}{as "Genus species"}
 
@@ -27,7 +28,8 @@ pop_generate(
 \item{sim_species_id}{defaults AOU or 1}
 }
 \value{
-a dataframe with \code{abundance} rows - one record per individual - and columns for species attributes.
+a dataframe with \code{abundance} rows - one record per individual - and
+columns for species attributes.
 
 Specifically:
 \itemize{
@@ -43,10 +45,13 @@ Specifically:
 }
 }
 \description{
-Draws body mass measurements for a population of birds (of all the same species) given the population size and either (1) the species AOU or (2) the mean and potentially standard deviation of body mass for that species.
+Draws body mass measurements for a population of birds (of all the same
+species) given the population size and either (1) the species AOU or (2) the
+mean and potentially standard deviation of body mass for that species.
 }
 \details{
-\code{abundance} is required, as well as \emph{one of}: \code{AOU}, \code{scientific_name}, or \code{mean_size}.
+\code{abundance} is required, as well as \emph{one of}: \code{AOU}, \code{scientific_name}, or
+\code{mean_size}.
 }
 \examples{
 

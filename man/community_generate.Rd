@@ -10,12 +10,15 @@ community_generate(
 )
 }
 \arguments{
-\item{community_data_table}{dataframe containing at least one of \code{AOU}, \code{scientific_name}, or \code{mean_size} and a column for species abundances}
+\item{community_data_table}{dataframe containing at least one of \code{AOU},
+\code{scientific_name}, or \code{mean_size} and a column for species abundances}
 
-\item{abundance_column_name}{character, the name of the column with species abundances. Defaults to "speciestotal".}
+\item{abundance_column_name}{character, the name of the column with species
+abundances. Defaults to "speciestotal".}
 }
 \value{
-a dataframe one row per individual, all columns from \code{community_data_table}, and additional columns for species attributes.
+a dataframe one row per individual, all columns from
+\code{community_data_table}, and additional columns for species attributes.
 
 Specifically:
 \itemize{
@@ -33,7 +36,9 @@ Specifically:
 }
 }
 \description{
-For a community (i.e. a collection of populations of different species, or of the same species at different points in time or locations, etc), simulate individual-level size and metabolic rate measurements.
+For a community (i.e. a collection of populations of different species, or of
+the same species at different points in time or locations, etc), simulate
+individual-level size and metabolic rate measurements.
 }
 \examples{
 

@@ -7,15 +7,18 @@
 species_lookup(AOU = NA_integer_, scientific_name = NA_character_)
 }
 \arguments{
-\item{AOU}{the numeric AOU code used for this species in the Breeding Bird Survey}
+\item{AOU}{the numeric AOU code used for this species in the Breeding Bird
+Survey}
 
 \item{scientific_name}{the species' scientific name, as "Genus species"}
 }
 \value{
-data frame with columns AOU, genus, species, mean_mass, mean_sd, contains_estimates, scientific_name
+data frame with columns AOU, genus, species, mean_mass, mean_sd,
+contains_estimates, scientific_name
 }
 \description{
-Given either AOU or scientific name, looks up a species' taxonomic information and mean and standard deviation of body size in \link{sd_table}.
+Given either AOU or scientific name, looks up a species' taxonomic
+information and mean and standard deviation of body size in \link{sd_table}.
 }
 \examples{
 species_lookup(AOU = 2881)

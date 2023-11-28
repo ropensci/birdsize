@@ -21,6 +21,7 @@ ind_draw(
 vector of individuals' simulated body masses
 }
 \description{
-This is not a user-facing function; it is the random number generator under-the-hood for \link{pop_generate}.
+This is not a user-facing function; it is the random number generator
+under-the-hood for \link{pop_generate}.
 }
 \keyword{internal}

@@ -10,10 +10,13 @@ filter_bbs_survey(bbs_survey_data)
 \item{bbs_survey_data}{data frame with columns for species and AOU}
 }
 \value{
-bbs_survey_data with unidentified species, nightbirds, waterbirds, non-targets removed
+bbs_survey_data with unidentified species, nightbirds, waterbirds,
+non-targets removed
 }
 \description{
-The raw data for the Breeding Bird Survey includes unidentified species and some species that are not well-sampled by the BBS methods. This function filters a dataframe to remove those species.
+The raw data for the Breeding Bird Survey includes unidentified species and
+some species that are not well-sampled by the BBS methods. This function
+filters a dataframe to remove those species.
 }
 \examples{
 head(filter_bbs_survey(demo_route_raw))

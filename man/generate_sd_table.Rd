@@ -2,7 +2,8 @@
 % Please edit documentation in R/species_data_functions.R
 \name{generate_sd_table}
 \alias{generate_sd_table}
-\title{Generate table of species-level means for the mean and standard deviation of body mass for species in the Breeding Bird Survey}
+\title{Generate table of species-level means for the mean and standard deviation of
+body mass for species in the Breeding Bird Survey}
 \usage{
 generate_sd_table(raw_size_data)
 }
@@ -10,15 +11,23 @@ generate_sd_table(raw_size_data)
 \item{raw_size_data}{the \code{raw_masses} dataframe}
 }
 \value{
-a dataframe of species-level means for mean body size and standard deviation of body size
+a dataframe of species-level means for mean body size and standard
+deviation of body size
 }
 \description{
-Goes from the \code{raw_masses} dataframe (included in \code{bbssize}) of records of species' mean and (where provided) standard deviation of body mass from the CRC Handbook (Dunning 2008) to a table of species-level means for the mean and standard deviation of body mass, incorporating estimates for missing standard deviation records and resolving taxonomic updates between the publication of the CRC Handbook and present releases of the Breeding Bird Survey dataset (Paradieck et al. 2019).
+Goes from the \code{raw_masses} dataframe (included in \code{bbssize}) of records of
+species' mean and (where provided) standard deviation of body mass from the
+CRC Handbook (Dunning 2008) to a table of species-level means for the mean
+and standard deviation of body mass, incorporating estimates for missing
+standard deviation records and resolving taxonomic updates between the
+publication of the CRC Handbook and present releases of the Breeding Bird
+Survey dataset (Paradieck et al. 2019).
 }
 \references{
-\itemize{
-\item{Dunning, J. B. (2008). CRC handbook of avian body masses (2nd ed.). CRC Press.}
-\item{Pardieck, K. L., Ziolkowski, D. J., Lutmerding, M., Aponte, V., & Hudson, M.-A. (2019). North American Breeding Bird Survey Dataset 1966—2018, version 2018.0. U.S. Geological Survey. https://doi.org/10.5066/P9HE8XYJ}
-}
+\itemize{ \item{Dunning, J. B. (2008). CRC handbook of avian body
+masses (2nd ed.). CRC Press.} \item{Pardieck, K. L., Ziolkowski, D. J.,
+Lutmerding, M., Aponte, V., & Hudson, M.-A. (2019). North American Breeding
+Bird Survey Dataset 1966—2018, version 2018.0. U.S. Geological Survey.
+https://doi.org/10.5066/P9HE8XYJ} }
 }
 \keyword{internal}
