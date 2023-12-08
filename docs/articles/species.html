@@ -63,6 +63,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -115,8 +118,7 @@ species of birds common in the North American Breeding Bird Survey. To
 view the list of species included, examine the
 <code>known_species</code> data table, included:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">known_species</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">known_species</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
 <span><span class="co">#&gt;     AOU genus      species    </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
@@ -133,8 +135,7 @@ either their AOU or scientific name. For example, the hummingbird
 <h3 id="aou-lookup">AOU lookup<a class="anchor" aria-label="anchor" href="#aou-lookup"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">hummingbird_AOU_parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>AOU <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">hummingbird_AOU_parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>AOU <span class="op">=</span> <span class="fl">4360</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hummingbird_AOU_parameters</span></span>
 <span><span class="co">#&gt; $AOU</span></span>
@@ -159,8 +160,7 @@ either their AOU or scientific name. For example, the hummingbird
 <h3 id="scientific-name-lookup">Scientific name lookup<a class="anchor" aria-label="anchor" href="#scientific-name-lookup"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">hummingbird_name_parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>scientific_name <span class="op">=</span> <span class="st">"Selasphorus calliope"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">hummingbird_name_parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>scientific_name <span class="op">=</span> <span class="st">"Selasphorus calliope"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hummingbird_name_parameters</span></span>
 <span><span class="co">#&gt; $AOU</span></span>
@@ -191,12 +191,10 @@ to keep track of the underlying methodology.</p>
 <p>Attempting to use <code>species_define</code> with an AOU or species
 not known to <code>birdsize</code> will return an error:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>AOU <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>AOU <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in species_lookup(AOU = AOU) : `AOU` is invalid.</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>scientific_name <span class="op">=</span> <span class="st">"Taylor swift"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>scientific_name <span class="op">=</span> <span class="st">"Swiftus Taylor"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in species_lookup(scientific_name = scientific_name) : </span></span>
 <span><span class="co">#&gt;   Scientific name is invalid.</span></span></code></pre></div>
 </div>
@@ -220,8 +218,7 @@ size of 40g and a standard deviation of 2.5. Because this species
 doesn’t have a scientific name or AOU included in <code>birdsize</code>,
 we label it using the arbitrary <code>sim_species_id</code> of 1.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">hypothetical_species_parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>mean_size <span class="op">=</span> <span class="fl">40</span>, sd_size <span class="op">=</span> <span class="fl">2.5</span>, sim_species_id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">hypothetical_species_parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/species_define.html">species_define</a></span><span class="op">(</span>mean_size <span class="op">=</span> <span class="fl">40</span>, sd_size <span class="op">=</span> <span class="fl">2.5</span>, sim_species_id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hypothetical_species_parameters</span></span>
 <span><span class="co">#&gt; $AOU</span></span>
@@ -247,12 +244,11 @@ information in a separate table and iterate over
 <code>sim_species_id</code> to generate parameters for each species.
 This happens under the hood in <code>community_generate</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">multiple_species_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">multiple_species_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  mean_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">40</span>, <span class="fl">50</span><span class="op">)</span>,</span>
 <span>  sd_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2.5</span>, <span class="fl">3</span><span class="op">)</span>,</span>
 <span>  sim_species_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
-<span><span class="op">)</span> </span>
+<span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="fu">pmap_df</span><span class="op">(</span><span class="va">multiple_species_info</span>, <span class="va">species_define</span><span class="op">)</span></span>
@@ -266,12 +262,10 @@ This happens under the hood in <code>community_generate</code>.</p>
 <code>species_define</code> will estimate it (see the
 <code>scaling</code> vignette):</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span></span>
-<span><span class="va">multiple_species_info_no_sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">multiple_species_info_no_sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  mean_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">40</span>, <span class="fl">50</span><span class="op">)</span>,</span>
 <span>  sim_species_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
-<span><span class="op">)</span> </span>
+<span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="fu">pmap_df</span><span class="op">(</span><span class="va">multiple_species_info_no_sd</span>, <span class="va">species_define</span><span class="op">)</span></span>

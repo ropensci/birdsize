@@ -63,6 +63,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -119,8 +122,7 @@ the Retriever, but with synthetic data. For an explanation of each of
 the column names, see the Help page for <a href="../reference/demo_route_raw.html">demo_route_raw</a> or the
 metadata available on ScienceBase.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_raw_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="va"><a href="../reference/demo_route_raw.html">demo_route_raw</a></span></span>
+<code class="sourceCode R"><span><span class="va">demo_raw_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="va"><a href="../reference/demo_route_raw.html">demo_route_raw</a></span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_raw_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  AOU count10</span></span>
@@ -146,8 +148,7 @@ BBS data to remove taxa that are poorly sampled via the BBS methods
 (e.g. nightbirds, waterbirds) and to remove unidenitifed taxa. The
 <code>filter_bbs_survey</code> function performs this cleaning:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">demo_clean_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="va">demo_raw_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">demo_clean_data</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/filter_bbs_survey.html">filter_bbs_survey</a></span><span class="op">(</span><span class="va">demo_raw_data</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">demo_clean_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   record_id   routedataid countrynum statenum route rpid year  AOU count10</span></span>
@@ -173,8 +174,7 @@ individual-level size and BMR estimates for all individuals recorded in
 a community data frame of the type available from ScienceBase, the
 Retriever, or the included demo data:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2022</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">demo_community</span> <span class="op">&lt;-</span> <span class="fu">birdsize</span><span class="fu">::</span><span class="fu"><a href="../reference/community_generate.html">community_generate</a></span><span class="op">(</span><span class="va">demo_clean_data</span><span class="op">)</span></span>
 <span></span>

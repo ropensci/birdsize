@@ -57,6 +57,8 @@ devtools::install_github("diazrenata/birdsize")
 library(birdsize)
 ```
 
+Note that, while the package itself depends only on R>= 2.10, the vignettes use the base R pipe (`|>`), which was introduced in R 4.1.0.
+
 ## Core functions
 
 ## Estimating body masses for a population
