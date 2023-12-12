@@ -13,8 +13,8 @@ Description: Generate estimated body size distributions for populations or
     Survey, or with any dataset of bird species, abundance, and/or mean
     size data.
 License: MIT + file LICENSE
-URL: https://github.com/diazrenata/birdsize
-BugReports: https://github.com/diazrenata/birdsize/issues
+URL: https://github.com/ropensci/birdsize
+BugReports: https://github.com/ropensci/birdsize/issues
 Depends: 
     R (>= 2.10)
 Imports: 
