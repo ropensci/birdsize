@@ -10,9 +10,9 @@ coverage](https://codecov.io/gh/diazrenata/birdsize/branch/main/graph/badge.svg)
 
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+public.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-[![pkgcheck](https://github.com/diazrenata/birdsize/workflows/pkgcheck/badge.svg)](https://github.com/diazrenata/birdsize/actions?query=workflow%3Apkgcheck)
+[![pkgcheck](https://github.com/ropensci/birdsize/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/birdsize/actions?query=workflow%3Apkgcheck)
 
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/577_status.svg)](https://github.com/ropensci/software-review/issues/577)
@@ -83,7 +83,7 @@ access the most up-to-date data.
 To install the in-development version:
 
 ``` r
-devtools::install_github("diazrenata/birdsize")
+devtools::install_github("ropensci/birdsize")
 ```
 
 ``` r
@@ -170,7 +170,13 @@ hist(first_community_sims$individual_mass, main = "Community body size distribut
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
+## Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
 ## Citation
 
 Diaz, Renata M. (2023). birdsize: Estimate Avian Body Size
-Distributions. GitHub. <https://github.com/diazrenata/birdsize>
+Distributions. GitHub. <https://github.com/ropensci/birdsize>

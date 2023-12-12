@@ -117,6 +117,10 @@ first_community_sims <- community_generate(first_community, abundance_column_nam
 hist(first_community_sims$individual_mass, main = "Community body size distribution", xlab = "Body mass", breaks = 50)
 ```
 
+## Code of Conduct
+Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). 
+By contributing to this project, you agree to abide by its terms.
+
 ## Citation
 
 Diaz, Renata M. (2023). birdsize: Estimate Avian Body Size
