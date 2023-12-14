@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/diazrenata/birdsize/branch/main/graph/badge.svg)](https://codecov.io/gh/diazrenata/birdsize?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/ropensci/birdsize/branch/main/graph/badge.svg)](https://codecov.io/gh/diazrenata/ropensci?branch=main)
 
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -47,11 +47,19 @@ Note, however, that `birdsize` does not contain any actual data from the Breedin
 
 ## Installation
 
-To install the in-development version:
+To install from GitHub:
 
 ```{r, eval = F}
 devtools::install_github("ropensci/birdsize")
 ```
+
+
+To install from R-Universe:
+
+```{r, eval = F}
+install.packages("<package-name>", repos = "https://ropensci.r-universe.dev")
+```
+
 
 ```{r}
 library(birdsize)

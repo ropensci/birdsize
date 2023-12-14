@@ -1,7 +1,7 @@
 Package: birdsize
 Title: Estimate Avian Body Size Distributions
-Version: 0.0.0.9000
-Date: 2023-02-27
+Version: 1.0.0.0000
+Date: 2023-12-14
 Authors@R: c(
     person("Renata", "Diaz", , "renata.diaz@weecology.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0803-4734")),
