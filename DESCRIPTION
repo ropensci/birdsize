@@ -1,7 +1,7 @@
 Package: birdsize
 Title: Estimate Avian Body Size Distributions
-Version: 0.0.0.9000
-Date: 2023-02-27
+Version: 1.0.0.0000
+Date: 2023-12-14
 Authors@R: c(
     person("Renata", "Diaz", , "renata.diaz@weecology.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0803-4734")),
@@ -13,8 +13,8 @@ Description: Generate estimated body size distributions for populations or
     Survey, or with any dataset of bird species, abundance, and/or mean
     size data.
 License: MIT + file LICENSE
-URL: https://github.com/diazrenata/birdsize
-BugReports: https://github.com/diazrenata/birdsize/issues
+URL: https://github.com/ropensci/birdsize
+BugReports: https://github.com/ropensci/birdsize/issues
 Depends: 
     R (>= 2.10)
 Imports: 

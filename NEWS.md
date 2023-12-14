@@ -1,4 +1,10 @@
-# birdsize (development version)
+# 1.0.0.0000
+
+12/2023: First release after going through ROpenSci peer review.
+
+# 0.0.0.9000
+
+birdsize (development version)  
 
 * 11/2023: Revised version. Major changes include:
   * Reorganization to vignettes
